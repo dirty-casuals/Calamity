@@ -1,0 +1,63 @@
+﻿    psai for Unity release history
+			
+    (c) Periscope Studio UG (haftungsbeschränkt) & Co. KG
+			
+    http://www.homeofpsai.com/
+    http://www.persicopestudio.de	
+			
+    Questions? Please don't hestitate to contact us! devsupport@periscopestudio.de
+=====================================================================================	
+
+
+2015-05-07  1.6.0
+    * dropped support for Unity versions < 5.0
+    * fixed occasional timing problems in Unity 5
+    * fixed: Unity was not immediately reflecting psai Project changes made in Psai Editor LE due to caching
+
+2015-04-27  1.5.17
+    * PsaiSoundtrackLoader will now load psai Project files directly by XML
+    * No need to build the soundtrack after changes any more, just save your soundtrack.
+        * To load, play or edit a former .psai project file, just rename it to .xml.
+        * You can still load .psai files in the psai Editor, but make sure that no files of the same name exist in
+            your soundtrack folder (e.g. "MySoundtrack.psai" and "MySoundtrack.xml" will cause problems at runtime,
+            as Unity ignores the file extensions when loading from the Resources folder).
+        * The binary .bytes file format is deprecated
+    * dropped support for Unity versions < 4.6	
+    * fixed wrong playback of MIDDLE-Segments after triggering the same Theme again while an END-Segment was playing
+    * PsaiStopMusic now allows overriding the default resting time
+    * soundtracks will no longer be unloaded between scene transitions if DontDestroyOnLoad() was called on the Psai.prefab
+		
+2015-02-12  1.5.16
+    * fixed occasional timing problems and skipping of Segments on interrupting triggers
+    * fixed Inspector for PsaiStopMusic not storing the selected Radiobutton ("by End / by fade-out")
+    * replaced PsaiGoRoRest: Use PsaiStopMusic() instead, and select the new option "wake up automatically". 
+    * PsaiOneShotTrigger has now the option to reset the 'has fired' flag when the script has been disabled
+
+2015-01-27  1.5.15
+    * added Unity 5.0 compatibility
+    * added a whole bunch of Trigger scripts that let you integrate and control a soundtrack in your game without any scripting!
+        * PsaiOneShotTrigger
+        * PsaiGenericTrigger
+        * PsaiTriggerOnButtonDown
+        * PsaiTriggerOnEnable
+        * PsaiGoToRest	
+        * PsaiStopMusic
+        * PsaiReturnToLastBasicMood
+    * introducing TriggerConditions: Just drag them on any GameObject that holds a Trigger component to further define when it should fire:
+        * PsaiTcSkipIfNotVisible
+        * PsaiTcSkipIfComponentIsDisabled
+        * PsaiTcSkipIfThemeTypeIsPlaying
+    * PsaiSoundtrackLoader now supports Drag & Drop
+    * added customized Inspectors for all Trigger scripts
+    * fixed playback of wrong Segments when no Wrappers were used
+    * fixed PsaiCore.Instance not reinitializing properly on Level reload
+	
+2014-12-03  1.5.14
+    * psai now supports asynchronous loading of segments on Unity Pro for ultra-smooth performance. To activate, just add PSAI_UNITY_PRO as a scripting define symbol in the the Unity Player Settings.
+	
+2014-11-27  1.5.13
+    * performance gain: psai now uses auto-generated wrapper-objects as a workaround for AudioClips not being streamed from disk. To have them created, just run the psaiMultiAudioObjectEditor on your soundtrack again.
+	
+2014-11-09  1.5.12  (first public Version in the Asset Store)
+    * optimized memory usage  
+    * psaiPlayer now disables the trigger buttons for Highlights whenever there's currently no Segment that would be compatible to the Segment that's currently playing.
