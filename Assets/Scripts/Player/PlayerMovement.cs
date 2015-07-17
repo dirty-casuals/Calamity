@@ -40,30 +40,17 @@ public class PlayerMovement : MonoBehaviour {
 
     void TurnPlayerTowardsMouseCursor( ) {
 #if !MOBILE_INPUT
-        // Create a ray from the mouse cursor on screen in the direction of the camera.
-        Ray camRay = Camera.main.ScreenPointToRay( Input.mousePosition );
-
-        // Create a RaycastHit variable to store information about what was hit by the ray.
+        Ray cameraRayCast = Camera.main.ScreenPointToRay( Input.mousePosition );
         RaycastHit floorHit;
 
-        // Perform the raycast and if it hits something on the floor layer...
-        if ( Physics.Raycast( camRay, out floorHit, cameraRayCastLength, floorMask ) ) {
-            // Create a vector from the player to the point on the floor the raycast from the mouse hit.
+        if ( Physics.Raycast( cameraRayCast, out floorHit, cameraRayCastLength, floorMask ) ) {
             Vector3 playerToMouse = floorHit.point - transform.position;
-
-            // Ensure the vector is entirely along the floor plane.
             playerToMouse.y = 0f;
-
-            // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
             Quaternion newRotatation = Quaternion.LookRotation( playerToMouse );
-
-            // Set the player's rotation to this new rotation.
             playerRigidbody.MoveRotation( newRotatation );
         }
 #else
-
             Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X") , 0f , CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
-
             if (turnDir != Vector3.zero)
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
@@ -80,7 +67,6 @@ public class PlayerMovement : MonoBehaviour {
             }
 #endif
     }
-
 
     void Animating( float h, float v ) {
         // Create a boolean that is true if either of the input axes is non-zero.
