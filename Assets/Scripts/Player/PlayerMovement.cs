@@ -3,6 +3,7 @@ using UnitySampleAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour {
     public float playerMovementSpeed = 6f;
+    public bool isAI;
     Vector3 playerMovementDirection;
     Animator playerAnimator;
     Rigidbody playerRigidbody;
@@ -23,16 +24,20 @@ public class PlayerMovement : MonoBehaviour {
         float horizontalInput = CrossPlatformInputManager.GetAxisRaw( "Horizontal" );
         float verticalInput = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
 
-        MovePlayerAlongAxis( horizontalInput, verticalInput );
-        TurnPlayerTowardsMouseCursor( );
-
-        // Animate the player.
+        if ( !isAI ) {
+            MovePlayerAlongAxis( horizontalInput, verticalInput );
+            TurnPlayerTowardsMouseCursor( );
+        }
         //Animating( h, v );
     }
 
+    public void AIMovePlayer(Vector3 test) {
+        Vector3 playerMovementDirection = test * playerMovementSpeed * Time.deltaTime;
+        playerRigidbody.MovePosition( transform.position + playerMovementDirection );
+    }
 
     void MovePlayerAlongAxis( float horizontal, float vertical ) {
-        playerMovementDirection.Set( horizontal, 0f, vertical );
+        //playerMovementDirection.Set( horizontal, 0f, vertical );
         playerMovementDirection = playerMovementDirection.normalized * playerMovementSpeed * Time.deltaTime;
         playerRigidbody.MovePosition( transform.position + playerMovementDirection );
     }

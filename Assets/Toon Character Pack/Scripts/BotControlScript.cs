@@ -10,7 +10,8 @@ public class BotControlScript : MonoBehaviour
 	
 	public float animSpeed = 1.5f;				// a public setting for overall animator animation speed
 	public float lookSmoother = 3f;				// a smoothing setting for camera motion
-	
+    public bool isAi = false;
+
 	private Animator anim;							// a reference to the animator on the character
 	private AnimatorStateInfo currentBaseState;			// a reference to the current state of the animator, used for base layer
 	private AnimatorStateInfo layer2CurrentState;	// a reference to the current state of the animator, used for layer 2
@@ -38,10 +39,10 @@ public class BotControlScript : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		float h = Input.GetAxis("Horizontal");				// setup h variable as our horizontal input axis
-		float v = Input.GetAxis("Vertical");				// setup v variables as our vertical input axis
-		anim.SetFloat("Speed", v);							// set our animator's float parameter 'Speed' equal to the vertical input axis				
-		anim.SetFloat("Direction", h); 						// set our animator's float parameter 'Direction' equal to the horizontal input axis		
+		float horizontal = Input.GetAxis("Horizontal");				// setup h variable as our horizontal input axis
+		float vertical = Input.GetAxis("Vertical");				// setup v variables as our vertical input axis
+		anim.SetFloat("Speed", vertical);							// set our animator's float parameter 'Speed' equal to the vertical input axis				
+		anim.SetFloat("Direction", horizontal); 						// set our animator's float parameter 'Direction' equal to the horizontal input axis		
 		anim.speed = animSpeed;								// set the speed of our animator to the public variable 'animSpeed'
 		currentBaseState = anim.GetCurrentAnimatorStateInfo(0);	// set our currentState variable to the current state of the Base Layer (0) of animation
 		
@@ -88,9 +89,6 @@ public class BotControlScript : MonoBehaviour
 				}
 			}
 		}
-		
-		
-		// JUMP DOWN AND ROLL 
 		
 		// if we are jumping down, set our Collider's Y position to the float curve from the animation clip - 
 		// this is a slight lowering so that the collider hits the floor as the character extends his legs
