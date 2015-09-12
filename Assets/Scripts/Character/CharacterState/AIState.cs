@@ -5,8 +5,7 @@ public class AIState : CharacterState {
 
     public AIState( GameObject AIBody ) { }
 
-    public override void PlayerPhysicsUpdate( ) {
-    }
+    public override void PlayerPhysicsUpdate( ) { }
 
     public override void PlayerCollisionEnter( Collision collider ) {
         InRangeOfPlayer( collider.gameObject );
