@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AI
   - Monster
+  - Invisibility
   layers:
   - Default
   - TransparentFX

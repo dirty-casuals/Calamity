@@ -4,20 +4,18 @@ using System.Collections.Generic;
 
 public class MonsterSpawner : MonoBehaviour {
 
+    [HideInInspector]
+    public List<GameObject> currentMonstersCreated;
     public GameObject spawnPrefab;
     public int spawnCount = 1;
     public float spawnRateInSeconds = 1.0f;
-    [HideInInspector]
-    public List<GameObject> currentMonstersCreated;
 
-    public void StartSpawner( ) {
+    public void StartMonsterSpawn( ) {
         if ( currentMonstersCreated.Count > 0 ) {
             ReenableCurrentMonsters( );
             return;
         }
-        for ( int i = 0; i < spawnCount; i++ ) {
-            CreateNewMonsters( );
-        }
+        StartCoroutine( StartNewSpawner( ) );
     }
 
     public void ReenableCurrentMonsters( ) {
@@ -28,13 +26,20 @@ public class MonsterSpawner : MonoBehaviour {
         ToggleMonsterState( false );
     }
 
+    private IEnumerator StartNewSpawner( ) {
+        for ( int i = 0; i < spawnCount; i++ ) {
+            CreateMonster( );
+            yield return new WaitForSeconds( spawnRateInSeconds );
+        }
+    }
+
     private void ToggleMonsterState( bool currentState ) {
         foreach ( GameObject monster in currentMonstersCreated ) {
             monster.SetActive( currentState );
         }
     }
 
-    private void CreateNewMonsters( ) {
+    private void CreateMonster( ) {
         GameObject spawn = GameObject.Instantiate( spawnPrefab );
         spawn.transform.parent = transform;
         spawn.transform.position = transform.position;

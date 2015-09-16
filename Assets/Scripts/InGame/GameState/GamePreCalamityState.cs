@@ -8,7 +8,7 @@ public class GamePreCalamityState : GameState {
 
     public GamePreCalamityState( GameHandler handler ) {
         gameHandler = handler;
-        endTime = handler.gameStartTimeLength;
+        endTime = handler.startTimeSeconds;
     }
 
     public override void GameUpdate( ) {
