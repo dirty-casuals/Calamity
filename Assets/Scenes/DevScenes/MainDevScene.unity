@@ -100,7 +100,7 @@ GameObject:
   - 23: {fileID: 25874816}
   m_Layer: 9
   m_Name: Wall (8)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -173,7 +173,7 @@ GameObject:
   - 23: {fileID: 28939444}
   m_Layer: 9
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -399,7 +399,7 @@ GameObject:
   - 23: {fileID: 293893427}
   m_Layer: 9
   m_Name: Wall (5)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,7 +426,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -526,7 +526,7 @@ GameObject:
   - 23: {fileID: 347958598}
   m_Layer: 9
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,7 +553,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -599,7 +599,7 @@ GameObject:
   - 23: {fileID: 364820567}
   m_Layer: 9
   m_Name: Wall (11)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -626,7 +626,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -672,7 +672,7 @@ GameObject:
   - 23: {fileID: 386737338}
   m_Layer: 9
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,7 +699,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -749,7 +749,7 @@ GameObject:
   - 23: {fileID: 437378355}
   m_Layer: 9
   m_Name: Wall (13)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -776,7 +776,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -822,7 +822,7 @@ GameObject:
   - 23: {fileID: 509260730}
   m_Layer: 9
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -849,7 +849,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -968,7 +968,7 @@ GameObject:
   - 23: {fileID: 557947802}
   m_Layer: 9
   m_Name: Wall (11)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -995,7 +995,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1125,7 +1125,7 @@ GameObject:
   - 23: {fileID: 649950452}
   m_Layer: 9
   m_Name: Wall (8)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1152,7 +1152,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1198,7 +1198,7 @@ GameObject:
   - 23: {fileID: 663723583}
   m_Layer: 9
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,7 +1210,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 663723581}
   m_LocalRotation: {x: .0163664035, y: .706917584, z: -.0163664147, w: .706917107}
-  m_LocalPosition: {x: 31.3999996, y: 1, z: -.200000003}
+  m_LocalPosition: {x: 31.9099998, y: 1.08000004, z: -.600000024}
   m_LocalScale: {x: 17.2356339, y: 3.12433386, z: .858325422}
   m_Children: []
   m_Father: {fileID: 31337152}
@@ -1225,7 +1225,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1321,7 +1321,7 @@ GameObject:
   - 23: {fileID: 703827071}
   m_Layer: 9
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1348,7 +1348,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1476,7 +1476,7 @@ GameObject:
   - 23: {fileID: 807526737}
   m_Layer: 9
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1503,7 +1503,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1549,7 +1549,7 @@ GameObject:
   - 23: {fileID: 847685946}
   m_Layer: 9
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1576,7 +1576,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1665,7 +1665,7 @@ GameObject:
   - 23: {fileID: 989832320}
   m_Layer: 9
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,7 +1692,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1811,7 +1811,7 @@ GameObject:
   - 23: {fileID: 1037830927}
   m_Layer: 9
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1838,7 +1838,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2297,7 +2297,7 @@ GameObject:
   - 23: {fileID: 1265470668}
   m_Layer: 9
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2324,7 +2324,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2439,7 +2439,7 @@ GameObject:
   - 23: {fileID: 1307390598}
   m_Layer: 9
   m_Name: Wall (12)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2466,7 +2466,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2512,7 +2512,7 @@ GameObject:
   - 23: {fileID: 1311435288}
   m_Layer: 9
   m_Name: Wall (8)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2539,7 +2539,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2699,7 +2699,7 @@ GameObject:
   - 23: {fileID: 1443006192}
   m_Layer: 9
   m_Name: Wall (11)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2726,7 +2726,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2772,7 +2772,7 @@ GameObject:
   - 23: {fileID: 1558325507}
   m_Layer: 9
   m_Name: Wall (9)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2799,7 +2799,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2875,7 +2875,7 @@ GameObject:
   - 23: {fileID: 1646552284}
   m_Layer: 9
   m_Name: Wall (5)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2902,7 +2902,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3016,7 +3016,7 @@ GameObject:
   - 23: {fileID: 1695594200}
   m_Layer: 9
   m_Name: Wall (8)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3043,7 +3043,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3089,7 +3089,7 @@ GameObject:
   - 23: {fileID: 1734578653}
   m_Layer: 9
   m_Name: Wall (9)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3116,7 +3116,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3162,7 +3162,7 @@ GameObject:
   - 23: {fileID: 1774513005}
   m_Layer: 9
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3189,7 +3189,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3235,7 +3235,7 @@ GameObject:
   - 23: {fileID: 1784995536}
   m_Layer: 9
   m_Name: Wall (15)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3262,7 +3262,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3308,7 +3308,7 @@ GameObject:
   - 23: {fileID: 1822932732}
   m_Layer: 9
   m_Name: Wall (8)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3335,7 +3335,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3381,7 +3381,7 @@ GameObject:
   - 23: {fileID: 1831630140}
   m_Layer: 9
   m_Name: Wall (14)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3408,7 +3408,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3454,7 +3454,7 @@ GameObject:
   - 23: {fileID: 1865202994}
   m_Layer: 9
   m_Name: Wall (12)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3481,7 +3481,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3527,7 +3527,7 @@ GameObject:
   - 23: {fileID: 2036865612}
   m_Layer: 9
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3554,7 +3554,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3600,7 +3600,7 @@ GameObject:
   - 23: {fileID: 2041634781}
   m_Layer: 9
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3627,7 +3627,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3673,7 +3673,7 @@ GameObject:
   - 23: {fileID: 2045920058}
   m_Layer: 9
   m_Name: Wall (6)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3700,7 +3700,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3746,7 +3746,7 @@ GameObject:
   - 23: {fileID: 2074964594}
   m_Layer: 9
   m_Name: Wall (13)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3773,7 +3773,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3852,7 +3852,7 @@ GameObject:
   - 23: {fileID: 2107153972}
   m_Layer: 9
   m_Name: Wall (12)
-  m_TagString: Untagged
+  m_TagString: Invisibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3879,7 +3879,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d98fb05cbf1bec46830c7f448545f93, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

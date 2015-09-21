@@ -7,32 +7,38 @@ public class InvisibleWalls : MonoBehaviour {
     public float detectionDistance = 3;
     private List<GameObject> invisibleObjects = new List<GameObject>( );
     private GameObject currentObject;
+    private GameObject previousObject;
 
     public void Update( ) {
-        MakeWallsBehindPlayerInvisible( );
-        MakeRightWallsInvisible( );
-    }
-
-    private void MakeWallsBehindPlayerInvisible( ) {
-        GameObject hitObject = RaycastDetectingOccluder(-Vector3.forward);
-        if ( hitObject ) {
-            if ( !invisibleObjects.Contains( hitObject ) && hitObject.tag == "Invisibility" ) {
-                SetObjectAlphaTransparency( hitObject, 0.2f );
-                invisibleObjects.Add( hitObject );
-            }
-            RaycastTargetHasSwitched( hitObject );
-        } else {
-            SetAllTransparentObjectsToOpaque( );
+        GameObject playerBackAgainstWall = RaycastDetectingOccluder(-Vector3.forward);
+        GameObject playerNextToWallOnRight = RaycastDetectingOccluder(Vector3.right);
+        if(!playerNextToWallOnRight && !playerBackAgainstWall)
+        {
+            SetAllTransparentObjectsToOpaque();
+            return;
         }
-    }
-
-    private void MakeRightWallsInvisible( ) {
-
+        if (playerBackAgainstWall)
+        {
+            if (!invisibleObjects.Contains(playerBackAgainstWall) 
+                && playerBackAgainstWall.tag == "Invisibility")
+            {
+                SetObjectAlphaTransparency(playerBackAgainstWall, 0.2f);
+                invisibleObjects.Add(playerBackAgainstWall);
+            }
+        }
+        if (playerNextToWallOnRight) {
+            if (!invisibleObjects.Contains(playerNextToWallOnRight)
+                && playerNextToWallOnRight.tag == "Invisibility")
+            {
+                SetObjectAlphaTransparency(playerNextToWallOnRight, 0.2f);
+                invisibleObjects.Add(playerNextToWallOnRight);
+            }
+        }
     }
 
     private GameObject RaycastDetectingOccluder( Vector3 direction ) {
         RaycastHit hit;
-        if ( Physics.Raycast( transform.position, -Vector3.forward, out hit, detectionDistance ) ) {
+        if ( Physics.Raycast( transform.position, direction, out hit, detectionDistance ) ) {
             return hit.collider.gameObject;
         }
         return null;
@@ -40,8 +46,9 @@ public class InvisibleWalls : MonoBehaviour {
 
     private void RaycastTargetHasSwitched( GameObject target ) {
         if ( currentObject != target ) {
+            previousObject = currentObject;
             currentObject = target;
-            SetAllTransparentObjectsToOpaque( );
+            SetObjectAlphaTransparency(currentObject, 1.0f);
         }
     }
 
