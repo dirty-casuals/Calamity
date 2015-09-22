@@ -143,7 +143,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: 0, b: 0, a: .0392156877}
+        second: {r: 0, g: 0, b: 0, a: .00784313772}
       data:
         first:
           name: _Player1_Pos

@@ -2,71 +2,103 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum OccluderDetectState {
+
+    NO_OCCLUDER_DETECTED,
+    OCCLUDER_DETECTED_RIGHT,
+    OCCLUDER_DETECTED_BEHIND
+
+}
+
 public class InvisibleWalls : MonoBehaviour {
 
+    [HideInInspector]
     public float detectionDistance = 3;
-    private List<GameObject> invisibleObjects = new List<GameObject>( );
-    private GameObject currentObject;
-    private GameObject previousObject;
+    public float fadeOutValue = 0.2f;
+    private float fadeInValue = 1.0f;
+    private GameObject previousDetectedOccluder;
+    private GameObject currentDetectedOccluder;
+    private bool coroutineStarted = false;
+
+    private OccluderDetectState currentOccluderState;
+    private OccluderDetectState previousOccluderState;
 
     public void Update( ) {
-        GameObject playerBackAgainstWall = RaycastDetectingOccluder(-Vector3.forward);
-        GameObject playerNextToWallOnRight = RaycastDetectingOccluder(Vector3.right);
-        if(!playerNextToWallOnRight && !playerBackAgainstWall)
-        {
-            SetAllTransparentObjectsToOpaque();
-            return;
+        GameObject playerBackAgainstWall = RaycastDetectingOccluder( -Vector3.forward );
+        GameObject playerNextToWallOnRight = RaycastDetectingOccluder( Vector3.right );
+
+        if ( !playerNextToWallOnRight && !playerBackAgainstWall ) {
+            currentOccluderState = OccluderDetectState.NO_OCCLUDER_DETECTED;
         }
-        if (playerBackAgainstWall)
-        {
-            if (!invisibleObjects.Contains(playerBackAgainstWall) 
-                && playerBackAgainstWall.tag == "Invisibility")
-            {
-                SetObjectAlphaTransparency(playerBackAgainstWall, 0.2f);
-                invisibleObjects.Add(playerBackAgainstWall);
-            }
-            RaycastTargetHasSwitched(playerNextToWallOnRight);
+        if ( playerBackAgainstWall ) {
+            currentOccluderState = OccluderDetectState.OCCLUDER_DETECTED_BEHIND;
+        } else if ( playerNextToWallOnRight ) {
+            currentOccluderState = OccluderDetectState.OCCLUDER_DETECTED_RIGHT;
         }
-        if (playerNextToWallOnRight) {
-            if (!invisibleObjects.Contains(playerNextToWallOnRight)
-                && playerNextToWallOnRight.tag == "Invisibility")
-            {
-                SetObjectAlphaTransparency(playerNextToWallOnRight, 0.2f);
-                invisibleObjects.Add(playerNextToWallOnRight);
-            }
-            RaycastTargetHasSwitched(playerNextToWallOnRight);
+        if ( ( previousDetectedOccluder != currentDetectedOccluder ) ||
+             ( currentOccluderState != previousOccluderState ) ) {
+            UpdateOccluderState( );
+            previousOccluderState = currentOccluderState;
         }
     }
 
     private GameObject RaycastDetectingOccluder( Vector3 direction ) {
         RaycastHit hit;
         if ( Physics.Raycast( transform.position, direction, out hit, detectionDistance ) ) {
-            return hit.collider.gameObject;
+            if ( hit.collider.gameObject.tag == "Invisibility" ) {
+                previousDetectedOccluder = currentDetectedOccluder;
+                currentDetectedOccluder = hit.collider.gameObject;
+                return hit.collider.gameObject;
+            }
         }
         return null;
     }
 
-    private void RaycastTargetHasSwitched( GameObject target ) {
-        if ( currentObject != target ) {
-            previousObject = currentObject;
-            currentObject = target;
-            SetObjectAlphaTransparency(previousObject, 1.0f);
+    private void UpdateOccluderState( ) {
+        switch ( currentOccluderState ) {
+            case OccluderDetectState.NO_OCCLUDER_DETECTED:
+                SetAllTransparentObjectsToOpaque( );
+                break;
+            case OccluderDetectState.OCCLUDER_DETECTED_BEHIND:
+            case OccluderDetectState.OCCLUDER_DETECTED_RIGHT:
+                if ( previousDetectedOccluder ) {
+                    StartCoroutine( FadeInOccluder( previousDetectedOccluder ) );
+                }
+                StartCoroutine( FadeOutOccluder( currentDetectedOccluder ) );
+                break;
         }
     }
 
     private void SetAllTransparentObjectsToOpaque( ) {
-        if ( invisibleObjects.Count <= 0 ) {
-            return;
+        if ( currentDetectedOccluder ) {
+            StartCoroutine( FadeInOccluder( previousDetectedOccluder ) );
+            currentDetectedOccluder = null;
         }
-        foreach ( GameObject occluder in invisibleObjects ) {
-            SetObjectAlphaTransparency( occluder, 1.0f );
+        if ( previousDetectedOccluder ) {
+            StartCoroutine( FadeInOccluder( previousDetectedOccluder ) );
+            previousDetectedOccluder = null;
         }
-        invisibleObjects.Clear( );
     }
 
-    private void SetObjectAlphaTransparency( GameObject occluder, float alpha ) {
+    private IEnumerator FadeOutOccluder( GameObject occluder ) {
         Color color = occluder.GetComponent<Renderer>( ).material.color;
-        color.a = alpha;
-        occluder.GetComponent<Renderer>( ).material.color = color;
+
+        for ( float i = color.a; i > fadeOutValue; ) {
+            i -= 0.09f;
+            color.a = i;
+            yield return new WaitForSeconds( 0.0009f );
+            occluder.GetComponent<Renderer>( ).material.color = color;
+        }
+    }
+
+    private IEnumerator FadeInOccluder( GameObject occluder ) {
+        Color color = occluder.GetComponent<Renderer>( ).material.color;
+
+        for ( float i = color.a; i < fadeInValue; ) {
+            i += 0.09f;
+            color.a = i;
+            yield return new WaitForSeconds( 0.0009f );
+            occluder.GetComponent<Renderer>( ).material.color = color;
+        }
     }
 }
