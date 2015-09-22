@@ -25,6 +25,7 @@ public class InvisibleWalls : MonoBehaviour {
                 SetObjectAlphaTransparency(playerBackAgainstWall, 0.2f);
                 invisibleObjects.Add(playerBackAgainstWall);
             }
+            RaycastTargetHasSwitched(playerNextToWallOnRight);
         }
         if (playerNextToWallOnRight) {
             if (!invisibleObjects.Contains(playerNextToWallOnRight)
@@ -33,6 +34,7 @@ public class InvisibleWalls : MonoBehaviour {
                 SetObjectAlphaTransparency(playerNextToWallOnRight, 0.2f);
                 invisibleObjects.Add(playerNextToWallOnRight);
             }
+            RaycastTargetHasSwitched(playerNextToWallOnRight);
         }
     }
 
@@ -48,7 +50,7 @@ public class InvisibleWalls : MonoBehaviour {
         if ( currentObject != target ) {
             previousObject = currentObject;
             currentObject = target;
-            SetObjectAlphaTransparency(currentObject, 1.0f);
+            SetObjectAlphaTransparency(previousObject, 1.0f);
         }
     }
 
