@@ -2,82 +2,57 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum OccluderDetectState {
-
-    NO_OCCLUDER_DETECTED,
-    OCCLUDER_DETECTED_RIGHT,
-    OCCLUDER_DETECTED_BEHIND
-
-}
-
 public class InvisibleWalls : MonoBehaviour {
 
     [HideInInspector]
     public float detectionDistance = 3;
     public float fadeOutValue = 0.2f;
     private float fadeInValue = 1.0f;
-    private GameObject previousDetectedOccluder;
+    private float fadeTimer = 0.0f;
     private GameObject currentDetectedOccluder;
-    private bool coroutineStarted = false;
-
-    private OccluderDetectState currentOccluderState;
-    private OccluderDetectState previousOccluderState;
+    private List<GameObject> allDetectedOccluders = new List<GameObject>( );
+    private IEnumerator fadeOutCoroutine;
+    private IEnumerator fadeInCoroutine;
 
     public void Update( ) {
         GameObject playerBackAgainstWall = RaycastDetectingOccluder( -Vector3.forward );
         GameObject playerNextToWallOnRight = RaycastDetectingOccluder( Vector3.right );
 
         if ( !playerNextToWallOnRight && !playerBackAgainstWall ) {
-            currentOccluderState = OccluderDetectState.NO_OCCLUDER_DETECTED;
+            currentDetectedOccluder = null;
+            if ( allDetectedOccluders.Count <= 0 ) {
+                return;
+            }
+            StartCoroutine( FadeInOccluder( allDetectedOccluders[ 0 ] ) );
+            fadeTimer = 0.0f;
         }
-        if ( playerBackAgainstWall ) {
-            currentOccluderState = OccluderDetectState.OCCLUDER_DETECTED_BEHIND;
-        } else if ( playerNextToWallOnRight ) {
-            currentOccluderState = OccluderDetectState.OCCLUDER_DETECTED_RIGHT;
+        if ( allDetectedOccluders.Contains( currentDetectedOccluder )
+            || !currentDetectedOccluder ) {
+            return;
         }
-        if ( ( previousDetectedOccluder != currentDetectedOccluder ) ||
-             ( currentOccluderState != previousOccluderState ) ) {
-            UpdateOccluderState( );
-            previousOccluderState = currentOccluderState;
+        if ( fadeTimer < 0.2f ) {
+            fadeTimer += Time.deltaTime;
+            return;
         }
+        allDetectedOccluders.Add( currentDetectedOccluder );
+        if ( allDetectedOccluders[ 0 ] != currentDetectedOccluder ) {
+            StartCoroutine( FadeInOccluder( allDetectedOccluders[ 0 ] ) );
+            allDetectedOccluders.RemoveAt( 0 );
+        }
+        fadeOutCoroutine = FadeOutOccluder( currentDetectedOccluder );
+        StartCoroutine( fadeOutCoroutine );
+        fadeTimer = 0.0f;
     }
 
     private GameObject RaycastDetectingOccluder( Vector3 direction ) {
         RaycastHit hit;
         if ( Physics.Raycast( transform.position, direction, out hit, detectionDistance ) ) {
             if ( hit.collider.gameObject.tag == "Invisibility" ) {
-                previousDetectedOccluder = currentDetectedOccluder;
                 currentDetectedOccluder = hit.collider.gameObject;
                 return hit.collider.gameObject;
             }
         }
         return null;
-    }
-
-    private void UpdateOccluderState( ) {
-        switch ( currentOccluderState ) {
-            case OccluderDetectState.NO_OCCLUDER_DETECTED:
-                SetAllTransparentObjectsToOpaque( );
-                break;
-            case OccluderDetectState.OCCLUDER_DETECTED_BEHIND:
-            case OccluderDetectState.OCCLUDER_DETECTED_RIGHT:
-                if ( previousDetectedOccluder ) {
-                    StartCoroutine( FadeInOccluder( previousDetectedOccluder ) );
-                }
-                StartCoroutine( FadeOutOccluder( currentDetectedOccluder ) );
-                break;
-        }
-    }
-
-    private void SetAllTransparentObjectsToOpaque( ) {
-        if ( currentDetectedOccluder ) {
-            StartCoroutine( FadeInOccluder( previousDetectedOccluder ) );
-            currentDetectedOccluder = null;
-        }
-        if ( previousDetectedOccluder ) {
-            StartCoroutine( FadeInOccluder( previousDetectedOccluder ) );
-            previousDetectedOccluder = null;
-        }
     }
 
     private IEnumerator FadeOutOccluder( GameObject occluder ) {
@@ -93,6 +68,7 @@ public class InvisibleWalls : MonoBehaviour {
 
     private IEnumerator FadeInOccluder( GameObject occluder ) {
         Color color = occluder.GetComponent<Renderer>( ).material.color;
+        StopCoroutine( fadeOutCoroutine );
 
         for ( float i = color.a; i < fadeInValue; ) {
             i += 0.09f;
@@ -100,5 +76,6 @@ public class InvisibleWalls : MonoBehaviour {
             yield return new WaitForSeconds( 0.0009f );
             occluder.GetComponent<Renderer>( ).material.color = color;
         }
+        allDetectedOccluders.Remove( occluder );
     }
 }
