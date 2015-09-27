@@ -4,7 +4,8 @@ using UnitySampleAssets.CrossPlatformInput;
 public enum PlayerType {
     PLAYER,
     MONSTER,
-    AI_MONSTER
+    AI_MONSTER,
+    AI_PLAYER
 }
 
 public class CharacterStateHandler : MonoBehaviour {
@@ -37,6 +38,9 @@ public class CharacterStateHandler : MonoBehaviour {
                 currentState = new MonsterState( this.gameObject );
                 break;
             case PlayerType.AI_MONSTER:
+                currentState = new AIMonsterState( this.gameObject );
+                break;
+            case PlayerType.AI_PLAYER:
                 currentState = new AIState( this.gameObject );
                 break;
         }

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class MonsterSpawner : MonoBehaviour {
+public class AICharacterSpawner : MonoBehaviour {
 
     [HideInInspector]
     public List<GameObject> currentMonstersCreated;

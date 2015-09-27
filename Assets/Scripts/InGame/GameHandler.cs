@@ -4,7 +4,7 @@ using System.Collections;
 public class GameHandler : MonoBehaviour {
     //Make GameHandler a Singleton
     [HideInInspector]
-    public MonsterSpawner[ ] gameSpawnPoints;
+    public AICharacterSpawner[ ] gameSpawnPoints;
     public float startTimeSeconds = 30.0f;
     public float calamityLengthSeconds = 120.0f;
     public static GameState currentGameState;
@@ -39,19 +39,19 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void StartMonsterSpawners( ) {
-        foreach ( MonsterSpawner spawn in gameSpawnPoints ) {
+        foreach ( AICharacterSpawner spawn in gameSpawnPoints ) {
             spawn.StartMonsterSpawn( );
         }
     }
 
     public void StopMonsterSpawners( ) {
-        foreach ( MonsterSpawner spawn in gameSpawnPoints ) {
+        foreach ( AICharacterSpawner spawn in gameSpawnPoints ) {
             spawn.DisableCurrentMonsters( );
         }
     }
 
     private void GetGameSpawnPoints( ) {
-        gameSpawnPoints = GetComponentsInChildren<MonsterSpawner>( );
+        gameSpawnPoints = GetComponentsInChildren<AICharacterSpawner>( );
     }
 
 }

@@ -3,18 +3,16 @@ using System.Collections;
 
 public class AIState : CharacterState {
 
-    public AIState( GameObject AIBody ) { }
-
-    public override void PlayerPhysicsUpdate( ) { }
-
-    public override void PlayerCollisionEnter( Collision collider ) {
-        InRangeOfPlayer( collider.gameObject );
+    public AIState( GameObject playerBody ) {
+        character = playerBody;
+        characterAnimator = character.GetComponent<Animator>( );
+        characterRigidbody = character.GetComponent<Rigidbody>( );
+        //controller = playerBody.GetComponent<PlayerController>( );
+        character.tag = "AI";
     }
-
-    private void InRangeOfPlayer( GameObject collision ) {
-        if ( collision.tag == "Player" ) {
-            MonsterTransformation transformHandler = collision.GetComponentInParent<MonsterTransformation>( );
-            transformHandler.TransformPlayerIntoMonster( );
-        }
-    }
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 }

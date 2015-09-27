@@ -7,12 +7,10 @@ public class InvisibleWalls : MonoBehaviour {
     [HideInInspector]
     public float detectionDistance = 3;
     public float fadeOutValue = 0.2f;
-    private float fadeInValue = 1.0f;
     private float fadeTimer = 0.0f;
     private GameObject currentDetectedOccluder;
     private List<GameObject> allDetectedOccluders = new List<GameObject>( );
     private IEnumerator fadeOutCoroutine;
-    private IEnumerator fadeInCoroutine;
 
     public void Update( ) {
         GameObject playerBackAgainstWall = RaycastDetectingOccluder( -Vector3.forward );
@@ -70,7 +68,7 @@ public class InvisibleWalls : MonoBehaviour {
         Color color = occluder.GetComponent<Renderer>( ).material.color;
         StopCoroutine( fadeOutCoroutine );
 
-        for ( float i = color.a; i < fadeInValue; ) {
+        for ( float i = color.a; i < 1.0f; ) {
             i += 0.09f;
             color.a = i;
             yield return new WaitForSeconds( 0.0009f );
