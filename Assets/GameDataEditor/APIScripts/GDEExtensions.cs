@@ -1457,8 +1457,8 @@ namespace GameDataEditor
 		{
 			var result = string.Empty;
 			var startAfterPart = "Resources";
-			var pathParts = source.Split(Path.DirectorySeparatorChar);
-			
+			var pathParts = source.Split('/');
+
 			// this uses a case sensitive check
 			int startAfter = Array.IndexOf(pathParts, startAfterPart);
 			
@@ -1466,12 +1466,12 @@ namespace GameDataEditor
 			{
 				// Construct the path between "Resources" and the file name
 				result = string.Join(
-					Path.DirectorySeparatorChar.ToString(), 
+					"/", 
 					pathParts, startAfter+1,
 					pathParts.Length - startAfter - 2);
 
 				if (!string.IsNullOrEmpty(result))
-					result += Path.DirectorySeparatorChar.ToString();
+					result += "/";
 			}
 
 			// Add the file name without the extension
