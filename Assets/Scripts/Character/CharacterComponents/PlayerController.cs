@@ -4,39 +4,45 @@ using UnitySampleAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
 
-    private CharacterState playerState;
+    private CharacterState currentPlayerState;
+    private PlayerInventory inventory;
     private Vector3 normalizedMovementDirection;
 
     private void Start( ) {
-        playerState = this.GetComponent<CharacterStateHandler>( ).currentState;
+        currentPlayerState = this.GetComponent<CharacterStateHandler>( ).currentState;
+        inventory = this.GetComponent<PlayerInventory>( );
     }
 
     public void InputHandler( float movementSpeed ) {
         float horizontal = CrossPlatformInputManager.GetAxisRaw( "Horizontal" );
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
+        bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
 
-        Vector3 movementDirection = GetNormalizedMovementDirection( 
+        Vector3 movementDirection = GetNormalizedMovementDirection(
             horizontal, vertical, movementSpeed );
         MovePlayerAlongAxis( movementDirection );
 
         if ( PlayerIsMoving( horizontal, vertical ) ) {
-            playerState.characterAnimator.SetFloat( "Speed", 1.0f );
-            RotatePlayer( movementDirection );
+            currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
+            RotatePlayerTowardsMovementDirection( movementDirection );
         } else {
-            playerState.characterAnimator.SetFloat( "Speed", 0.0f );
+            currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
+        }
+        if ( leftMouseButtonActivated ) {
+            UseItemInFirstSlot( );
         }
     }
 
     private Vector3 GetNormalizedMovementDirection( float horizontal, float vertical, float speed ) {
         normalizedMovementDirection.Set( horizontal, 0f, vertical );
-        normalizedMovementDirection = normalizedMovementDirection.normalized 
-            * speed 
+        normalizedMovementDirection = normalizedMovementDirection.normalized
+            * speed
             * Time.deltaTime;
         return normalizedMovementDirection;
     }
 
     private void MovePlayerAlongAxis( Vector3 movementDirection ) {
-        playerState.characterRigidbody.MovePosition( playerState.character.transform.position + movementDirection );
+        currentPlayerState.characterRigidbody.MovePosition( currentPlayerState.character.transform.position + movementDirection );
     }
 
     private bool PlayerIsMoving( float horizontal, float vertical ) {
@@ -44,12 +50,19 @@ public class PlayerController : MonoBehaviour {
         return walking;
     }
 
-    private void RotatePlayer( Vector3 rotationDirection ) {
+    private void RotatePlayerTowardsMovementDirection( Vector3 rotationDirection ) {
         Quaternion rotateTowards = Quaternion.LookRotation( normalizedMovementDirection );
-        playerState.character.transform.rotation = Quaternion.RotateTowards( 
-            playerState.character.transform.rotation,
+        currentPlayerState.character.transform.rotation = Quaternion.RotateTowards(
+            currentPlayerState.character.transform.rotation,
             rotateTowards,
             1000 * Time.deltaTime );
+    }
+
+    private void UseItemInFirstSlot( ) {
+        if ( !inventory.itemForFirstSlot ) {
+            return;
+        }
+        inventory.itemForFirstSlot.UseItem( );
     }
 
 }

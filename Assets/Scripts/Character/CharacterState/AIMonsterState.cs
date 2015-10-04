@@ -15,7 +15,6 @@ public class AIMonsterState : CharacterState {
         if ( collision.tag == "Player" ) {
             NormalState state = ( NormalState )collision.GetComponent<CharacterStateHandler>( ).currentState;
             state.KnockoutPlayer( );
-
         }
     }
 }

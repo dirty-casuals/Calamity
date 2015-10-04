@@ -1,0 +1,217 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 42938266, guid: e743331561ef77147ae48cda9bcb8209, type: 3}
+  m_Name: SetData_PlaymakerGlobals_EXPORTED
+  m_EditorClassIdentifier: 
+  variables:
+    floatVariables:
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f666c6f6174
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 1.10000002
+    - useVariable: 1
+      name: 73696e676c655f666c6f6174
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 2.29999995
+    intVariables:
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f696e74
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 1
+    - useVariable: 1
+      name: 73696e676c655f696e74
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 1
+    boolVariables:
+    - useVariable: 1
+      name: 6764655f696e697469616c697a6564
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 1
+    - useVariable: 1
+      name: 73696e676c655f626f6f6c
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 1
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f626f6f6c
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 1
+    stringVariables:
+    - useVariable: 1
+      name: 626f6f6c5f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 626f6f6c5f6669656c64
+    - useVariable: 1
+      name: 636f6c6f725f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 636f6c6f725f6669656c64
+    - useVariable: 1
+      name: 637573746f6d5f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 637573746f6d5f6669656c64
+    - useVariable: 1
+      name: 666c6f61745f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 666c6f61745f6669656c64
+    - useVariable: 1
+      name: 696e745f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 696e745f6669656c64
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f737472696e67
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 5468697320697320637573746f6d20646174612023312e
+    - useVariable: 1
+      name: 73696e676c655f6974656d5f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 73696e676c655f64617461
+    - useVariable: 1
+      name: 73696e676c655f737472696e67
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 5468697320697320612073696e676c6520737472696e672e
+    - useVariable: 1
+      name: 737472696e675f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 737472696e675f6669656c64
+    - useVariable: 1
+      name: 766563325f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 766563746f72325f6669656c64
+    - useVariable: 1
+      name: 766563335f6669656c645f6e616d65
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 766563746f72335f6669656c64
+    vector2Variables:
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f766563746f7232
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: {x: 1.10000002, y: 3.29999995}
+    - useVariable: 1
+      name: 73696e676c655f766563746f7232
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: {x: 4.5, y: 6.69999981}
+    vector3Variables:
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f766563746f7233
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: {x: 1.11000001, y: 5.55000019, z: 9.98999977}
+    - useVariable: 1
+      name: 73696e676c655f766563746f7233
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: {x: 8, y: 9.10000038, z: 23.4559994}
+    colorVariables:
+    - useVariable: 1
+      name: 73696e676c655f636f6c6f72
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value:
+        r: 1
+        g: 0
+        b: 1
+        a: 1
+    - useVariable: 1
+      name: 73696e676c655f637573746f6d5f636f6c6f72
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value:
+        r: 1
+        g: 0
+        b: 0
+        a: 1
+    rectVariables: []
+    quaternionVariables: []
+    gameObjectVariables: []
+    objectVariables: []
+    materialVariables: []
+    textureVariables: []
+  events:
+  - 526573657453696e676c65537472696e67
+  - 53657453696e676c65537472696e67
+  - 526573657453696e676c65426f6f6c
+  - 526573657453696e676c65466c6f6174
+  - 53657453696e676c65426f6f6c
+  - 53657453696e676c65466c6f6174
+  - 526573657453696e676c65496e74
+  - 53657453696e676c65496e74
+  - 526573657453696e676c65566563746f7232
+  - 53657453696e676c65566563746f7232
+  - 526573657453696e676c65566563746f7233
+  - 53657453696e676c65566563746f7233
+  - 526573657453696e676c65436f6c6f72
+  - 53657453696e676c65436f6c6f72
+  - 5265736574416c6c
+  - 5265736574437573746f6d53696e676c65426f6f6c
+  - 536574437573746f6d53696e676c65436f6c6f72
+  - 5265736574437573746f6d53696e676c65436f6c6f72
+  - 536574437573746f6d53696e676c65466c6f6174
+  - 5265736574437573746f6d53696e676c65466c6f6174
+  - 536574437573746f6d53696e676c65496e74
+  - 5265736574437573746f6d53696e676c65496e74
+  - 536574437573746f6d53696e676c65537472696e67
+  - 5265736574437573746f6d53696e676c65537472696e67
+  - 536574437573746f6d53696e676c65566563746f7232
+  - 5265736574437573746f6d53696e676c65566563746f7232
+  - 536574437573746f6d53696e676c65566563746f7233
+  - 5265736574437573746f6d53696e676c65566563746f7233
+  - 536574437573746f6d53696e676c65426f6f6c
+  - 526573657453696e676c65437573746f6d
+  - 53657453696e676c65437573746f6d

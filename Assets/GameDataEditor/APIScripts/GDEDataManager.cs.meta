@@ -1,0 +1,52 @@
+fileFormatVersion: 2
+guid: c3e320f038a654fa9a0ed9b97c28e366
+labels:
+- visual
+- data
+- editor
+- playtest
+- game
+- configuration
+- management
+- level
+- stats
+- manage
+- config
+- items
+- playmaker
+- spreadsheet
+- google
+- excel
+- import
+- xls
+- xlsx
+- save
+- persist
+- playerprefs
+- prototype
+- encrypt
+- encryption
+- serialize
+- deserialize
+- deserializer
+- serializer
+- decrypt
+- export
+- drive
+- icode
+- inventory
+- aes
+- ios
+- android
+- web
+- osx
+- windows
+- item
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
