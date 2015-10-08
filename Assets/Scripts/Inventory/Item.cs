@@ -15,8 +15,10 @@ public class Item : MonoBehaviour {
 
     public virtual void PickupItem( ) { }
 
-    public virtual void ItemHasPerished( ) { }
+    public virtual void CheckIfItemHasPerished( ) { }
 
-    public virtual void UseItem( ) { }
+    public virtual void AddItemToPlayerInventory( GameObject player ) { }
+
+    public virtual void UseItem( GameObject player ) { }
 
 }

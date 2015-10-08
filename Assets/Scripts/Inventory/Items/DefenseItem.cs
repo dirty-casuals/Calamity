@@ -6,7 +6,6 @@ public class DefenseItem : Item {
 
     [HideInInspector]
     public GDEDefenseItemData defenseItemData;
-    private GameObject playerHoldingItem;
 
     private void Start( ) {
         gameObject.tag = "Item";
@@ -14,38 +13,25 @@ public class DefenseItem : Item {
 
     private void Update( ) { }
 
-    private void OnCollisionEnter( Collision col ) {
-        if ( col.gameObject.tag != "Player" ) {
-            return;
-        }
-        playerHoldingItem = col.gameObject;
-        PlayerInventory inventory = playerHoldingItem.GetComponent<PlayerInventory>( );
-        AddItemToCharacterInventory( inventory );
+    public override void AddItemToPlayerInventory( GameObject player ) {
+        player.GetComponent<PlayerInventory>( ).itemForFirstSlot = this;
+        gameObject.SetActive( false );
     }
 
-    public override void UseItem( ) {
-        Debug.Log( "Use Defense Item" );
-
+    public override void UseItem( GameObject player ) {
+        Vector3 playerPosition = player.transform.position;
+        Vector3 fireFromPosition = new Vector3( playerPosition.x, 1.0f, playerPosition.z );
+        gameObject.transform.position = fireFromPosition;
         gameObject.SetActive( true );
-        gameObject.transform.position = playerHoldingItem.transform.position;
 
-
-        //Vector3 direction = playerHoldingItem.transform.position - Vector3.forward;
-
-        GetComponent<Rigidbody>( ).AddForce( playerHoldingItem.transform.forward * 100 );
-
+        GetComponent<Rigidbody>( ).velocity = (player.transform.forward * defenseItemData.ProjectileRange);
         defenseItemData.NumberOfUses -= defenseItemData.CostOfUse;
-        ItemHasPerished( );
+        CheckIfItemHasPerished( );
     }
 
-    public override void ItemHasPerished( ) {
+    public override void CheckIfItemHasPerished( ) {
         if ( defenseItemData.NumberOfUses <= 0 ) {
             ranOutOfUses = true;
         }
-    }
-
-    private void AddItemToCharacterInventory( PlayerInventory inventory ) {
-        inventory.itemForFirstSlot = this;
-        //gameObject.SetActive( false );
     }
 }

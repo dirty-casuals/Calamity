@@ -21,15 +21,14 @@ public class PlayerController : MonoBehaviour {
         Vector3 movementDirection = GetNormalizedMovementDirection(
             horizontal, vertical, movementSpeed );
         MovePlayerAlongAxis( movementDirection );
-
+        if ( leftMouseButtonActivated ) {
+            UseItemInFirstSlot( );
+        }
         if ( PlayerIsMoving( horizontal, vertical ) ) {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
             RotatePlayerTowardsMovementDirection( movementDirection );
         } else {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
-        }
-        if ( leftMouseButtonActivated ) {
-            UseItemInFirstSlot( );
         }
     }
 
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour {
         if ( !inventory.itemForFirstSlot ) {
             return;
         }
-        inventory.itemForFirstSlot.UseItem( );
+        inventory.itemForFirstSlot.UseItem( gameObject );
     }
 
 }

@@ -147,7 +147,7 @@ Material:
       data:
         first:
           name: _Player1_Pos
-        second: {r: 8.56999969, g: 0, b: 2.5, a: 1}
+        second: {r: -22.5499992, g: .310000002, b: 2.5, a: 1}
       data:
         first:
           name: _Player2_Pos

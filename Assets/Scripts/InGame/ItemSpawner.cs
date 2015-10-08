@@ -13,6 +13,7 @@ public class ItemSpawner : MonoBehaviour {
     public ItemSpawnType spawnType;
     private IGDEData item;
     private GDEDefenseItemData paperBall;
+    private Item currentSpawnedItem;
 
     private void Awake( ) {
         GDEDataManager.Init( "gde_data" );
@@ -23,18 +24,13 @@ public class ItemSpawner : MonoBehaviour {
     }
 
     private void OnTriggerEnter( Collider col ) {
-        if ( col.gameObject.tag != "Player" ) {
+        if ( col.gameObject.tag != "Player" || !currentSpawnedItem ) {
             return;
         }
         GameObject playerHoldingItem = col.gameObject;
-        PlayerInventory inventory = playerHoldingItem.GetComponent<PlayerInventory>( );
-        //AddItemToCharacterInventory( inventory );
+        currentSpawnedItem.AddItemToPlayerInventory( playerHoldingItem );
+        currentSpawnedItem = null;
     }
-
-    //private void AddItemToCharacterInventory( PlayerInventory inventory ) {
-    //    inventory.itemForFirstSlot = paperBall;
-    //    //gameObject.SetActive( false );
-    //}
 
     private void CreateItemFromGameData( ) {
         switch ( spawnType ) {
@@ -62,5 +58,6 @@ public class ItemSpawner : MonoBehaviour {
     private void MoveItemToSpawnLocation( GameObject item ) {
         item.transform.position = transform.position;
         item.transform.parent = transform;
+        currentSpawnedItem = item.GetComponent<Item>( );
     }
 }
