@@ -57,6 +57,20 @@ namespace GameDataEditor
             }
         }
 
+        private static string itemDurationKey = "itemDuration";
+		private float _itemDuration;
+        public float itemDuration
+        {
+            get { return _itemDuration; }
+            set {
+                if (_itemDuration != value)
+                {
+                    _itemDuration = value;
+                    GDEDataManager.SetFloat(_key+"_"+itemDurationKey, _itemDuration);
+                }
+            }
+        }
+
         private static string ItemModelKey = "ItemModel";
 		private GameObject _ItemModel;
         public GameObject ItemModel
@@ -92,6 +106,7 @@ namespace GameDataEditor
                 dict.TryGetInt(ProjectileRangeKey, out _ProjectileRange);
                 dict.TryGetInt(NumberOfUsesKey, out _NumberOfUses);
                 dict.TryGetInt(CostOfUseKey, out _CostOfUse);
+                dict.TryGetFloat(itemDurationKey, out _itemDuration);
                 dict.TryGetGameObject(ItemModelKey, out _ItemModel);
                 LoadFromSavedData(dataKey);
 			}
@@ -104,6 +119,7 @@ namespace GameDataEditor
             _ProjectileRange = GDEDataManager.GetInt(_key+"_"+ProjectileRangeKey, _ProjectileRange);
             _NumberOfUses = GDEDataManager.GetInt(_key+"_"+NumberOfUsesKey, _NumberOfUses);
             _CostOfUse = GDEDataManager.GetInt(_key+"_"+CostOfUseKey, _CostOfUse);
+            _itemDuration = GDEDataManager.GetFloat(_key+"_"+itemDurationKey, _itemDuration);
             _ItemModel = GDEDataManager.GetGameObject(_key+"_"+ItemModelKey, _ItemModel);
          }
 
@@ -134,6 +150,15 @@ namespace GameDataEditor
             dict.TryGetInt(CostOfUseKey, out _CostOfUse);
         }
 
+        public void Reset_itemDuration()
+        {
+            GDEDataManager.ResetToDefault(_key, itemDurationKey);
+
+            Dictionary<string, object> dict;
+            GDEDataManager.Get(_key, out dict);
+            dict.TryGetFloat(itemDurationKey, out _itemDuration);
+        }
+
         public void Reset_ItemModel()
         {
             GDEDataManager.ResetToDefault(_key, ItemModelKey);
@@ -149,6 +174,7 @@ namespace GameDataEditor
             GDEDataManager.ResetToDefault(_key, NumberOfUsesKey);
             GDEDataManager.ResetToDefault(_key, ItemModelKey);
             GDEDataManager.ResetToDefault(_key, CostOfUseKey);
+            GDEDataManager.ResetToDefault(_key, itemDurationKey);
 
 
             Dictionary<string, object> dict;

@@ -6,7 +6,6 @@ public class NormalState : CharacterState {
 
     public float characterMovementSpeed = 5.0f;
     private PlayerController controller;
-    //private PlayerInventory inventory;
     private bool playerControllerDisabled;
 
     public NormalState( GameObject playerBody ) {
@@ -14,7 +13,6 @@ public class NormalState : CharacterState {
         characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
         controller = character.GetComponent<PlayerController>( );
-        //inventory = character.GetComponent<PlayerInventory>( );
         character.tag = "Player";
     }
 

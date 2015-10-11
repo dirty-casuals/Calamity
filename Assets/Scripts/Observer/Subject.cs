@@ -8,7 +8,6 @@ public class Subject : MonoBehaviour {
 
     public virtual void AddObserver( Observer newObserver ) {
         if ( listOfObservers.Contains( newObserver ) ) {
-            Debug.LogWarning( "List Already Contains Observer" );
             return;
         }
         listOfObservers.Add( newObserver );
@@ -16,7 +15,6 @@ public class Subject : MonoBehaviour {
 
     public virtual void AddUnityObservers( GameObject newObserver ) {
         if ( listOfUnityObservers.Contains( newObserver ) ) {
-            Debug.LogWarning( "Unity Observer already exists" );
             return;
         }
         listOfUnityObservers.Add( newObserver );
@@ -27,6 +25,14 @@ public class Subject : MonoBehaviour {
             listOfObservers.Remove( oldObserver );
         } else {
             Debug.LogWarning( "List Doesn't Contain Observer" );
+        }
+    }
+
+    public virtual void RemoveUnityObserver( GameObject oldUnityObserver ) {
+        if ( listOfUnityObservers.Contains( oldUnityObserver ) ) {
+            listOfUnityObservers.Remove( oldUnityObserver );
+        } else {
+            Debug.LogWarning( "List Doesn't Contain Unity Observer" );
         }
     }
 
@@ -59,7 +65,7 @@ public class Subject : MonoBehaviour {
         NotifySendAll( sender, staticEventName, null );
     }
 
-    public virtual void NotifySendAll( Object sender, string eventName, List<string> extendedMessage ) {
+    private void NotifySendAll( Object sender, string eventName, List<string> extendedMessage ) {
         GarbageCollectObservers( );
         foreach ( var observer in listOfObservers ) {
             observer.OnNotify( sender, new EventArguments( eventName, extendedMessage ) );
@@ -67,7 +73,7 @@ public class Subject : MonoBehaviour {
         NotifyUnityObservers( sender, eventName, extendedMessage );
     }
 
-    public virtual void NotifyUnityObservers( Object sender, string unityEventName, List<string> extendedMessage ) {
+    private void NotifyUnityObservers( Object sender, string unityEventName, List<string> extendedMessage ) {
         foreach ( var unityObserver in listOfUnityObservers ) {
             unityObserver.GetComponent<UnityObserver>( ).OnNotify( sender,
             new EventArguments( unityEventName, extendedMessage ) );

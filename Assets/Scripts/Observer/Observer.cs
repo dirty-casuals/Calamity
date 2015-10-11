@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Observer {
     public Observer( ) {
-        //Subject.AddObserver( this );
+        InitializeObserver( );
     }
 
-    public virtual void OnNotify( Object sender, EventArguments e ) {
-    }
+    public virtual void InitializeObserver( ) { }
+
+    public virtual void OnNotify( Object sender, EventArguments e ) { }
 }
