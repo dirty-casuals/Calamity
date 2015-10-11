@@ -957,7 +957,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11484424, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
       propertyPath: spawnPrefab
@@ -969,7 +969,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 193254, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
@@ -1071,7 +1071,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11412970, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: fogOfWarObject

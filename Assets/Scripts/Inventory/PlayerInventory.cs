@@ -22,6 +22,9 @@ public class PlayerInventory : Subject {
             return;
         }
         Item itemInSpawner = col.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
+        if ( !itemInSpawner ) {
+            return;
+        }
         PlayerHasPickedUpDifferentItem( itemInSpawner );
         AddItemToInventory( itemInSpawner );
         // Remove item from inventory

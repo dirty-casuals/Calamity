@@ -7,7 +7,6 @@ public class DefenseItem : Item {
     [HideInInspector]
     public GDEDefenseItemData defenseItemData;
     private int cachedCostOfUse;
-    private bool useTimerRunning = false;
 
     private void Start( ) {
         GDEDataManager.Init( "gde_data" );
