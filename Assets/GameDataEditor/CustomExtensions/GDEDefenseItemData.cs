@@ -15,30 +15,30 @@ namespace GameDataEditor
 {
     public class GDEDefenseItemData : IGDEData
     {
-        private static string ProjectileRangeKey = "ProjectileRange";
-		private int _ProjectileRange;
-        public int ProjectileRange
+        private static string projectileRangeKey = "projectileRange";
+		private int _projectileRange;
+        public int projectileRange
         {
-            get { return _ProjectileRange; }
+            get { return _projectileRange; }
             set {
-                if (_ProjectileRange != value)
+                if (_projectileRange != value)
                 {
-                    _ProjectileRange = value;
-                    GDEDataManager.SetInt(_key+"_"+ProjectileRangeKey, _ProjectileRange);
+                    _projectileRange = value;
+                    GDEDataManager.SetInt(_key+"_"+projectileRangeKey, _projectileRange);
                 }
             }
         }
 
-        private static string NumberOfUsesKey = "NumberOfUses";
-		private int _NumberOfUses;
-        public int NumberOfUses
+        private static string numberOfUsesKey = "numberOfUses";
+		private int _numberOfUses;
+        public int numberOfUses
         {
-            get { return _NumberOfUses; }
+            get { return _numberOfUses; }
             set {
-                if (_NumberOfUses != value)
+                if (_numberOfUses != value)
                 {
-                    _NumberOfUses = value;
-                    GDEDataManager.SetInt(_key+"_"+NumberOfUsesKey, _NumberOfUses);
+                    _numberOfUses = value;
+                    GDEDataManager.SetInt(_key+"_"+numberOfUsesKey, _numberOfUses);
                 }
             }
         }
@@ -103,8 +103,8 @@ namespace GameDataEditor
 				LoadFromSavedData(dataKey);
 			else
 			{
-                dict.TryGetInt(ProjectileRangeKey, out _ProjectileRange);
-                dict.TryGetInt(NumberOfUsesKey, out _NumberOfUses);
+                dict.TryGetInt(projectileRangeKey, out _projectileRange);
+                dict.TryGetInt(numberOfUsesKey, out _numberOfUses);
                 dict.TryGetInt(CostOfUseKey, out _CostOfUse);
                 dict.TryGetFloat(itemDurationKey, out _itemDuration);
                 dict.TryGetGameObject(ItemModelKey, out _ItemModel);
@@ -116,29 +116,29 @@ namespace GameDataEditor
 		{
 			_key = dataKey;
 			
-            _ProjectileRange = GDEDataManager.GetInt(_key+"_"+ProjectileRangeKey, _ProjectileRange);
-            _NumberOfUses = GDEDataManager.GetInt(_key+"_"+NumberOfUsesKey, _NumberOfUses);
+            _projectileRange = GDEDataManager.GetInt(_key+"_"+projectileRangeKey, _projectileRange);
+            _numberOfUses = GDEDataManager.GetInt(_key+"_"+numberOfUsesKey, _numberOfUses);
             _CostOfUse = GDEDataManager.GetInt(_key+"_"+CostOfUseKey, _CostOfUse);
             _itemDuration = GDEDataManager.GetFloat(_key+"_"+itemDurationKey, _itemDuration);
             _ItemModel = GDEDataManager.GetGameObject(_key+"_"+ItemModelKey, _ItemModel);
          }
 
-        public void Reset_ProjectileRange()
+        public void Reset_projectileRange()
         {
-            GDEDataManager.ResetToDefault(_key, ProjectileRangeKey);
+            GDEDataManager.ResetToDefault(_key, projectileRangeKey);
 
             Dictionary<string, object> dict;
             GDEDataManager.Get(_key, out dict);
-            dict.TryGetInt(ProjectileRangeKey, out _ProjectileRange);
+            dict.TryGetInt(projectileRangeKey, out _projectileRange);
         }
 
-        public void Reset_NumberOfUses()
+        public void Reset_numberOfUses()
         {
-            GDEDataManager.ResetToDefault(_key, NumberOfUsesKey);
+            GDEDataManager.ResetToDefault(_key, numberOfUsesKey);
 
             Dictionary<string, object> dict;
             GDEDataManager.Get(_key, out dict);
-            dict.TryGetInt(NumberOfUsesKey, out _NumberOfUses);
+            dict.TryGetInt(numberOfUsesKey, out _numberOfUses);
         }
 
         public void Reset_CostOfUse()
@@ -170,8 +170,8 @@ namespace GameDataEditor
 
         public void ResetAll()
         {
-            GDEDataManager.ResetToDefault(_key, ProjectileRangeKey);
-            GDEDataManager.ResetToDefault(_key, NumberOfUsesKey);
+            GDEDataManager.ResetToDefault(_key, projectileRangeKey);
+            GDEDataManager.ResetToDefault(_key, numberOfUsesKey);
             GDEDataManager.ResetToDefault(_key, ItemModelKey);
             GDEDataManager.ResetToDefault(_key, CostOfUseKey);
             GDEDataManager.ResetToDefault(_key, itemDurationKey);

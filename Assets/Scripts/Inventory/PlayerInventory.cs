@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerInventory : Subject {
 
@@ -27,19 +25,20 @@ public class PlayerInventory : Subject {
         }
         PlayerHasPickedUpDifferentItem( itemInSpawner );
         AddItemToInventory( itemInSpawner );
-        // Remove item from inventory
+        // Remove item from spawner
         col.GetComponent<ItemSpawner>( ).currentlySpawnedItem = null;
     }
 
     private void PlayerHasPickedUpDifferentItem( Item newItem ) {
-        if ( itemForFirstSlot && newItem != itemForFirstSlot ) {
+        if ( itemForFirstSlot && newItem != itemForFirstSlot
+            && itemForFirstSlot.currentItemState == ItemState.ITEM_IN_PLAYER_INVENTORY) {
             RemoveCurrentItemFromInventory( );
         }
     }
 
     private void AddItemToInventory( Item newItem ) {
         AddUnityObservers( newItem.gameObject );
-        Notify( ADDED_ITEM_TO_INVENTORY );
+        NotifySendObject( newItem, ADDED_ITEM_TO_INVENTORY );
         itemForFirstSlot = newItem;
     }
 

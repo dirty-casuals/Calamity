@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using GameDataEditor;
 
 public enum ItemState {
     ITEM_AT_SPAWN_POINT,
@@ -12,7 +9,9 @@ public enum ItemState {
 
 public class Item : UnityObserver {
 
+    [HideInInspector]
     public ItemState currentItemState;
+    [HideInInspector]
     public GameObject itemSpawnPoint;
 
     public virtual void SpawnItem( ) { }

@@ -19,6 +19,9 @@ public class DefenseItem : Item {
     public override void OnNotify( Object sender, EventArguments e ) {
         switch ( e.eventMessage ) {
             case PlayerInventory.ADDED_ITEM_TO_INVENTORY:
+                if (sender != this) {
+                    break;
+                }
                 currentItemState = ItemState.ITEM_IN_PLAYER_INVENTORY;
                 gameObject.SetActive( false );
                 break;
@@ -27,6 +30,22 @@ public class DefenseItem : Item {
                 defenseItemData.CostOfUse = cachedCostOfUse;
                 break;
         }
+    }
+
+    public override void UseItem( GameObject player ) {
+        if (currentItemState == ItemState.ITEM_IN_USE) {
+            return;
+        }
+
+        Vector3 playerPosition = player.transform.position;
+        Vector3 fireFromPosition = new Vector3( playerPosition.x, 1.0f, playerPosition.z );
+        gameObject.transform.position = fireFromPosition;
+        gameObject.SetActive( true );
+
+        GetComponent<Rigidbody>( ).velocity = (player.transform.forward * defenseItemData.projectileRange);
+        defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
+        currentItemState = ItemState.ITEM_IN_USE;
+        StartCoroutine( HideItemAfterUsePeriod( ) );
     }
 
     public override void RespawnItem( ) {
@@ -38,35 +57,21 @@ public class DefenseItem : Item {
         transform.parent = itemSpawnPoint.transform;
     }
 
-    public override void UseItem( GameObject player ) {
-        if ( currentItemState == ItemState.ITEM_IN_USE ) {
-            return;
-        }
-
-        Vector3 playerPosition = player.transform.position;
-        Vector3 fireFromPosition = new Vector3( playerPosition.x, 1.0f, playerPosition.z );
-        gameObject.transform.position = fireFromPosition;
-        gameObject.SetActive( true );
-
-        GetComponent<Rigidbody>( ).velocity = ( player.transform.forward * defenseItemData.ProjectileRange );
-        defenseItemData.NumberOfUses -= defenseItemData.CostOfUse;
-        currentItemState = ItemState.ITEM_IN_USE;
-        StartCoroutine( HideItemAfterUsePeriod( ) );
-    }
-
-    protected IEnumerator HideItemAfterUsePeriod( ) {
-        ItemHasPerished( );
-        yield return new WaitForSeconds( defenseItemData.itemDuration );
-        if ( currentItemState == ItemState.ITEM_AT_SPAWN_POINT ) {
-            MoveItemToSpawnLocation( );
-        }
+    private void ResetItem( ) {
+        MoveItemToSpawnLocation( );
         gameObject.SetActive( false );
     }
 
-    protected override void ItemHasPerished( ) {
-        if ( defenseItemData.NumberOfUses > 0 ) {
-            return;
-        }
-        currentItemState = ItemState.ITEM_INACTIVE;
+    protected IEnumerator HideItemAfterUsePeriod( ) {
+        yield return new WaitForSeconds( defenseItemData.itemDuration );
+        ResetItem( );
+        ItemHasPerished( );
     }
+
+    protected override void ItemHasPerished( ) {
+        if (defenseItemData.numberOfUses < 0) {
+            currentItemState = ItemState.ITEM_INACTIVE;
+        }
+    }
+
 }

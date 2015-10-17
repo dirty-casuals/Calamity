@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -132,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 108052, guid: b559bd10f839364408ab96808f09d1df, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b559bd10f839364408ab96808f09d1df, type: 2}
@@ -338,7 +336,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178858, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: m_Name
-      value: ItemSpawnPoint (2)
+      value: Mandrake
       objectReference: {fileID: 0}
     - target: {fileID: 178858, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: m_IsActive
@@ -346,7 +344,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11414574, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: spawnTimer
-      value: 7
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414574, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
+      propertyPath: spawnType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
@@ -528,15 +530,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 477046, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -23.0200005
+      value: -20.6000004
       objectReference: {fileID: 0}
     - target: {fileID: 477046, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .432999998
+      value: 1.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 477046, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 15.54
+      value: 5.03000021
       objectReference: {fileID: 0}
     - target: {fileID: 477046, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -560,7 +562,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11414574, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
       propertyPath: spawnTimer
-      value: 15
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414574, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
+      propertyPath: spawnType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 178858, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 178858, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
+      propertyPath: m_Name
+      value: PaperBallSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ebe4d80ce2f34c4289cf6ae73cfd72d, type: 2}
@@ -619,6 +633,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
+  m_BlendDistance: 1
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -1077,42 +1092,6 @@ Prefab:
       propertyPath: fogOfWarObject
       value: 
       objectReference: {fileID: 1225832113}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -.233453944
-      objectReference: {fileID: 0}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .221611157
-      objectReference: {fileID: 0}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -.0626712516
-      objectReference: {fileID: 0}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -.944701076
-      objectReference: {fileID: 0}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5.26000023
-      objectReference: {fileID: 0}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 428074, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -12.0100002
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097134, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: near clip plane
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097134, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
   m_IsPrefabParent: 0
