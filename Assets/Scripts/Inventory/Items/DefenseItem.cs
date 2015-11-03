@@ -13,17 +13,20 @@ public class DefenseItem : Item {
         gameObject.tag = "Item";
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
         cachedCostOfUse = defenseItemData.CostOfUse;
+        spawnVisual.SetActive( true );
+        activeVisual.SetActive( false );
         MoveItemToSpawnLocation( );
     }
 
     public override void OnNotify( Object sender, EventArguments e ) {
-        switch ( e.eventMessage ) {
+        switch (e.eventMessage) {
             case PlayerInventory.ADDED_ITEM_TO_INVENTORY:
                 if (sender != this) {
                     break;
                 }
                 currentItemState = ItemState.ITEM_IN_PLAYER_INVENTORY;
-                gameObject.SetActive( false );
+                spawnVisual.SetActive( false );
+                activeVisual.SetActive( false );
                 break;
             case PlayerInventory.REMOVED_ITEM_FROM_INVENTORY:
                 currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
@@ -40,7 +43,8 @@ public class DefenseItem : Item {
         Vector3 playerPosition = player.transform.position;
         Vector3 fireFromPosition = new Vector3( playerPosition.x, 1.0f, playerPosition.z );
         gameObject.transform.position = fireFromPosition;
-        gameObject.SetActive( true );
+        spawnVisual.SetActive( false );
+        activeVisual.SetActive( true );
 
         GetComponent<Rigidbody>( ).velocity = (player.transform.forward * defenseItemData.projectileRange);
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
@@ -49,7 +53,8 @@ public class DefenseItem : Item {
     }
 
     public override void RespawnItem( ) {
-        gameObject.SetActive( true );
+        spawnVisual.SetActive( true );
+        activeVisual.SetActive( false );
     }
 
     private void MoveItemToSpawnLocation( ) {
@@ -59,7 +64,8 @@ public class DefenseItem : Item {
 
     private void ResetItem( ) {
         MoveItemToSpawnLocation( );
-        gameObject.SetActive( false );
+        spawnVisual.SetActive( false );
+        activeVisual.SetActive( false );
     }
 
     protected IEnumerator HideItemAfterUsePeriod( ) {

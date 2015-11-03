@@ -9,6 +9,8 @@ public enum ItemState {
 
 public class Item : UnityObserver {
 
+    public GameObject activeVisual;
+    public GameObject spawnVisual;
     [HideInInspector]
     public ItemState currentItemState;
     [HideInInspector]

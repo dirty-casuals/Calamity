@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnitySampleAssets.CrossPlatformInput;
 
 public class MonsterState : CharacterState {
 
