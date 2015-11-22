@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: pages
+    4300002: Book
   materials:
     importMaterials: 1
     materialName: 0
