@@ -16,12 +16,15 @@ ModelImporter:
     2300000: Cylinder
     2300002: Cylinder.019
     2300004: Icosphere.002
+    2300006: //RootNode
     3300000: Cylinder
     3300002: Cylinder.019
     3300004: Icosphere.002
+    3300006: //RootNode
     4300000: Cylinder.019
     4300002: Icosphere.002
     4300004: Cylinder
+    4300006: Icosphere
   materials:
     importMaterials: 1
     materialName: 0
