@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnitySampleAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
@@ -20,13 +19,11 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 movementDirection = GetNormalizedMovementDirection(
             horizontal, vertical, movementSpeed );
-        MovePlayerAlongAxis( movementDirection );
         if ( leftMouseButtonActivated ) {
             UseItemInFirstSlot( );
         }
         if ( PlayerIsMoving( horizontal, vertical ) ) {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
-            RotatePlayerTowardsMovementDirection( movementDirection );
         } else {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
         }
@@ -40,21 +37,9 @@ public class PlayerController : MonoBehaviour {
         return normalizedMovementDirection;
     }
 
-    private void MovePlayerAlongAxis( Vector3 movementDirection ) {
-        currentPlayerState.characterRigidbody.MovePosition( currentPlayerState.character.transform.position + movementDirection );
-    }
-
     private bool PlayerIsMoving( float horizontal, float vertical ) {
         bool walking = horizontal != 0.0f || vertical != 0.0f;
         return walking;
-    }
-
-    private void RotatePlayerTowardsMovementDirection( Vector3 rotationDirection ) {
-        Quaternion rotateTowards = Quaternion.LookRotation( normalizedMovementDirection );
-        currentPlayerState.character.transform.rotation = Quaternion.RotateTowards(
-            currentPlayerState.character.transform.rotation,
-            rotateTowards,
-            1000 * Time.deltaTime );
     }
 
     private void UseItemInFirstSlot( ) {

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnitySampleAssets.CrossPlatformInput;
 
 public enum PlayerType {
     PLAYER,
@@ -32,16 +31,16 @@ public class CharacterStateHandler : MonoBehaviour {
     private void SetPlayerState( PlayerType type ) {
         switch ( type ) {
             case PlayerType.PLAYER:
-                currentState = new NormalState( this.gameObject );
+                currentState = new NormalState( gameObject );
                 break;
             case PlayerType.MONSTER:
-                currentState = new MonsterState( this.gameObject );
+                currentState = new MonsterState( gameObject );
                 break;
             case PlayerType.AI_MONSTER:
-                currentState = new AIMonsterState( this.gameObject );
+                currentState = new AIMonsterState( gameObject );
                 break;
             case PlayerType.AI_PLAYER:
-                currentState = new AIState( this.gameObject );
+                currentState = new AIState( gameObject );
                 break;
         }
     }
