@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MonsterState : CharacterState {
 
     public float monsterMovementSpeed = 7.0f;
     private PlayerController controller;
+    private CalamityFirstPersonController firstPersonController;
 
     public MonsterState( GameObject playerBody ) {
         character = playerBody;
@@ -13,7 +15,12 @@ public class MonsterState : CharacterState {
         character.tag = "Monster";
     }
 
+    public override void PlayerUpdate( ) {
+        firstPersonController.UpdateCalamityController( );
+    }
+
     public override void PlayerPhysicsUpdate( ) {
         controller.InputHandler( monsterMovementSpeed );
+        firstPersonController.FixedUpdateCalamityController( );
     }
 }

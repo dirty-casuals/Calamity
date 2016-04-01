@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnitySampleAssets.CrossPlatformInput;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class NormalState : CharacterState {
 
     public float characterMovementSpeed = 5.0f;
     private PlayerController controller;
+    private CalamityFirstPersonController firstPersonController;
+
     private bool playerControllerDisabled;
 
     public NormalState( GameObject playerBody ) {
@@ -13,7 +14,15 @@ public class NormalState : CharacterState {
         characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
         controller = character.GetComponent<PlayerController>( );
+        firstPersonController = character.GetComponent<CalamityFirstPersonController>( );
         character.tag = "Player";
+    }
+
+    public override void PlayerUpdate( ) {
+        if (playerControllerDisabled) {
+            return;
+        }
+        firstPersonController.UpdateCalamityController( );
     }
 
     public override void PlayerPhysicsUpdate( ) {
@@ -21,6 +30,7 @@ public class NormalState : CharacterState {
             return;
         }
         controller.InputHandler( characterMovementSpeed );
+        firstPersonController.FixedUpdateCalamityController( );
     }
 
     public void KnockoutPlayer( ) {
