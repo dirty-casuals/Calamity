@@ -15,10 +15,6 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene( "GameLevelSelect" );
     }
 
-    public void LoadingScene( ) {
-        SceneManager.LoadScene("GameLoading");
-    }
-
     public void LoadHelpMenu( ) {
         Debug.Log("Help");
     }
