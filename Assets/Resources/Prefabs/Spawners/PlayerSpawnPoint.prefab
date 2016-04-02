@@ -1659,7 +1659,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1681,7 +1681,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &9551516
 Animator:
   serializedVersion: 3
@@ -1788,6 +1788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc76365097c8fa47a4deb905f3d4673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
   itemForFirstSlot: {fileID: 0}
 --- !u!114 &11488368
 MonoBehaviour:
@@ -1812,7 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 5
+  m_WalkSpeed: 3
   m_RunSpeed: 10
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
