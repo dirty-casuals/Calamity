@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour {
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
 
-        Vector3 movementDirection = GetNormalizedMovementDirection(
-            horizontal, vertical, movementSpeed );
         if ( leftMouseButtonActivated ) {
             UseItemInFirstSlot( );
         }
@@ -27,14 +25,6 @@ public class PlayerController : MonoBehaviour {
         } else {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
         }
-    }
-
-    private Vector3 GetNormalizedMovementDirection( float horizontal, float vertical, float speed ) {
-        normalizedMovementDirection.Set( horizontal, 0f, vertical );
-        normalizedMovementDirection = normalizedMovementDirection.normalized
-            * speed
-            * Time.deltaTime;
-        return normalizedMovementDirection;
     }
 
     private bool PlayerIsMoving( float horizontal, float vertical ) {

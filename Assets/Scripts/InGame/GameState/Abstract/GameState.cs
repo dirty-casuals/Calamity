@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameState {
+public class GameState : SubjectObject {
 
     public GameObject playerCharacter;
     public float gameTimer;
