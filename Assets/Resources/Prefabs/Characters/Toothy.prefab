@@ -19075,7 +19075,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115770}
-  m_LocalRotation: {x: 0.74318856, y: -0.04802007, z: 0.6614832, w: 0.088345535}
+  m_LocalRotation: {x: 0.7431885, y: -0.048020005, z: 0.66148317, w: 0.08834553}
   m_LocalPosition: {x: -0.285497, y: 0.43795264, z: 0.03340348}
   m_LocalScale: {x: 5.5951495, y: 5.59515, z: 5.5951495}
   m_Children: []
@@ -21565,7 +21565,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142966}
-  m_LocalRotation: {x: 0.027687455, y: 0.74750173, z: 0.66310817, w: 0.02760969}
+  m_LocalRotation: {x: 0.027687423, y: 0.7475017, z: 0.6631081, w: 0.027609657}
   m_LocalPosition: {x: -0.04601937, y: 0.42874563, z: -0.004960001}
   m_LocalScale: {x: 12.276924, y: 12.276921, z: 12.276922}
   m_Children: []
@@ -23363,7 +23363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.749, z: 0}
+  m_LocalPosition: {x: -6.128, y: 0.467, z: 0.824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 449760}
@@ -26958,10 +26958,10 @@ MonoBehaviour:
       id="_body" gameobject="0" /><field type="RAIN.Memory.BasicMemory" reference="1"
       id="_workingMemory" childrenvisible="False" /><field type="RAIN.Minds.BasicMind"
       reference="2" id="_mind" childrenvisible="False" /><field type="RAIN.Motion.BasicMotor"
-      reference="3" id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
+      reference="3" id="_motor" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator"
       reference="4" id="_animator" childrenvisible="False" /><field type="RAIN.Navigation.BasicNavigator"
       reference="5" id="_navigator" childrenvisible="False" /><field type="RAIN.Perception.BasicSenses"
-      reference="6" id="_senses" childrenvisible="True" /><field type="System.Collections.Generic.List"
+      reference="6" id="_senses" childrenvisible="False" /><field type="System.Collections.Generic.List"
       id="_customElements" elementtype="RAIN.Core.CustomAIElement" childrenvisible="False"
       /></reference><reference type="RAIN.Memory.BasicMemory" refcount="1" id="1"><field
       type="System.Collections.Generic.List" id="_memoryItems" elementtype="RAIN.Memory.BasicMemory+MemoryItem"
@@ -26975,17 +26975,17 @@ MonoBehaviour:
       type="System.Single" id="_faceBeforeMoveAngle" /><field value="1" type="System.Single"
       id="_maxHeightOffset" /><field value="False" type="System.Boolean" id="_allow3DMovement"
       /><field value="False" type="System.Boolean" id="_allow3DRotation" /><field
-      value="False" type="System.Boolean" id="_allowOffGraphMovement" /></reference><reference
+      value="True" type="System.Boolean" id="_allowOffGraphMovement" /></reference><reference
       type="RAIN.Animation.BasicAnimator" refcount="1" id="4"><field type="System.Collections.Generic.List"
       id="_animationStates" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState"
       /></reference><reference type="RAIN.Navigation.BasicNavigator" refcount="1"
-      id="5"><field value="False" type="System.Boolean" id="_drawPaths" /><field value="0,1,0,1"
+      id="5"><field value="True" type="System.Boolean" id="_drawPaths" /><field value="0,1,0,1"
       type="UnityEngine.Color" id="_pathColor" /><field value="-0.5" type="System.Single"
       id="_outlineColorOffset" /><field value="100" type="System.Int32" id="_maxPathfindingSteps"
       /><field value="0" type="System.Single" id="_maxPathLength" /><field type="System.Collections.Generic.List"
-      id="_graphTags" elementtype="System.String" /></reference><reference type="RAIN.Perception.BasicSenses"
-      refcount="1" id="6"><field type="System.Collections.Generic.List" id="_sensors"
-      elementtype="RAIN.Perception.Sensors.RAINSensor"><field type="RAIN.Perception.Sensors.VisualSensor"
+      id="_graphTags" elementtype="System.String" childrenvisible="True" /></reference><reference
+      type="RAIN.Perception.BasicSenses" refcount="1" id="6"><field type="System.Collections.Generic.List"
+      id="_sensors" elementtype="RAIN.Perception.Sensors.RAINSensor"><field type="RAIN.Perception.Sensors.VisualSensor"
       reference="7" id="element0" /><field type="RAIN.Perception.Sensors.AudioSensor"
       reference="8" id="element1" /></field></reference><reference type="RAIN.Perception.Sensors.VisualSensor"
       refcount="1" id="7"><field value="True" type="System.Boolean" id="_showVisual"
@@ -26998,7 +26998,7 @@ MonoBehaviour:
       /><field value="10" type="System.Single" id="_range" /><field value="False"
       type="System.Boolean" id="_canDetectSelf" /><field value="360" type="System.Single"
       id="_horizontalAngle" /><field value="180" type="System.Single" id="_verticalAngle"
-      /><field value="True" type="System.Boolean" id="_lineOfSight" /><field value="-5"
+      /><field value="False" type="System.Boolean" id="_lineOfSight" /><field value="-5"
       type="UnityEngine.LayerMask" id="_lineOfSightMask" /></reference><reference
       type="RAIN.Perception.Sensors.AudioSensor" refcount="1" id="8"><field value="True"
       type="System.Boolean" id="_showVisual" /><field value="Monster Ears" type="System.String"
@@ -27009,7 +27009,7 @@ MonoBehaviour:
       id="_angleOffset" /><field type="System.Collections.Generic.List" id="_filters"
       elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter" /><field value="10"
       type="System.Single" id="_range" /><field value="False" type="System.Boolean"
-      id="_canDetectSelf" /><field value="1" type="System.Single" id="_volumeThreshold"
+      id="_canDetectSelf" /><field value="0.1" type="System.Single" id="_volumeThreshold"
       /></reference><reference type="RAIN.Animation.MecanimAnimator+IKTarget" refcount="0"
       id="9" /><reference type="RAIN.Animation.MecanimAnimator+IKTarget" refcount="0"
       id="10" /><reference type="RAIN.Animation.MecanimAnimator+IKTarget" refcount="0"
