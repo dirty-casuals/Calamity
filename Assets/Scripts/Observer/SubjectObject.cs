@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class Subject : MonoBehaviour {
+public class SubjectObject {
     private readonly List<Observer> listOfObservers = new List<Observer>( );
     private List<GameObject> listOfUnityObservers = new List<GameObject>( );
 

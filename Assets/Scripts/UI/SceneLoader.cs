@@ -19,13 +19,8 @@ public class SceneLoader : MonoBehaviour {
         Debug.Log("Help");
     }
 
-    public void LoadFirstLevel( ) {
-    }
-
-    public void LoadSecondLevel( ) {
-    }
-
-    public void LoadThirdLevel( ) {
+    public void LoadSchoolScene( ) {
+        SceneManager.LoadScene( "1_school" );
     }
 
     public void LoadDevScene( ) {

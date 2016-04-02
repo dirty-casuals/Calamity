@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameEndState : GameState {
 
-    private GameHandler gameHandler;
-
-    public GameEndState( GameHandler handler ) {
-        gameHandler = handler;
-    }
+    public GameEndState( GameHandler handler ) { }
 
     public override void InitializeGameState( ) {
-        gameHandler.StopMonsterSpawners( );
+        SceneManager.LoadScene("GameEndMenu");
     }
 
 }

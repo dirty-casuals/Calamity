@@ -1,56 +1,82 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class GameHandler : MonoBehaviour {
-    //Make GameHandler a Singleton
-    [HideInInspector]
-    public AICharacterSpawner[ ] gameSpawnPoints;
+public class GameHandler : UnityObserver {
+    public Text countdownLabel;
+    public Text countdownTime;
+    public Text roundCount;
+    public GameObject roundPanel;
     public float startTimeSeconds = 30.0f;
     public float calamityLengthSeconds = 120.0f;
+    public float roundLengthSeconds = 30.0f;
+    public float numberOfRounds = 3.0f;
+    [HideInInspector]
+    public float currentRound = 1.0f;
+    [HideInInspector]
+    public AICharacterSpawner[ ] gameSpawnPoints;
+    public const string SET_PRE_CALAMITY_STATE = "SET_PRE_CALAMITY_STATE";
+    public const string SET_CALAMITY_STATE = "SET_NEW_CALAMITY_STATE";
+    public const string SET_CALAMITY_END_ROUND = "SET_CALAMITY_END_ROUND";
+    public const string SET_END_GAME = "SET_END_GAME ";
     public static GameState currentGameState;
     private static GamePreCalamityState preCalamityState;
     private static CalamityState calamityState;
+    private static CalamityRoundState nextRoundState;
     private static GameEndState gameEndState;
 
-    private void Awake( ) {
+    private void Start( ) {
         preCalamityState = new GamePreCalamityState( this );
         calamityState = new CalamityState( this );
+        nextRoundState = new CalamityRoundState( this );
         gameEndState = new GameEndState( this );
         GetGameSpawnPoints( );
-        SetPreCalamityState( );
+        SetFirstGameState( );
     }
 
     private void Update( ) {
         currentGameState.GameUpdate( );
     }
 
-    public void SetPreCalamityState( ) {
-        currentGameState = preCalamityState;
-    }
-
-    public void SetCalamityState( ) {
-        currentGameState = calamityState;
-        currentGameState.InitializeGameState( );
-    }
-
-    public void SetEndCalamityState( ) {
-        currentGameState = gameEndState;
-        currentGameState.InitializeGameState( );
+    public override void OnNotify( Object sender, EventArguments e ) {
+        switch (e.eventMessage) {
+            case SET_PRE_CALAMITY_STATE:
+                currentGameState = preCalamityState;
+                currentGameState.InitializeGameState( );
+                break;
+            case SET_CALAMITY_STATE:
+                currentGameState = calamityState;
+                currentGameState.InitializeGameState( );
+                break;
+            case SET_CALAMITY_END_ROUND:
+                currentGameState = nextRoundState;
+                currentGameState.InitializeGameState( );
+                break;
+            case SET_END_GAME:
+                currentGameState = gameEndState;
+                currentGameState.InitializeGameState( );
+                break;
+        }
     }
 
     public void StartMonsterSpawners( ) {
-        foreach ( AICharacterSpawner spawn in gameSpawnPoints ) {
+        foreach (AICharacterSpawner spawn in gameSpawnPoints) {
             spawn.StartMonsterSpawn( );
         }
     }
 
     public void StopMonsterSpawners( ) {
-        foreach ( AICharacterSpawner spawn in gameSpawnPoints ) {
+        foreach (AICharacterSpawner spawn in gameSpawnPoints) {
             spawn.DisableCurrentMonsters( );
         }
     }
 
     private void GetGameSpawnPoints( ) {
         gameSpawnPoints = GetComponentsInChildren<AICharacterSpawner>( );
+    }
+
+    private void SetFirstGameState( ) {
+        currentGameState = preCalamityState;
+        currentGameState.InitializeGameState( );
     }
 
 }

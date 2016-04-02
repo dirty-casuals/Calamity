@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CalamityState : GameState {
 
@@ -8,22 +7,30 @@ public class CalamityState : GameState {
 
     public CalamityState( GameHandler handler ) {
         gameHandler = handler;
-        endTime = handler.calamityLengthSeconds;
+        AddUnityObservers( handler.gameObject );
     }
 
     public override void InitializeGameState( ) {
         gameHandler.StartMonsterSpawners( );
+        endTime = gameHandler.calamityLengthSeconds;
+        gameHandler.countdownLabel.text = "The Calamity";
     }
 
     public override void GameUpdate( ) {
         EndCalamityWhenCountdownReached( );
+        SetCountdownTime( );
         gameTimer += Time.deltaTime;
     }
 
     private void EndCalamityWhenCountdownReached( ) {
         if ( gameTimer >= endTime ) {
             gameTimer = 0.0f;
-            gameHandler.SetEndCalamityState( );
+            Notify( GameHandler.SET_CALAMITY_END_ROUND );
         }
+    }
+
+    private void SetCountdownTime( ) {
+        float timeToCalamity = endTime - gameTimer;
+        gameHandler.countdownTime.text = Mathf.Floor( timeToCalamity ).ToString( );
     }
 }
