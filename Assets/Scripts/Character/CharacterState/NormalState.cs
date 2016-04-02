@@ -19,6 +19,7 @@ public class NormalState : CharacterState {
     }
 
     public override void PlayerUpdate( ) {
+        controller.ControllerPause( );
         if (playerControllerDisabled) {
             return;
         }
@@ -31,6 +32,10 @@ public class NormalState : CharacterState {
         }
         controller.InputHandler( characterMovementSpeed );
         firstPersonController.FixedUpdateCalamityController( );
+    }
+
+    public override void ToggleControllerInput( ) {
+        playerControllerDisabled = !playerControllerDisabled;
     }
 
     public void KnockoutPlayer( ) {

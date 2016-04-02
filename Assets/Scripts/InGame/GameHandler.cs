@@ -6,10 +6,12 @@ public class GameHandler : UnityObserver {
     public Text countdownTime;
     public Text roundCount;
     public GameObject roundPanel;
+    public GameObject pauseMenu;
     public float startTimeSeconds = 30.0f;
     public float calamityLengthSeconds = 120.0f;
     public float roundLengthSeconds = 30.0f;
     public float numberOfRounds = 3.0f;
+    public bool gamePaused;
     [HideInInspector]
     public float currentRound = 1.0f;
     [HideInInspector]
@@ -18,6 +20,7 @@ public class GameHandler : UnityObserver {
     public const string SET_CALAMITY_STATE = "SET_NEW_CALAMITY_STATE";
     public const string SET_CALAMITY_END_ROUND = "SET_CALAMITY_END_ROUND";
     public const string SET_END_GAME = "SET_END_GAME ";
+    public const string TOGGLE_GAME_PAUSE = "TOGGLE_GAME_PAUSE";
     public static GameState currentGameState;
     private static GamePreCalamityState preCalamityState;
     private static CalamityState calamityState;
@@ -55,6 +58,9 @@ public class GameHandler : UnityObserver {
                 currentGameState = gameEndState;
                 currentGameState.InitializeGameState( );
                 break;
+            case TOGGLE_GAME_PAUSE:
+                TogglePauseMenu( );
+                break;
         }
     }
 
@@ -77,6 +83,17 @@ public class GameHandler : UnityObserver {
     private void SetFirstGameState( ) {
         currentGameState = preCalamityState;
         currentGameState.InitializeGameState( );
+    }
+
+    private void TogglePauseMenu( ) {
+        gamePaused = !gamePaused;
+        pauseMenu.SetActive( gamePaused );
+        Cursor.visible = gamePaused;
+        if (gamePaused) {
+            Cursor.lockState = CursorLockMode.None;
+        } else {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
 }

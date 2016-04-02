@@ -1,15 +1,28 @@
 ﻿using UnityEngine;
 using UnitySampleAssets.CrossPlatformInput;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : Subject {
+    private GameHandler gameHandler;
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
     private Vector3 normalizedMovementDirection;
+    private bool gamePaused;
 
     private void Start( ) {
-        currentPlayerState = this.GetComponent<CharacterStateHandler>( ).currentState;
-        inventory = this.GetComponent<PlayerInventory>( );
+        currentPlayerState = GetComponent<CharacterStateHandler>( ).currentState;
+        inventory = GetComponent<PlayerInventory>( );
+        gameHandler = GetComponentInParent<GameHandler>( );
+        AddUnityObservers( gameHandler.gameObject );
+    }
+
+    public void ControllerPause( ) {
+        bool pauseMenuToggle = CrossPlatformInputManager.GetButtonDown( "Pause" );
+
+        if (pauseMenuToggle) {
+            currentPlayerState.ToggleControllerInput( );
+            currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
+            Notify(GameHandler.TOGGLE_GAME_PAUSE);
+        }
     }
 
     public void InputHandler( float movementSpeed ) {

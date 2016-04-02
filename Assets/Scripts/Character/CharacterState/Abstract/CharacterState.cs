@@ -13,4 +13,6 @@ public class CharacterState {
 
     public virtual void PlayerCollisionEnter( Collision collision ) { }
 
+    public virtual void ToggleControllerInput( ) { }
+
 }
