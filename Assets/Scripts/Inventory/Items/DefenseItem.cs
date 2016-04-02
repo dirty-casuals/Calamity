@@ -7,6 +7,7 @@ public class DefenseItem : Item {
     [HideInInspector]
     public GDEDefenseItemData defenseItemData;
     private int cachedCostOfUse;
+    AudioSource usedAudio;
 
     private void Start( ) {
         GDEDataManager.Init( "gde_data" );
@@ -16,6 +17,7 @@ public class DefenseItem : Item {
         spawnVisual.SetActive( true );
         activeVisual.SetActive( false );
         MoveItemToSpawnLocation( );
+        usedAudio = GetComponent<AudioSource>( );
     }
 
     public override void OnNotify( Object sender, EventArguments e ) {
@@ -32,6 +34,14 @@ public class DefenseItem : Item {
                 currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
                 defenseItemData.CostOfUse = cachedCostOfUse;
                 break;
+        }
+    }
+
+    public void OnCollisionEnter( Collision other ) {
+        if (currentItemState == ItemState.ITEM_IN_USE) {
+            if (other.collider.gameObject.layer == LayerMask.NameToLayer( "Floor" )) {
+                usedAudio.enabled = true;
+            }
         }
     }
 
