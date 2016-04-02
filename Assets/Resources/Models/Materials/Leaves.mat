@@ -6,12 +6,13 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Comfy
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Name: Leaves
+  m_Shader: {fileID: 208, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -19,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 71b232712d19e477ebffb79eda72dd52, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -80,6 +81,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ToonShade
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _SpecGlossMap
         second:
           m_Texture: {fileID: 0}
@@ -89,11 +97,11 @@ Material:
       data:
         first:
           name: _SrcBlend
-        second: 1
+        second: 5
       data:
         first:
           name: _DstBlend
-        second: 0
+        second: 10
       data:
         first:
           name: _Cutoff
@@ -101,7 +109,7 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 0.7
+        second: 0.1
       data:
         first:
           name: _Parallax
@@ -109,11 +117,11 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 1
+        second: 0
       data:
         first:
           name: _Glossiness
-        second: 0.159
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -133,20 +141,28 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
+        second: 2
       data:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _Outline
+        second: 0.005
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
           name: _Color
-        second: {r: 0.38987744, g: 0.5441177, b: 0.28406146, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
@@ -155,3 +171,15 @@ Material:
         first:
           name: _Emission
         second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0.5}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _EmisColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 0}

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Comfy
+  m_Name: Wood
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -78,13 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SpecGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -100,10 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Shininess
-        second: 0.7
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -113,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.159
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -146,12 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.38987744, g: 0.5441177, b: 0.28406146, a: 1}
-      data:
-        first:
-          name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 0}
-      data:
-        first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 0.30147058, g: 0.19800441, b: 0.1418685, a: 1}
