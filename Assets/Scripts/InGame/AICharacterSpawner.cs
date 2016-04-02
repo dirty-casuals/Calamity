@@ -9,6 +9,21 @@ public class AICharacterSpawner : MonoBehaviour {
     public GameObject spawnPrefab;
     public int spawnCount = 1;
     public float spawnRateInSeconds = 1.0f;
+    public bool somethingInSpawnPoint = false;
+
+    private BoxCollider spawnCollider;
+
+    public void Awake() {
+        spawnCollider = GetComponent<BoxCollider>( );
+    }
+
+    public void OnTriggerEnter( Collider other ) {
+        somethingInSpawnPoint = true;
+    }
+
+    public void OnTriggerExit( Collider other ) {
+        somethingInSpawnPoint = false;
+    }
 
     public void StartMonsterSpawn( ) {
         if ( currentMonstersCreated.Count > 0 ) {
@@ -27,8 +42,12 @@ public class AICharacterSpawner : MonoBehaviour {
     }
 
     private IEnumerator StartNewSpawner( ) {
-        for ( int i = 0; i < spawnCount; i++ ) {
-            CreateMonster( );
+        int created = 0;
+        while ( created < spawnCount ) {
+            if (!somethingInSpawnPoint) {
+                CreateMonster( );
+                created++;
+            }
             yield return new WaitForSeconds( spawnRateInSeconds );
         }
     }
