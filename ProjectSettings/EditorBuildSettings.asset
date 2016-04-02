@@ -6,4 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/_MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/GameModeSelect.unity
+  - enabled: 1
+    path: Assets/Scenes/GameLevelSelect.unity
+  - enabled: 1
     path: Assets/Scenes/DevScenes/MainDevScene.unity
