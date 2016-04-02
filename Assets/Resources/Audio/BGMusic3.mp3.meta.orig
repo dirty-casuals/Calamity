@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: 897f35da1997bf9469468730e167eece
+timeCreated: 1459607257
+=======
+guid: c5841570aa52f46beb21ef0dece111b9
+timeCreated: 1459608351
+>>>>>>> Stashed changes
+licenseType: Free
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
