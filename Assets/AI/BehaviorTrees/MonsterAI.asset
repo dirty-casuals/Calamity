@@ -15,63 +15,104 @@ MonoBehaviour:
     _serializedData: <scriptableobject version="1.3" type="RAIN.BehaviorTrees.BTAsset"><fields><field
       value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;MonsterAI&quot;
       debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
-      repeatuntil=&quot;&quot; name=&quot;root&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel
-      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;running&quot;
+      repeatuntil=&quot;&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;expression&quot; expression=&quot;frmPlayer
+      != null || frmItem != null&quot; debugbreak=&quot;False&quot; /&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;any&quot; repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;detect
-      sensor=&quot;&amp;quot;Monster Sight&amp;quot;&quot; repeatuntil=&quot;running&quot;
-      name=&quot;Detect Item&quot; matchtype=&quot;best&quot; entityobjectvariable=&quot;itemDetect&quot;
-      debugbreak=&quot;False&quot; consistent=&quot;False&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;DistractItem&amp;quot;&quot;
-      /&gt;&lt;detect sensor=&quot;&amp;quot;Monster Sight&amp;quot;&quot; repeatuntil=&quot;running&quot;
+      sensor=&quot;&amp;quot;Monster Sight&amp;quot;&quot; repeatuntil=&quot;success&quot;
       name=&quot;Detect Player&quot; matchtype=&quot;best&quot; entityobjectvariable=&quot;frmPlayer&quot;
-      debugbreak=&quot;False&quot; consistent=&quot;False&quot; aspectvariable=&quot;&quot;
+      debugbreak=&quot;False&quot; consistent=&quot;True&quot; aspectvariable=&quot;&quot;
       aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;Player&amp;quot;&quot;
-      /&gt;&lt;selector usepriorities=&quot;True&quot; repeatuntil=&quot;running&quot;
-      name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
-      succeed=&quot;all&quot; repeatuntil=&quot;running&quot; priority=&quot;&quot;
-      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
-      repeatuntil=&quot;&quot; name=&quot;Player Detected Null&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;frmPlayer == null&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
-      name=&quot;Item Detected Null&quot; debugbreak=&quot;False&quot; constraint=&quot;itemDetect
-      == null&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;waypointpatrol
-      waypointsetvariable=&quot;&amp;quot;Monster Route&amp;quot;&quot; waypointactiontype=&quot;patrol&quot;
-      traversetype=&quot;loop&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;running&quot;
-      pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;move&quot; movetarget=&quot;moveTarget&quot; movespeed=&quot;2&quot;
-      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;2&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;action repeatuntil=&quot;running&quot;
-      parametervalues=&quot;MQ==&quot; parameters=&quot;YXZvaWRSYW5nZQ==&quot; namespace=&quot;&quot;
-      name=&quot;action&quot; debugbreak=&quot;False&quot; classname=&quot;AvoidCollision&quot;
-      /&gt;&lt;mecparam valueexpression=&quot;false&quot; repeatuntil=&quot;&quot;
-      parametertype=&quot;boolean&quot; parametername=&quot;Chase&quot; name=&quot;Walk&quot;
-      debugbreak=&quot;False&quot; damptime=&quot;0&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;parallel
-      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;success&quot;
-      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
-      repeatuntil=&quot;&quot; name=&quot;constraint&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;frmPlayer != null&quot; /&gt;&lt;sequencer usepriorities=&quot;True&quot;
-      repeatuntil=&quot;success&quot; name=&quot;MoveTowardsDetected&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel
-      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;AnimateAndGoToPlayer&quot; fail=&quot;any&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
-      repeatuntil=&quot;&quot; name=&quot;Attack Player&quot; debugbreak=&quot;False&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;success&quot; priority=&quot;&quot;
-      name=&quot;move&quot; movetarget=&quot;frmPlayer&quot; movespeed=&quot;4&quot;
-      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;1&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/sequencer&gt;&lt;mecparam valueexpression=&quot;true&quot;
-      repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot; parametername=&quot;Chase&quot;
-      name=&quot;Run&quot; debugbreak=&quot;False&quot; damptime=&quot;0&quot; /&gt;&lt;/parallel&gt;&lt;parallel
-      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;AnimateAndGoToItem&quot; fail=&quot;any&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
-      repeatuntil=&quot;&quot; name=&quot;DistractedByItem&quot; debugbreak=&quot;False&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;success&quot; priority=&quot;&quot;
-      name=&quot;move&quot; movetarget=&quot;itemDetect&quot; movespeed=&quot;4&quot;
-      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;1&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/sequencer&gt;&lt;mecparam valueexpression=&quot;true&quot;
-      repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot; parametername=&quot;Chase&quot;
-      name=&quot;Run&quot; debugbreak=&quot;False&quot; damptime=&quot;0&quot; /&gt;&lt;/parallel&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/sequencer&gt;&lt;/behaviortree&gt;"
+      /&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;mecparam
+      valueexpression=&quot;false&quot; repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot;
+      parametername=&quot;Chase&quot; name=&quot;Walk&quot; debugbreak=&quot;False&quot;
+      damptime=&quot;0&quot; /&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Monster
+      Route&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;loop&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/parallel&gt;&lt;detect
+      sensor=&quot;&amp;quot;Monster Ears&amp;quot;&quot; repeatuntil=&quot;success&quot;
+      name=&quot;Detect Item&quot; matchtype=&quot;best&quot; entityobjectvariable=&quot;frmItem&quot;
+      debugbreak=&quot;False&quot; consistent=&quot;True&quot; aspectvariable=&quot;&quot;
+      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;DistractItem&amp;quot;&quot;
+      /&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;expression&quot; expression=&quot;itemLandedLocation
+      = null&quot; debugbreak=&quot;False&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;any&quot; repeatuntil=&quot;failure&quot; priority=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;any&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;all&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Monster Ears&amp;quot;&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Detect Item&quot;
+      matchtype=&quot;best&quot; entityobjectvariable=&quot;frmItem&quot; debugbreak=&quot;False&quot;
+      consistent=&quot;True&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
+      aspect=&quot;&amp;quot;DistractItem&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;Monster
+      Sight&amp;quot;&quot; repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Detect
+      Player&quot; matchtype=&quot;best&quot; entityobjectvariable=&quot;frmPlayer&quot;
+      debugbreak=&quot;False&quot; consistent=&quot;True&quot; aspectvariable=&quot;&quot;
+      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;Player&amp;quot;&quot;
+      /&gt;&lt;/selector&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;constraint&quot; debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;expression&quot; expression=&quot;itemLandedLocation
+      != null&quot; debugbreak=&quot;False&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Item Detected&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;frmItem != null&quot;&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;expression&quot;
+      expression=&quot;targetPosition = position(frmPItem)&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      name=&quot;expression&quot; expression=&quot;target = position(frmItem)&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;expression&quot; expression=&quot;itemLandedLocation
+      = position(frmItem)&quot; debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Player Detected&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;frmPlayer != null&quot;&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;expression&quot;
+      expression=&quot;targetPosition = position(frmPlayer)&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      name=&quot;expression&quot; expression=&quot;target = frmPlayer&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;failure&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;expression&quot; expression=&quot;Debug(itemLandedLocation)&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;constraint&quot; debugbreak=&quot;False&quot; constraint=&quot;itemLandedLocation
+      != null&quot;&gt;&lt;decision repeatuntil=&quot;&quot; parametervalues=&quot;aXRlbUxhbmRlZExvY2F0aW9u&quot;
+      parameters=&quot;dGFyZ2V0&quot; namespace=&quot;&quot; name=&quot;constraint&quot;
+      debugbreak=&quot;False&quot; classname=&quot;NotReachedTarget&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;itemLandedLocation&quot;
+      movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/decision&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;frmPlayer != null&quot;&gt;&lt;move turnspeed=&quot;&quot;
+      repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;frmPlayer&quot;
+      movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;mecparam
+      valueexpression=&quot;true&quot; repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot;
+      parametername=&quot;Chase&quot; name=&quot;Run&quot; debugbreak=&quot;False&quot;
+      damptime=&quot;0&quot; /&gt;&lt;/parallel&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;any&quot; repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;parallel&quot;
+      fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Monster
+      Sight&amp;quot;&quot; repeatuntil=&quot;success&quot; name=&quot;Detect Player&quot;
+      matchtype=&quot;best&quot; entityobjectvariable=&quot;frmPlayer&quot; debugbreak=&quot;False&quot;
+      consistent=&quot;True&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
+      aspect=&quot;&amp;quot;Player&amp;quot;&quot; /&gt;&lt;move turnspeed=&quot;&quot;
+      repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;targetPosition&quot;
+      movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;mecparam
+      valueexpression=&quot;true&quot; repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot;
+      parametername=&quot;Chase&quot; name=&quot;Run&quot; debugbreak=&quot;False&quot;
+      damptime=&quot;0&quot; /&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;/selector&gt;&lt;/sequencer&gt;&lt;/behaviortree&gt;"
       type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
       elementtype="System.String" /></fields><references /></scriptableobject>
     _serializedGameObjects: []
