@@ -2,25 +2,35 @@
 
 public class PlayerInventory : Subject {
 
+    public GameObject inventoryUI;
     public const string ADDED_ITEM_TO_INVENTORY = "ADDED_ITEM_TO_INVENTORY";
     public const string REMOVED_ITEM_FROM_INVENTORY = "REMOVED_ITEM_FROM_INVENTORY";
+    public const string ITEM_USED_BY_PLAYER = "ITEM_USED_BY_PLAYER";
 
     [HideInInspector]
     public Item itemForFirstSlot;
 
+    private void Awake( ) {
+        if (inventoryUI == null) {
+            Debug.LogError( "Inventory UI Not Found!" );
+            return;
+        }
+        AddUnityObservers( inventoryUI );
+    }
+
     private void Update( ) {
-        if ( !itemForFirstSlot ) {
+        if (!itemForFirstSlot) {
             return;
         }
         RemoveUnusableItems( );
     }
 
     private void OnTriggerEnter( Collider col ) {
-        if ( col.gameObject.tag != "Respawn" ) {
+        if (col.gameObject.tag != "Respawn") {
             return;
         }
         Item itemInSpawner = col.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
-        if ( !itemInSpawner ) {
+        if (!itemInSpawner) {
             return;
         }
         PlayerHasPickedUpDifferentItem( itemInSpawner );
@@ -30,9 +40,10 @@ public class PlayerInventory : Subject {
     }
 
     private void PlayerHasPickedUpDifferentItem( Item newItem ) {
-        if ( itemForFirstSlot && newItem != itemForFirstSlot
+        if (itemForFirstSlot && newItem != itemForFirstSlot
             && itemForFirstSlot.currentItemState == ItemState.ITEM_IN_PLAYER_INVENTORY) {
             RemoveCurrentItemFromInventory( );
+            Notify( ITEM_USED_BY_PLAYER );
         }
     }
 
@@ -49,10 +60,12 @@ public class PlayerInventory : Subject {
     }
 
     private void RemoveUnusableItems( ) {
-        switch ( itemForFirstSlot.currentItemState ) { 
+        switch (itemForFirstSlot.currentItemState) {
             case ItemState.ITEM_IN_USE:
+                Notify( ITEM_USED_BY_PLAYER );
+                break;
             case ItemState.ITEM_IN_PLAYER_INVENTORY:
-                return;
+                break;
             case ItemState.ITEM_INACTIVE:
                 RemoveCurrentItemFromInventory( );
                 break;
