@@ -6,7 +6,7 @@ public class GameLevelLoader : MonoBehaviour {
     private GameObject loadingUIPanel;
 
     private void Awake( ) {
-        loadingUIPanel = GetComponentInChildren<RectTransform>( true ).gameObject;
+        loadingUIPanel = GetComponentInChildren<CanvasRenderer>( true ).gameObject;
     }
 
     public void LoadSchoolLevel( ) {
