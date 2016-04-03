@@ -8,6 +8,7 @@ using RAIN.Motion;
 [RAINDecision]
 public class NotReachedTarget : RAINDecision {
     public Expression target;
+    public Expression targetLanded;
 
     private int _lastRunning = 0;
 
@@ -36,6 +37,10 @@ public class NotReachedTarget : RAINDecision {
                 }
 
                 result = tResult;
+            } else {
+                if (targetLanded.IsValid && targetLanded.IsVariable) {
+                    ai.WorkingMemory.SetItem<bool>( targetLanded.VariableName, false );
+                }
             }
         }
 
