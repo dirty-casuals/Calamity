@@ -42,7 +42,7 @@ public class DefenseItem : Item {
     }
 
     public void OnCollisionEnter( Collision other ) {
-        if (currentItemState == ItemState.ITEM_IN_USE) {
+        if (currentItemState == ItemState.ITEM_THROWN) {
             if (other.collider.gameObject.layer == LayerMask.NameToLayer( "Floor" )) {
                 usedAudio.enabled = true;
             }
