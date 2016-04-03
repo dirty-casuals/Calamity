@@ -19075,7 +19075,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115770}
-  m_LocalRotation: {x: 0.7431885, y: -0.048019916, z: 0.66148317, w: 0.08834553}
+  m_LocalRotation: {x: 0.7431885, y: -0.048019767, z: 0.66148317, w: 0.08834553}
   m_LocalPosition: {x: -0.285497, y: 0.43795264, z: 0.03340348}
   m_LocalScale: {x: 5.5951495, y: 5.59515, z: 5.5951495}
   m_Children: []
@@ -21565,7 +21565,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142966}
-  m_LocalRotation: {x: 0.027687378, y: 0.7475017, z: 0.6631081, w: 0.027609613}
+  m_LocalRotation: {x: 0.027687304, y: 0.7475017, z: 0.6631081, w: 0.027609538}
   m_LocalPosition: {x: -0.04601937, y: 0.42874563, z: -0.004960001}
   m_LocalScale: {x: 12.276924, y: 12.276921, z: 12.276922}
   m_Children: []
@@ -26956,12 +26956,12 @@ MonoBehaviour:
       id="_ai" /></fields><references><reference type="RAIN.Core.AI" refcount="1"
       id="0"><field value="True" type="System.Boolean" id="_isActive" /><field type="UnityEngine.GameObject"
       id="_body" gameobject="0" /><field type="RAIN.Memory.BasicMemory" reference="1"
-      id="_workingMemory" /><field type="RAIN.Minds.BasicMind" reference="2" id="_mind"
-      childrenvisible="False" /><field type="RAIN.Motion.BasicMotor" reference="3"
-      id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
+      id="_workingMemory" childrenvisible="False" /><field type="RAIN.Minds.BasicMind"
+      reference="2" id="_mind" childrenvisible="False" /><field type="RAIN.Motion.BasicMotor"
+      reference="3" id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
       reference="4" id="_animator" childrenvisible="False" /><field type="RAIN.Navigation.BasicNavigator"
-      reference="5" id="_navigator" childrenvisible="True" /><field type="RAIN.Perception.BasicSenses"
-      reference="6" id="_senses" childrenvisible="False" /><field type="System.Collections.Generic.List"
+      reference="5" id="_navigator" childrenvisible="False" /><field type="RAIN.Perception.BasicSenses"
+      reference="6" id="_senses" childrenvisible="True" /><field type="System.Collections.Generic.List"
       id="_customElements" elementtype="RAIN.Core.CustomAIElement" childrenvisible="False"
       /></reference><reference type="RAIN.Memory.BasicMemory" refcount="1" id="1"><field
       type="System.Collections.Generic.List" id="_memoryItems" elementtype="RAIN.Memory.BasicMemory+MemoryItem"
@@ -26996,9 +26996,9 @@ MonoBehaviour:
       id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3" id="_angleOffset"
       /><field type="System.Collections.Generic.List" id="_filters" elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter"
       /><field value="10" type="System.Single" id="_range" /><field value="False"
-      type="System.Boolean" id="_canDetectSelf" /><field value="360" type="System.Single"
+      type="System.Boolean" id="_canDetectSelf" /><field value="140" type="System.Single"
       id="_horizontalAngle" /><field value="180" type="System.Single" id="_verticalAngle"
-      /><field value="False" type="System.Boolean" id="_lineOfSight" /><field value="-5"
+      /><field value="True" type="System.Boolean" id="_lineOfSight" /><field value="3840"
       type="UnityEngine.LayerMask" id="_lineOfSightMask" /></reference><reference
       type="RAIN.Perception.Sensors.AudioSensor" refcount="1" id="8"><field value="True"
       type="System.Boolean" id="_showVisual" /><field value="Monster Ears" type="System.String"
