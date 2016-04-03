@@ -37,6 +37,11 @@ public class DefenseItem : Item {
         }
     }
 
+    public override void RespawnItem( ) {
+        spawnVisual.SetActive( true );
+        activeVisual.SetActive( false );
+    }
+
     public void OnCollisionEnter( Collision other ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             if (other.collider.gameObject.layer == LayerMask.NameToLayer( "Floor" )) {
@@ -45,49 +50,21 @@ public class DefenseItem : Item {
         }
     }
 
-    public override void UseItem( GameObject player ) {
-        if (currentItemState == ItemState.ITEM_IN_USE) {
-            return;
+    protected override void ItemHasPerished( ) {
+        if (defenseItemData.numberOfUses < 0) {
+            currentItemState = ItemState.ITEM_INACTIVE;
         }
-
-        Vector3 playerPosition = player.transform.position;
-        Vector3 fireFromPosition = new Vector3( playerPosition.x, 1.0f, playerPosition.z );
-        gameObject.transform.position = fireFromPosition;
-        spawnVisual.SetActive( false );
-        activeVisual.SetActive( true );
-
-        GetComponent<Rigidbody>( ).velocity = (player.transform.forward * defenseItemData.projectileRange);
-        defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
-        currentItemState = ItemState.ITEM_IN_USE;
-        StartCoroutine( HideItemAfterUsePeriod( ) );
     }
 
-    public override void RespawnItem( ) {
-        spawnVisual.SetActive( true );
+    protected void ResetItem( ) {
+        MoveItemToSpawnLocation( );
+        spawnVisual.SetActive( false );
         activeVisual.SetActive( false );
     }
 
     private void MoveItemToSpawnLocation( ) {
         transform.position = itemSpawnPoint.transform.position;
         transform.parent = itemSpawnPoint.transform;
-    }
-
-    private void ResetItem( ) {
-        MoveItemToSpawnLocation( );
-        spawnVisual.SetActive( false );
-        activeVisual.SetActive( false );
-    }
-
-    protected IEnumerator HideItemAfterUsePeriod( ) {
-        yield return new WaitForSeconds( defenseItemData.itemDuration );
-        ResetItem( );
-        ItemHasPerished( );
-    }
-
-    protected override void ItemHasPerished( ) {
-        if (defenseItemData.numberOfUses < 0) {
-            currentItemState = ItemState.ITEM_INACTIVE;
-        }
     }
 
 }

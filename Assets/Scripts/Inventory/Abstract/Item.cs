@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public enum ItemState {
     ITEM_AT_SPAWN_POINT,
@@ -27,5 +28,7 @@ public class Item : UnityObserver {
     public virtual void UseItem( GameObject player ) { }
 
     protected virtual void ItemHasPerished( ) { }
+
+    protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
 
 }
