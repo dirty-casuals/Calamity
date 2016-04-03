@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: reception
+  m_Name: notes2
   m_Shader: {fileID: 4800000, guid: 6a9b9f62f4a9e614cb9af7f98c9f6f7e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 32aef696137134656a3f241917ed27f7, type: 3}
+          m_Texture: {fileID: 2800000, guid: aec480e4e29eb43daa12cc8e2480eb31, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -94,7 +94,7 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 0.738
+        second: 0.7
       data:
         first:
           name: _Parallax
@@ -147,4 +147,4 @@ Material:
       data:
         first:
           name: _Emission
-        second: {r: 0.42647058, g: 0.42647058, b: 0.42647058, a: 0}
+        second: {r: 0, g: 0, b: 0, a: 0}

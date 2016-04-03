@@ -147,4 +147,4 @@ Material:
       data:
         first:
           name: _Emission
-        second: {r: 0.6397059, g: 0.6397059, b: 0.6397059, a: 0}
+        second: {r: 0.42647058, g: 0.42647058, b: 0.42647058, a: 0}
