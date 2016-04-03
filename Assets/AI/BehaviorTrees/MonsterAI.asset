@@ -27,7 +27,11 @@ MonoBehaviour:
       Sight&amp;quot;&quot; repeatuntil=&quot;success&quot; name=&quot;Detect Player&quot;
       matchtype=&quot;best&quot; entityobjectvariable=&quot;frmPlayer&quot; debugbreak=&quot;False&quot;
       consistent=&quot;True&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
-      aspect=&quot;&amp;quot;Player&amp;quot;&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      aspect=&quot;&amp;quot;Player&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;Monster
+      Ears&amp;quot;&quot; repeatuntil=&quot;success&quot; name=&quot;Detect Item&quot;
+      matchtype=&quot;best&quot; entityobjectvariable=&quot;frmItem&quot; debugbreak=&quot;False&quot;
+      consistent=&quot;True&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
+      aspect=&quot;&amp;quot;DistractItem&amp;quot;&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot;
       succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
       debugbreak=&quot;False&quot;&gt;&lt;mecparam valueexpression=&quot;false&quot;
       repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot; parametername=&quot;Chase&quot;
@@ -39,14 +43,10 @@ MonoBehaviour:
       classname=&quot;ChooseWaypoint&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
       movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
-      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;detect
-      sensor=&quot;&amp;quot;Monster Ears&amp;quot;&quot; repeatuntil=&quot;success&quot;
-      name=&quot;Detect Item&quot; matchtype=&quot;best&quot; entityobjectvariable=&quot;frmItem&quot;
-      debugbreak=&quot;False&quot; consistent=&quot;True&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;DistractItem&amp;quot;&quot;
-      /&gt;&lt;action repeatuntil=&quot;running&quot; parametervalues=&quot;MS41&quot;
-      parameters=&quot;YXZvaWRSYW5nZQ==&quot; namespace=&quot;&quot; name=&quot;Avoidance&quot;
-      debugbreak=&quot;False&quot; classname=&quot;AvoidCollision&quot; /&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;selector
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;action
+      repeatuntil=&quot;running&quot; parametervalues=&quot;MS41&quot; parameters=&quot;YXZvaWRSYW5nZQ==&quot;
+      namespace=&quot;&quot; name=&quot;Avoidance&quot; debugbreak=&quot;False&quot;
+      classname=&quot;AvoidCollision&quot; /&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;selector
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
       name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel

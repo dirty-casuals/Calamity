@@ -8,6 +8,8 @@ TagManager:
   - Monster
   - Item
   - UnityObserver
+  - MonsterAI
+  - PlayerAI
   layers:
   - Default
   - TransparentFX

@@ -15,4 +15,6 @@ public class CharacterState {
 
     public virtual void ToggleControllerInput( ) { }
 
+    public virtual void KnockoutPlayer( ) { }
+
 }
