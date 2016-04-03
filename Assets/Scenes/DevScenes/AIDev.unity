@@ -352,6 +352,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -1605,6 +1609,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_door (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
   m_IsPrefabParent: 0
@@ -2722,6 +2730,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_door (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
   m_IsPrefabParent: 0
@@ -2983,6 +2995,218 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: ab3ac89ef880b44e2888008206bf30d3, type: 3}
+--- !u!1 &406028384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406028386}
+  - 114: {fileID: 406028385}
+  m_Layer: 0
+  m_Name: Player Route
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &406028385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 406028384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2099906888, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataSerializer:
+    _serializedData: <component version="1.3" type="RAIN.Navigation.Waypoints.WaypointRig"><fields><field
+      value="AlwaysOn" type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /></fields><references><reference type="RAIN.Navigation.Waypoints.WaypointSet"
+      refcount="18" id="0"><field type="UnityEngine.Transform" id="_mountPoint" gameobject="0"
+      /><field value="Waypoint Network" type="System.String" id="_setName" /><field
+      value="Network" type="RAIN.Navigation.Waypoints.WaypointSet+WaypointSetType"
+      id="_setType" /><field value="0.6,0.5529412,0.009411765,1" type="UnityEngine.Color"
+      id="_networkColor" /><field value="-0.5" type="System.Single" id="_outlineColorOffset"
+      /><field value="0.4" type="System.Single" id="_selectionColorOffset" /><field
+      type="System.Collections.Generic.List" id="_waypoints" elementtype="RAIN.Navigation.Waypoints.Waypoint"><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="1" id="element0" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="2" id="element1" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="4" id="element2" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="6" id="element3" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="8" id="element4" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="10" id="element5" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="12" id="element6" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="14" id="element7" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="16" id="element8" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="18" id="element9" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="20" id="element10" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="22" id="element11" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="24" id="element12" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="26" id="element13" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="29" id="element14" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="31" id="element15" /><field
+      type="RAIN.Navigation.Waypoints.Waypoint" reference="33" id="element16" /></field><field
+      type="System.Collections.Generic.List" id="_connections" elementtype="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"><field
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" reference="3"
+      id="element0" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="5" id="element1" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="7" id="element2" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="9" id="element3" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="11" id="element4" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="13" id="element5" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="15" id="element6" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="17" id="element7" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="19" id="element8" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="21" id="element9" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="23" id="element10" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="25" id="element11" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="27" id="element12" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="28" id="element13" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="30" id="element14" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="32" id="element15" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="34" id="element16" /></field></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="1"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="Hide" type="System.String" id="_waypointName"
+      /><field value="-4.189592,3.72529E-07,-4.857342" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="2"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-4.971903,0.09656884,0" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="3"><field value="0" type="System.Int32" id="wpOne" /><field value="1" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="4"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-0.3512039,0.1629429,1.456981" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="5"><field value="1" type="System.Int32" id="wpOne" /><field value="2" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="6"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-1.841639,0.1979138,11.85845" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="7"><field value="2" type="System.Int32" id="wpOne" /><field value="3" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="8"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="Hide" type="System.String" id="_waypointName"
+      /><field value="1.591831,-0.002727404,11.70262" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="9"><field value="3" type="System.Int32" id="wpOne" /><field value="4" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="10"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="Hide" type="System.String" id="_waypointName"
+      /><field value="-5.881783,-1.713634E-07,10.1783" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="11"><field value="3" type="System.Int32" id="wpOne" /><field value="5" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="12"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="5.363008,4.023314E-07,1.288075" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="13"><field value="2" type="System.Int32" id="wpOne" /><field value="6" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="14"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="5.07742,0.2332114,6.83574" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="15"><field value="6" type="System.Int32" id="wpOne" /><field value="7" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="16"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="4.298497,0.5849569,15.60515" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="17"><field value="7" type="System.Int32" id="wpOne" /><field value="8" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="18"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="9.422447,0.3462729,15.78439" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="19"><field value="8" type="System.Int32" id="wpOne" /><field value="9" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="20"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="9.295883,0.3462732,20.0328" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="21"><field value="9" type="System.Int32" id="wpOne" /><field value="10"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="22"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="Hide" type="System.String" id="_waypointName" /><field value="14.30683,0.3462729,18.87617"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="23"><field value="10" type="System.Int32" id="wpOne" /><field
+      value="11" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="24"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="9.440369,0.349273,10.99891" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="25"><field value="9" type="System.Int32" id="wpOne" /><field value="12"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="26"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="9.1819,0.0002728105,0.931484"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="27"><field value="12" type="System.Int32" id="wpOne" /><field
+      value="13" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="28"><field value="6" type="System.Int32" id="wpOne" /><field
+      value="13" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="29"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="18.4983,0.0002727062,15.39195" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="30"><field value="9" type="System.Int32" id="wpOne" /><field value="14"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="31"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="18.70254,-0.003727071,24.70286"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="32"><field value="14" type="System.Int32" id="wpOne" /><field
+      value="15" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="33"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="15.45498,-0.003727488,24.46441" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="34"><field value="15" type="System.Int32" id="wpOne" /><field value="16"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference></references></component>
+    _serializedGameObjects:
+    - {fileID: 406028386}
+    _serializedCustomData: []
+--- !u!4 &406028386
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 406028384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.574736, y: 0.11718701, z: 1.3486695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1001 &410532555
 Prefab:
   m_ObjectHideFlags: 0
@@ -3390,6 +3614,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -3549,6 +3777,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -3692,6 +3924,10 @@ Prefab:
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -4424,6 +4660,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -4916,6 +5156,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484424, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
       propertyPath: spawnCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 193254, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5915,6 +6159,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_door (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
   m_IsPrefabParent: 0
@@ -6334,11 +6582,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498968, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 481542, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.027687425
+      value: 0.02768742
       objectReference: {fileID: 0}
     - target: {fileID: 481542, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.y
@@ -6350,7 +6598,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481542, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.02760966
+      value: 0.027609654
       objectReference: {fileID: 0}
     - target: {fileID: 457458, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6358,7 +6606,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457458, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.04802001
+      value: -0.048019998
       objectReference: {fileID: 0}
     - target: {fileID: 457458, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.z
@@ -6827,6 +7075,10 @@ Prefab:
     - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_Name
       value: wall_blank (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -7693,6 +7945,10 @@ Prefab:
     - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
       propertyPath: m_Name
       value: wall_door (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
@@ -8667,6 +8923,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -8736,6 +8996,10 @@ Prefab:
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -8943,6 +9207,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 100.61189
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -9102,6 +9370,10 @@ Prefab:
     - target: {fileID: 400000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
       propertyPath: m_LocalScale.x
       value: 102.49424
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
@@ -9450,6 +9722,10 @@ Prefab:
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -10222,6 +10498,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484424, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
       propertyPath: spawnCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 193254, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10799,6 +11079,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -11055,6 +11339,10 @@ Prefab:
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -11783,6 +12071,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_door (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
   m_IsPrefabParent: 0
@@ -12272,6 +12564,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -12415,6 +12711,10 @@ Prefab:
     - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_Name
       value: wall_blank (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -12772,6 +13072,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -13021,6 +13325,10 @@ Prefab:
     - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_Name
       value: wall_blank (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -13398,6 +13706,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -13600,6 +13912,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_blank (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
   m_IsPrefabParent: 0
@@ -13653,6 +13969,10 @@ Prefab:
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalScale.x
       value: 100.61189
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
@@ -13805,6 +14125,10 @@ Prefab:
     - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
       propertyPath: m_Name
       value: wall_door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
@@ -14954,6 +15278,10 @@ Prefab:
       propertyPath: m_Name
       value: wall_door (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91f5993c620343ec9f0ff60dcc870cb, type: 3}
   m_IsPrefabParent: 0
@@ -15369,6 +15697,48 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+--- !u!1001 &2125199521
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 395032186}
+    m_Modifications:
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -18.799
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &2126559711
 Prefab:
   m_ObjectHideFlags: 0
@@ -15469,6 +15839,10 @@ Prefab:
     - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_Name
       value: wall_blank (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
