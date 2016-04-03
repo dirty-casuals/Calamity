@@ -27,17 +27,17 @@ public class AvoidCollision : RAINAction {
         }
 	}
 
-    //public override RAINAction.ActionResult Execute( RAIN.Core.AI ai ) {
-    //    if ( _targetsToAvoid.Count == 0 ) {
-    //        return ActionResult.SUCCESS;
-    //    }
-    //    foreach ( RAINAspect aspect in _targetsToAvoid ) {
-    //        if ( IsTooClose( ai, aspect ) ) {
-    //            DoAvoidance( ai, aspect );
-    //        }
-    //    }
-    //    return ActionResult.SUCCESS;
-    //}
+    public override RAINAction.ActionResult Execute( RAIN.Core.AI ai ) {
+        if (_targetsToAvoid.Count == 0) {
+            return ActionResult.SUCCESS;
+        }
+        foreach (RAINAspect aspect in _targetsToAvoid) {
+            if (IsTooClose( ai, aspect )) {
+                DoAvoidance( ai, aspect );
+            }
+        }
+        return ActionResult.SUCCESS;
+    }
 
     public override void Stop( RAIN.Core.AI ai ) {
         base.Stop( ai );
@@ -67,7 +67,7 @@ public class AvoidCollision : RAINAction {
         }
         if ( avoidPoint == Vector3.zero ) {
             Debug.Log( "Avoid not possible" );
-            //change desitnation
+
             ai.WorkingMemory.SetItem("hasArrived", true);
             return;
         }
