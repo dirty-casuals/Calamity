@@ -10,15 +10,23 @@ public class MandrakeItem : DefenseItem {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
-        playerRig = player.GetComponentInChildren<EntityRig>( );
-
-        PlaceMandrakeInPlayerHands( player );
-        SetMandrakeVisualAspect( );
         MakePlayerInvisible( player );
-
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         currentItemState = ItemState.ITEM_IN_USE;
         StartCoroutine( HideItemAfterUsePeriod( ) );
+    }
+
+    public override void PlaceItemInHand( GameObject player ) {
+        playerRig = player.GetComponentInChildren<EntityRig>( );
+        PlaceMandrakeInPlayerHands( player );
+        SetMandrakeVisualAspect( );
+        itemInPlayerHands = true;
+    }
+
+    protected override IEnumerator HideItemAfterUsePeriod( ) {
+        yield return new WaitForSeconds( defenseItemData.itemDuration );
+        playerRig.Entity.IsActive = true;
+        ItemHasPerished( );
     }
 
     private void PlaceMandrakeInPlayerHands( GameObject player ) {
@@ -30,18 +38,10 @@ public class MandrakeItem : DefenseItem {
     private void SetMandrakeVisualAspect( ) {
         spawnVisual.SetActive( false );
         activeVisual.SetActive( true );
-        GetComponent<Rigidbody>( ).isKinematic = true;
     }
 
     private void MakePlayerInvisible( GameObject player ) {
         playerRig.Entity.IsActive = false;
-    }
-
-    protected override IEnumerator HideItemAfterUsePeriod( ) {
-        yield return new WaitForSeconds( defenseItemData.itemDuration );
-        playerRig.Entity.IsActive = true;
-        ResetItem( );
-        ItemHasPerished( );
     }
 
 }

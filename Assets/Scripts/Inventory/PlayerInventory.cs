@@ -30,22 +30,22 @@ public class PlayerInventory : Subject {
             return;
         }
         Item itemInSpawner = col.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
-        if (!itemInSpawner) {
+        if (!itemInSpawner || itemForFirstSlot != null) {
             return;
         }
-        PlayerHasPickedUpDifferentItem( itemInSpawner );
+        //PlayerHasPickedUpDifferentItem( itemInSpawner );
         AddItemToInventory( itemInSpawner );
         // Remove item from spawner
         col.GetComponent<ItemSpawner>( ).currentlySpawnedItem = null;
     }
 
-    private void PlayerHasPickedUpDifferentItem( Item newItem ) {
-        if (itemForFirstSlot && newItem != itemForFirstSlot
-            && itemForFirstSlot.currentItemState == ItemState.ITEM_IN_PLAYER_INVENTORY) {
-            RemoveCurrentItemFromInventory( );
-            Notify( ITEM_USED_BY_PLAYER );
-        }
-    }
+    //private void PlayerHasPickedUpDifferentItem( Item newItem ) {
+    //    if (itemForFirstSlot && newItem != itemForFirstSlot
+    //        && itemForFirstSlot.currentItemState == ItemState.ITEM_IN_PLAYER_INVENTORY) {
+    //        RemoveCurrentItemFromInventory( );
+    //        Notify( ITEM_USED_BY_PLAYER );
+    //    }
+    //}
 
     private void AddItemToInventory( Item newItem ) {
         AddUnityObservers( newItem.gameObject );
@@ -56,6 +56,7 @@ public class PlayerInventory : Subject {
     private void RemoveCurrentItemFromInventory( ) {
         Notify( REMOVED_ITEM_FROM_INVENTORY );
         RemoveUnityObserver( itemForFirstSlot.gameObject );
+        itemForFirstSlot.itemInPlayerHands = false;
         itemForFirstSlot = null;
     }
 

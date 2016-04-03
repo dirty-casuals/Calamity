@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using GameDataEditor;
+using System.Collections;
 
 public class DefenseItem : Item {
 
@@ -37,11 +37,6 @@ public class DefenseItem : Item {
         }
     }
 
-    public override void RespawnItem( ) {
-        spawnVisual.SetActive( true );
-        activeVisual.SetActive( false );
-    }
-
     public void OnCollisionEnter( Collision other ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             if (other.collider.gameObject.layer == LayerMask.NameToLayer( "Floor" )) {
@@ -50,9 +45,16 @@ public class DefenseItem : Item {
         }
     }
 
+    public override void DisableItem( ) {
+        currentItemState = ItemState.ITEM_INACTIVE;
+        ResetItem( );
+    }
+
+    protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
+
     protected override void ItemHasPerished( ) {
         if (defenseItemData.numberOfUses < 0) {
-            currentItemState = ItemState.ITEM_INACTIVE;
+            DisableItem( );
         }
     }
 
