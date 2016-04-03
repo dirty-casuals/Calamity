@@ -4,7 +4,7 @@ using RAIN.Entities;
 
 public class MandrakeItem : DefenseItem {
 
-    EntityRig playerRig;
+    private EntityRig playerRig;
 
     public override void PlaceItemInHand( GameObject player ) {
         playerRig = player.GetComponentInChildren<EntityRig>( );
