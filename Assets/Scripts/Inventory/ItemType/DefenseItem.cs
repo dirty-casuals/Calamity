@@ -34,6 +34,10 @@ public class DefenseItem : Item {
                 currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
                 defenseItemData.CostOfUse = cachedCostOfUse;
                 break;
+            case PlayerInventory.ITEM_THROWN_BY_PLAYER:
+                defenseItemData.CostOfUse = cachedCostOfUse;
+                break;
+            
         }
     }
 

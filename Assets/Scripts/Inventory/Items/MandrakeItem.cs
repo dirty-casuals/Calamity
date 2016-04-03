@@ -6,6 +6,13 @@ public class MandrakeItem : DefenseItem {
 
     EntityRig playerRig;
 
+    public override void PlaceItemInHand( GameObject player ) {
+        playerRig = player.GetComponentInChildren<EntityRig>( );
+        PlaceMandrakeInPlayerHands( player );
+        SetMandrakeVisualAspect( );
+        itemInPlayerHands = true;
+    }
+
     public override void UseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
@@ -14,13 +21,6 @@ public class MandrakeItem : DefenseItem {
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         currentItemState = ItemState.ITEM_IN_USE;
         StartCoroutine( HideItemAfterUsePeriod( ) );
-    }
-
-    public override void PlaceItemInHand( GameObject player ) {
-        playerRig = player.GetComponentInChildren<EntityRig>( );
-        PlaceMandrakeInPlayerHands( player );
-        SetMandrakeVisualAspect( );
-        itemInPlayerHands = true;
     }
 
     protected override IEnumerator HideItemAfterUsePeriod( ) {

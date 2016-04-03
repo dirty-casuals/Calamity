@@ -2,6 +2,12 @@
 
 public class KnifeItem : WeaponItem {
 
+    public override void PlaceItemInHand( GameObject player ) {
+        PlaceKnifeInPlayersHands( player );
+        SetKnifeVisualAspect( );
+        itemInPlayerHands = true;
+    }
+
     public override void UseItem( GameObject player ) {
         currentItemState = ItemState.ITEM_IN_USE;
         GetComponent<Animation>( ).Play( );
@@ -14,12 +20,6 @@ public class KnifeItem : WeaponItem {
                 //ItemHasPerished( );
             }
         }
-    }
-
-    public override void PlaceItemInHand( GameObject player ) {
-        PlaceKnifeInPlayersHands( player );
-        SetKnifeVisualAspect( );
-        itemInPlayerHands = true;
     }
 
     private void PlaceKnifeInPlayersHands( GameObject player ) {
