@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using RAIN.Entities;
 
 public class NormalState : CharacterState {
 
     public float characterMovementSpeed = 5.0f;
     private PlayerController controller;
     private CalamityFirstPersonController firstPersonController;
-
+    private EntityRig playerRig;
     private bool playerControllerDisabled;
+    private bool playerDied;
 
     public NormalState( GameObject playerBody ) {
         character = playerBody;
@@ -15,6 +17,7 @@ public class NormalState : CharacterState {
         characterRigidbody = character.GetComponent<Rigidbody>( );
         controller = character.GetComponent<PlayerController>( );
         firstPersonController = character.GetComponent<CalamityFirstPersonController>( );
+        playerRig = playerBody.GetComponentInChildren<EntityRig>( );
         character.tag = "Player";
     }
 
@@ -23,11 +26,15 @@ public class NormalState : CharacterState {
         if (playerControllerDisabled) {
             return;
         }
+        firstPersonController.UpdateCalamityLookRotation( );
+        if (playerDied) {
+            return;
+        }
         firstPersonController.UpdateCalamityController( );
     }
 
     public override void PlayerPhysicsUpdate( ) {
-        if ( playerControllerDisabled ) {
+        if (playerControllerDisabled || playerDied) {
             return;
         }
         controller.InputHandler( characterMovementSpeed );
@@ -41,7 +48,8 @@ public class NormalState : CharacterState {
     public void KnockoutPlayer( ) {
         character.tag = "Monster";
         characterAnimator.SetBool( "KnockOut", true );
-        playerControllerDisabled = true;
+        playerRig.Entity.IsActive = false;
+        playerDied = true;
     }
 
 }
