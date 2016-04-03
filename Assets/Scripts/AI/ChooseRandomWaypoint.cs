@@ -15,6 +15,7 @@ public class ChooseWaypoint : RAINAction {
 
     public Expression WaypointNetwork = new Expression( ); //either the name of the network or a variable containing a network
     public Expression MoveTargetVariable = new Expression( ); //the variable you want to use for the output move target
+    public Expression waypointVariable = new Expression( );
 
     private MoveLookTarget moveTarget = new MoveLookTarget( );
     private int waypointArrivedAt = -1;
@@ -46,6 +47,9 @@ public class ChooseWaypoint : RAINAction {
             moveTarget.CloseEnoughDistance = Mathf.Max( waypointSet.Waypoints[ waypointArrivedAt ].range, ai.Motor.CloseEnoughDistance );
             if (!ai.Motor.IsAt( moveTarget )) {
                 ai.WorkingMemory.SetItem<MoveLookTarget>( MoveTargetVariable.VariableName, moveTarget );
+                if (waypointVariable.IsValid && waypointVariable.IsVariable) {
+                    ai.WorkingMemory.SetItem<Waypoint>( waypointVariable.VariableName, waypointSet.Waypoints[ waypointArrivedAt ] );
+                }
                 return ActionResult.SUCCESS;
             }
         }
@@ -69,6 +73,9 @@ public class ChooseWaypoint : RAINAction {
         moveTarget.VectorTarget = waypointSet.Waypoints[ waypointArrivedAt ].position;
         moveTarget.CloseEnoughDistance = Mathf.Max( waypointSet.Waypoints[ waypointArrivedAt ].range, ai.Motor.CloseEnoughDistance );
         ai.WorkingMemory.SetItem<MoveLookTarget>( MoveTargetVariable.VariableName, moveTarget );
+        if (waypointVariable.IsValid && waypointVariable.IsVariable) {
+            ai.WorkingMemory.SetItem<Waypoint>( waypointVariable.VariableName, waypointSet.Waypoints[ waypointArrivedAt ] );
+        }
 
         return ActionResult.SUCCESS;
     }
