@@ -49,15 +49,13 @@ MonoBehaviour:
       debugbreak=&quot;False&quot; classname=&quot;AvoidCollision&quot; /&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;selector
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
       name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
-      returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;expression&quot; expression=&quot;itemLandedLocation = null&quot;
-      debugbreak=&quot;False&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;any&quot;
-      repeatuntil=&quot;failure&quot; priority=&quot;&quot; name=&quot;parallel&quot;
-      fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
-      succeed=&quot;any&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;all&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;any&quot; repeatuntil=&quot;failure&quot;
+      priority=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;any&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;all&quot; debugbreak=&quot;False&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
       debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Monster Ears&amp;quot;&quot;
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Detect Item&quot;
@@ -72,31 +70,29 @@ MonoBehaviour:
       parameters=&quot;YXZvaWRSYW5nZQ==&quot; namespace=&quot;&quot; name=&quot;Avoidance&quot;
       debugbreak=&quot;False&quot; classname=&quot;AvoidCollision&quot; /&gt;&lt;/parallel&gt;&lt;selector
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;constraint&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;expression&quot; expression=&quot;itemLandedLocation
-      != null&quot; debugbreak=&quot;False&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Item Detected&quot;
-      debugbreak=&quot;False&quot; constraint=&quot;frmItem != null&quot;&gt;&lt;expression
+      debugbreak=&quot;False&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
+      returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;expression&quot; expression=&quot;itemLanded == true || frmItem ==
+      null&quot; debugbreak=&quot;False&quot; /&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Item Detected&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;frmItem != null&quot;&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;expression&quot; expression=&quot;targetPosition
+      = position(frmPItem)&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression
       returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;expression&quot;
-      expression=&quot;targetPosition = position(frmPItem)&quot; debugbreak=&quot;False&quot;
+      expression=&quot;itemLandedLocation = position(frmItem)&quot; debugbreak=&quot;False&quot;
       /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
-      name=&quot;expression&quot; expression=&quot;target = position(frmItem)&quot;
-      debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
-      repeatuntil=&quot;&quot; name=&quot;expression&quot; expression=&quot;itemLandedLocation
-      = position(frmItem)&quot; debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Player Detected&quot;
-      debugbreak=&quot;False&quot; constraint=&quot;frmPlayer != null&quot;&gt;&lt;expression
-      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;expression&quot;
-      expression=&quot;targetPosition = position(frmPlayer)&quot; debugbreak=&quot;False&quot;
-      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
-      name=&quot;expression&quot; expression=&quot;target = frmPlayer&quot; debugbreak=&quot;False&quot;
-      /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;selector
+      name=&quot;expression&quot; expression=&quot;itemLanded = true&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Player Detected&quot; debugbreak=&quot;False&quot; constraint=&quot;frmPlayer
+      != null&quot;&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      name=&quot;expression&quot; expression=&quot;targetPosition = position(frmPlayer)&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;selector
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
       debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;constraint&quot; debugbreak=&quot;False&quot; constraint=&quot;itemLandedLocation
-      != null&quot;&gt;&lt;decision repeatuntil=&quot;&quot; parametervalues=&quot;aXRlbUxhbmRlZExvY2F0aW9u&quot;
-      parameters=&quot;dGFyZ2V0&quot; namespace=&quot;&quot; name=&quot;constraint&quot;
+      name=&quot;constraint&quot; debugbreak=&quot;False&quot; constraint=&quot;itemLanded
+      == true&quot;&gt;&lt;decision repeatuntil=&quot;&quot; parametervalues=&quot;aXRlbUxhbmRlZExvY2F0aW9uAGl0ZW1MYW5kZWQ=&quot;
+      parameters=&quot;dGFyZ2V0AHRhcmdldExhbmRlZA==&quot; namespace=&quot;&quot; name=&quot;constraint&quot;
       debugbreak=&quot;False&quot; classname=&quot;NotReachedTarget&quot;&gt;&lt;move
       turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;itemLandedLocation&quot;
       movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;

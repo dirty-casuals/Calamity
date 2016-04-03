@@ -4871,6 +4871,56 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 669570290}
+--- !u!1001 &678470776
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 395032186}
+    m_Modifications:
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 193254, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: m_Name
+      value: MonsterSpawnPoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484424, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: spawnCount
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &686807877 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 189598, guid: 870b40650099d714db5c3d7e25ca9a3a, type: 2}
@@ -6317,6 +6367,10 @@ Prefab:
     - target: {fileID: 457458, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.088345535
+      objectReference: {fileID: 0}
+    - target: {fileID: 185754, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 577dbe883ae20c041a5726814fcbea82, type: 2}
@@ -10165,6 +10219,10 @@ Prefab:
     - target: {fileID: 418502, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484424, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
+      propertyPath: spawnCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac38e5308d7dac2498b326a4aceb0d83, type: 2}
@@ -14199,12 +14257,12 @@ MonoBehaviour:
       value="AlwaysOn" type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field type="RAIN.Navigation.Waypoints.WaypointSet"
       reference="0" id="_waypointSet" /></fields><references><reference type="RAIN.Navigation.Waypoints.WaypointSet"
       refcount="14" id="0"><field type="UnityEngine.Transform" id="_mountPoint" gameobject="0"
-      /><field value="Waypoint Network" type="System.String" id="_setName" /><field
-      value="Network" type="RAIN.Navigation.Waypoints.WaypointSet+WaypointSetType"
-      id="_setType" /><field value="0,0,0.6,1" type="UnityEngine.Color" id="_networkColor"
-      /><field value="-0.5" type="System.Single" id="_outlineColorOffset" /><field
-      value="0.4" type="System.Single" id="_selectionColorOffset" /><field type="System.Collections.Generic.List"
-      id="_waypoints" elementtype="RAIN.Navigation.Waypoints.Waypoint"><field type="RAIN.Navigation.Waypoints.Waypoint"
+      /><field value="Monster Route" type="System.String" id="_setName" /><field value="Network"
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointSetType" id="_setType" /><field
+      value="0,0,0.6,1" type="UnityEngine.Color" id="_networkColor" /><field value="-0.5"
+      type="System.Single" id="_outlineColorOffset" /><field value="0.4" type="System.Single"
+      id="_selectionColorOffset" /><field type="System.Collections.Generic.List" id="_waypoints"
+      elementtype="RAIN.Navigation.Waypoints.Waypoint"><field type="RAIN.Navigation.Waypoints.Waypoint"
       reference="1" id="element0" /><field type="RAIN.Navigation.Waypoints.Waypoint"
       reference="2" id="element1" /><field type="RAIN.Navigation.Waypoints.Waypoint"
       reference="4" id="element2" /><field type="RAIN.Navigation.Waypoints.Waypoint"
@@ -14260,7 +14318,7 @@ MonoBehaviour:
       id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
       type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="8"><field type="RAIN.Navigation.Waypoints.WaypointSet"
       reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="3.079558,0.661535,-0.9231415" type="UnityEngine.Vector3" id="_position"
+      /><field value="3.079558,0.4902465,-0.9231415" type="UnityEngine.Vector3" id="_position"
       /><field value="0.5" type="System.Single" id="_range" /></reference><reference
       type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
       id="9"><field value="3" type="System.Int32" id="wpOne" /><field value="4" type="System.Int32"
@@ -14302,14 +14360,14 @@ MonoBehaviour:
       id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
       type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="20"><field type="RAIN.Navigation.Waypoints.WaypointSet"
       reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-2.85978,0.6212791,-9.93762" type="UnityEngine.Vector3" id="_position"
+      /><field value="-2.85978,-0.1426708,-9.93762" type="UnityEngine.Vector3" id="_position"
       /><field value="0.5" type="System.Single" id="_range" /></reference><reference
       type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
       id="21"><field value="9" type="System.Int32" id="wpOne" /><field value="10"
       type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
       /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
       id="22"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
-      /><field value="" type="System.String" id="_waypointName" /><field value="-2.16154,1.218563,-0.9127598"
+      /><field value="" type="System.String" id="_waypointName" /><field value="-2.16154,0.3574885,-0.9127598"
       type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
       id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
       refcount="1" id="23"><field value="10" type="System.Int32" id="wpOne" /><field
