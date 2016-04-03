@@ -20,10 +20,10 @@ TagManager:
   - Floor
   - Obstacle
   - Player
-  - AI
   - FogOfWar
   - DontCollideWithPlayer
-  - 
+  - PlayerAI
+  - MonsterAI
   - 
   - 
   - 

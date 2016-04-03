@@ -12,6 +12,7 @@ public class Item : UnityObserver {
 
     public GameObject activeVisual;
     public GameObject spawnVisual;
+    public bool itemInPlayerHands = false;
     [HideInInspector]
     public ItemState currentItemState;
     [HideInInspector]
@@ -19,7 +20,10 @@ public class Item : UnityObserver {
 
     public virtual void SpawnItem( ) { }
 
-    public virtual void RespawnItem( ) { }
+    public virtual void RespawnItem( ) {
+        spawnVisual.SetActive( true );
+        activeVisual.SetActive( false );
+    }
 
     public virtual void PickupItem( ) { }
 
@@ -27,8 +31,10 @@ public class Item : UnityObserver {
 
     public virtual void UseItem( GameObject player ) { }
 
-    protected virtual void ItemHasPerished( ) { }
+    public virtual void PlaceItemInHand( GameObject player ) { }
 
-    protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
+    public virtual void DisableItem( ) { }
+
+    protected virtual void ItemHasPerished( ) { }
 
 }

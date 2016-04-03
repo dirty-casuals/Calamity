@@ -43,20 +43,6 @@ namespace GameDataEditor
             }
         }
 
-        private static string NumberOfUsesKey = "NumberOfUses";
-		private int _NumberOfUses;
-        public int NumberOfUses
-        {
-            get { return _NumberOfUses; }
-            set {
-                if (_NumberOfUses != value)
-                {
-                    _NumberOfUses = value;
-                    GDEDataManager.SetInt(_key+"_"+NumberOfUsesKey, _NumberOfUses);
-                }
-            }
-        }
-
         private static string CostOfUseKey = "CostOfUse";
 		private int _CostOfUse;
         public int CostOfUse
@@ -67,6 +53,20 @@ namespace GameDataEditor
                 {
                     _CostOfUse = value;
                     GDEDataManager.SetInt(_key+"_"+CostOfUseKey, _CostOfUse);
+                }
+            }
+        }
+
+        private static string numberOfUsesKey = "numberOfUses";
+		private int _numberOfUses;
+        public int numberOfUses
+        {
+            get { return _numberOfUses; }
+            set {
+                if (_numberOfUses != value)
+                {
+                    _numberOfUses = value;
+                    GDEDataManager.SetInt(_key+"_"+numberOfUsesKey, _numberOfUses);
                 }
             }
         }
@@ -119,8 +119,8 @@ namespace GameDataEditor
 			{
                 dict.TryGetInt(KnockbackKey, out _Knockback);
                 dict.TryGetInt(AttackRangeKey, out _AttackRange);
-                dict.TryGetInt(NumberOfUsesKey, out _NumberOfUses);
                 dict.TryGetInt(CostOfUseKey, out _CostOfUse);
+                dict.TryGetInt(numberOfUsesKey, out _numberOfUses);
                 dict.TryGetString(itemTypeKey, out _itemType);
                 dict.TryGetGameObject(ItemModelKey, out _ItemModel);
                 LoadFromSavedData(dataKey);
@@ -133,8 +133,8 @@ namespace GameDataEditor
 			
             _Knockback = GDEDataManager.GetInt(_key+"_"+KnockbackKey, _Knockback);
             _AttackRange = GDEDataManager.GetInt(_key+"_"+AttackRangeKey, _AttackRange);
-            _NumberOfUses = GDEDataManager.GetInt(_key+"_"+NumberOfUsesKey, _NumberOfUses);
             _CostOfUse = GDEDataManager.GetInt(_key+"_"+CostOfUseKey, _CostOfUse);
+            _numberOfUses = GDEDataManager.GetInt(_key+"_"+numberOfUsesKey, _numberOfUses);
             _itemType = GDEDataManager.GetString(_key+"_"+itemTypeKey, _itemType);
             _ItemModel = GDEDataManager.GetGameObject(_key+"_"+ItemModelKey, _ItemModel);
          }
@@ -157,15 +157,6 @@ namespace GameDataEditor
             dict.TryGetInt(AttackRangeKey, out _AttackRange);
         }
 
-        public void Reset_NumberOfUses()
-        {
-            GDEDataManager.ResetToDefault(_key, NumberOfUsesKey);
-
-            Dictionary<string, object> dict;
-            GDEDataManager.Get(_key, out dict);
-            dict.TryGetInt(NumberOfUsesKey, out _NumberOfUses);
-        }
-
         public void Reset_CostOfUse()
         {
             GDEDataManager.ResetToDefault(_key, CostOfUseKey);
@@ -173,6 +164,15 @@ namespace GameDataEditor
             Dictionary<string, object> dict;
             GDEDataManager.Get(_key, out dict);
             dict.TryGetInt(CostOfUseKey, out _CostOfUse);
+        }
+
+        public void Reset_numberOfUses()
+        {
+            GDEDataManager.ResetToDefault(_key, numberOfUsesKey);
+
+            Dictionary<string, object> dict;
+            GDEDataManager.Get(_key, out dict);
+            dict.TryGetInt(numberOfUsesKey, out _numberOfUses);
         }
 
         public void Reset_itemType()
@@ -197,10 +197,10 @@ namespace GameDataEditor
         {
             GDEDataManager.ResetToDefault(_key, KnockbackKey);
             GDEDataManager.ResetToDefault(_key, AttackRangeKey);
-            GDEDataManager.ResetToDefault(_key, NumberOfUsesKey);
             GDEDataManager.ResetToDefault(_key, ItemModelKey);
             GDEDataManager.ResetToDefault(_key, CostOfUseKey);
             GDEDataManager.ResetToDefault(_key, itemTypeKey);
+            GDEDataManager.ResetToDefault(_key, numberOfUsesKey);
 
 
             Dictionary<string, object> dict;

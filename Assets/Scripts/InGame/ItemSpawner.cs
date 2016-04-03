@@ -65,6 +65,9 @@ public class ItemSpawner : MonoBehaviour {
                 InitializeNewDefenseItem( paperItem );
                 break;
             case ItemSpawnType.KNIFE:
+                GDEWeaponItemData knifeItem = new GDEWeaponItemData( );
+                GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.WeaponItem_Knife, out knifeItem );
+                InitializeNewWeaponItem( knifeItem );
                 break;
             case ItemSpawnType.MANDRAKE:
                 GDEDefenseItemData mandrakeItem = new GDEDefenseItemData( );
@@ -79,6 +82,15 @@ public class ItemSpawner : MonoBehaviour {
         DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
         currentlySpawnedItem = itemType;
         itemType.defenseItemData = item;
+        itemType.itemSpawnPoint = gameObject;
+        spawnedItems.Add( itemType );
+    }
+
+    private void InitializeNewWeaponItem( GDEWeaponItemData item ) {
+        GameObject newItem = Instantiate( item.ItemModel );
+        WeaponItem itemType = newItem.GetComponent<WeaponItem>( );
+        currentlySpawnedItem = itemType;
+        itemType.weaponItemData = item;
         itemType.itemSpawnPoint = gameObject;
         spawnedItems.Add( itemType );
     }

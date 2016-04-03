@@ -21,7 +21,7 @@ public class PlayerController : Subject {
         if (pauseMenuToggle) {
             currentPlayerState.ToggleControllerInput( );
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
-            Notify(GameHandler.TOGGLE_GAME_PAUSE);
+            Notify( GameHandler.TOGGLE_GAME_PAUSE );
         }
     }
 
@@ -29,11 +29,19 @@ public class PlayerController : Subject {
         float horizontal = CrossPlatformInputManager.GetAxisRaw( "Horizontal" );
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
+        bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
+        Item itemInFirstSlot = inventory.itemForFirstSlot;
 
-        if ( leftMouseButtonActivated ) {
-            UseItemInFirstSlot( );
+        if (itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands) {
+            PlaceItemInHands( );
         }
-        if ( PlayerIsMoving( horizontal, vertical ) ) {
+        if (leftMouseButtonActivated) {
+            UseItem( );
+        }
+        if (rightMouseButtonActivated) {
+            DisableItem( );
+        }
+        if (PlayerIsMoving( horizontal, vertical )) {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
         } else {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
@@ -45,11 +53,25 @@ public class PlayerController : Subject {
         return walking;
     }
 
-    private void UseItemInFirstSlot( ) {
-        if ( !inventory.itemForFirstSlot ) {
+    private void PlaceItemInHands( ) {
+        if (!inventory.itemForFirstSlot) {
+            return;
+        }
+        inventory.itemForFirstSlot.PlaceItemInHand( gameObject );
+    }
+
+    private void UseItem( ) {
+        if (!inventory.itemForFirstSlot) {
             return;
         }
         inventory.itemForFirstSlot.UseItem( gameObject );
+    }
+
+    private void DisableItem( ) {
+        if (!inventory.itemForFirstSlot) {
+            return;
+        }
+        inventory.itemForFirstSlot.DisableItem( );
     }
 
 }
