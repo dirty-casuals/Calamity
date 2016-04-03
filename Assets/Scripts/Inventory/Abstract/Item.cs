@@ -4,6 +4,7 @@ using System.Collections;
 public enum ItemState {
     ITEM_AT_SPAWN_POINT,
     ITEM_IN_PLAYER_INVENTORY,
+    ITEM_THROWN,
     ITEM_IN_USE,
     ITEM_INACTIVE
 }

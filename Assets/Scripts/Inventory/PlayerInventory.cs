@@ -2,21 +2,11 @@
 
 public class PlayerInventory : Subject {
 
-    public GameObject inventoryUI;
     public const string ADDED_ITEM_TO_INVENTORY = "ADDED_ITEM_TO_INVENTORY";
     public const string REMOVED_ITEM_FROM_INVENTORY = "REMOVED_ITEM_FROM_INVENTORY";
-    public const string ITEM_USED_BY_PLAYER = "ITEM_USED_BY_PLAYER";
-
+    public const string ITEM_THROWN_BY_PLAYER = "ITEM_THROWN_BY_PLAYER";
     [HideInInspector]
     public Item itemForFirstSlot;
-
-    private void Awake( ) {
-        if (inventoryUI == null) {
-            Debug.LogError( "Inventory UI Not Found!" );
-            return;
-        }
-        AddUnityObservers( inventoryUI );
-    }
 
     private void Update( ) {
         if (!itemForFirstSlot) {
@@ -45,23 +35,33 @@ public class PlayerInventory : Subject {
         itemForFirstSlot = newItem;
     }
 
-    private void RemoveCurrentItemFromInventory( ) {
-        Notify( REMOVED_ITEM_FROM_INVENTORY );
-        RemoveUnityObserver( itemForFirstSlot.gameObject );
-        itemForFirstSlot.itemInPlayerHands = false;
-        itemForFirstSlot = null;
-    }
-
     private void RemoveUnusableItems( ) {
         switch (itemForFirstSlot.currentItemState) {
             case ItemState.ITEM_IN_USE:
-                Notify( ITEM_USED_BY_PLAYER );
-                break;
             case ItemState.ITEM_IN_PLAYER_INVENTORY:
                 break;
+            case ItemState.ITEM_THROWN:
+                RemoveThrownItem( );
+                break;
             case ItemState.ITEM_INACTIVE:
-                RemoveCurrentItemFromInventory( );
+                RemoveUsedItem( );
                 break;
         }
+    }
+
+    private void RemoveThrownItem( ) {
+        Notify( ITEM_THROWN_BY_PLAYER );
+        RemoveItemFromInventory( );
+    }
+
+    private void RemoveUsedItem( ) {
+        Notify( REMOVED_ITEM_FROM_INVENTORY );
+        RemoveItemFromInventory( );
+    }
+
+    private void RemoveItemFromInventory( ) {
+        RemoveUnityObserver( itemForFirstSlot.gameObject );
+        itemForFirstSlot.itemInPlayerHands = false;
+        itemForFirstSlot = null;
     }
 }
