@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameLevelLoader : MonoBehaviour {
+public class AsychLevelLoader : MonoBehaviour {
 
     private GameObject loadingUIPanel;
 

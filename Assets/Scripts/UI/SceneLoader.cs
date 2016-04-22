@@ -15,14 +15,6 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene( "GameLevelSelect" );
     }
 
-    public void LoadHelpMenu( ) {
-        Debug.Log("Help");
-    }
-
-    public void LoadSchoolScene( ) {
-        SceneManager.LoadScene( "1_school" );
-    }
-
     public void LoadDevScene( ) {
         SceneManager.LoadScene("MainDevScene");
     }
