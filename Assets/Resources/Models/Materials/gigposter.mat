@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: gigposter
+  m_Name: Gigposter
   m_Shader: {fileID: 4800000, guid: 6a9b9f62f4a9e614cb9af7f98c9f6f7e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5

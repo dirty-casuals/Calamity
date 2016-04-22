@@ -2394,6 +2394,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1.42
       objectReference: {fileID: 0}
+    - target: {fileID: 431548, guid: 2035df6e7a3fd4b5cbe08df50fa21d70, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 431548, guid: 2035df6e7a3fd4b5cbe08df50fa21d70, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.29083806
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2035df6e7a3fd4b5cbe08df50fa21d70, type: 2}
   m_IsPrefabParent: 0
@@ -20315,7 +20323,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.587
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25126,7 +25134,7 @@ Transform:
   m_GameObject: {fileID: 1087992506}
   m_LocalRotation: {x: 0.00000011518241, y: 0.70722896, z: 0.7069846, w: -0.00000011522223}
   m_LocalPosition: {x: -13.96, y: 13.2441845, z: -23.02002}
-  m_LocalScale: {x: 0.58543944, y: 0.59702563, z: 0.6243077}
+  m_LocalScale: {x: 0.58543944, y: 0.5820452, z: 0.6243077}
   m_Children: []
   m_Father: {fileID: 1252352319}
   m_RootOrder: 4
@@ -27400,7 +27408,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400858, guid: d5a8f107ae6a244caa4011074ea5be90, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2342628, guid: d5a8f107ae6a244caa4011074ea5be90, type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -33377,6 +33385,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 147.57188
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 955a32302d5244229acb2102f0a11791, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e43e18448a3d48689541ca9193abc38, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 955a32302d5244229acb2102f0a11791, type: 3}
   m_IsPrefabParent: 0
