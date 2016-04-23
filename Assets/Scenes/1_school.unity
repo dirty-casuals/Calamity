@@ -1338,7 +1338,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 19921816, guid: 00297b8874f9e4f749ca41fdf9523a42, type: 2}
+    - {fileID: 19849890, guid: 00297b8874f9e4f749ca41fdf9523a42, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 00297b8874f9e4f749ca41fdf9523a42, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &38082226 stripped
@@ -8168,6 +8170,14 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 46807d43479d99140ab9a6ee366d2cce, type: 3}
   m_PrefabInternal: {fileID: 326118888}
+--- !u!1 &327709164 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 197990, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_PrefabInternal: {fileID: 1605600270}
+--- !u!4 &327709165 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 444472, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_PrefabInternal: {fileID: 1605600270}
 --- !u!1001 &330174684
 Prefab:
   m_ObjectHideFlags: 0
@@ -13385,7 +13395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b38b36f2598584c679a9f5e108dea973, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b38b36f2598584c679a9f5e108dea973, type: 3}
       propertyPath: m_LocalScale.x
@@ -13801,7 +13811,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 437374, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11434228, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
       propertyPath: gameStartTimeLength
@@ -16911,15 +16921,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 420490, guid: 870b40650099d714db5c3d7e25ca9a3a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.05213213
+      value: 3.0521321
       objectReference: {fileID: 0}
     - target: {fileID: 420490, guid: 870b40650099d714db5c3d7e25ca9a3a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.374102294
+      value: -0.3741023
       objectReference: {fileID: 0}
     - target: {fileID: 420490, guid: 870b40650099d714db5c3d7e25ca9a3a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -6.33835554
+      value: -6.3383555
       objectReference: {fileID: 0}
     - target: {fileID: 420490, guid: 870b40650099d714db5c3d7e25ca9a3a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -20026,7 +20036,7 @@ MonoBehaviour:
       id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
       type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="20"><field type="RAIN.Navigation.Waypoints.WaypointSet"
       reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-2.859779,0.1538456,-8.655132" type="UnityEngine.Vector3" id="_position"
+      /><field value="-2.859779,0.1538456,-6.820071" type="UnityEngine.Vector3" id="_position"
       /><field value="0.5" type="System.Single" id="_range" /></reference><reference
       type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
       id="21"><field value="9" type="System.Int32" id="wpOne" /><field value="10"
@@ -20212,7 +20222,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1001 &851586655
 Prefab:
   m_ObjectHideFlags: 0
@@ -22564,6 +22574,176 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: db97e56b434744fad847ca5ce8b6df84, type: 3}
   m_PrefabInternal: {fileID: 932720076}
+--- !u!1001 &937497094
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1888060393}
+    m_Modifications:
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -16.359
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.545
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.77433723
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.63277316
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 185128, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_Name
+      value: AIPlayerSpawnPoint 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -16.374182
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 7.614518
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -16.341913
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 7.479145
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000021677988
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15951803
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -16.34005
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 7.5496287
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000001702083
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15877792
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000117346644
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.19691363
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15547873
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.009924654
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0006079588
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.2926482
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.020720847
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.19720434
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15572385
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.008601088
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0000003632158
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21368623
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000115484
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000095227733
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21396478
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000014342368
+      objectReference: {fileID: 0}
+    - target: {fileID: 185128, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &937497095 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_PrefabInternal: {fileID: 937497094}
 --- !u!1001 &938820859
 Prefab:
   m_ObjectHideFlags: 0
@@ -24529,145 +24709,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 7c5d16c6d1cb0ca48947549384bcf1d8, type: 3}
   m_PrefabInternal: {fileID: 1041713392}
---- !u!1 &1045592537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1045592539}
-  - 114: {fileID: 1045592538}
-  m_Layer: 0
-  m_Name: Monster Route
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1045592538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1045592537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -2099906888, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dataSerializer:
-    _serializedData: <component version="1.3" type="RAIN.Navigation.Waypoints.WaypointRig"><fields><field
-      value="OnWhenSelected" type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field
-      type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
-      /></fields><references><reference type="RAIN.Navigation.Waypoints.WaypointSet"
-      refcount="11" id="0"><field type="UnityEngine.Transform" id="_mountPoint" gameobject="0"
-      /><field value="Monster Route" type="System.String" id="_setName" /><field value="Route"
-      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointSetType" id="_setType" /><field
-      value="0.6,0,0,1" type="UnityEngine.Color" id="_networkColor" /><field value="-0.5"
-      type="System.Single" id="_outlineColorOffset" /><field value="0.4" type="System.Single"
-      id="_selectionColorOffset" /><field type="System.Collections.Generic.List" id="_waypoints"
-      elementtype="RAIN.Navigation.Waypoints.Waypoint"><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="1" id="element0" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="2" id="element1" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="3" id="element2" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="4" id="element3" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="5" id="element4" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="6" id="element5" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="7" id="element6" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="8" id="element7" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="9" id="element8" /><field type="RAIN.Navigation.Waypoints.Waypoint"
-      reference="10" id="element9" /></field><field type="System.Collections.Generic.List"
-      id="_connections" elementtype="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
-      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
-      id="1"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
-      /><field value="" type="System.String" id="_waypointName" /><field value="-0.5244288,-0.8,2.973832"
-      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
-      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
-      refcount="1" id="2"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
-      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="2.651935,0.4642336,16.97371" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="3"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-6.418262,0.6206978,16.44147" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="4"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-11.8195,0.8287642,16.46134" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="5"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-11.61179,0.4664594,7.474761" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="6"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-11.59357,0.1174594,-3.627476" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="7"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-10.94486,0.7118181,2.143518" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="8"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-6.593488,0.2770246,1.952276" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="9"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-7.081151,0.8124383,8.935148" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="10"><field type="RAIN.Navigation.Waypoints.WaypointSet"
-      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
-      /><field value="-7.038597,0.4664595,24.36406" type="UnityEngine.Vector3" id="_position"
-      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="11" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="12" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="13" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="14" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="15" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="16" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="17" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="18" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="19" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="20" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="21" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="22" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="23" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="24" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="25" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="26" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="27" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="28" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="29" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="30" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="31" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="32" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="33" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="34" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="35" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="36" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="37" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="38" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="39" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="40" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="41" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="42" /><reference
-      type="RAIN.Navigation.Waypoints.Waypoint" refcount="0" id="43" /></references></component>
-    _serializedGameObjects:
-    - {fileID: 1045592539}
-    _serializedCustomData: []
---- !u!4 &1045592539
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1045592537}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1 &1046226287
 GameObject:
   m_ObjectHideFlags: 0
@@ -29316,6 +29357,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1749bea64cb5a32488c805b72d463a82, type: 3}
   m_PrefabInternal: {fileID: 1208638954}
+--- !u!4 &1208676147 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
+  m_PrefabInternal: {fileID: 1366232049}
 --- !u!1001 &1208705138
 Prefab:
   m_ObjectHideFlags: 0
@@ -31807,6 +31852,36 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 46807d43479d99140ab9a6ee366d2cce, type: 3}
   m_PrefabInternal: {fileID: 1323127737}
+--- !u!1 &1323481144 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 194090, guid: 00297b8874f9e4f749ca41fdf9523a42, type: 2}
+  m_PrefabInternal: {fileID: 38082225}
+--- !u!23 &1323481145
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1323481144}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!1001 &1323571611
 Prefab:
   m_ObjectHideFlags: 0
@@ -32221,6 +32296,387 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.046875026, y: 0.0023437566, z: 0.045}
   m_Center: {x: 0.0000000069662933, y: -0.000000008072238, z: 0.0075}
+--- !u!1 &1331141583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1331141585}
+  - 114: {fileID: 1331141584}
+  m_Layer: 0
+  m_Name: Player Route
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331141584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1331141583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2099906888, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataSerializer:
+    _serializedData: <component version="1.3" type="RAIN.Navigation.Waypoints.WaypointRig"><fields><field
+      value="AlwaysOn" type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /></fields><references><reference type="RAIN.Navigation.Waypoints.WaypointSet"
+      refcount="34" id="0"><field type="UnityEngine.Transform" id="_mountPoint" gameobject="0"
+      /><field value="Player Route" type="System.String" id="_setName" /><field value="Network"
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointSetType" id="_setType" /><field
+      value="0,0,0.6,1" type="UnityEngine.Color" id="_networkColor" /><field value="-0.5"
+      type="System.Single" id="_outlineColorOffset" /><field value="0.4" type="System.Single"
+      id="_selectionColorOffset" /><field type="System.Collections.Generic.List" id="_waypoints"
+      elementtype="RAIN.Navigation.Waypoints.Waypoint"><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="1" id="element0" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="2" id="element1" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="4" id="element2" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="6" id="element3" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="8" id="element4" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="10" id="element5" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="12" id="element6" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="14" id="element7" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="16" id="element8" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="18" id="element9" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="20" id="element10" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="22" id="element11" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="25" id="element12" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="27" id="element13" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="29" id="element14" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="31" id="element15" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="33" id="element16" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="35" id="element17" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="37" id="element18" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="39" id="element19" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="41" id="element20" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="43" id="element21" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="45" id="element22" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="47" id="element23" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="49" id="element24" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="52" id="element25" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="54" id="element26" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="56" id="element27" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="58" id="element28" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="61" id="element29" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="65" id="element30" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="67" id="element31" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="69" id="element32" /></field><field type="System.Collections.Generic.List"
+      id="_connections" elementtype="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"><field
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" reference="3"
+      id="element0" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="5" id="element1" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="7" id="element2" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="9" id="element3" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="11" id="element4" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="13" id="element5" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="15" id="element6" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="17" id="element7" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="19" id="element8" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="21" id="element9" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="23" id="element10" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="24" id="element11" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="26" id="element12" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="28" id="element13" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="30" id="element14" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="32" id="element15" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="34" id="element16" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="38" id="element17" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="40" id="element18" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="42" id="element19" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="44" id="element20" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="46" id="element21" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="48" id="element22" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="50" id="element23" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="51" id="element24" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="53" id="element25" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="55" id="element26" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="57" id="element27" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="59" id="element28" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="60" id="element29" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="62" id="element30" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="63" id="element31" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="64" id="element32" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="36" id="element33" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="66" id="element34" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="68" id="element35" /><field type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      reference="70" id="element36" /></field></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="1"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="16.90045,-0.3499999,8.176195" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="2"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="8.193895,-0.3499998,8.442822" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="3"><field value="0" type="System.Int32" id="wpOne" /><field value="1" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="4"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="16.93499,-0.2147965,-1.008259" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="5"><field value="0" type="System.Int32" id="wpOne" /><field value="2" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="6"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="8.442539,0.03991267,-0.959549" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="7"><field value="2" type="System.Int32" id="wpOne" /><field value="3" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="8"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="3.079557,1.192093E-07,-0.9231434" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="9"><field value="3" type="System.Int32" id="wpOne" /><field value="4" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="10"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="3.413604,0.05158302,3.952484" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="11"><field value="4" type="System.Int32" id="wpOne" /><field value="5" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="12"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="2.308627,0.2472279,6.899803" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="13"><field value="5" type="System.Int32" id="wpOne" /><field value="6" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="14"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="2.090019,0.2096489,-4.87488" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="15"><field value="4" type="System.Int32" id="wpOne" /><field value="7" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="16"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="2.289187,-0.1176483,-15.03018" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="17"><field value="7" type="System.Int32" id="wpOne" /><field value="8" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="18"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-2.011327,-0.109316,-14.97937" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="19"><field value="8" type="System.Int32" id="wpOne" /><field value="9" type="System.Int32"
+      id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="20"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-2.859779,0.1538456,-6.820071" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="21"><field value="9" type="System.Int32" id="wpOne" /><field value="10"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="22"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="-2.16154,1.192093E-07,-0.9127617"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="23"><field value="10" type="System.Int32" id="wpOne" /><field
+      value="11" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="24"><field value="4" type="System.Int32" id="wpOne" /><field
+      value="11" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="25"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-12.29702,-0.1284567,-15.58665" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="26"><field value="9" type="System.Int32" id="wpOne" /><field value="12"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="27"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="-2.578119,-0.346,-29.25258"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="28"><field value="9" type="System.Int32" id="wpOne" /><field
+      value="13" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="29"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-6.057431,-0.3499999,-29.13721" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="30"><field value="13" type="System.Int32" id="wpOne" /><field value="14"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="31"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="-2.622087,0.01725435,-40.19305"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="32"><field value="13" type="System.Int32" id="wpOne" /><field
+      value="15" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="33"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-10.995,-0.3499997,-24.41012" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="34"><field value="14" type="System.Int32" id="wpOne" /><field value="16"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="35"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="-12.04848,-0.3499997,-29.50592"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="36"><field value="14" type="System.Int32" id="wpOne" /><field
+      value="17" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="37"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-11.74251,-0.3499998,-33.76655" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="38"><field value="14" type="System.Int32" id="wpOne" /><field value="18"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="39"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="-10.89267,-0.331,-40.21384"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="40"><field value="15" type="System.Int32" id="wpOne" /><field
+      value="19" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="41"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="8.474766,-0.3309999,-40.30399" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="42"><field value="15" type="System.Int32" id="wpOne" /><field value="20"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="43"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="16.49863,-0.3310002,-40.51235"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="44"><field value="20" type="System.Int32" id="wpOne" /><field
+      value="21" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="45"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="16.81654,-0.3309999,-32.54962" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="46"><field value="21" type="System.Int32" id="wpOne" /><field value="22"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="47"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="16.25715,-0.3499994,-17.82402"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="48"><field value="22" type="System.Int32" id="wpOne" /><field
+      value="23" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="49"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="16.04396,-0.3499998,-7.771866" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="50"><field value="23" type="System.Int32" id="wpOne" /><field value="24"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="51"><field value="2" type="System.Int32" id="wpOne" /><field
+      value="24" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="52"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="15.75913,-0.3499998,22.85173" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="53"><field value="0" type="System.Int32" id="wpOne" /><field value="25"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="54"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="22.40464,-0.3499999,20.34116"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="55"><field value="25" type="System.Int32" id="wpOne" /><field
+      value="26" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="56"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="Hide" type="System.String" id="_waypointName"
+      /><field value="26.74034,-0.3499998,25.85221" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="57"><field value="26" type="System.Int32" id="wpOne" /><field value="27"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="58"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="" type="System.String" id="_waypointName" /><field value="27.00662,-0.3499995,19.10749"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="59"><field value="27" type="System.Int32" id="wpOne" /><field
+      value="28" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="60"><field value="26" type="System.Int32" id="wpOne" /><field
+      value="28" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="61"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="16.48873,-0.3500001,27.59414" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="62"><field value="25" type="System.Int32" id="wpOne" /><field value="29"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="63"><field value="17" type="System.Int32" id="wpOne" /><field
+      value="18" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="64"><field value="16" type="System.Int32" id="wpOne" /><field
+      value="17" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="65"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="" type="System.String" id="_waypointName"
+      /><field value="-7.381773,-0.3462718,-10.0597" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="66"><field value="12" type="System.Int32" id="wpOne" /><field value="30"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="1"
+      id="67"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="Hide" type="System.String" id="_waypointName" /><field value="-8.831738,-0.3489997,-4.017856"
+      type="UnityEngine.Vector3" id="_position" /><field value="0.5" type="System.Single"
+      id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      refcount="1" id="68"><field value="30" type="System.Int32" id="wpOne" /><field
+      value="31" type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean"
+      id="twoWay" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="69"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="Hide" type="System.String" id="_waypointName"
+      /><field value="-11.62037,-0.3462721,-19.93145" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection" refcount="1"
+      id="70"><field value="12" type="System.Int32" id="wpOne" /><field value="32"
+      type="System.Int32" id="wpTwo" /><field value="True" type="System.Boolean" id="twoWay"
+      /></reference></references></component>
+    _serializedGameObjects:
+    - {fileID: 1331141585}
+    _serializedCustomData: []
+--- !u!4 &1331141585
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1331141583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.386776, y: 0.46345964, z: 17.309242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1335134192
 GameObject:
   m_ObjectHideFlags: 0
@@ -32618,6 +33074,176 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: db97e56b434744fad847ca5ce8b6df84, type: 3}
   m_PrefabInternal: {fileID: 1339216159}
+--- !u!1001 &1341081459
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1888060393}
+    m_Modifications:
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -20.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.74837726
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.66327333
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 185128, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_Name
+      value: AIPlayerSpawnPoint 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -20.352524
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 7.411242
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -20.340437
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 7.5498824
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000033700417
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15951811
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000066682696
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -20.364443
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 7.483586
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.000000049576556
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15877792
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0000000034924597
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.19691376
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15547897
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.009925913
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.000607682
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.2926481
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.020721376
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.19720487
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15572383
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00860085
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000013690442
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21368633
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000011175871
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.00000019464642
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21396421
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000006519258
+      objectReference: {fileID: 0}
+    - target: {fileID: 185128, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1341081460 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_PrefabInternal: {fileID: 1341081459}
 --- !u!1001 &1341967928
 Prefab:
   m_ObjectHideFlags: 0
@@ -32939,6 +33565,30 @@ Prefab:
     - target: {fileID: 400000, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.9501008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
+      propertyPath: m_PreserveUVs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
+      propertyPath: m_PreserveUVs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
+      propertyPath: m_PreserveUVs
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c77aa38a2ab04c269b7c30be5289b65, type: 3}
@@ -33390,11 +34040,11 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 395032186}
+    m_TransformParent: {fileID: 1888060393}
     m_Modifications:
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -21.5
+      value: -19.677
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalPosition.y
@@ -33402,7 +34052,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.6
+      value: 5.154
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalRotation.x
@@ -33410,7 +34060,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.28510293
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalRotation.z
@@ -33418,16 +34068,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9584969
       objectReference: {fileID: 0}
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11486620, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 931395503}
+    - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.6999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.6999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
   m_IsPrefabParent: 0
@@ -34814,6 +35472,176 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425789216}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1426659305
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1888060393}
+    m_Modifications:
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -17.118
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5.187
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.26639736
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9638633
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 185128, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_Name
+      value: AIPlayerSpawnPoint 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -17.057478
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 5.224423
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -17.174433
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 5.1489987
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000047771755
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15951808
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000028777868
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -17.107336
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 5.170665
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000006118462
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15877791
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000028847717
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.19691357
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.155479
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.009926137
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00060691294
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.2926481
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.020721436
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.19720449
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.1557238
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.008600652
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000032782555
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21368617
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000010058284
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000003571622
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21396343
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000017136335
+      objectReference: {fileID: 0}
+    - target: {fileID: 185128, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1426659306 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_PrefabInternal: {fileID: 1426659305}
 --- !u!1 &1429084489
 GameObject:
   m_ObjectHideFlags: 0
@@ -39913,6 +40741,239 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1603612585}
   m_Mesh: {fileID: 4300000, guid: 161450a327d924885ac3090daad76eae, type: 3}
+--- !u!1001 &1605600270
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1888060393}
+    m_Modifications:
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -18.229
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 9.142
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.99884
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.048152372
+      objectReference: {fileID: 0}
+    - target: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497464, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: _dataSerializer._serializedData
+      value: <component version="1.3" type="RAIN.Core.AIRig"><fields><field value="OnWhenSelected"
+        type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field value="True" type="System.Boolean"
+        id="_useUnityMessages" /><field value="False" type="System.Boolean" id="_useFixedUpdate"
+        /><field type="RAIN.Core.AI" reference="0" id="_ai" /></fields><references><reference
+        type="RAIN.Core.AI" refcount="1" id="0"><field value="True" type="System.Boolean"
+        id="_isActive" /><field type="UnityEngine.GameObject" id="_body" gameobject="0"
+        /><field type="RAIN.Memory.BasicMemory" reference="1" id="_workingMemory"
+        childrenvisible="False" /><field type="RAIN.Minds.BasicMind" reference="2"
+        id="_mind" childrenvisible="False" /><field type="RAIN.Motion.BasicMotor"
+        reference="3" id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
+        reference="4" id="_animator" childrenvisible="False" /><field type="RAIN.Navigation.BasicNavigator"
+        reference="5" id="_navigator" childrenvisible="False" /><field type="RAIN.Perception.BasicSenses"
+        reference="6" id="_senses" childrenvisible="True" /><field type="System.Collections.Generic.List"
+        id="_customElements" elementtype="RAIN.Core.CustomAIElement" childrenvisible="False"
+        /></reference><reference type="RAIN.Memory.BasicMemory" refcount="1" id="1"><field
+        type="System.Collections.Generic.List" id="_memoryItems" elementtype="RAIN.Memory.BasicMemory+MemoryItem"><field
+        type="RAIN.Memory.BasicMemory+MemoryItem" reference="8" id="element0" /></field></reference><reference
+        type="RAIN.Minds.BasicMind" refcount="1" id="2"><field type="RAIN.BehaviorTrees.BTAsset"
+        id="_behaviorTreeAsset" gameobject="1" /><field type="System.Collections.Generic.List"
+        id="_behaviorTreeBindings" elementtype="RAIN.BehaviorTrees.BTAssetBinding"
+        /></reference><reference type="RAIN.Motion.BasicMotor" refcount="1" id="3"><field
+        value="1" type="System.Single" id="_speed" /><field value="360" type="System.Single"
+        id="_rotationSpeed" /><field value="0.1" type="System.Single" id="_closeEnoughDistance"
+        /><field value="0.1" type="System.Single" id="_closeEnoughAngle" /><field
+        value="360" type="System.Single" id="_faceBeforeMoveAngle" /><field value="1"
+        type="System.Single" id="_maxHeightOffset" /><field value="False" type="System.Boolean"
+        id="_allow3DMovement" /><field value="False" type="System.Boolean" id="_allow3DRotation"
+        /><field value="True" type="System.Boolean" id="_allowOffGraphMovement" /></reference><reference
+        type="RAIN.Animation.BasicAnimator" refcount="1" id="4"><field type="System.Collections.Generic.List"
+        id="_animationStates" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState"
+        /></reference><reference type="RAIN.Navigation.BasicNavigator" refcount="1"
+        id="5"><field value="False" type="System.Boolean" id="_drawPaths" /><field
+        value="0,1,0,1" type="UnityEngine.Color" id="_pathColor" /><field value="-0.5"
+        type="System.Single" id="_outlineColorOffset" /><field value="100" type="System.Int32"
+        id="_maxPathfindingSteps" /><field value="0" type="System.Single" id="_maxPathLength"
+        /><field type="System.Collections.Generic.List" id="_graphTags" elementtype="System.String"
+        /></reference><reference type="RAIN.Perception.BasicSenses" refcount="1" id="6"><field
+        type="System.Collections.Generic.List" id="_sensors" elementtype="RAIN.Perception.Sensors.RAINSensor"><field
+        type="RAIN.Perception.Sensors.VisualSensor" reference="7" id="element0" /></field></reference><reference
+        type="RAIN.Perception.Sensors.VisualSensor" refcount="1" id="7"><field value="True"
+        type="System.Boolean" id="_showVisual" /><field value="Player Sight" type="System.String"
+        id="_sensorName" /><field value="True" type="System.Boolean" id="_isActive"
+        /><field value="0.6,0,0,1" type="UnityEngine.Color" id="_sensorColor" /><field
+        type="UnityEngine.Transform" id="_mountPoint" gameobject="2" /><field value="0,0,0"
+        type="UnityEngine.Vector3" id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3"
+        id="_angleOffset" /><field type="System.Collections.Generic.List" id="_filters"
+        elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter" /><field value="5"
+        type="System.Single" id="_range" /><field value="False" type="System.Boolean"
+        id="_canDetectSelf" /><field value="140" type="System.Single" id="_horizontalAngle"
+        /><field value="180" type="System.Single" id="_verticalAngle" /><field value="True"
+        type="System.Boolean" id="_lineOfSight" /><field value="26368" type="UnityEngine.LayerMask"
+        id="_lineOfSightMask" /></reference><reference type="RAIN.Memory.BasicMemory+MemoryItem"
+        refcount="1" id="8"><field value="moveSpeed" type="System.String" id="Key"
+        /><field value="System.Single" type="System.Type" id="ValueType" /><field
+        value="2" type="System.Single" id="Value" /></reference></references></component>
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497464, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: _dataSerializer._serializedGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497464, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: _dataSerializer._serializedGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 327709164}
+    - target: {fileID: 11497464, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: _dataSerializer._serializedGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba21f341dd846c846a2821de22e79a89,
+        type: 2}
+    - target: {fileID: 11497464, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: _dataSerializer._serializedGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 327709165}
+    - target: {fileID: 11497464, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: _dataSerializer._serializedCustomData.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000023236498
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.21396373
+      objectReference: {fileID: 0}
+    - target: {fileID: 14499058, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000113621354
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000031013042
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.2136869
+      objectReference: {fileID: 0}
+    - target: {fileID: 14422298, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000067055225
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.19720562
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.1557238
+      objectReference: {fileID: 0}
+    - target: {fileID: 14496764, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00860063
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0006075609
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.29264814
+      objectReference: {fileID: 0}
+    - target: {fileID: 14440746, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.02072123
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.19691493
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15547909
+      objectReference: {fileID: 0}
+    - target: {fileID: 14438638, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.009926498
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000007524759
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15877791
+      objectReference: {fileID: 0}
+    - target: {fileID: 14441622, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000023911707
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -18.231632
+      objectReference: {fileID: 0}
+    - target: {fileID: 14474294, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 9.161329
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0000011762422
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.15951796
+      objectReference: {fileID: 0}
+    - target: {fileID: 14447670, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000029616058
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -18.161726
+      objectReference: {fileID: 0}
+    - target: {fileID: 14406206, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 9.152145
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -18.29972
+      objectReference: {fileID: 0}
+    - target: {fileID: 14418778, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 9.13413
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1605600271 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 461938, guid: 0a0072ff6f93ab14994e3bc416d43ab9, type: 2}
+  m_PrefabInternal: {fileID: 1605600270}
 --- !u!1001 &1608685929
 Prefab:
   m_ObjectHideFlags: 0
@@ -41583,6 +42644,10 @@ Prefab:
     - target: {fileID: 400000, guid: 41f9be9a9c3344fe0b460d9c9158fd97, type: 3}
       propertyPath: m_LocalScale.z
       value: 99.99996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 41f9be9a9c3344fe0b460d9c9158fd97, type: 3}
+      propertyPath: m_UseLightProbes
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41f9be9a9c3344fe0b460d9c9158fd97, type: 3}
@@ -46550,6 +47615,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.046875022, y: 0.046875015, z: 0.0023437494}
   m_Center: {x: 0.000000013969839, y: -0.0000000018626448, z: -2.764864e-10}
+--- !u!1 &1888060392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1888060393}
+  m_Layer: 0
+  m_Name: PlayerSpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1888060393
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1888060392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1208676147}
+  - {fileID: 1605600271}
+  - {fileID: 937497095}
+  - {fileID: 1426659306}
+  - {fileID: 1341081460}
+  m_Father: {fileID: 395032186}
+  m_RootOrder: 1
 --- !u!1001 &1890222663
 Prefab:
   m_ObjectHideFlags: 0
