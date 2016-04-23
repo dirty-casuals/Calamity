@@ -11,6 +11,7 @@ public class GamePreCalamityState : GameState {
     }
 
     public override void InitializeGameState( ) {
+        gameHandler.StartPlayerSpawners( );
         gameHandler.countdownLabel.text = "Time to Calamity";
         endTime = gameHandler.startTimeSeconds;
     }
