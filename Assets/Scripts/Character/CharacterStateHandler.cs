@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public enum PlayerType {
     PLAYER,
@@ -7,20 +8,26 @@ public enum PlayerType {
     AI_PLAYER
 }
 
-public class CharacterStateHandler : MonoBehaviour {
+public class CharacterStateHandler : NetworkBehaviour {
 
     public PlayerType playerType;
     public CharacterState currentState;
 
-    private void Awake( ) {
+    private void Start( ) {
         SetPlayerState( playerType );
     }
 
     private void FixedUpdate( ) {
+        if (!isLocalPlayer) {
+            return;
+        }
         currentState.PlayerPhysicsUpdate( );
     }
 
     private void Update( ) {
+        if (!isLocalPlayer) {
+            return;
+        }
         currentState.PlayerUpdate( );
     }
 

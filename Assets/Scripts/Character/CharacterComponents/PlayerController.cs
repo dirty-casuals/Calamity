@@ -5,13 +5,11 @@ public class PlayerController : Subject {
     private GameHandler gameHandler;
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
-    private Vector3 normalizedMovementDirection;
-    private bool gamePaused;
 
     private void Start( ) {
         currentPlayerState = GetComponent<CharacterStateHandler>( ).currentState;
         inventory = GetComponent<PlayerInventory>( );
-        gameHandler = GetComponentInParent<GameHandler>( );
+        gameHandler = FindObjectOfType<GameHandler>( );
         AddUnityObservers( gameHandler.gameObject );
     }
 
@@ -26,6 +24,9 @@ public class PlayerController : Subject {
     }
 
     public void InputHandler( float movementSpeed ) {
+        if (!isLocalPlayer) {
+            return;
+        }
         float horizontal = CrossPlatformInputManager.GetAxisRaw( "Horizontal" );
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
