@@ -17,4 +17,6 @@ public class CharacterState {
 
     public virtual void KnockoutPlayer( ) { }
 
+    public virtual void SetupNetworkConfig( bool isLocalPlayer ) { }
+
 }

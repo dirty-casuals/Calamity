@@ -15,6 +15,7 @@ public class CharacterStateHandler : NetworkBehaviour {
 
     private void Start( ) {
         SetPlayerState( playerType );
+        currentState.SetupNetworkConfig( isLocalPlayer );
     }
 
     private void FixedUpdate( ) {
@@ -36,7 +37,7 @@ public class CharacterStateHandler : NetworkBehaviour {
     }
 
     private void SetPlayerState( PlayerType type ) {
-        switch ( type ) {
+        switch (type) {
             case PlayerType.PLAYER:
                 currentState = new NormalState( gameObject );
                 break;

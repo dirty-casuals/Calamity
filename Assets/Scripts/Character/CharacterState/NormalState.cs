@@ -7,6 +7,7 @@ public class NormalState : CharacterState {
     public float characterMovementSpeed = 5.0f;
     private PlayerController controller;
     private CalamityFirstPersonController firstPersonController;
+    private SkinnedMeshRenderer playerMesh;
     private EntityRig playerRig;
     private bool playerControllerDisabled;
     private bool playerDied;
@@ -17,6 +18,7 @@ public class NormalState : CharacterState {
         characterRigidbody = character.GetComponent<Rigidbody>( );
         controller = character.GetComponent<PlayerController>( );
         firstPersonController = character.GetComponent<CalamityFirstPersonController>( );
+        playerMesh = character.GetComponentInChildren<SkinnedMeshRenderer>( );
         playerRig = playerBody.GetComponentInChildren<EntityRig>( );
         character.tag = "Player";
     }
@@ -43,6 +45,12 @@ public class NormalState : CharacterState {
 
     public override void ToggleControllerInput( ) {
         playerControllerDisabled = !playerControllerDisabled;
+    }
+
+    public override void SetupNetworkConfig( bool isLocalPlayer ) {
+        if (isLocalPlayer) {
+            playerMesh.gameObject.layer = LayerMask.NameToLayer( "Player" );
+        }
     }
 
     public void KnockoutPlayer( ) {
