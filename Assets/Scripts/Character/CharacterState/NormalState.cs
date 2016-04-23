@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.Characters.FirstPerson;
 using RAIN.Entities;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class NormalState : CharacterState {
 

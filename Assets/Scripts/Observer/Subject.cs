@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Networking;
 
-public class Subject : MonoBehaviour {
+public class Subject : NetworkBehaviour {
     private readonly List<Observer> listOfObservers = new List<Observer>( );
     private List<GameObject> listOfUnityObservers = new List<GameObject>( );
 
