@@ -9,8 +9,17 @@ public class AsychLevelLoader : MonoBehaviour {
         loadingUIPanel = GetComponentInChildren<CanvasRenderer>( true ).gameObject;
     }
 
-    public void LoadSchoolLevel( ) {
+    public void LoadRandomLevel( ) {
         loadingUIPanel.SetActive( true );
-        SceneManager.LoadSceneAsync( "1_school" );
+        LoadScene( );
+    }
+
+    private void LoadScene( ) {
+        int randomCount = Random.Range( 0, 0 );
+        switch (randomCount) {
+            case 0:
+                SceneManager.LoadSceneAsync( "1_school" );
+                break;
+        }
     }
 }
