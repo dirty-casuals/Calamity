@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameHandler : UnityObserver {
@@ -15,7 +16,7 @@ public class GameHandler : UnityObserver {
     [HideInInspector]
     public float currentRound = 1.0f;
     [HideInInspector]
-    public AICharacterSpawner[ ] gameSpawnPoints;
+    public Spawner[ ] gameSpawnPoints;
     public const string SET_PRE_CALAMITY_STATE = "SET_PRE_CALAMITY_STATE";
     public const string SET_CALAMITY_STATE = "SET_NEW_CALAMITY_STATE";
     public const string SET_CALAMITY_END_ROUND = "SET_CALAMITY_END_ROUND";
@@ -26,6 +27,9 @@ public class GameHandler : UnityObserver {
     private static CalamityState calamityState;
     private static CalamityRoundState nextRoundState;
     private static GameEndState gameEndState;
+    private List<Spawner> playerSpawnPoints;
+    private List<Spawner> monsterSpawnPoints;
+    private int numHumanPlayers = 1;
 
     private void Start( ) {
         preCalamityState = new GamePreCalamityState( this );
@@ -64,20 +68,42 @@ public class GameHandler : UnityObserver {
         }
     }
 
+    public void StartPlayerSpawners( ) {
+        int humansCreated = 0;
+        foreach (Spawner spawn in playerSpawnPoints) {
+            if (humansCreated < numHumanPlayers) {
+                spawn.playable = true;
+                humansCreated += 1;
+            }
+            spawn.StartSpawn( );
+        }
+    }
+
     public void StartMonsterSpawners( ) {
-        foreach (AICharacterSpawner spawn in gameSpawnPoints) {
-            spawn.StartMonsterSpawn( );
+        foreach (Spawner spawn in monsterSpawnPoints) {
+            spawn.StartSpawn( );
         }
     }
 
     public void StopMonsterSpawners( ) {
-        foreach (AICharacterSpawner spawn in gameSpawnPoints) {
-            spawn.DisableCurrentMonsters( );
+        foreach (Spawner spawn in gameSpawnPoints) {
+            spawn.DisableCurrentCharacter( );
         }
     }
 
     private void GetGameSpawnPoints( ) {
-        gameSpawnPoints = GetComponentsInChildren<AICharacterSpawner>( );
+        gameSpawnPoints = GetComponentsInChildren<Spawner>( );
+        monsterSpawnPoints = new List<Spawner>( );
+        playerSpawnPoints = new List<Spawner>( );
+        for (int i = 0; i < gameSpawnPoints.Length; i += 1) {
+            Spawner spawner = gameSpawnPoints[ i ];
+
+            if (spawner.spawnType == SpawnpointType.PLAYER) {
+                playerSpawnPoints.Add( spawner );
+            } else {
+                monsterSpawnPoints.Add( spawner );
+            }
+        }
     }
 
     private void SetFirstGameState( ) {
