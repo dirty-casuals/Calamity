@@ -6,15 +6,24 @@ public class SingleSpawner : Spawner {
     private GameObject character = null;
 
     public override void StartSpawn( ) {
-        if ( character != null ) {
+        if (character != null) {
             ReenableCurrentCharacter( );
             return;
         }
         CreateMonster( );
     }
 
+    public override void UpdateChildrenToSpawnPosition( ) {
+        character.gameObject.transform.position = gameObject.transform.position;
+    }
+
     protected override void ToggleCharacterState( bool currentState ) {
-        character.SetActive( currentState );
+        if (currentState) {
+            character.SetActive( true );
+            gameObject.GetComponentInChildren<CharacterStateHandler>( ).currentState.RevivePlayer( );
+        } else {
+            character.SetActive( false );
+        }
     }
 
     private void CreateMonster( ) {

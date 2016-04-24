@@ -11,7 +11,12 @@ public class GamePreCalamityState : GameState {
     }
 
     public override void InitializeGameState( ) {
-        gameHandler.StartPlayerSpawners( );
+        gameHandler.UpdateCharacterStates( );
+        if (gameHandler.IsFirstRound( )) {
+            gameHandler.StartPlayerSpawners( );
+        } else {
+            gameHandler.ResetAllTheThings( );
+        }
         gameHandler.countdownLabel.text = "Time to Calamity";
         endTime = gameHandler.startTimeSeconds;
     }
@@ -23,7 +28,7 @@ public class GamePreCalamityState : GameState {
     }
 
     private void StartCalamityWhenCountdownReached( ) {
-        if ( gameTimer >= endTime ) {
+        if (gameTimer >= endTime) {
             gameTimer = 0.0f;
             Notify( GameHandler.SET_CALAMITY_STATE );
         }

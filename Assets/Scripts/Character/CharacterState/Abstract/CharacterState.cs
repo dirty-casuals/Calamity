@@ -6,6 +6,7 @@ public class CharacterState {
     public GameObject character;
     public Animator characterAnimator;
     public Rigidbody characterRigidbody;
+    public bool alive = true;
 
     public virtual void PlayerPhysicsUpdate( ) { }
 
@@ -15,8 +16,13 @@ public class CharacterState {
 
     public virtual void ToggleControllerInput( ) { }
 
-    public virtual void KnockoutPlayer( ) { }
-
+    public virtual void KnockoutPlayer( ) {
+        alive = false;
+        characterAnimator.SetBool( "KnockOut", true );
+    }
+    
     public virtual void SetupNetworkConfig( bool isLocalPlayer ) { }
-
+    
+    public virtual void RevivePlayer( ) {
+    }
 }

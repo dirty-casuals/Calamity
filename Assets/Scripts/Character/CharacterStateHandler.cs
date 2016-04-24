@@ -12,10 +12,23 @@ public class CharacterStateHandler : NetworkBehaviour {
 
     public PlayerType playerType;
     public CharacterState currentState;
+    private CharacterState nextState;
 
     private void Start( ) {
-        SetPlayerState( playerType );
         currentState.SetupNetworkConfig( isLocalPlayer );
+    }
+
+    private void Awake( ) {
+        currentState = GetPlayerStateFromType( playerType );
+        nextState = currentState;
+    }
+
+    public void SetNextState( PlayerType type ) {
+        nextState = GetPlayerStateFromType( type );
+    }
+
+    public void UpdateState() {
+        currentState = nextState;
     }
 
     private void FixedUpdate( ) {
@@ -31,25 +44,28 @@ public class CharacterStateHandler : NetworkBehaviour {
         }
         currentState.PlayerUpdate( );
     }
-
+    
     private void OnCollisionEnter( Collision collision ) {
         currentState.PlayerCollisionEnter( collision );
     }
 
-    private void SetPlayerState( PlayerType type ) {
+    public CharacterState GetPlayerStateFromType( PlayerType type ) {
+        CharacterState state = null;
         switch (type) {
             case PlayerType.PLAYER:
-                currentState = new NormalState( gameObject );
+                state = new NormalState( gameObject );
                 break;
             case PlayerType.MONSTER:
-                currentState = new MonsterState( gameObject );
+                state = new MonsterState( gameObject );
                 break;
             case PlayerType.AI_MONSTER:
-                currentState = new AIMonsterState( gameObject );
+                state = new AIMonsterState( gameObject );
                 break;
             case PlayerType.AI_PLAYER:
-                currentState = new AIState( gameObject );
+                state = new AIState( gameObject );
                 break;
         }
+
+        return state;
     }
 }

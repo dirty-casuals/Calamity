@@ -5,12 +5,15 @@ public class PlayerController : Subject {
     private GameHandler gameHandler;
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
+    private CharacterStateHandler stateHandler;
 
     private void Start( ) {
-        currentPlayerState = GetComponent<CharacterStateHandler>( ).currentState;
+        stateHandler = GetComponent<CharacterStateHandler>( );
+        currentPlayerState = stateHandler.currentState;
         inventory = GetComponent<PlayerInventory>( );
         gameHandler = FindObjectOfType<GameHandler>( );
         AddUnityObservers( gameHandler.gameObject );
+        gameHandler.AddPlayerController( this );
     }
 
     public void ControllerPause( ) {
@@ -21,6 +24,18 @@ public class PlayerController : Subject {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
             Notify( GameHandler.TOGGLE_GAME_PAUSE );
         }
+    }
+
+    public void SetNextState( PlayerType type ) {
+        stateHandler.SetNextState( type );
+    }
+
+    public void UpdateState( ) {
+        stateHandler.UpdateState( );
+    }
+
+    public bool isMonster() {
+        return stateHandler.playerType == PlayerType.MONSTER || stateHandler.playerType == PlayerType.AI_MONSTER;
     }
 
     public void InputHandler( float movementSpeed ) {

@@ -3,7 +3,9 @@ using System.Collections;
 
 public class AIMonsterState : CharacterState {
 
-    public AIMonsterState( GameObject AIBody ) { }
+    public AIMonsterState( GameObject AIBody ) {
+        AIBody.tag = "Monster";
+    }
 
     public override void PlayerPhysicsUpdate( ) { }
 

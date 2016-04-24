@@ -8,23 +8,30 @@ public class MultipleSpawner : Spawner {
     public int spawnCount = 1;
     public float spawnRateInSeconds = 1.0f;
 
-    public override void Awake()
-    {
+    public override void Awake( ) {
         base.Awake( );
         currentCharactersCreated = new List<GameObject>( );
     }
 
     public override void StartSpawn( ) {
         if (currentCharactersCreated.Count > 0) {
-            ReenableCurrentCharacter( );
+            StartCoroutine( RespawnCharacters() );
             return;
         }
         StartCoroutine( StartNewSpawner( ) );
     }
 
     protected override void ToggleCharacterState( bool currentState ) {
-        foreach (GameObject monster in currentCharactersCreated) {
-            monster.SetActive( currentState );
+        foreach (GameObject character in currentCharactersCreated) {
+            character.SetActive( currentState );
+        }
+    }
+
+    public IEnumerator RespawnCharacters( ) {
+        foreach (GameObject character in currentCharactersCreated) {
+            character.gameObject.transform.position = gameObject.GetComponentInParent<Transform>( ).position;
+            character.SetActive( true );
+            yield return new WaitForSeconds( spawnRateInSeconds );
         }
     }
 
@@ -33,7 +40,7 @@ public class MultipleSpawner : Spawner {
         while (created < spawnCount) {
             if (!somethingInSpawnPoint) {
                 CreateMonster( );
-                created++;
+                created += 1;
             }
             yield return new WaitForSeconds( spawnRateInSeconds );
         }

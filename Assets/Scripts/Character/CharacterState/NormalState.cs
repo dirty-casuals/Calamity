@@ -10,7 +10,6 @@ public class NormalState : CharacterState {
     private SkinnedMeshRenderer playerMesh;
     private EntityRig playerRig;
     private bool playerControllerDisabled;
-    private bool playerDied;
 
     public NormalState( GameObject playerBody ) {
         character = playerBody;
@@ -29,14 +28,14 @@ public class NormalState : CharacterState {
             return;
         }
         firstPersonController.UpdateCalamityLookRotation( );
-        if (playerDied) {
+        if (!alive) {
             return;
         }
         firstPersonController.UpdateCalamityController( );
     }
 
     public override void PlayerPhysicsUpdate( ) {
-        if (playerControllerDisabled || playerDied) {
+        if (playerControllerDisabled || !alive) {
             return;
         }
         controller.InputHandler( characterMovementSpeed );
@@ -46,18 +45,24 @@ public class NormalState : CharacterState {
     public override void ToggleControllerInput( ) {
         playerControllerDisabled = !playerControllerDisabled;
     }
-
+    
     public override void SetupNetworkConfig( bool isLocalPlayer ) {
         if (isLocalPlayer) {
             playerMesh.gameObject.layer = LayerMask.NameToLayer( "Player" );
         }
     }
-
-    public void KnockoutPlayer( ) {
-        character.tag = "Monster";
-        characterAnimator.SetBool( "KnockOut", true );
+    
+    public override void KnockoutPlayer( ) {
+        base.KnockoutPlayer( );
+        controller.SetNextState( PlayerType.MONSTER );
         playerRig.Entity.IsActive = false;
-        playerDied = true;
+    }
+
+    public override void RevivePlayer( ) {
+        alive = true;
+        controller.SetNextState( PlayerType.PLAYER );
+        controller.UpdateState( );
+        //characterAnimator.SetBool( "KnockOut", false );
     }
 
 }
