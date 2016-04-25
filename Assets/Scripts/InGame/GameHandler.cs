@@ -29,6 +29,7 @@ public class GameHandler : UnityObserver {
     private static GameEndState gameEndState;
     private List<Spawner> playerSpawnPoints;
     private List<Spawner> monsterSpawnPoints;
+    private List<PlayerController> playerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
 
     private void Start( ) {
@@ -42,6 +43,10 @@ public class GameHandler : UnityObserver {
 
     private void Update( ) {
         currentGameState.GameUpdate( );
+    }
+
+    public void AddPlayerController( PlayerController controller ) {
+        playerControllers.Add( controller );
     }
 
     public override void OnNotify( Object sender, EventArguments e ) {
@@ -75,19 +80,44 @@ public class GameHandler : UnityObserver {
                 spawn.playable = true;
                 humansCreated += 1;
             }
+            if (spawn.playable) {
+                spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
+            } else {
+                spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
+            }
             spawn.StartSpawn( );
         }
     }
 
     public void StartMonsterSpawners( ) {
         foreach (Spawner spawn in monsterSpawnPoints) {
+            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/Toothy" );
             spawn.StartSpawn( );
         }
     }
 
-    public void StopMonsterSpawners( ) {
-        foreach (Spawner spawn in gameSpawnPoints) {
-            spawn.DisableCurrentCharacter( );
+    public bool IsFirstRound( ) {
+        return currentRound == 1;
+    }
+
+    public void ResetAllTheThings( ) {
+        for (int i = 0; i < monsterSpawnPoints.Count; i += 1) {
+            Spawner spawner = gameSpawnPoints[ i ];
+            spawner.DisableCurrentCharacter( );
+        }
+
+        for (int i = 0; i < playerSpawnPoints.Count; i += 1) {
+            Spawner spawner = playerSpawnPoints[ i ];
+
+            spawner.UpdateChildrenToSpawnPosition( );
+            spawner.ReenableCurrentCharacter();
+        }
+    }
+
+    public void UpdateCharacterStates( ) {
+        for (int i = 0; i < playerControllers.Count; i += 1) {
+            PlayerController controller = playerControllers[ i ];
+            controller.UpdateState( );
         }
     }
 

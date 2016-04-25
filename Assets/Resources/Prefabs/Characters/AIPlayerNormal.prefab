@@ -74,6 +74,7 @@ GameObject:
   - 114: {fileID: 11470536}
   - 114: {fileID: 11462204}
   - 114: {fileID: 11416032}
+  - 114: {fileID: 11420240}
   m_Layer: 13
   m_Name: AIPlayerNormal
   m_TagString: Player
@@ -1563,6 +1564,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemForFirstSlot: {fileID: 0}
+--- !u!114 &11420240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 174
+    i1: 167
+    i2: 200
+    i3: 209
+    i4: 43
+    i5: 238
+    i6: 88
+    i7: 116
+    i8: 137
+    i9: 170
+    i10: 250
+    i11: 247
+    i12: 39
+    i13: 158
+    i14: 52
+    i15: 46
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11426932
 MonoBehaviour:
   m_ObjectHideFlags: 1

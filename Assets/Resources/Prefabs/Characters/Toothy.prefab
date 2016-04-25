@@ -10793,6 +10793,7 @@ GameObject:
   - 114: {fileID: 11420338}
   - 54: {fileID: 5459570}
   - 136: {fileID: 13643492}
+  - 114: {fileID: 11426906}
   m_Layer: 14
   m_Name: Toothy
   m_TagString: Monster
@@ -19075,7 +19076,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115770}
-  m_LocalRotation: {x: 0.74318856, y: -0.04801977, z: 0.6614832, w: 0.088345535}
+  m_LocalRotation: {x: 0.7431885, y: -0.048019763, z: 0.66148317, w: 0.08834553}
   m_LocalPosition: {x: -0.285497, y: 0.43795264, z: 0.03340348}
   m_LocalScale: {x: 5.5951495, y: 5.59515, z: 5.5951495}
   m_Children: []
@@ -21565,7 +21566,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142966}
-  m_LocalRotation: {x: 0.027687306, y: 0.74750173, z: 0.66310817, w: 0.02760954}
+  m_LocalRotation: {x: 0.027687302, y: 0.7475017, z: 0.6631081, w: 0.027609536}
   m_LocalPosition: {x: -0.04601937, y: 0.42874563, z: -0.004960001}
   m_LocalScale: {x: 12.276924, y: 12.276921, z: 12.276922}
   m_Children: []
@@ -26937,6 +26938,38 @@ MonoBehaviour:
     - {fileID: 498968}
     - {fileID: 185754}
     _serializedCustomData: []
+--- !u!114 &11426906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 87
+    i1: 125
+    i2: 190
+    i3: 136
+    i4: 58
+    i5: 226
+    i6: 12
+    i7: 4
+    i8: 26
+    i9: 87
+    i10: 38
+    i11: 129
+    i12: 79
+    i13: 203
+    i14: 234
+    i15: 130
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11435514
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ public abstract class Spawner : MonoBehaviour {
     public SpawnpointType spawnType;
     public bool playable = false;
     public bool somethingInSpawnPoint = false;
+    public GameObject characterPrefab;
 
     private BoxCollider spawnCollider;
 
@@ -37,14 +38,11 @@ public abstract class Spawner : MonoBehaviour {
         ToggleCharacterState( false );
     }
 
-    protected GameObject CreateAndGetCharacter( ) {
-        GameObject characterPrefab;
+    public virtual void UpdateChildrenToSpawnPosition() {
 
-        if (playable) {
-            characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
-        } else {
-            characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
-        }
+    }
+
+    protected GameObject CreateAndGetCharacter( ) {
         GameObject spawn = GameObject.Instantiate( characterPrefab );
         spawn.transform.parent = transform;
         spawn.transform.position = transform.position;
