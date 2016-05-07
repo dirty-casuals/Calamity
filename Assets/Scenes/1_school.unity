@@ -2371,7 +2371,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 168010, guid: 2035df6e7a3fd4b5cbe08df50fa21d70, type: 2}
       propertyPath: m_Name
-      value: 
+      value: Ceiling
       objectReference: {fileID: 0}
     - target: {fileID: 477604, guid: 2035df6e7a3fd4b5cbe08df50fa21d70, type: 2}
       propertyPath: m_LocalPosition.x
@@ -28689,7 +28689,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1185783509}
   m_Layer: 0
-  m_Name: 
+  m_Name: Striplights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30535,7 +30535,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1252352319}
   m_Layer: 9
-  m_Name: 
+  m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
