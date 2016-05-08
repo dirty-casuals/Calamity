@@ -4,10 +4,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class MonsterState : CharacterState {
 
     public float monsterMovementSpeed = 7.0f;
-    private PlayerController controller;
     private CalamityFirstPersonController firstPersonController;
 
-    public MonsterState( GameObject playerBody ) {
+    public MonsterState( GameObject playerBody ) : base( playerBody ) {
         character = playerBody;
         characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
