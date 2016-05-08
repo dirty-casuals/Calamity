@@ -34,7 +34,7 @@ public class PlayerController : Subject {
         stateHandler.UpdateState( );
     }
 
-    public bool isMonster() {
+    public bool isMonster( ) {
         return stateHandler.playerType == PlayerType.MONSTER || stateHandler.playerType == PlayerType.AI_MONSTER;
     }
 

@@ -11,6 +11,9 @@ public class CalamityState : GameState {
     }
 
     public override void InitializeGameState( ) {
+        if (!gameHandler.IsFirstRound()) {
+            gameHandler.UpdateCharacterStates( );
+        }
         gameHandler.StartMonsterSpawners( );
         endTime = gameHandler.calamityLengthSeconds;
         gameHandler.countdownLabel.text = "The Calamity";
@@ -23,7 +26,7 @@ public class CalamityState : GameState {
     }
 
     private void EndCalamityWhenCountdownReached( ) {
-        if ( gameTimer >= endTime ) {
+        if (gameTimer >= endTime) {
             gameTimer = 0.0f;
             Notify( GameHandler.SET_CALAMITY_END_ROUND );
         }

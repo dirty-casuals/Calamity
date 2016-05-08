@@ -16,7 +16,7 @@ public class CalamityRoundState : GameState {
             Notify( GameHandler.SET_END_GAME );
             return;
         }
-        endTime = gameHandler.calamityLengthSeconds;
+        endTime = gameHandler.roundLengthSeconds;
         gameHandler.countdownLabel.text = "Next Round";
         gameHandler.roundCount.text = gameHandler.currentRound.ToString( );
         gameHandler.roundPanel.SetActive( true );

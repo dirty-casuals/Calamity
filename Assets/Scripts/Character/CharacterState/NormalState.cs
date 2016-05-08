@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using RAIN.Entities;
 using UnityStandardAssets.Characters.FirstPerson;
+using System;
 
 public class NormalState : CharacterState {
 
@@ -59,10 +60,6 @@ public class NormalState : CharacterState {
     }
 
     public override void RevivePlayer( ) {
-        alive = true;
-        controller.SetNextState( PlayerType.PLAYER );
-        controller.UpdateState( );
-        //characterAnimator.SetBool( "KnockOut", false );
+        base.RevivePlayer( );
     }
-
 }
