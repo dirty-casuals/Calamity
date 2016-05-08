@@ -2,6 +2,7 @@
 using System.Collections;
 using RAIN.Core;
 using RAIN.Entities;
+using System;
 
 public class AIState : CharacterState {
 
@@ -16,7 +17,7 @@ public class AIState : CharacterState {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 
     }
 
@@ -29,10 +30,7 @@ public class AIState : CharacterState {
     }
 
     public override void RevivePlayer( ) {
-        alive = true;
-        controller.SetNextState( PlayerType.AI_PLAYER );
-        controller.UpdateState( );
-        characterAnimator.SetBool( "KnockOut", false );
+        base.RevivePlayer( );
         AIRig ai = character.GetComponentInChildren<AIRig>( );
         ai.AI.IsActive = true;
         character.GetComponentInChildren<EntityRig>( ).Entity.IsActive = true;

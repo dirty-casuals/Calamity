@@ -12,6 +12,7 @@ public class MonsterState : CharacterState {
         characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
         controller = playerBody.GetComponent<PlayerController>( );
+        firstPersonController = playerBody.GetComponent<CalamityFirstPersonController>( );
         character.tag = "Monster";
     }
 

@@ -11,7 +11,6 @@ public class GamePreCalamityState : GameState {
     }
 
     public override void InitializeGameState( ) {
-        gameHandler.UpdateCharacterStates( );
         if (gameHandler.IsFirstRound( )) {
             gameHandler.StartPlayerSpawners( );
         } else {

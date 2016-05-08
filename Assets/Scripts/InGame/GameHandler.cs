@@ -101,13 +101,15 @@ public class GameHandler : UnityObserver {
     }
 
     public void ResetAllTheThings( ) {
-        for (int i = 0; i < monsterSpawnPoints.Count; i += 1) {
-            Spawner spawner = gameSpawnPoints[ i ];
+        int i;
+        Spawner spawner;
+        for (i = 0; i < monsterSpawnPoints.Count; i += 1) {
+            spawner = monsterSpawnPoints[ i ];
             spawner.DisableCurrentCharacter( );
         }
 
-        for (int i = 0; i < playerSpawnPoints.Count; i += 1) {
-            Spawner spawner = playerSpawnPoints[ i ];
+        for (i = 0; i < playerSpawnPoints.Count; i += 1) {
+            spawner = playerSpawnPoints[ i ];
 
             spawner.UpdateChildrenToSpawnPosition( );
             spawner.ReenableCurrentCharacter();

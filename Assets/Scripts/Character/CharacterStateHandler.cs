@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public enum PlayerType {
@@ -13,6 +14,7 @@ public class CharacterStateHandler : NetworkBehaviour {
     public PlayerType playerType;
     public CharacterState currentState;
     private CharacterState nextState;
+    private PlayerType nextType;
 
     private void Start( ) {
         currentState.SetupNetworkConfig( isLocalPlayer );
@@ -25,10 +27,21 @@ public class CharacterStateHandler : NetworkBehaviour {
 
     public void SetNextState( PlayerType type ) {
         nextState = GetPlayerStateFromType( type );
+        nextType = type;
     }
 
     public void UpdateState() {
         currentState = nextState;
+        PlayerType lastType = playerType;
+        playerType = nextType;
+
+        if( lastType != playerType ) {
+            GameObject newInstance = GetPrefabInstanceFromType( playerType );
+            newInstance.transform.position = gameObject.transform.position;
+            newInstance.transform.rotation = gameObject.transform.rotation;
+
+            Destroy( gameObject );
+        }
     }
 
     private void FixedUpdate( ) {
@@ -47,6 +60,33 @@ public class CharacterStateHandler : NetworkBehaviour {
     
     private void OnCollisionEnter( Collision collision ) {
         currentState.PlayerCollisionEnter( collision );
+    }
+
+    public GameObject GetPrefabInstanceFromType( PlayerType type ) {
+        string objectName;
+        switch (type) {
+            case PlayerType.PLAYER:
+                objectName = "PlayerNormal";
+                break;
+            case PlayerType.MONSTER:
+                objectName = "PlayerNormal";
+                break;
+            case PlayerType.AI_MONSTER:
+                objectName = "Toothy";
+                break;
+            case PlayerType.AI_PLAYER:
+                objectName = "AIPlayerNormal";
+                break;
+            default:
+                objectName = "AIPlayerNormal";
+                break;
+        }
+
+        string localPath = "Assets/Resources/Prefabs/Characters/" + objectName + ".prefab";
+        Object localInstance = AssetDatabase.LoadAssetAtPath( localPath, typeof( GameObject ) );
+        GameObject instance = PrefabUtility.InstantiatePrefab( localInstance ) as GameObject;
+
+        return instance;
     }
 
     public CharacterState GetPlayerStateFromType( PlayerType type ) {
