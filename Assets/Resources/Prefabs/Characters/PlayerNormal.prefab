@@ -2070,7 +2070,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: ca67fc54c3862f44fa942a8a53ca9800, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
