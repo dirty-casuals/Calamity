@@ -18,12 +18,18 @@ public class GamePreCalamityState : GameState {
         }
         gameHandler.countdownLabel.text = "Time to Calamity";
         endTime = gameHandler.startTimeSeconds;
+        SetLighting( );
+        gameHandler.RunBlurEffect( );
     }
 
     public override void GameUpdate( ) {
         StartCalamityWhenCountdownReached( );
         SetCountdownTime( );
         gameTimer += Time.deltaTime;
+    }
+
+    private void SetLighting( ) {
+        gameHandler.SetLightsToFull( );
     }
 
     private void StartCalamityWhenCountdownReached( ) {

@@ -10,6 +10,7 @@ TagManager:
   - UnityObserver
   - MonsterAI
   - PlayerAI
+  - Striplight
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Light
+  m_Name: LightFullOn
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -145,7 +145,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.7
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -198,7 +198,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.68477476, g: 0.588235, b: 0.8, a: 1}
+        second: {r: 3, g: 2.6807961, b: 2.4705884, a: 1}
       data:
         first:
           name: _Color
