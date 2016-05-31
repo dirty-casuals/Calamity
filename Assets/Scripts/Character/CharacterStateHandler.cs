@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public enum PlayerType {
@@ -83,8 +82,8 @@ public class CharacterStateHandler : NetworkBehaviour {
         }
 
         string localPath = "Assets/Resources/Prefabs/Characters/" + objectName + ".prefab";
-        Object localInstance = AssetDatabase.LoadAssetAtPath( localPath, typeof( GameObject ) );
-        GameObject instance = PrefabUtility.InstantiatePrefab( localInstance ) as GameObject;
+        Object localInstance = Resources.Load<GameObject>( localPath );
+        GameObject instance = Instantiate( localInstance ) as GameObject;
 
         return instance;
     }

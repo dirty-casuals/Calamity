@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using GameDataEditor;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class DefenseItem : Item {
 
     [HideInInspector]
-    public GDEDefenseItemData defenseItemData;
-    private int cachedCostOfUse;
+    [SyncVar] public GDEDefenseItemData defenseItemData;
+    [SyncVar] private int cachedCostOfUse;
     AudioSource usedAudio;
 
     private void Start( ) {

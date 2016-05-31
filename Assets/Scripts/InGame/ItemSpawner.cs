@@ -14,7 +14,6 @@ public class ItemSpawner : NetworkBehaviour {
     public float spawnTimer = 15.0f;
     [HideInInspector]
     public Item currentlySpawnedItem;
-    public GameObject testSpawn;
     private float timeToSpawnItem = 0.0f;
     private List<Item> spawnedItems = new List<Item>( );
     private IGDEData item;
@@ -24,9 +23,7 @@ public class ItemSpawner : NetworkBehaviour {
     }
 
     private void Start( ) {
-        if(NetworkServer.active) {
-            CmdSpawnItem( );
-        }
+        ServerSpawnItem( );
     }
 
     private void Update( ) {
@@ -42,8 +39,8 @@ public class ItemSpawner : NetworkBehaviour {
         timeToSpawnItem += Time.deltaTime;
     }
 
-    [Command]
-    private void CmdSpawnItem( ) {
+    [Server]
+    private void ServerSpawnItem( ) {
         if (currentlySpawnedItem) {
             return;
         }
@@ -54,15 +51,15 @@ public class ItemSpawner : NetworkBehaviour {
                 return;
             }
         }
-        CmdCreateItemFromGameData( );
+        CreateItemFromGameData( );
     }
 
-    private void CmdCreateItemFromGameData( ) {
+    private void CreateItemFromGameData( ) {
         switch (spawnType) {
             case ItemSpawnType.PAPER_BALL:
                 GDEDefenseItemData paperItem = new GDEDefenseItemData( );
                 GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.DefenseItem_Paperball, out paperItem );
-                CmdInitializeNewDefenseItem( paperItem );
+                InitializeNewDefenseItem( paperItem );
                 break;
             case ItemSpawnType.KNIFE:
                 GDEWeaponItemData knifeItem = new GDEWeaponItemData( );
@@ -72,26 +69,19 @@ public class ItemSpawner : NetworkBehaviour {
             case ItemSpawnType.MANDRAKE:
                 GDEDefenseItemData mandrakeItem = new GDEDefenseItemData( );
                 GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.DefenseItem_ManDrake, out mandrakeItem );
-                CmdInitializeNewDefenseItem( mandrakeItem );
+                InitializeNewDefenseItem( mandrakeItem );
                 break;
         }
     }
 
-    private void CmdInitializeNewDefenseItem( GDEDefenseItemData item ) {
-        //GameObject newItem = Instantiate( item.ItemModel );
-        GameObject newItem = Instantiate( testSpawn );
-        //DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
-        //currentlySpawnedItem = itemType;
-        //itemType.defenseItemData = item;
-        //itemType.itemSpawnPoint = gameObject;
-        //spawnedItems.Add( itemType );
+    private void InitializeNewDefenseItem( GDEDefenseItemData item ) {
+        GameObject newItem = Instantiate( item.ItemModel );
+        DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
+        currentlySpawnedItem = itemType;
+        itemType.defenseItemData = item;
+        itemType.itemSpawnPoint = gameObject;
+        spawnedItems.Add( itemType );
         NetworkServer.Spawn( newItem );
-        //TestSpawn( );
-    }
-
-    private void TestSpawn( ) {
-        GameObject newTest = Instantiate( testSpawn );
-        NetworkServer.Spawn( newTest );
     }
 
     private void CmdInitializeNewWeaponItem( GDEWeaponItemData item ) {

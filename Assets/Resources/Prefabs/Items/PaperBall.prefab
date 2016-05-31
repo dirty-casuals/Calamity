@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11441928}
   - 82: {fileID: 8226238}
   - 114: {fileID: 11487602}
+  - 114: {fileID: 11449512}
   m_Layer: 0
   m_Name: PaperBall
   m_TagString: Item
@@ -327,6 +328,38 @@ MonoBehaviour:
   itemInPlayerHands: 0
   currentItemState: 0
   itemSpawnPoint: {fileID: 0}
+--- !u!114 &11449512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 11
+    i1: 66
+    i2: 95
+    i3: 249
+    i4: 239
+    i5: 119
+    i6: 255
+    i7: 196
+    i8: 73
+    i9: 32
+    i10: 88
+    i11: 63
+    i12: 196
+    i13: 229
+    i14: 217
+    i15: 155
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11487602
 MonoBehaviour:
   m_ObjectHideFlags: 1

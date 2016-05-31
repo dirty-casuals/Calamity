@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 public enum ItemState {
     ITEM_AT_SPAWN_POINT,
@@ -11,13 +11,13 @@ public enum ItemState {
 
 public class Item : UnityObserver {
 
-    public GameObject activeVisual;
-    public GameObject spawnVisual;
-    public bool itemInPlayerHands = false;
+    [SyncVar] public GameObject activeVisual;
+    [SyncVar] public GameObject spawnVisual;
+    [SyncVar] public bool itemInPlayerHands = false;
     [HideInInspector]
-    public ItemState currentItemState;
+    [SyncVar] public ItemState currentItemState;
     [HideInInspector]
-    public GameObject itemSpawnPoint;
+    [SyncVar] public GameObject itemSpawnPoint;
 
     public virtual void SpawnItem( ) { }
 
