@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
-public class UnityObserver : MonoBehaviour {
+public class UnityObserver : NetworkBehaviour {
     //Don't Override Awake
     protected void Awake( ) {
-        this.gameObject.tag = "UnityObserver";
+        gameObject.tag = "UnityObserver";
         InitializeUnityObserver( );
     }
 

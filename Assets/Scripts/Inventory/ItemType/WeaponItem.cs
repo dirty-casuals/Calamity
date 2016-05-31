@@ -6,7 +6,6 @@ public class WeaponItem : Item {
     [HideInInspector]
     public GDEWeaponItemData weaponItemData;
     private int cachedCostOfUse;
-    AudioSource usedAudio;
 
     private void Start( ) {
         GDEDataManager.Init( "gde_data" );
@@ -16,7 +15,6 @@ public class WeaponItem : Item {
         spawnVisual.SetActive( true );
         activeVisual.SetActive( false );
         MoveItemToSpawnLocation( );
-        usedAudio = GetComponent<AudioSource>( );
     }
 
     public override void OnNotify( Object sender, EventArguments e ) {
