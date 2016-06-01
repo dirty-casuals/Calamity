@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnitySampleAssets.CrossPlatformInput;
+﻿using UnitySampleAssets.CrossPlatformInput;
 using UnityEngine.Networking;
 
 public class PlayerController : Subject {
@@ -55,7 +54,7 @@ public class PlayerController : Subject {
             }
         }
         if (leftMouseButtonActivated) {
-            UseItem( );
+            CmdUseItem( );
         }
         if (rightMouseButtonActivated) {
             DisableItem( );
@@ -81,18 +80,19 @@ public class PlayerController : Subject {
         inventoryItem.CmdPlaceItemInHand( gameObject );
     }
 
-    private void UseItem( ) {
+    [Command]
+    private void CmdUseItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).UseItem( gameObject );
+        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
     }
 
     private void DisableItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).DisableItem( );
+        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdDisableItem( );
     }
 
 }

@@ -30,12 +30,12 @@ public class Item : UnityObserver {
 
     public virtual void AddItemToPlayerInventory( GameObject player ) { }
 
-    public virtual void UseItem( GameObject player ) { }
+    public virtual void CmdUseItem( GameObject player ) { }
 
     public virtual void CmdPlaceItemInHand( GameObject player ) { }
 
-    public virtual void DisableItem( ) { }
+    public virtual void CmdDisableItem( ) { }
 
-    protected virtual void ItemHasPerished( ) { }
+    protected virtual void CmdItemHasPerished( ) { }
 
 }

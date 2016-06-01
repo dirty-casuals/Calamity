@@ -15,11 +15,12 @@ public class MandrakeItem : DefenseItem {
         itemInPlayerHands = true;
     }
 
-    public override void UseItem( GameObject player ) {
+    [Command]
+    public override void CmdUseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
-        MakePlayerInvisible( player );
+        CmdMakePlayerInvisible( player );
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         currentItemState = ItemState.ITEM_IN_USE;
         StartCoroutine( HideItemAfterUsePeriod( ) );
@@ -28,7 +29,7 @@ public class MandrakeItem : DefenseItem {
     protected override IEnumerator HideItemAfterUsePeriod( ) {
         yield return new WaitForSeconds( defenseItemData.itemDuration );
         playerRig.Entity.IsActive = true;
-        ItemHasPerished( );
+        CmdItemHasPerished( );
     }
 
     [Command]
@@ -44,7 +45,8 @@ public class MandrakeItem : DefenseItem {
         activeVisual.SetActive( true );
     }
 
-    private void MakePlayerInvisible( GameObject player ) {
+    [Command]
+    private void CmdMakePlayerInvisible( GameObject player ) {
         playerRig.Entity.IsActive = false;
     }
 

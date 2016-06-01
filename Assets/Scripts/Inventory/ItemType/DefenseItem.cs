@@ -17,7 +17,7 @@ public class DefenseItem : Item {
         cachedCostOfUse = defenseItemData.CostOfUse;
         spawnVisual.SetActive( true );
         activeVisual.SetActive( false );
-        MoveItemToSpawnLocation( );
+        CmdMoveItemToSpawnLocation( );
         usedAudio = GetComponent<AudioSource>( );
     }
 
@@ -50,26 +50,30 @@ public class DefenseItem : Item {
         }
     }
 
-    public override void DisableItem( ) {
+    [Command]
+    public override void CmdDisableItem( ) {
         currentItemState = ItemState.ITEM_INACTIVE;
-        ResetItem( );
+        CmdResetItem( );
     }
 
     protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
 
-    protected override void ItemHasPerished( ) {
+    [Command]
+    protected override void CmdItemHasPerished( ) {
         if (defenseItemData.numberOfUses < 0) {
-            DisableItem( );
+            CmdDisableItem( );
         }
     }
 
-    protected void ResetItem( ) {
-        MoveItemToSpawnLocation( );
+    [Command]
+    protected void CmdResetItem( ) {
+        CmdMoveItemToSpawnLocation( );
         spawnVisual.SetActive( false );
         activeVisual.SetActive( false );
     }
 
-    private void MoveItemToSpawnLocation( ) {
+    [Command]
+    private void CmdMoveItemToSpawnLocation( ) {
         transform.position = itemSpawnPoint.transform.position;
         transform.parent = itemSpawnPoint.transform;
     }

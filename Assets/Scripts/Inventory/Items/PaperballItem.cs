@@ -22,7 +22,7 @@ public class PaperballItem : DefenseItem {
         itemInPlayerHands = true;
     }
 
-    public override void UseItem( GameObject player ) {
+    public override void CmdUseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
@@ -36,7 +36,7 @@ public class PaperballItem : DefenseItem {
         currentItemState = ItemState.ITEM_THROWN;
         yield return new WaitForSeconds( defenseItemData.itemDuration );
         ResetRigidbody( );
-        ResetItem( );
+        CmdResetItem( );
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
     }
 

@@ -31,7 +31,7 @@ public class ItemSpawner : NetworkBehaviour {
             return;
         }
         if (timeToSpawnItem >= spawnTimer) {
-            //ServerSpawnItem( );
+            ServerSpawnItem( );
             timeToSpawnItem = 0.0f;
             return;
         }
