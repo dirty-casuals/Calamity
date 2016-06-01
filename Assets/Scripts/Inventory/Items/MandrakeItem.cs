@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using RAIN.Entities;
 
@@ -6,10 +7,11 @@ public class MandrakeItem : DefenseItem {
 
     private EntityRig playerRig;
 
-    public override void PlaceItemInHand( GameObject player ) {
+    [Command]
+    public override void CmdPlaceItemInHand( GameObject player ) {
         playerRig = player.GetComponentInChildren<EntityRig>( );
-        PlaceMandrakeInPlayerHands( player );
-        SetMandrakeVisualAspect( );
+        CmdPlaceMandrakeInPlayerHands( player );
+        CmdSetMandrakeVisualAspect( );
         itemInPlayerHands = true;
     }
 
@@ -29,13 +31,15 @@ public class MandrakeItem : DefenseItem {
         ItemHasPerished( );
     }
 
-    private void PlaceMandrakeInPlayerHands( GameObject player ) {
+    [Command]
+    private void CmdPlaceMandrakeInPlayerHands( GameObject player ) {
         GameObject playerHands = player.GetComponentInChildren<PlayerHands>( ).gameObject;
         gameObject.transform.position = playerHands.transform.position;
         gameObject.transform.parent = playerHands.transform;
     }
 
-    private void SetMandrakeVisualAspect( ) {
+    [Command]
+    private void CmdSetMandrakeVisualAspect( ) {
         spawnVisual.SetActive( false );
         activeVisual.SetActive( true );
     }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnitySampleAssets.CrossPlatformInput;
+using UnityEngine.Networking;
 
 public class PlayerController : Subject {
     private GameHandler gameHandler;
@@ -46,10 +47,12 @@ public class PlayerController : Subject {
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
-        Item itemInFirstSlot = inventory.itemForFirstSlot;
-
-        if (itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands) {
-            PlaceItemInHands( );
+        
+        if ( inventory.itemForFirstSlot != null ) {
+            Item itemInFirstSlot = inventory.itemForFirstSlot.GetComponent<Item>( );
+            if ( itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands ) {
+                CmdPlaceItemInHands( );
+            }
         }
         if (leftMouseButtonActivated) {
             UseItem( );
@@ -69,25 +72,27 @@ public class PlayerController : Subject {
         return walking;
     }
 
-    private void PlaceItemInHands( ) {
+    [Command]
+    private void CmdPlaceItemInHands( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
-        inventory.itemForFirstSlot.PlaceItemInHand( gameObject );
+        Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
+        inventoryItem.CmdPlaceItemInHand( gameObject );
     }
 
     private void UseItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
-        inventory.itemForFirstSlot.UseItem( gameObject );
+        inventory.itemForFirstSlot.GetComponent<Item>( ).UseItem( gameObject );
     }
 
     private void DisableItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
-        inventory.itemForFirstSlot.DisableItem( );
+        inventory.itemForFirstSlot.GetComponent<Item>( ).DisableItem( );
     }
 
 }

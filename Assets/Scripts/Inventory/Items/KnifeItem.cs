@@ -2,7 +2,7 @@
 
 public class KnifeItem : WeaponItem {
 
-    public override void PlaceItemInHand( GameObject player ) {
+    public override void CmdPlaceItemInHand( GameObject player ) {
         PlaceKnifeInPlayersHands( player );
         SetKnifeVisualAspect( );
         itemInPlayerHands = true;

@@ -32,7 +32,7 @@ public class Item : UnityObserver {
 
     public virtual void UseItem( GameObject player ) { }
 
-    public virtual void PlaceItemInHand( GameObject player ) { }
+    public virtual void CmdPlaceItemInHand( GameObject player ) { }
 
     public virtual void DisableItem( ) { }
 

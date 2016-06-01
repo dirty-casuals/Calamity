@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class PlayerInventory : Subject {
 
@@ -6,62 +7,71 @@ public class PlayerInventory : Subject {
     public const string REMOVED_ITEM_FROM_INVENTORY = "REMOVED_ITEM_FROM_INVENTORY";
     public const string ITEM_THROWN_BY_PLAYER = "ITEM_THROWN_BY_PLAYER";
     [HideInInspector]
-    public Item itemForFirstSlot;
+    [SyncVar] public GameObject itemForFirstSlot;
 
     private void Update( ) {
         if (!itemForFirstSlot) {
             return;
         }
-        RemoveUnusableItems( );
+        CmdRemoveUnusableItems( );
     }
 
     private void OnTriggerEnter( Collider col ) {
         if (col.gameObject.tag != "Respawn") {
             return;
         }
-        Item itemInSpawner = col.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
-        if (!itemInSpawner || itemForFirstSlot != null) {
+        CmdCheckPlayerCanHaveItem( col.gameObject );
+    }
+
+    [Command]
+    private void CmdCheckPlayerCanHaveItem( GameObject spawner ) {
+        GameObject itemInSpawner = spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
+        if ( !itemInSpawner || itemForFirstSlot != null )
+        {
             return;
         }
-        AddItemToInventory( itemInSpawner );
-
-        // Remove item from spawner
-        col.GetComponent<ItemSpawner>( ).currentlySpawnedItem = null;
+        CmdAddItemToInventory( itemInSpawner );
+        spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem = null;
     }
 
-    private void AddItemToInventory( Item newItem ) {
-        AddUnityObservers( newItem.gameObject );
+    [Command]
+    private void CmdAddItemToInventory( GameObject item ) {
+        Item newItem = item.GetComponent<Item>( );
+        AddUnityObservers( item );
         NotifySendObject( newItem, ADDED_ITEM_TO_INVENTORY );
-        itemForFirstSlot = newItem;
+        itemForFirstSlot = item;
     }
 
-    private void RemoveUnusableItems( ) {
-        switch (itemForFirstSlot.currentItemState) {
+    [Command]
+    private void CmdRemoveUnusableItems( ) {
+        switch (itemForFirstSlot.GetComponent<Item>( ).currentItemState) {
             case ItemState.ITEM_IN_USE:
             case ItemState.ITEM_IN_PLAYER_INVENTORY:
                 break;
             case ItemState.ITEM_THROWN:
-                RemoveThrownItem( );
+                CmdRemoveThrownItem( );
                 break;
             case ItemState.ITEM_INACTIVE:
-                RemoveUsedItem( );
+                CmdRemoveUsedItem( );
                 break;
         }
     }
 
-    private void RemoveThrownItem( ) {
+    [Command]
+    private void CmdRemoveThrownItem( ) {
         Notify( ITEM_THROWN_BY_PLAYER );
-        RemoveItemFromInventory( );
+        CmdRemoveItemFromInventory( );
     }
-
-    private void RemoveUsedItem( ) {
+    [Command]
+    private void CmdRemoveUsedItem( ) {
         Notify( REMOVED_ITEM_FROM_INVENTORY );
-        RemoveItemFromInventory( );
+        CmdRemoveItemFromInventory( );
     }
 
-    private void RemoveItemFromInventory( ) {
+    [Command]
+    private void CmdRemoveItemFromInventory( ) {
         RemoveUnityObserver( itemForFirstSlot.gameObject );
-        itemForFirstSlot.itemInPlayerHands = false;
+        itemForFirstSlot.GetComponent<Item>( ).itemInPlayerHands = false;
         itemForFirstSlot = null;
     }
 }

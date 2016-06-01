@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 public class PaperballItem : DefenseItem {
 
-    /* Reset projectile to original after being throw
+    /* Reset projectile to original after being thrown
     ** So it doesn't move with the player
     */
     private Transform cachedTransform;
     private GameObject currentPlayer;
     private Rigidbody itemRigidbody;
 
-    public override void PlaceItemInHand( GameObject player ) {
+    [Command]
+    public override void CmdPlaceItemInHand( GameObject player ) {
         currentPlayer = player;
         itemRigidbody = GetComponent<Rigidbody>( );
         cachedTransform = gameObject.transform.parent;

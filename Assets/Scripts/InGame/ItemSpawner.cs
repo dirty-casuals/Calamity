@@ -13,10 +13,9 @@ public class ItemSpawner : NetworkBehaviour {
     public ItemSpawnType spawnType;
     public float spawnTimer = 15.0f;
     [HideInInspector]
-    public Item currentlySpawnedItem;
+    [SyncVar] public GameObject currentlySpawnedItem;
     private float timeToSpawnItem = 0.0f;
     private List<Item> spawnedItems = new List<Item>( );
-    private IGDEData item;
 
     private void Awake( ) {
         GDEDataManager.Init( "gde_data" );
@@ -32,7 +31,7 @@ public class ItemSpawner : NetworkBehaviour {
             return;
         }
         if (timeToSpawnItem >= spawnTimer) {
-            //CmdSpawnItem( );
+            //ServerSpawnItem( );
             timeToSpawnItem = 0.0f;
             return;
         }
@@ -46,7 +45,7 @@ public class ItemSpawner : NetworkBehaviour {
         }
         foreach (Item item in spawnedItems) {
             if (item.currentItemState == ItemState.ITEM_AT_SPAWN_POINT) {
-                currentlySpawnedItem = item;
+                currentlySpawnedItem = item.gameObject;
                 item.RespawnItem( );
                 return;
             }
@@ -77,17 +76,17 @@ public class ItemSpawner : NetworkBehaviour {
     private void InitializeNewDefenseItem( GDEDefenseItemData item ) {
         GameObject newItem = Instantiate( item.ItemModel );
         DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
-        currentlySpawnedItem = itemType;
         itemType.defenseItemData = item;
         itemType.itemSpawnPoint = gameObject;
         spawnedItems.Add( itemType );
         NetworkServer.Spawn( newItem );
+        currentlySpawnedItem = newItem;
     }
 
     private void CmdInitializeNewWeaponItem( GDEWeaponItemData item ) {
         GameObject newItem = Instantiate( item.ItemModel );
         WeaponItem itemType = newItem.GetComponent<WeaponItem>( );
-        currentlySpawnedItem = itemType;
+        currentlySpawnedItem = newItem;
         itemType.weaponItemData = item;
         itemType.itemSpawnPoint = gameObject;
         spawnedItems.Add( itemType );
