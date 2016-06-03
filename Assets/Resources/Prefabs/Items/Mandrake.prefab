@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449798}
-  - 33: {fileID: 3362924}
   - 23: {fileID: 2330056}
   m_Layer: 13
   m_Name: Spawn
@@ -25,7 +24,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499364}
-  - 33: {fileID: 3329664}
   - 23: {fileID: 2339330}
   m_Layer: 13
   m_Name: Active
@@ -150,20 +148,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3329664
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178210}
-  m_Mesh: {fileID: 4300000, guid: 2cc484e107d0c024ea47ef99a3f6eb6c, type: 3}
---- !u!33 &3362924
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174826}
-  m_Mesh: {fileID: 4300000, guid: 2cc484e107d0c024ea47ef99a3f6eb6c, type: 3}
 --- !u!54 &5446978
 Rigidbody:
   m_ObjectHideFlags: 1

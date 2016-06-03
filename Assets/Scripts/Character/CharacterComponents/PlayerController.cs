@@ -57,7 +57,7 @@ public class PlayerController : Subject {
             CmdUseItem( );
         }
         if (rightMouseButtonActivated) {
-            DisableItem( );
+            CmdDisableItem( );
         }
         if (PlayerIsMoving( horizontal, vertical )) {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
@@ -88,7 +88,8 @@ public class PlayerController : Subject {
         inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
     }
 
-    private void DisableItem( ) {
+    [Command]
+    private void CmdDisableItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
