@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class GameHandler : UnityObserver {
     public Text countdownLabel;
@@ -31,8 +34,12 @@ public class GameHandler : UnityObserver {
     private List<Spawner> monsterSpawnPoints;
     private List<PlayerController> playerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
+    private LightsHandler lightsHandler;
+    private GameObject humanPlayer;
 
     private void Start( ) {
+        lightsHandler = new LightsHandler( gameObject );
+
         preCalamityState = new GamePreCalamityState( this );
         calamityState = new CalamityState( this );
         nextRoundState = new CalamityRoundState( this );
@@ -49,7 +56,36 @@ public class GameHandler : UnityObserver {
         playerControllers.Add( controller );
     }
 
-    public override void OnNotify( Object sender, EventArguments e ) {
+    public void SetLightsToFull( ) {
+        lightsHandler.SetLightsToFull( );
+    }
+
+    public void SetLightsToLow( ) {
+        lightsHandler.SetLightsToLow( );
+    }
+
+    public void RunBlurEffect( ) {
+        
+        // this might need updating to work multiplayer, I'm not sure
+        GameObject camera = GameObject.FindGameObjectWithTag( "MainCamera" );
+        
+        if (camera != null) {
+            BlurOptimized blur = camera.GetComponent<BlurOptimized>( );
+            blur.enabled = true;
+            blur.blurSize = 10.0f;
+            StartCoroutine( DecreaseAndRemoveBlur( blur ) );
+        }
+    }
+
+    private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {
+        while (blur.blurSize > 0.0f) {
+            yield return new WaitForSeconds( 0.5f );
+            blur.blurSize = blur.blurSize - 1.0f;
+        }
+        blur.enabled = false;
+    }
+
+    public override void OnNotify( UnityEngine.Object sender, EventArguments e ) {
         switch (e.eventMessage) {
             case SET_PRE_CALAMITY_STATE:
                 currentGameState = preCalamityState;
@@ -80,11 +116,11 @@ public class GameHandler : UnityObserver {
                 spawn.playable = true;
                 humansCreated += 1;
             }
-            if (spawn.playable) {
-                spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
-            } else {
+            //if (spawn.playable) {
+            //    spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
+            //} else {
                 spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
-            }
+            //}
             spawn.StartSpawn( );
         }
     }
@@ -112,7 +148,7 @@ public class GameHandler : UnityObserver {
             spawner = playerSpawnPoints[ i ];
 
             spawner.UpdateChildrenToSpawnPosition( );
-            spawner.ReenableCurrentCharacter();
+            spawner.ReenableCurrentCharacter( );
         }
     }
 

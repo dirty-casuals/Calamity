@@ -81,7 +81,7 @@ public class CharacterStateHandler : NetworkBehaviour {
                 break;
         }
 
-        string localPath = "Assets/Resources/Prefabs/Characters/" + objectName + ".prefab";
+        string localPath = "Prefabs/Characters/" + objectName;
         Object localInstance = Resources.Load<GameObject>( localPath );
         GameObject instance = Instantiate( localInstance ) as GameObject;
 

@@ -17,12 +17,18 @@ public class CalamityState : GameState {
         gameHandler.StartMonsterSpawners( );
         endTime = gameHandler.calamityLengthSeconds;
         gameHandler.countdownLabel.text = "The Calamity";
+        SetLighting( );
+        gameHandler.RunBlurEffect( );
     }
 
     public override void GameUpdate( ) {
         EndCalamityWhenCountdownReached( );
         SetCountdownTime( );
         gameTimer += Time.deltaTime;
+    }
+
+    private void SetLighting( ) {
+        gameHandler.SetLightsToLow( );
     }
 
     private void EndCalamityWhenCountdownReached( ) {

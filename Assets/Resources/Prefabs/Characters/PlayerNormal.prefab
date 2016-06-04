@@ -114,6 +114,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 484110}
   - 20: {fileID: 2004100}
+  - 114: {fileID: 11431862}
+  - 114: {fileID: 11414296}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -1705,6 +1707,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28e525654ceb25409a5103e6fe45454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11414296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.25
+  intensity: 0.75
+  blurSize: 1.35
+  blurIterations: 2
+  blurType: 0
+  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
 --- !u!114 &11425176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1833,6 +1852,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3820d8bb256e243a11f44582362fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11431862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113500}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc6bde01469c7b4badee5362f191d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downsample: 2
+  blurSize: 10
+  blurIterations: 2
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
 --- !u!114 &11440894
 MonoBehaviour:
   m_ObjectHideFlags: 1
