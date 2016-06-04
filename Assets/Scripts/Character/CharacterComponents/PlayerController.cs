@@ -6,6 +6,7 @@ public class PlayerController : Subject {
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
+    public bool alive = true;
 
     private void Start( ) {
         stateHandler = GetComponent<CharacterStateHandler>( );
@@ -13,7 +14,7 @@ public class PlayerController : Subject {
         inventory = GetComponent<PlayerInventory>( );
         gameHandler = FindObjectOfType<GameHandler>( );
         AddUnityObservers( gameHandler.gameObject );
-        gameHandler.AddPlayerController( this );
+        NotifySendObject( this, GameHandler.NEW_PLAYER );
     }
 
     public void ControllerPause( ) {
@@ -36,6 +37,15 @@ public class PlayerController : Subject {
 
     public bool isMonster( ) {
         return stateHandler.playerType == PlayerType.MONSTER || stateHandler.playerType == PlayerType.AI_MONSTER;
+    }
+
+    public void SetDead( ) {
+        alive = false;
+        NotifySendObject( this, GameHandler.CHARACTER_DIED );
+    }
+
+    public bool IsDead( ) {
+        return alive == false;
     }
 
     public void InputHandler( float movementSpeed ) {

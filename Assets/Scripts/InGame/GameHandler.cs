@@ -25,6 +25,8 @@ public class GameHandler : UnityObserver {
     public const string SET_CALAMITY_END_ROUND = "SET_CALAMITY_END_ROUND";
     public const string SET_END_GAME = "SET_END_GAME ";
     public const string TOGGLE_GAME_PAUSE = "TOGGLE_GAME_PAUSE";
+    public const string CHARACTER_DIED = "CHARACTER_DIED";
+    public const string NEW_PLAYER = "NEW_PLAYER";
     public static GameState currentGameState;
     private static GamePreCalamityState preCalamityState;
     private static CalamityState calamityState;
@@ -33,6 +35,7 @@ public class GameHandler : UnityObserver {
     private List<Spawner> playerSpawnPoints;
     private List<Spawner> monsterSpawnPoints;
     private List<PlayerController> playerControllers = new List<PlayerController>( );
+    private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
     private LightsHandler lightsHandler;
     private GameObject humanPlayer;
@@ -54,6 +57,7 @@ public class GameHandler : UnityObserver {
 
     public void AddPlayerController( PlayerController controller ) {
         playerControllers.Add( controller );
+        alivePlayerControllers.Add( controller );
     }
 
     public void SetLightsToFull( ) {
@@ -106,6 +110,12 @@ public class GameHandler : UnityObserver {
             case TOGGLE_GAME_PAUSE:
                 TogglePauseMenu( );
                 break;
+            case CHARACTER_DIED:
+                PlayerDied( (PlayerController)sender );
+                break;
+            case NEW_PLAYER:
+                AddPlayerController( (PlayerController)sender );
+                break;
         }
     }
 
@@ -156,6 +166,29 @@ public class GameHandler : UnityObserver {
         for (int i = 0; i < playerControllers.Count; i += 1) {
             PlayerController controller = playerControllers[ i ];
             controller.UpdateState( );
+        }
+    }
+
+    public bool DidAllLose() {
+        int count = alivePlayerControllers.Count;
+        return count != 1;
+    }
+
+    public bool DidAllDie( ) {
+        int count = alivePlayerControllers.Count;
+        return count == 0;
+    }
+
+    public PlayerController GetWinner( ) {
+        // this is just a placeholder really
+        return alivePlayerControllers[ 0 ];
+    }
+
+    private void PlayerDied( PlayerController playerController ) {
+        alivePlayerControllers.Remove( playerController );
+        if (alivePlayerControllers.Count == 0) {
+            currentGameState = gameEndState;
+            currentGameState.InitializeGameState( );
         }
     }
 

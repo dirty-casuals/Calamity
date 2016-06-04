@@ -6,17 +6,15 @@ using System;
 public class NormalState : CharacterState {
 
     public float characterMovementSpeed = 5.0f;
-    private PlayerController controller;
     private CalamityFirstPersonController firstPersonController;
     private SkinnedMeshRenderer playerMesh;
     private EntityRig playerRig;
     private bool playerControllerDisabled;
 
-    public NormalState( GameObject playerBody ) {
+    public NormalState( GameObject playerBody ) : base( playerBody ) {
         character = playerBody;
         characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
-        controller = character.GetComponent<PlayerController>( );
         firstPersonController = character.GetComponent<CalamityFirstPersonController>( );
         playerMesh = character.GetComponentInChildren<SkinnedMeshRenderer>( );
         playerRig = playerBody.GetComponentInChildren<EntityRig>( );
@@ -29,14 +27,14 @@ public class NormalState : CharacterState {
             return;
         }
         firstPersonController.UpdateCalamityLookRotation( );
-        if (!alive) {
+        if (controller.IsDead( )) {
             return;
         }
         firstPersonController.UpdateCalamityController( );
     }
 
     public override void PlayerPhysicsUpdate( ) {
-        if (playerControllerDisabled || !alive) {
+        if (playerControllerDisabled || controller.IsDead( )) {
             return;
         }
         controller.InputHandler( characterMovementSpeed );
@@ -46,13 +44,13 @@ public class NormalState : CharacterState {
     public override void ToggleControllerInput( ) {
         playerControllerDisabled = !playerControllerDisabled;
     }
-    
+
     public override void SetupNetworkConfig( bool isLocalPlayer ) {
         if (isLocalPlayer) {
             playerMesh.gameObject.layer = LayerMask.NameToLayer( "Player" );
         }
     }
-    
+
     public override void KnockoutPlayer( ) {
         base.KnockoutPlayer( );
         controller.SetNextState( PlayerType.MONSTER );

@@ -6,7 +6,12 @@ public abstract class CharacterState {
     public GameObject character;
     public Animator characterAnimator;
     public Rigidbody characterRigidbody;
-    public bool alive = true;
+
+    protected PlayerController controller;
+
+    public CharacterState( GameObject body ) {
+        controller = body.GetComponent<PlayerController>( );
+    }
 
     public virtual void PlayerPhysicsUpdate( ) {
 
@@ -25,7 +30,7 @@ public abstract class CharacterState {
     }
 
     public virtual void KnockoutPlayer( ) {
-        alive = false;
+        controller.SetDead( );
         characterAnimator.SetBool( "KnockOut", true );
     }
 
@@ -34,7 +39,6 @@ public abstract class CharacterState {
     }
 
     public virtual void RevivePlayer( ) {
-        alive = true;
         characterAnimator.SetBool( "KnockOut", false );
         characterAnimator.SetBool( "Idle", true );
     }
