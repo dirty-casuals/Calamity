@@ -10,7 +10,7 @@ public class PlayerInventory : Subject {
     [SyncVar] public GameObject itemForFirstSlot;
 
     private void Update( ) {
-        if (!itemForFirstSlot) {
+        if ( !isLocalPlayer || !itemForFirstSlot) {
             return;
         }
         CmdRemoveUnusableItems( );

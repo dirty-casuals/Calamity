@@ -10,8 +10,8 @@ public class MandrakeItem : DefenseItem {
     [Command]
     public override void CmdPlaceItemInHand( GameObject player ) {
         playerRig = player.GetComponentInChildren<EntityRig>( );
-        CmdPlaceMandrakeInPlayerHands( player );
-        CmdSetMandrakeVisualAspect( );
+        PlaceMandrakeInPlayerHands( player );
+        SetMandrakeVisualAspect( );
         itemInPlayerHands = true;
     }
 
@@ -20,7 +20,7 @@ public class MandrakeItem : DefenseItem {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
-        CmdMakePlayerInvisible( player );
+        MakePlayerInvisible( player );
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         currentItemState = ItemState.ITEM_IN_USE;
         StartCoroutine( HideItemAfterUsePeriod( ) );
@@ -32,21 +32,18 @@ public class MandrakeItem : DefenseItem {
         CmdItemHasPerished( );
     }
 
-    [Command]
-    private void CmdPlaceMandrakeInPlayerHands( GameObject player ) {
+    private void PlaceMandrakeInPlayerHands( GameObject player ) {
         GameObject playerHands = player.GetComponentInChildren<PlayerHands>( ).gameObject;
         gameObject.transform.position = playerHands.transform.position;
         gameObject.transform.parent = playerHands.transform;
     }
 
-    [Command]
-    private void CmdSetMandrakeVisualAspect( ) {
+    private void SetMandrakeVisualAspect( ) {
         spawnVisual.SetActive( false );
         activeVisual.SetActive( true );
     }
-
-    [Command]
-    private void CmdMakePlayerInvisible( GameObject player ) {
+    
+    private void MakePlayerInvisible( GameObject player ) {
         playerRig.Entity.IsActive = false;
     }
 
