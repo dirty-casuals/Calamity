@@ -22,6 +22,7 @@ public class PaperballItem : DefenseItem {
         itemInPlayerHands = true;
     }
 
+    [Command]
     public override void CmdUseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;

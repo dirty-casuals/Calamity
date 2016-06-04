@@ -76,10 +76,10 @@ public class ItemSpawner : NetworkBehaviour {
     private void InitializeNewDefenseItem( GDEDefenseItemData item ) {
         GameObject newItem = Instantiate( item.ItemModel );
         DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
+        NetworkServer.Spawn( newItem );
         itemType.defenseItemData = item;
         itemType.itemSpawnPoint = gameObject;
         spawnedItems.Add( itemType );
-        NetworkServer.Spawn( newItem );
         currentlySpawnedItem = newItem;
     }
 

@@ -17,8 +17,8 @@ public class DefenseItem : Item {
         cachedCostOfUse = defenseItemData.CostOfUse;
         spawnVisual.SetActive( true );
         activeVisual.SetActive( false );
-        CmdMoveItemToSpawnLocation( );
         usedAudio = GetComponent<AudioSource>( );
+        CmdMoveItemToSpawnLocation( );
     }
 
     public override void OnNotify( Object sender, EventArguments e ) {
