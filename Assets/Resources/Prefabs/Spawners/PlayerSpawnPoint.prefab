@@ -54,6 +54,7 @@ MonoBehaviour:
   spawnType: 0
   playable: 0
   somethingInSpawnPoint: 0
+  characterPrefab: {fileID: 102998, guid: 9c182b42165bce147a4bf13781a65441, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

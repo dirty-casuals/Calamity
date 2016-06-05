@@ -38,7 +38,7 @@ MonoBehaviour:
       name=&quot;Walk&quot; debugbreak=&quot;False&quot; damptime=&quot;0&quot; /&gt;&lt;sequencer
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;sequencer&quot;
       debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
-      parametervalues=&quot;Ik1vbnN0ZXIgUm91dGUiAG1vdmVUYXJnZXQ=&quot; parameters=&quot;V2F5cG9pbnROZXR3b3JrAE1vdmVUYXJnZXRWYXJpYWJsZQ==&quot;
+      parametervalues=&quot;Ik1vbnN0ZXIgUm91dGUiAG1vdmVUYXJnZXQA&quot; parameters=&quot;V2F5cG9pbnROZXR3b3JrAE1vdmVUYXJnZXRWYXJpYWJsZQB3YXlwb2ludFZhcmlhYmxl&quot;
       namespace=&quot;&quot; name=&quot;action&quot; debugbreak=&quot;False&quot;
       classname=&quot;ChooseWaypoint&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;

@@ -31,7 +31,7 @@ public abstract class CharacterState {
 
     public virtual void KnockoutPlayer( ) {
         controller.SetDead( );
-        characterAnimator.SetBool( "KnockOut", true );
+        characterAnimator.SetBool( "Die", true );
     }
 
     public virtual void SetupNetworkConfig( bool isLocalPlayer ) {
@@ -39,7 +39,6 @@ public abstract class CharacterState {
     }
 
     public virtual void RevivePlayer( ) {
-        characterAnimator.SetBool( "KnockOut", false );
-        characterAnimator.SetBool( "Idle", true );
+        characterAnimator.SetBool( "Die", false );
     }
 }
