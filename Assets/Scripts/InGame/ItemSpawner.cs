@@ -22,31 +22,32 @@ public class ItemSpawner : NetworkBehaviour {
     }
 
     private void Start( ) {
-        ServerSpawnItem( );
+        if (!isServer) {
+            return;
+        }
+        SpawnItem( );
     }
 
     private void Update( ) {
         if (currentlySpawnedItem) {
             timeToSpawnItem = 0.0f;
-            return;
-        }
-        if (timeToSpawnItem >= spawnTimer) {
-            ServerSpawnItem( );
+        } else if (timeToSpawnItem >= spawnTimer && isServer) {
+            SpawnItem( );
             timeToSpawnItem = 0.0f;
-            return;
+        } else {
+            timeToSpawnItem += Time.deltaTime;
         }
-        timeToSpawnItem += Time.deltaTime;
     }
 
     [Server]
-    private void ServerSpawnItem( ) {
+    private void SpawnItem( ) {
         if (currentlySpawnedItem) {
             return;
         }
         foreach (Item item in spawnedItems) {
             if (item.currentItemState == ItemState.ITEM_AT_SPAWN_POINT) {
                 currentlySpawnedItem = item.gameObject;
-                item.RespawnItem( );
+                item.CmdRespawnItem( );
                 return;
             }
         }
