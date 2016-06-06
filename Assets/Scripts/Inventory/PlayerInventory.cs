@@ -7,10 +7,11 @@ public class PlayerInventory : Subject {
     public const string REMOVED_ITEM_FROM_INVENTORY = "REMOVED_ITEM_FROM_INVENTORY";
     public const string ITEM_THROWN_BY_PLAYER = "ITEM_THROWN_BY_PLAYER";
     [HideInInspector]
-    [SyncVar] public GameObject itemForFirstSlot;
+    [SyncVar]
+    public GameObject itemForFirstSlot;
 
     private void Update( ) {
-        if ( !isLocalPlayer || !itemForFirstSlot) {
+        if (!isLocalPlayer) {
             return;
         }
         CmdRemoveUnusableItems( );
@@ -26,8 +27,7 @@ public class PlayerInventory : Subject {
     [Command]
     private void CmdCheckPlayerCanHaveItem( GameObject spawner ) {
         GameObject itemInSpawner = spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
-        if ( !itemInSpawner || itemForFirstSlot != null )
-        {
+        if (!itemInSpawner || itemForFirstSlot != null) {
             return;
         }
         CmdAddItemToInventory( itemInSpawner );
@@ -44,6 +44,9 @@ public class PlayerInventory : Subject {
 
     [Command]
     private void CmdRemoveUnusableItems( ) {
+        if (!itemForFirstSlot) {
+            return;
+        }
         switch (itemForFirstSlot.GetComponent<Item>( ).currentItemState) {
             case ItemState.ITEM_IN_USE:
             case ItemState.ITEM_IN_PLAYER_INVENTORY:

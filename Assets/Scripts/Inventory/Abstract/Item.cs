@@ -21,11 +21,6 @@ public class Item : UnityObserver {
 
     public virtual void SpawnItem( ) { }
 
-    public virtual void RespawnItem( ) {
-        spawnVisual.SetActive( true );
-        activeVisual.SetActive( false );
-    }
-
     public virtual void PickupItem( ) { }
 
     public virtual void AddItemToPlayerInventory( GameObject player ) { }
@@ -35,6 +30,11 @@ public class Item : UnityObserver {
     public virtual void CmdPlaceItemInHand( GameObject player ) { }
 
     public virtual void CmdDisableItem( ) { }
+
+    [Command]
+    public void CmdRespawnItem( ) {
+        GetComponent<MeshRenderer>( ).enabled = true;
+    }
 
     protected virtual void CmdItemHasPerished( ) { }
 

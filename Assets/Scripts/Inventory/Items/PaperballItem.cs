@@ -7,18 +7,17 @@ public class PaperballItem : DefenseItem {
     /* Reset projectile to original after being thrown
     ** So it doesn't move with the player
     */
-    private Transform cachedTransform;
     private GameObject currentPlayer;
     private Rigidbody itemRigidbody;
+    [SyncVar]
+    private MeshRenderer itemMesh;
 
     [Command]
     public override void CmdPlaceItemInHand( GameObject player ) {
         currentPlayer = player;
         itemRigidbody = GetComponent<Rigidbody>( );
-        cachedTransform = gameObject.transform.parent;
-
-        PlacePaperballInPlayerHands( );
-        SetPaperballVisualAspect( );
+        itemMesh = GetComponent<MeshRenderer>( );
+        itemMesh.enabled = false;
         itemInPlayerHands = true;
     }
 
@@ -34,6 +33,7 @@ public class PaperballItem : DefenseItem {
     }
 
     protected override IEnumerator HideItemAfterUsePeriod( ) {
+        itemMesh.enabled = true;
         currentItemState = ItemState.ITEM_THROWN;
         yield return new WaitForSeconds( defenseItemData.itemDuration );
         ResetRigidbody( );
@@ -41,22 +41,16 @@ public class PaperballItem : DefenseItem {
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
     }
 
+    private void LaunchPaperBall( ) {
+        PlacePaperballInPlayerHands( );
+        itemRigidbody.isKinematic = false;
+        itemRigidbody.useGravity = true;
+        itemRigidbody.velocity = (currentPlayer.transform.forward * defenseItemData.projectileRange);
+    }
+
     private void PlacePaperballInPlayerHands( ) {
         GameObject playerHands = currentPlayer.GetComponentInChildren<PlayerHands>( ).gameObject;
         gameObject.transform.position = playerHands.transform.position;
-        gameObject.transform.parent = playerHands.transform;
-    }
-
-    private void SetPaperballVisualAspect( ) {
-        spawnVisual.SetActive( false );
-        activeVisual.SetActive( true );
-    }
-
-    private void LaunchPaperBall( ) {
-        itemRigidbody.isKinematic = false;
-        itemRigidbody.useGravity = true;
-        gameObject.transform.parent = cachedTransform;
-        itemRigidbody.velocity = (currentPlayer.transform.forward * defenseItemData.projectileRange);
     }
 
     private void ResetRigidbody( ) {
