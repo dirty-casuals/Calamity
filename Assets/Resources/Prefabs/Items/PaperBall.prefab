@@ -236,6 +236,7 @@ MonoBehaviour:
   activeVisual: {fileID: 0}
   spawnVisual: {fileID: 0}
   itemInPlayerHands: 0
+  showItem: 1
   currentItemState: 0
   itemSpawnPoint: {fileID: 0}
 --- !u!114 &11449512
@@ -269,7 +270,7 @@ MonoBehaviour:
     i14: 217
     i15: 155
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11466890
 MonoBehaviour:
   m_ObjectHideFlags: 1

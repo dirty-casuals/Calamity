@@ -13,7 +13,8 @@ public class ItemSpawner : NetworkBehaviour {
     public ItemSpawnType spawnType;
     public float spawnTimer = 15.0f;
     [HideInInspector]
-    [SyncVar] public GameObject currentlySpawnedItem;
+    [SyncVar]
+    public GameObject currentlySpawnedItem;
     private float timeToSpawnItem = 0.0f;
     private List<Item> spawnedItems = new List<Item>( );
 

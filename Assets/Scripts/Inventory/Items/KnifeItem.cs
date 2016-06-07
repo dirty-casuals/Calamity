@@ -2,13 +2,13 @@
 
 public class KnifeItem : WeaponItem {
 
-    public override void CmdPlaceItemInHand( GameObject player ) {
+    public override void AddItemToPlayer( GameObject player ) {
         PlaceKnifeInPlayersHands( player );
         SetKnifeVisualAspect( );
         itemInPlayerHands = true;
     }
 
-    public override void CmdUseItem( GameObject player ) {
+    public override void UseItem( GameObject player ) {
         currentItemState = ItemState.ITEM_IN_USE;
         GetComponent<Animation>( ).Play( );
 
