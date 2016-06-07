@@ -9,11 +9,9 @@ public class PaperballItem : DefenseItem {
     */
     private GameObject currentPlayer;
     private Rigidbody itemRigidbody;
-    [SyncVar]
     private MeshRenderer itemMesh;
 
-    [Command]
-    public override void CmdPlaceItemInHand( GameObject player ) {
+    public override void AddItemToPlayer( GameObject player ) {
         currentPlayer = player;
         itemRigidbody = GetComponent<Rigidbody>( );
         itemMesh = GetComponent<MeshRenderer>( );
@@ -21,8 +19,7 @@ public class PaperballItem : DefenseItem {
         itemInPlayerHands = true;
     }
 
-    [Command]
-    public override void CmdUseItem( GameObject player ) {
+    public override void UseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
@@ -31,7 +28,7 @@ public class PaperballItem : DefenseItem {
         currentItemState = ItemState.ITEM_IN_USE;
         StartCoroutine( HideItemAfterUsePeriod( ) );
     }
-
+     
     protected override IEnumerator HideItemAfterUsePeriod( ) {
         itemMesh.enabled = true;
         currentItemState = ItemState.ITEM_THROWN;

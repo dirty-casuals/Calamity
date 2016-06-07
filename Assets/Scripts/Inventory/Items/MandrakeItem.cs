@@ -7,16 +7,14 @@ public class MandrakeItem : DefenseItem {
 
     private EntityRig playerRig;
 
-    [Command]
-    public override void CmdPlaceItemInHand( GameObject player ) {
+    public override void AddItemToPlayer( GameObject player ) {
         playerRig = player.GetComponentInChildren<EntityRig>( );
         PlaceMandrakeInPlayerHands( player );
         SetMandrakeVisualAspect( );
         itemInPlayerHands = true;
     }
 
-    [Command]
-    public override void CmdUseItem( GameObject player ) {
+    public override void UseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
