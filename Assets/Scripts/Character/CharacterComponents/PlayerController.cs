@@ -86,14 +86,14 @@ public class PlayerController : Subject {
             return;
         }
         Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
-        inventoryItem.AddItemToPlayer( gameObject );
+        inventoryItem.CmdAddItemToPlayer( gameObject );
     }
 
     private void UseItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).UseItem( gameObject );
+        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
     }
 
     [Command]

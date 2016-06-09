@@ -30,9 +30,12 @@ public class ItemSpawner : NetworkBehaviour {
     }
 
     private void Update( ) {
+        if (!isServer) {
+            return;
+        }
         if (currentlySpawnedItem) {
             timeToSpawnItem = 0.0f;
-        } else if (timeToSpawnItem >= spawnTimer && isServer) {
+        } else if (timeToSpawnItem >= spawnTimer) {
             SpawnItem( );
             timeToSpawnItem = 0.0f;
         } else {
@@ -48,7 +51,7 @@ public class ItemSpawner : NetworkBehaviour {
         foreach (Item item in spawnedItems) {
             if (item.currentItemState == ItemState.ITEM_AT_SPAWN_POINT) {
                 currentlySpawnedItem = item.gameObject;
-                item.CmdRespawnItem( );
+                item.GetComponent<MeshRenderer>( ).enabled = true;
                 return;
             }
         }
@@ -78,9 +81,11 @@ public class ItemSpawner : NetworkBehaviour {
     private void InitializeNewDefenseItem( GDEDefenseItemData item ) {
         GameObject newItem = Instantiate( item.ItemModel );
         DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
-        NetworkServer.Spawn( newItem );
         itemType.defenseItemData = item;
         itemType.itemSpawnPoint = gameObject;
+        newItem.transform.position = transform.position;
+        newItem.transform.parent = transform;
+        NetworkServer.Spawn( newItem );
         spawnedItems.Add( itemType );
         currentlySpawnedItem = newItem;
     }
