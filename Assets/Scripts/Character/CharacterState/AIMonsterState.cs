@@ -15,11 +15,11 @@ public class AIMonsterState : CharacterState {
 
     private void KnockoutPlayerIfInRange( GameObject collision ) {
         if (collision.tag == "Player") {
-            NormalState state = (NormalState)collision.GetComponent<CharacterStateHandler>( ).currentState;
+            CharacterState state = collision.GetComponent<CharacterStateHandler>( ).currentState;
             state.KnockoutPlayer( );
         }
         if (collision.tag == "PlayerAI") {
-            AIState state = (AIState)collision.GetComponentInParent<CharacterStateHandler>( ).currentState;
+            CharacterState state = collision.GetComponentInParent<CharacterStateHandler>( ).currentState;
             state.KnockoutPlayer( );
         }
     }
