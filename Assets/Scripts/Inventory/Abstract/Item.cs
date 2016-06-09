@@ -32,16 +32,11 @@ public class Item : UnityObserver {
 
     public virtual void AddItemToPlayerInventory( GameObject player ) { }
 
-    public virtual void UseItem( GameObject player ) { }
+    public virtual void CmdUseItem( GameObject player ) { }
 
-    public virtual void AddItemToPlayer( GameObject player ) { }
+    public virtual void CmdAddItemToPlayer( GameObject player ) { }
 
     public virtual void CmdDisableItem( ) { }
-
-    [Command]
-    public void CmdRespawnItem( ) {
-        GetComponent<MeshRenderer>( ).enabled = true;
-    }
 
     protected virtual void CmdItemHasPerished( ) { }
 

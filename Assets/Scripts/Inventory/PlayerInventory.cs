@@ -65,6 +65,7 @@ public class PlayerInventory : Subject {
         Notify( ITEM_THROWN_BY_PLAYER );
         CmdRemoveItemFromInventory( );
     }
+
     [Command]
     private void CmdRemoveUsedItem( ) {
         Notify( REMOVED_ITEM_FROM_INVENTORY );

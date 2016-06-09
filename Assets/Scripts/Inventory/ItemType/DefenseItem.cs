@@ -18,9 +18,6 @@ public class DefenseItem : Item {
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
         cachedCostOfUse = defenseItemData.CostOfUse;
         usedAudio = GetComponent<AudioSource>( );
-        if (isServer) {
-            MoveItemToSpawnLocation( );
-        }
     }
 
     public override void OnNotify( Object sender, EventArguments e ) {
@@ -69,15 +66,5 @@ public class DefenseItem : Item {
     [Command]
     protected void CmdResetItem( ) {
         GetComponent<MeshRenderer>( ).enabled = false;
-        if (isServer) {
-            MoveItemToSpawnLocation( );
-        }
     }
-
-    [Server]
-    private void MoveItemToSpawnLocation( ) {
-        transform.position = itemSpawnPoint.transform.position;
-        transform.parent = itemSpawnPoint.transform;
-    }
-
 }

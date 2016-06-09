@@ -8,10 +8,12 @@ public class PaperballItem : DefenseItem {
     ** So it doesn't move with the player
     */
     private GameObject currentPlayer;
+    [SyncVar]
     private Rigidbody itemRigidbody;
     private MeshRenderer itemMesh;
 
-    public override void AddItemToPlayer( GameObject player ) {
+    [Command]
+    public override void CmdAddItemToPlayer( GameObject player ) {
         currentPlayer = player;
         itemRigidbody = GetComponent<Rigidbody>( );
         itemMesh = GetComponent<MeshRenderer>( );
@@ -19,7 +21,8 @@ public class PaperballItem : DefenseItem {
         itemInPlayerHands = true;
     }
 
-    public override void UseItem( GameObject player ) {
+    [Command]
+    public override void CmdUseItem( GameObject player ) {
         if (currentItemState == ItemState.ITEM_IN_USE) {
             return;
         }
@@ -34,7 +37,7 @@ public class PaperballItem : DefenseItem {
         currentItemState = ItemState.ITEM_THROWN;
         yield return new WaitForSeconds( defenseItemData.itemDuration );
         ResetRigidbody( );
-        CmdResetItem( );
+        //CmdResetItem( );
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
     }
 
