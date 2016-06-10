@@ -13,7 +13,8 @@ public class ItemSpawner : NetworkBehaviour {
     public ItemSpawnType spawnType;
     public float spawnTimer = 15.0f;
     [HideInInspector]
-    [SyncVar] public GameObject currentlySpawnedItem;
+    [SyncVar]
+    public GameObject currentlySpawnedItem;
     private float timeToSpawnItem = 0.0f;
     private List<Item> spawnedItems = new List<Item>( );
 
@@ -22,31 +23,35 @@ public class ItemSpawner : NetworkBehaviour {
     }
 
     private void Start( ) {
-        ServerSpawnItem( );
+        if (!isServer) {
+            return;
+        }
+        SpawnItem( );
     }
 
     private void Update( ) {
+        if (!isServer) {
+            return;
+        }
         if (currentlySpawnedItem) {
             timeToSpawnItem = 0.0f;
-            return;
-        }
-        if (timeToSpawnItem >= spawnTimer) {
-            ServerSpawnItem( );
+        } else if (timeToSpawnItem >= spawnTimer) {
+            SpawnItem( );
             timeToSpawnItem = 0.0f;
-            return;
+        } else {
+            timeToSpawnItem += Time.deltaTime;
         }
-        timeToSpawnItem += Time.deltaTime;
     }
 
     [Server]
-    private void ServerSpawnItem( ) {
+    private void SpawnItem( ) {
         if (currentlySpawnedItem) {
             return;
         }
         foreach (Item item in spawnedItems) {
             if (item.currentItemState == ItemState.ITEM_AT_SPAWN_POINT) {
                 currentlySpawnedItem = item.gameObject;
-                item.RespawnItem( );
+                item.GetComponent<MeshRenderer>( ).enabled = true;
                 return;
             }
         }
@@ -78,8 +83,10 @@ public class ItemSpawner : NetworkBehaviour {
         DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
         itemType.defenseItemData = item;
         itemType.itemSpawnPoint = gameObject;
-        spawnedItems.Add( itemType );
+        newItem.transform.position = transform.position;
+        newItem.transform.parent = transform;
         NetworkServer.Spawn( newItem );
+        spawnedItems.Add( itemType );
         currentlySpawnedItem = newItem;
     }
 

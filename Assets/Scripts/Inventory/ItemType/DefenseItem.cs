@@ -6,8 +6,10 @@ using UnityEngine.Networking;
 public class DefenseItem : Item {
 
     [HideInInspector]
-    [SyncVar] public GDEDefenseItemData defenseItemData;
-    [SyncVar] private int cachedCostOfUse;
+    [SyncVar]
+    public GDEDefenseItemData defenseItemData;
+    [SyncVar]
+    private int cachedCostOfUse;
     AudioSource usedAudio;
 
     private void Start( ) {
@@ -15,9 +17,6 @@ public class DefenseItem : Item {
         gameObject.tag = "Item";
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
         cachedCostOfUse = defenseItemData.CostOfUse;
-        spawnVisual.SetActive( true );
-        activeVisual.SetActive( false );
-        CmdMoveItemToSpawnLocation( );
         usedAudio = GetComponent<AudioSource>( );
     }
 
@@ -28,8 +27,7 @@ public class DefenseItem : Item {
                     break;
                 }
                 currentItemState = ItemState.ITEM_IN_PLAYER_INVENTORY;
-                spawnVisual.SetActive( false );
-                activeVisual.SetActive( false );
+                GetComponent<MeshRenderer>( ).enabled = false;
                 break;
             case PlayerInventory.REMOVED_ITEM_FROM_INVENTORY:
                 currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
@@ -38,7 +36,7 @@ public class DefenseItem : Item {
             case PlayerInventory.ITEM_THROWN_BY_PLAYER:
                 defenseItemData.CostOfUse = cachedCostOfUse;
                 break;
-            
+
         }
     }
 
@@ -67,15 +65,6 @@ public class DefenseItem : Item {
 
     [Command]
     protected void CmdResetItem( ) {
-        CmdMoveItemToSpawnLocation( );
-        spawnVisual.SetActive( false );
-        activeVisual.SetActive( false );
+        GetComponent<MeshRenderer>( ).enabled = false;
     }
-
-    [Command]
-    private void CmdMoveItemToSpawnLocation( ) {
-        transform.position = itemSpawnPoint.transform.position;
-        transform.parent = itemSpawnPoint.transform;
-    }
-
 }

@@ -60,11 +60,11 @@ public class PlayerController : Subject {
         if ( inventory.itemForFirstSlot != null ) {
             Item itemInFirstSlot = inventory.itemForFirstSlot.GetComponent<Item>( );
             if ( itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands ) {
-                CmdPlaceItemInHands( );
+                PlaceItemInHands( );
             }
         }
         if (leftMouseButtonActivated) {
-            CmdUseItem( );
+            UseItem( );
         }
         if (rightMouseButtonActivated) {
             CmdDisableItem( );
@@ -81,17 +81,15 @@ public class PlayerController : Subject {
         return walking;
     }
 
-    [Command]
-    private void CmdPlaceItemInHands( ) {
+    private void PlaceItemInHands( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
         Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
-        inventoryItem.CmdPlaceItemInHand( gameObject );
+        inventoryItem.CmdAddItemToPlayer( gameObject );
     }
 
-    [Command]
-    private void CmdUseItem( ) {
+    private void UseItem( ) {
         if (!inventory.itemForFirstSlot) {
             return;
         }
