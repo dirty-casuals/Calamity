@@ -56,10 +56,10 @@ public class PlayerController : Subject {
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
-        
-        if ( inventory.itemForFirstSlot != null ) {
+
+        if (inventory.itemForFirstSlot != null) {
             Item itemInFirstSlot = inventory.itemForFirstSlot.GetComponent<Item>( );
-            if ( itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands ) {
+            if (itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands) {
                 CmdPlaceItemInHands( );
             }
         }
@@ -69,15 +69,46 @@ public class PlayerController : Subject {
         if (rightMouseButtonActivated) {
             CmdDisableItem( );
         }
-        if (PlayerIsMoving( horizontal, vertical )) {
+        bool movingHorizontal = false;
+        if (PlayerIsMovingForward( vertical )) {
+            movingHorizontal = true;
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
+        } else
+        if (PlayerIsMovingBackward( vertical )) {
+            movingHorizontal = true;
+            currentPlayerState.characterAnimator.SetFloat( "Speed", -1.0f );
         } else {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
         }
+
+        currentPlayerState.characterAnimator.SetFloat( "Direction", 0.0f );
+        if (!movingHorizontal) {
+            if (PlayerIsMovingRight( horizontal )) {
+                currentPlayerState.characterAnimator.SetFloat( "Direction", 1.0f );
+            } else
+            if (PlayerIsMovingLeft( horizontal )) {
+                currentPlayerState.characterAnimator.SetFloat( "Direction", -1.0f );
+            }
+        }
     }
 
-    private bool PlayerIsMoving( float horizontal, float vertical ) {
-        bool walking = horizontal != 0.0f || vertical != 0.0f;
+    private bool PlayerIsMovingForward( float vertical ) {
+        bool walking = vertical > 0.0f;
+        return walking;
+    }
+
+    private bool PlayerIsMovingBackward( float vertical ) {
+        bool walking = vertical < 0.0f;
+        return walking;
+    }
+
+    private bool PlayerIsMovingLeft( float horizontal ) {
+        bool walking = horizontal < 0.0f;
+        return walking;
+    }
+
+    private bool PlayerIsMovingRight( float horizontal ) {
+        bool walking = horizontal > 0.0f;
         return walking;
     }
 
