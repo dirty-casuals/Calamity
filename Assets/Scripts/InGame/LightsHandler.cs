@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class LightsHandler {
-    private const string LIGHT_OFF_PATH = "Models/Materials/LightOff";
-    private const string LIGHT_ON_PATH = "Models/Materials/LightFullOn";
-    private const string LIGHT_PATH = "Models/Materials/Light";
+    public const string LIGHT_OFF_PATH = "Models/Materials/LightOff";
+    public const string LIGHT_ON_PATH = "Models/Materials/LightFullOn";
+    public const string LIGHT_PATH = "Models/Materials/Light";
 
     private GameObject gameObject;
     private MeshRenderer[ ] lightRenderers;
@@ -12,6 +12,7 @@ public class LightsHandler {
     private Material lightOn;
     private Material lightStandard;
     private Renderer pentagramRenderer;
+    private EmergencyLight[] emergencyLight;
 
     public LightsHandler( GameObject gameObj ) {
         gameObject = gameObj;
@@ -40,9 +41,9 @@ public class LightsHandler {
         }
         Material[ ] pentagramMaterials = pentagramRenderer.materials;
         pentagramMaterials[ 0 ].color = Color.black;
-        pentagramMaterials[ 0 ].SetColor( "_EmissionColor", Color.black );
+        pentagramMaterials[ 0 ].SetColor( "_EmissionColor", Color.white );
         pentagramRenderer.materials = pentagramMaterials;
-        DynamicGI.SetEmissive( pentagramRenderer, Color.black );
+        DynamicGI.SetEmissive( pentagramRenderer, Color.white * Mathf.LinearToGammaSpace( 4.0f ) );
     }
 
     public void SetLightsToLow( ) {
