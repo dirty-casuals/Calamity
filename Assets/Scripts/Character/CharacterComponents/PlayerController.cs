@@ -57,16 +57,16 @@ public class PlayerController : Subject {
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
 
-        if (inventory.itemForFirstSlot != null) {
+        if (gameObject.tag == "Player" && inventory.itemForFirstSlot != null) {
             Item itemInFirstSlot = inventory.itemForFirstSlot.GetComponent<Item>( );
             if (itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands) {
                 CmdPlaceItemInHands( );
             }
         }
-        if (leftMouseButtonActivated) {
+        if (gameObject.tag == "Player" && leftMouseButtonActivated) {
             CmdUseItem( );
         }
-        if (rightMouseButtonActivated) {
+        if (gameObject.tag == "Player" && rightMouseButtonActivated) {
             CmdDisableItem( );
         }
         bool movingHorizontal = false;

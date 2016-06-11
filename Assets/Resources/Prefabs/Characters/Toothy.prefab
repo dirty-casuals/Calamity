@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496918}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477444}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480054}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464828}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462534}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494048}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493194}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 483334}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424008}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472098}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftToe_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455422}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492098}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469770}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432230}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433952}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446444}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Toothy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486172}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411110}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464242}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455432}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484578}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:HeadTop_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,24 +323,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 452170}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &138652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 488124}
-  - 114: {fileID: 11435514}
-  m_Layer: 14
-  m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +338,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481640}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +353,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494238}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +368,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496594}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +383,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448256}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +398,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438266}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +413,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421026}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +428,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 435168}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +443,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447532}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +458,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429436}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +473,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427670}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +488,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478056}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,9 +503,28 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482612}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightLeg
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &179366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 444736}
+  - 20: {fileID: 2090098}
+  - 114: {fileID: 11499082}
+  - 114: {fileID: 11497650}
+  - 114: {fileID: 11430526}
+  m_Layer: 16
+  m_Name: FirstPersonCharacter
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,7 +537,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444886}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +552,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416398}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +568,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 423840}
   - 114: {fileID: 11426400}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +583,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449472}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +604,13 @@ GameObject:
   - 136: {fileID: 13643492}
   - 114: {fileID: 11426906}
   - 95: {fileID: 9559182}
-  m_Layer: 14
+  - 143: {fileID: 14350866}
+  - 82: {fileID: 8225916}
+  - 114: {fileID: 11470774}
+  - 114: {fileID: 11403952}
+  - 114: {fileID: 11478572}
+  - 114: {fileID: 11414086}
+  m_Layer: 16
   m_Name: Toothy
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -617,7 +626,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438228}
   - 137: {fileID: 13745882}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BODY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +641,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461422}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +656,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473570}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495614}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +686,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433482}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +701,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480422}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: mixamorig:RightToe_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +758,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 498968}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &424008
 Transform:
   m_ObjectHideFlags: 1
@@ -868,6 +877,18 @@ Transform:
   - {fileID: 444886}
   m_Father: {fileID: 469770}
   m_RootOrder: 1
+--- !u!4 &444736
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.101, z: 0.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 498968}
+  m_RootOrder: 2
 --- !u!4 &444886
 Transform:
   m_ObjectHideFlags: 1
@@ -894,7 +915,7 @@ Transform:
   - {fileID: 438228}
   - {fileID: 429436}
   m_Father: {fileID: 498968}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &447532
 Transform:
   m_ObjectHideFlags: 1
@@ -1180,18 +1201,6 @@ Transform:
   - {fileID: 452170}
   m_Father: {fileID: 482612}
   m_RootOrder: 0
---- !u!4 &488124
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.091597, y: -31.515566, z: 9.0400915}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 498968}
-  m_RootOrder: 0
 --- !u!4 &492098
 Transform:
   m_ObjectHideFlags: 1
@@ -1293,11 +1302,45 @@ Transform:
   m_LocalPosition: {x: 7.48, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
-  - {fileID: 488124}
   - {fileID: 423840}
   - {fileID: 446444}
+  - {fileID: 444736}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!20 &2090098
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179366}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294966271
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!54 &5459570
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1313,6 +1356,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!82 &8225916
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9559182
 Animator:
   serializedVersion: 3
@@ -1330,6 +1447,37 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11403952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e525654ceb25409a5103e6fe45454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alive: 1
+--- !u!114 &11414086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9559182}
+  m_ParameterSendBits: 15
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &11416766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1352,7 +1500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccdf131cbaa16f48926b7477d67b25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 2
+  playerType: 1
 --- !u!114 &11426400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1417,88 +1565,157 @@ MonoBehaviour:
     i13: 203
     i14: 234
     i15: 130
-  m_ServerOnly: 1
-  m_LocalPlayerAuthority: 0
---- !u!114 &11435514
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &11430526
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138652}
+  m_GameObject: {fileID: 179366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 157053555, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f559e7174496a40b5cb97d45ad9b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dataSerializer:
-    _serializedData: <component version="1.3" type="RAIN.Core.AIRig"><fields><field
-      value="OnWhenSelected" type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field
-      value="True" type="System.Boolean" id="_useUnityMessages" /><field value="False"
-      type="System.Boolean" id="_useFixedUpdate" /><field type="RAIN.Core.AI" reference="0"
-      id="_ai" /></fields><references><reference type="RAIN.Core.AI" refcount="1"
-      id="0"><field value="True" type="System.Boolean" id="_isActive" /><field type="UnityEngine.GameObject"
-      id="_body" gameobject="0" /><field type="RAIN.Memory.BasicMemory" reference="1"
-      id="_workingMemory" childrenvisible="False" /><field type="RAIN.Minds.BasicMind"
-      reference="2" id="_mind" childrenvisible="False" /><field type="RAIN.Motion.BasicMotor"
-      reference="3" id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
-      reference="4" id="_animator" childrenvisible="False" /><field type="RAIN.Navigation.BasicNavigator"
-      reference="5" id="_navigator" childrenvisible="False" /><field type="RAIN.Perception.BasicSenses"
-      reference="6" id="_senses" childrenvisible="True" /><field type="System.Collections.Generic.List"
-      id="_customElements" elementtype="RAIN.Core.CustomAIElement" childrenvisible="False"
-      /></reference><reference type="RAIN.Memory.BasicMemory" refcount="1" id="1"><field
-      type="System.Collections.Generic.List" id="_memoryItems" elementtype="RAIN.Memory.BasicMemory+MemoryItem"
-      /></reference><reference type="RAIN.Minds.BasicMind" refcount="1" id="2"><field
-      type="RAIN.BehaviorTrees.BTAsset" id="_behaviorTreeAsset" gameobject="1" /><field
-      type="System.Collections.Generic.List" id="_behaviorTreeBindings" elementtype="RAIN.BehaviorTrees.BTAssetBinding"
-      /></reference><reference type="RAIN.Motion.BasicMotor" refcount="1" id="3"><field
-      value="2" type="System.Single" id="_speed" /><field value="360" type="System.Single"
-      id="_rotationSpeed" /><field value="0.1" type="System.Single" id="_closeEnoughDistance"
-      /><field value="0.1" type="System.Single" id="_closeEnoughAngle" /><field value="360"
-      type="System.Single" id="_faceBeforeMoveAngle" /><field value="1" type="System.Single"
-      id="_maxHeightOffset" /><field value="False" type="System.Boolean" id="_allow3DMovement"
-      /><field value="False" type="System.Boolean" id="_allow3DRotation" /><field
-      value="True" type="System.Boolean" id="_allowOffGraphMovement" /></reference><reference
-      type="RAIN.Animation.BasicAnimator" refcount="1" id="4"><field type="System.Collections.Generic.List"
-      id="_animationStates" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-      /></reference><reference type="RAIN.Navigation.BasicNavigator" refcount="1"
-      id="5"><field value="False" type="System.Boolean" id="_drawPaths" /><field value="0.6,0,0,1"
-      type="UnityEngine.Color" id="_pathColor" /><field value="-0.5" type="System.Single"
-      id="_outlineColorOffset" /><field value="100" type="System.Int32" id="_maxPathfindingSteps"
-      /><field value="0" type="System.Single" id="_maxPathLength" /><field type="System.Collections.Generic.List"
-      id="_graphTags" elementtype="System.String" /></reference><reference type="RAIN.Perception.BasicSenses"
-      refcount="1" id="6"><field type="System.Collections.Generic.List" id="_sensors"
-      elementtype="RAIN.Perception.Sensors.RAINSensor"><field type="RAIN.Perception.Sensors.VisualSensor"
-      reference="7" id="element0" /><field type="RAIN.Perception.Sensors.AudioSensor"
-      reference="8" id="element1" /></field></reference><reference type="RAIN.Perception.Sensors.VisualSensor"
-      refcount="1" id="7"><field value="True" type="System.Boolean" id="_showVisual"
-      /><field value="Monster Sight" type="System.String" id="_sensorName" /><field
-      value="True" type="System.Boolean" id="_isActive" /><field value="0.6,0,0.6,1"
-      type="UnityEngine.Color" id="_sensorColor" /><field type="UnityEngine.Transform"
-      id="_mountPoint" gameobject="2" /><field value="0,0,0" type="UnityEngine.Vector3"
-      id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3" id="_angleOffset"
-      /><field type="System.Collections.Generic.List" id="_filters" elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter"
-      /><field value="10" type="System.Single" id="_range" /><field value="False"
-      type="System.Boolean" id="_canDetectSelf" /><field value="140" type="System.Single"
-      id="_horizontalAngle" /><field value="180" type="System.Single" id="_verticalAngle"
-      /><field value="True" type="System.Boolean" id="_lineOfSight" /><field value="28416"
-      type="UnityEngine.LayerMask" id="_lineOfSightMask" /></reference><reference
-      type="RAIN.Perception.Sensors.AudioSensor" refcount="1" id="8"><field value="True"
-      type="System.Boolean" id="_showVisual" /><field value="Monster Ears" type="System.String"
-      id="_sensorName" /><field value="True" type="System.Boolean" id="_isActive"
-      /><field value="0,0,0.6,1" type="UnityEngine.Color" id="_sensorColor" /><field
-      type="UnityEngine.Transform" id="_mountPoint" gameobject="3" /><field value="0,0,0"
-      type="UnityEngine.Vector3" id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3"
-      id="_angleOffset" /><field type="System.Collections.Generic.List" id="_filters"
-      elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter" /><field value="10"
-      type="System.Single" id="_range" /><field value="False" type="System.Boolean"
-      id="_canDetectSelf" /><field value="0.1" type="System.Single" id="_volumeThreshold"
-      /></reference></references></component>
-    _serializedGameObjects:
-    - {fileID: 185754}
-    - {fileID: 11400000, guid: fb04a03758e3ca7448424e95319b4491, type: 2}
-    - {fileID: 498968}
-    - {fileID: 498968}
-    _serializedCustomData: []
+  headJoint: {fileID: 433482}
+  cameraControl: {fileID: 444736}
+--- !u!114 &11470774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab41b9a15508c646913bda28397e2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsWalking: 0
+  m_WalkSpeed: 3
+  m_RunSpeed: 10
+  m_RunstepLenghten: 0.7
+  m_JumpSpeed: 10
+  m_StickToGroundForce: 10
+  m_GravityMultiplier: 2
+  m_MouseLook:
+    XSensitivity: 2
+    YSensitivity: 2
+    clampVerticalRotation: 1
+    MinimumX: -90
+    MaximumX: 90
+    smooth: 0
+    smoothTime: 5
+    lockCursor: 1
+  m_UseFovKick: 1
+  m_FovKick:
+    Camera: {fileID: 0}
+    originalFov: 0
+    FOVIncrease: 3
+    TimeToIncrease: 1
+    TimeToDecrease: 1
+    IncreaseCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_UseHeadBob: 1
+  m_HeadBob:
+    HorizontalBobRange: 0.1
+    VerticalBobRange: 0.1
+    Bobcurve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.5
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    VerticaltoHorizontalRatio: 2
+  m_JumpBob:
+    BobDuration: 0.2
+    BobAmount: 0.1
+  m_StepInterval: 5
+  m_FootstepSounds: []
+  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
+  m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+--- !u!114 &11478572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 4
+  m_SendInterval: 0.07692308
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 1
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 10
+  m_InterpolateMovement: 1
+--- !u!114 &11497650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.25
+  intensity: 0.75
+  blurSize: 1.35
+  blurIterations: 2
+  blurType: 0
+  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+--- !u!114 &11499082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179366}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc6bde01469c7b4badee5362f191d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downsample: 2
+  blurSize: 10
+  blurIterations: 2
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
 --- !u!136 &13643492
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1583,6 +1800,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00018334389, y: 0.23478818, z: 0.1145494}
     m_Extent: {x: 3.1992579, y: 3.5887713, z: 0.7897915}
   m_DirtyAABB: 0
+--- !u!143 &14350866
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

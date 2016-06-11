@@ -69,15 +69,17 @@ public class GameHandler : UnityObserver {
     }
 
     public void RunBlurEffect( ) {
-        
+
         // this might need updating to work multiplayer, I'm not sure
         GameObject camera = GameObject.FindGameObjectWithTag( "MainCamera" );
-        
+
         if (camera != null) {
             BlurOptimized blur = camera.GetComponent<BlurOptimized>( );
-            blur.enabled = true;
-            blur.blurSize = 10.0f;
-            StartCoroutine( DecreaseAndRemoveBlur( blur ) );
+            if (blur != null) {
+                blur.enabled = true;
+                blur.blurSize = 10.0f;
+                StartCoroutine( DecreaseAndRemoveBlur( blur ) );
+            }
         }
     }
 
@@ -129,7 +131,7 @@ public class GameHandler : UnityObserver {
             //if (spawn.playable) {
             //    spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
             //} else {
-                spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
+            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
             //}
             spawn.StartSpawn( );
         }
@@ -137,7 +139,7 @@ public class GameHandler : UnityObserver {
 
     public void StartMonsterSpawners( ) {
         foreach (Spawner spawn in monsterSpawnPoints) {
-            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/Toothy" );
+            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIToothy" );
             spawn.StartSpawn( );
         }
     }
@@ -169,7 +171,7 @@ public class GameHandler : UnityObserver {
         }
     }
 
-    public bool DidAllLose() {
+    public bool DidAllLose( ) {
         int count = alivePlayerControllers.Count;
         return count != 1;
     }
