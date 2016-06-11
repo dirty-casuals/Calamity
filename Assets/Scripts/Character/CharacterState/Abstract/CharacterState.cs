@@ -35,6 +35,7 @@ public abstract class CharacterState {
 
     public virtual void KnockoutPlayer( ) {
         controller.SetDead( );
+        characterAnimator.SetFloat( "Speed", 0.0f );
         characterAnimator.SetBool( "Die", true );
         controller.gameObject.layer = LayerMask.NameToLayer( "Dead" );
     }
@@ -44,6 +45,7 @@ public abstract class CharacterState {
     }
 
     public virtual void RevivePlayer( ) {
+        characterAnimator.SetFloat( "Speed", 0.0f );
         characterAnimator.SetBool( "Die", false );
         if (character.tag == "Player" || character.tag == "Monster") {
             controller.gameObject.layer = LayerMask.NameToLayer( "Player" );
