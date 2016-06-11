@@ -5,6 +5,7 @@ public class MonsterState : CharacterState {
 
     public float monsterMovementSpeed = 7.0f;
     private CalamityFirstPersonController firstPersonController;
+    private bool playerControllerDisabled;
 
     public MonsterState( GameObject playerBody ) : base( playerBody ) {
         character = playerBody;
@@ -16,11 +17,26 @@ public class MonsterState : CharacterState {
     }
 
     public override void PlayerUpdate( ) {
+        controller.ControllerPause( );
+        if (playerControllerDisabled) {
+            return;
+        }
+        firstPersonController.UpdateCalamityLookRotation( );
+        if (controller.IsDead( )) {
+            return;
+        }
         firstPersonController.UpdateCalamityController( );
     }
 
     public override void PlayerPhysicsUpdate( ) {
+        if (playerControllerDisabled || controller.IsDead( )) {
+            return;
+        }
         controller.InputHandler( monsterMovementSpeed );
         firstPersonController.FixedUpdateCalamityController( );
+    }
+
+    public override void ToggleControllerInput( ) {
+        playerControllerDisabled = !playerControllerDisabled;
     }
 }
