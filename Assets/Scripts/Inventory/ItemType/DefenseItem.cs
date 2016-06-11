@@ -8,6 +8,7 @@ public class DefenseItem : Item {
     [HideInInspector]
     [SyncVar]
     public GDEDefenseItemData defenseItemData;
+    protected MeshRenderer itemMesh;
     [SyncVar]
     private int cachedCostOfUse;
     AudioSource usedAudio;
@@ -18,25 +19,12 @@ public class DefenseItem : Item {
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
         cachedCostOfUse = defenseItemData.CostOfUse;
         usedAudio = GetComponent<AudioSource>( );
-    }
+        itemMesh = GetComponent<MeshRenderer>( );
+        spawnPosition = transform.position;
+        spawnParent = transform.parent;
 
-    public override void OnNotify( Object sender, EventArguments e ) {
-        switch (e.eventMessage) {
-            case PlayerInventory.ADDED_ITEM_TO_INVENTORY:
-                if (sender != this) {
-                    break;
-                }
-                currentItemState = ItemState.ITEM_IN_PLAYER_INVENTORY;
-                GetComponent<MeshRenderer>( ).enabled = false;
-                break;
-            case PlayerInventory.REMOVED_ITEM_FROM_INVENTORY:
-                currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
-                defenseItemData.CostOfUse = cachedCostOfUse;
-                break;
-            case PlayerInventory.ITEM_THROWN_BY_PLAYER:
-                defenseItemData.CostOfUse = cachedCostOfUse;
-                break;
-
+        if (isServer) {
+            MoveItemToSpawnPoint( );
         }
     }
 
@@ -51,7 +39,7 @@ public class DefenseItem : Item {
     [Command]
     public override void CmdDisableItem( ) {
         currentItemState = ItemState.ITEM_INACTIVE;
-        CmdResetItem( );
+        ResetItem( );
     }
 
     protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
@@ -63,8 +51,13 @@ public class DefenseItem : Item {
         }
     }
 
-    [Command]
-    protected void CmdResetItem( ) {
-        GetComponent<MeshRenderer>( ).enabled = false;
+    protected virtual void ResetItem( ) {
+        itemMesh.enabled = false;
+        MoveItemToSpawnPoint( );
+    }
+
+    private void MoveItemToSpawnPoint( ) {
+        transform.position = spawnPosition;
+        transform.parent = spawnParent;
     }
 }

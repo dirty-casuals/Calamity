@@ -2,7 +2,7 @@
 
 public class KnifeItem : WeaponItem {
 
-    public override void CmdAddItemToPlayer( GameObject player ) {
+    public override void AddItemToPlayer( GameObject player ) {
         PlaceKnifeInPlayersHands( player );
         SetKnifeVisualAspect( );
         itemInPlayerHands = true;
@@ -29,8 +29,8 @@ public class KnifeItem : WeaponItem {
     }
 
     private void SetKnifeVisualAspect( ) {
-        spawnVisual.SetActive( false );
-        activeVisual.SetActive( true );
+        //spawnVisual.SetActive( false );
+        //activeVisual.SetActive( true );
     }
 
 }

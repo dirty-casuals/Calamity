@@ -57,14 +57,8 @@ public class PlayerController : Subject {
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
         
-        if ( inventory.itemForFirstSlot != null ) {
-            Item itemInFirstSlot = inventory.itemForFirstSlot.GetComponent<Item>( );
-            if ( itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands ) {
-                PlaceItemInHands( );
-            }
-        }
         if (leftMouseButtonActivated) {
-            UseItem( );
+            inventory.CmdUseItemInInventory( );
         }
         if (rightMouseButtonActivated) {
             CmdDisableItem( );
@@ -81,27 +75,12 @@ public class PlayerController : Subject {
         return walking;
     }
 
-    private void PlaceItemInHands( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
-        inventoryItem.CmdAddItemToPlayer( gameObject );
-    }
-
-    private void UseItem( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
-    }
-
     [Command]
     private void CmdDisableItem( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdDisableItem( );
+        //if (firstItem == null) {
+        //    return;
+        //}
+        //inventory.firstItem.GetComponent<Item>( ).CmdDisableItem( );
     }
 
 }

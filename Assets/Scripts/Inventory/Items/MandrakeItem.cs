@@ -7,7 +7,7 @@ public class MandrakeItem : DefenseItem {
 
     private EntityRig playerRig;
 
-    public override void CmdAddItemToPlayer( GameObject player ) {
+    public override void AddItemToPlayer( GameObject player ) {
         playerRig = player.GetComponentInChildren<EntityRig>( );
         PlaceMandrakeInPlayerHands( player );
         SetMandrakeVisualAspect( );
@@ -37,8 +37,8 @@ public class MandrakeItem : DefenseItem {
     }
 
     private void SetMandrakeVisualAspect( ) {
-        spawnVisual.SetActive( false );
-        activeVisual.SetActive( true );
+        //spawnVisual.SetActive( false );
+        //activeVisual.SetActive( true );
     }
     
     private void MakePlayerInvisible( GameObject player ) {

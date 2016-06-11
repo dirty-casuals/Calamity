@@ -292,7 +292,7 @@ MonoBehaviour:
     i14: 9
     i15: 52
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11415702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,8 +324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8dd4a73df9084439ecc2caaf2802f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeVisual: {fileID: 178210}
-  spawnVisual: {fileID: 174826}
   itemInPlayerHands: 0
   currentItemState: 0
   itemSpawnPoint: {fileID: 0}

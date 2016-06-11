@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 
 public class UnityObserver : NetworkBehaviour {
     //Don't Override Awake
-    protected void Awake( ) {
+    protected virtual void Awake( ) {
         gameObject.tag = "UnityObserver";
         InitializeUnityObserver( );
     }
