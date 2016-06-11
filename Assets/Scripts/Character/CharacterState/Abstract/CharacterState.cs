@@ -13,6 +13,10 @@ public abstract class CharacterState {
         controller = body.GetComponent<PlayerController>( );
     }
 
+    public virtual void CheckPaused( ) {
+        controller.ControllerPause( );
+    }
+
     public virtual void PlayerPhysicsUpdate( ) {
 
     }
@@ -41,10 +45,9 @@ public abstract class CharacterState {
 
     public virtual void RevivePlayer( ) {
         characterAnimator.SetBool( "Die", false );
-        if(character.tag == "Player" || character.tag == "Monster") {
+        if (character.tag == "Player" || character.tag == "Monster") {
             controller.gameObject.layer = LayerMask.NameToLayer( "Player" );
-        } else
-        if (character.tag == "PlayerAI" || character.tag == "MonsterAI") {
+        } else if (character.tag == "PlayerAI" || character.tag == "MonsterAI") {
             controller.gameObject.layer = LayerMask.NameToLayer( "PlayerAI" );
         }
     }
