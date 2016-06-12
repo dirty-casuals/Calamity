@@ -37,16 +37,11 @@ public class GameHandler : UnityObserver {
     private List<PlayerController> playerControllers = new List<PlayerController>( );
     private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
-    private LightsHandler lightsHandler;
     private GameObject humanPlayer;
+    private static List<GameObject> stateEventObservers = new List<GameObject>( );
 
     private void Start( ) {
-        lightsHandler = new LightsHandler( gameObject );
-
-        preCalamityState = new GamePreCalamityState( this );
-        calamityState = new CalamityState( this );
-        nextRoundState = new CalamityRoundState( this );
-        gameEndState = new GameEndState( this );
+        AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         SetFirstGameState( );
     }
@@ -55,17 +50,16 @@ public class GameHandler : UnityObserver {
         currentGameState.GameUpdate( );
     }
 
+    public override void InitializeUnityObserver( ) {
+        preCalamityState = new GamePreCalamityState( this );
+        calamityState = new CalamityState( this );
+        nextRoundState = new CalamityRoundState( this );
+        gameEndState = new GameEndState( this );
+    }
+
     public void AddPlayerController( PlayerController controller ) {
         playerControllers.Add( controller );
         alivePlayerControllers.Add( controller );
-    }
-
-    public void SetLightsToFull( ) {
-        lightsHandler.SetLightsToFull( );
-    }
-
-    public void SetLightsToLow( ) {
-        lightsHandler.SetLightsToLow( );
     }
 
     public void RunBlurEffect( ) {
@@ -81,6 +75,20 @@ public class GameHandler : UnityObserver {
                 StartCoroutine( DecreaseAndRemoveBlur( blur ) );
             }
         }
+    }
+
+    public static void AddObserversToStateEvents( ) {
+        for (int i = 0; i < stateEventObservers.Count; i += 1) {
+            GameObject observer = stateEventObservers[ i ];
+            preCalamityState.AddUnityObservers( observer );
+            calamityState.AddUnityObservers( observer );
+            nextRoundState.AddUnityObservers( observer );
+            gameEndState.AddUnityObservers( observer );
+        }
+    }
+
+    public static void RegisterForStateEvents( GameObject observer ) {
+        stateEventObservers.Add( observer );
     }
 
     private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {

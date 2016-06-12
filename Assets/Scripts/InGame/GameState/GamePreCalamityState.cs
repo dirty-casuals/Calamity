@@ -19,7 +19,6 @@ public class GamePreCalamityState : GameState {
         gameHandler.countdownLabel.text = "Time to Calamity";
         endTime = gameHandler.startTimeSeconds;
         SetLighting( );
-        gameHandler.RunBlurEffect( );
     }
 
     public override void GameUpdate( ) {
@@ -29,7 +28,7 @@ public class GamePreCalamityState : GameState {
     }
 
     private void SetLighting( ) {
-        gameHandler.SetLightsToFull( );
+        Notify( LightsHandler.SET_PRE_CALAMITY_LIGHTING );
     }
 
     private void StartCalamityWhenCountdownReached( ) {
