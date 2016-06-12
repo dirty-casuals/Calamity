@@ -5,7 +5,7 @@ public class Pentagram : UnityObserver {
 
     private Renderer pentagramRenderer;
 
-    public void Start( ) {
+    public void Awake( ) {
         pentagramRenderer = GetComponent<MeshRenderer>( );
         GameHandler.RegisterForStateEvents( this.gameObject );
     }
@@ -33,7 +33,7 @@ public class Pentagram : UnityObserver {
     private void SetPentagramLight( Color color, float emissionIntensity ) {
         Material[ ] pentagramMaterials = pentagramRenderer.materials;
         pentagramMaterials[ 0 ].color = Color.red;
-        pentagramMaterials[ 0 ].SetColor( "_EmissionColor", Color.red * Mathf.LinearToGammaSpace( 4.0f ) );
+        pentagramMaterials[ 0 ].SetColor( "_EmissionColor", color  * emissionIntensity );
         pentagramRenderer.materials = pentagramMaterials;
         DynamicGI.SetEmissive( pentagramRenderer, color * emissionIntensity );
     }
