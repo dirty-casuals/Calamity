@@ -19,6 +19,15 @@ public class CalamityRoundState : GameState {
         endTime = gameHandler.roundLengthSeconds;
         gameHandler.countdownLabel.text = "Next Round";
         gameHandler.roundCount.text = gameHandler.currentRound.ToString( );
+        gameHandler.nextRoundTextState.text = "Player";
+
+        int numAlivePlayers = gameHandler.GetNumberAlivePlayersLeft( );
+        int numDeadPlayers = gameHandler.GetNumberDeadPlayers( );
+        gameHandler.aliveTextCount.text = "";
+        gameHandler.deadTextCount.text = "";
+        gameHandler.StartCoroutine( TotUpPlayers( gameHandler.aliveTextCount, numAlivePlayers ) );
+        gameHandler.StartCoroutine( TotUpPlayers( gameHandler.deadTextCount, numDeadPlayers ) );
+
         gameHandler.roundPanel.SetActive( true );
     }
 
@@ -26,6 +35,13 @@ public class CalamityRoundState : GameState {
         StartNewRound( );
         SetCountdownTime( );
         gameTimer += Time.deltaTime;
+    }
+
+    private IEnumerator TotUpPlayers( UnityEngine.UI.Text text, int num ) {
+        for (int i = 0; i < num; i += 1) {
+            text.text = text.text + "|";
+            yield return new WaitForSeconds( 0.25f );
+        }
     }
 
     private void StartNewRound( ) {

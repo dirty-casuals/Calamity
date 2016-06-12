@@ -9,6 +9,9 @@ public class GameHandler : UnityObserver {
     public Text countdownLabel;
     public Text countdownTime;
     public Text roundCount;
+    public Text nextRoundTextState;
+    public Text aliveTextCount;
+    public Text deadTextCount;
     public GameObject roundPanel;
     public GameObject pauseMenu;
     public float startTimeSeconds = 30.0f;
@@ -37,7 +40,6 @@ public class GameHandler : UnityObserver {
     private List<PlayerController> playerControllers = new List<PlayerController>( );
     private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
-    private GameObject humanPlayer;
     private static List<GameObject> stateEventObservers = new List<GameObject>( );
 
     private void Start( ) {
@@ -192,6 +194,14 @@ public class GameHandler : UnityObserver {
     public PlayerController GetWinner( ) {
         // this is just a placeholder really
         return alivePlayerControllers[ 0 ];
+    }
+
+    public int GetNumberAlivePlayersLeft() {
+        return alivePlayerControllers.Count;
+    }
+
+    public int GetNumberDeadPlayers( ) {
+        return playerControllers.Count - alivePlayerControllers.Count;
     }
 
     private void PlayerDied( PlayerController playerController ) {
