@@ -23,7 +23,7 @@ public class Pentagram : UnityObserver {
     }
 
     private void SetPreCalamityLighting( ) {
-        SetPentagramLight( Color.white, Mathf.LinearToGammaSpace( 4.0f ) );
+        SetPentagramLight( Color.black, Mathf.LinearToGammaSpace( 4.0f ) );
     }
 
     private void SetCalamityLighting( ) {
