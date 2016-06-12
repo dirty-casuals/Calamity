@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameDataEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ public class GameHandler : UnityObserver {
     public Text countdownTime;
     public Text roundCount;
     public Text nextRoundTextState;
-    public Text aliveTextCount;
-    public Text deadTextCount;
+    public GameObject aliveIcon;
+    public GameObject deadIcon;
     public GameObject roundPanel;
     public GameObject pauseMenu;
     public float startTimeSeconds = 30.0f;
