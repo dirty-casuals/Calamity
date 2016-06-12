@@ -5,44 +5,72 @@ using RAIN.Entities;
 
 public class MandrakeItem : DefenseItem {
 
-    private EntityRig playerRig;
+    [SyncVar]
+    private GameObject currentPlayer;
+    private bool mandrakeActive;
 
-    public override void AddItemToPlayer( GameObject player ) {
-        playerRig = player.GetComponentInChildren<EntityRig>( );
-        PlaceMandrakeInPlayerHands( player );
-        SetMandrakeVisualAspect( );
-        itemInPlayerHands = true;
-    }
-
-    public override void CmdUseItem( GameObject player ) {
-        if (currentItemState == ItemState.ITEM_IN_USE) {
+    private void OnTriggerEnter( Collider col ) {
+        if (col.gameObject.tag != "Player" || !isServer) {
             return;
         }
-        MakePlayerInvisible( player );
+        GameObject player = col.gameObject;
+        RpcMakePlayerInvisible( player );
+    }
+
+    private void OnTriggerExit( Collider col ) {
+        if (col.gameObject.tag != "Player" || !isServer) {
+            return;
+        }
+        GameObject player = col.gameObject;
+        RpcMakePlayerVisible( col.gameObject );
+    }
+
+    private void OnTriggerStay( Collider col ) {
+        if (col.gameObject.tag != "Player" || !isServer || mandrakeActive) {
+            return;
+        }
+        GameObject player = col.gameObject;
+        RpcMakePlayerVisible( col.gameObject );
+    }
+
+    public override void AddItemToPlayer( GameObject player ) {
+        mandrakeActive = true;
+        currentPlayer = player;
+    }
+
+    [Command]
+    public override void CmdUseItem( GameObject player ) {
+        PlaceMandrakeInPlayerHands( );
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
-        currentItemState = ItemState.ITEM_IN_USE;
         StartCoroutine( HideItemAfterUsePeriod( ) );
     }
 
     protected override IEnumerator HideItemAfterUsePeriod( ) {
         yield return new WaitForSeconds( defenseItemData.itemDuration );
-        playerRig.Entity.IsActive = true;
-        CmdItemHasPerished( );
+        /* Force OnTriggerStay to update players in trigger zone
+        ** and ensure all network messages sync before destroy
+        */
+        mandrakeActive = false;
+        yield return new WaitForSeconds( 0.2f );
+        mandrakeActive = true;
+        yield return new WaitForSeconds( 0.2f );
+        NetworkServer.Destroy( gameObject );
     }
 
-    private void PlaceMandrakeInPlayerHands( GameObject player ) {
-        GameObject playerHands = player.GetComponentInChildren<PlayerHands>( ).gameObject;
-        gameObject.transform.position = playerHands.transform.position;
-        gameObject.transform.parent = playerHands.transform;
-    }
-
-    private void SetMandrakeVisualAspect( ) {
-        //spawnVisual.SetActive( false );
-        //activeVisual.SetActive( true );
-    }
-    
-    private void MakePlayerInvisible( GameObject player ) {
+    [ClientRpc]
+    private void RpcMakePlayerInvisible( GameObject player ) {
+        EntityRig playerRig = player.GetComponentInChildren<EntityRig>( );
         playerRig.Entity.IsActive = false;
     }
 
+    [ClientRpc]
+    private void RpcMakePlayerVisible( GameObject player ) {
+        EntityRig playerRig = player.GetComponentInChildren<EntityRig>( );
+        playerRig.Entity.IsActive = true;
+    }
+
+    private void PlaceMandrakeInPlayerHands( ) {
+        GameObject playerHands = currentPlayer.GetComponentInChildren<PlayerHands>( ).gameObject;
+        gameObject.transform.position = playerHands.transform.position;
+    }
 }

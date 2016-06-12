@@ -14,11 +14,13 @@ public class ItemSpawner : NetworkBehaviour {
     [SyncVar]
     public bool currentlySpawnedItem;
     private float timeToSpawnItem = 0.0f;
+    private MeshRenderer itemRenderer;
 
     private void Start( ) {
         if (!isServer) {
             return;
         }
+        itemRenderer = GetComponent<MeshRenderer>( );
         CmdSpawnItem( );
     }
 
@@ -37,7 +39,7 @@ public class ItemSpawner : NetworkBehaviour {
     }
 
     public void HideItemInSpawnPoint( ) {
-        GetComponent<MeshRenderer>( ).enabled = false;
+        itemRenderer.enabled = false;
         currentlySpawnedItem = false;
     }
 
@@ -50,7 +52,7 @@ public class ItemSpawner : NetworkBehaviour {
     }
 
     private void ShowItemInSpawnPoint( ) {
-        GetComponent<MeshRenderer>( ).enabled = true;
+        itemRenderer.enabled = true;
         currentlySpawnedItem = true;
     }
 }

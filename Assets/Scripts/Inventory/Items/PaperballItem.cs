@@ -1,18 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
-using GameDataEditor;
 
 public class PaperballItem : DefenseItem {
     [SyncVar]
     private GameObject currentPlayer;
     [SyncVar]
     private Rigidbody itemRigidbody;
-
-    protected override void Awake( ) {
-        base.Awake( );
-        GDEDataManager.Init( "gde_data" );
-    }
 
     public override void AddItemToPlayer( GameObject player ) {
         currentPlayer = player;
@@ -25,7 +19,7 @@ public class PaperballItem : DefenseItem {
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         StartCoroutine( HideItemAfterUsePeriod( ) );
     }
-     
+
     protected override IEnumerator HideItemAfterUsePeriod( ) {
         yield return new WaitForSeconds( defenseItemData.itemDuration );
         NetworkServer.Destroy( gameObject );

@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 using GameDataEditor;
 
 public class PlayerInventory : Subject {
 
+    public const string ADDED_ITEM_TO_INVENTORY = "ADDED_ITEM_TO_INVENTORY";
+    public const string ITEM_USED_BY_PLAYER = "ITEM_USED_BY_PLAYER";
     [HideInInspector]
     [SyncVar]
     public string firstItem;
 
-    private void Awake( ) {
+    public override void OnStartLocalPlayer( ) {
+        base.OnStartLocalPlayer( );
+        if (!isLocalPlayer) {
+            return;
+        }
+        UIInventoryItem playerInventoryUI = FindObjectOfType<UIInventoryItem>( );
+        AddUnityObservers( playerInventoryUI.gameObject );
         GDEDataManager.Init( "gde_data" );
     }
 
@@ -16,7 +25,19 @@ public class PlayerInventory : Subject {
         if (col.gameObject.tag != "Respawn" || !isLocalPlayer) {
             return;
         }
-        CmdCanPlayerPickupItem( col.gameObject );
+        if (CanPlayerPickupItem( col.gameObject )) {
+            string itemType = col.gameObject.GetComponent<ItemSpawner>( ).spawnType.ToString( );
+            AddItemToInventoryUI( itemType );
+            CmdPickupItem( col.gameObject, itemType );
+        }
+    }
+
+    public void RemoveItemFromInventoryUI( ) {
+        if (!isLocalPlayer) {
+            return;
+        }
+        List<string> item = new List<string>( ) { firstItem };
+        NotifyExtendedMessage( ITEM_USED_BY_PLAYER, item );
     }
 
     [Command]
@@ -29,17 +50,28 @@ public class PlayerInventory : Subject {
     }
 
     [Command]
-    private void CmdCanPlayerPickupItem( GameObject spawner ) {
+    public void CmdRemoveItemFromInventory( ) {
+        firstItem = null;
+    }
+
+    private bool CanPlayerPickupItem( GameObject spawner ) {
         bool itemInSpawner = spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
-        if (!itemInSpawner || firstItem.Length > 0) {
-            return;
-        }
-        firstItem = spawner.GetComponent<ItemSpawner>( ).spawnType.ToString( );
+        return (itemInSpawner || firstItem.Length < 0);
+    }
+
+    private void AddItemToInventoryUI( string itemType ) {
+        List<string> item = new List<string>( ) { itemType };
+        NotifyExtendedMessage( ADDED_ITEM_TO_INVENTORY, item );
+    }
+
+    [Command]
+    private void CmdPickupItem( GameObject spawner, string itemType ) {
+        firstItem = itemType;
         RemoveItemFromSpawner( spawner );
     }
 
     private void CreateItemFromGameData( ) {
-        ItemSpawnType spawnType = (ItemSpawnType)System.Enum.Parse( typeof( ItemSpawnType), firstItem );
+        ItemSpawnType spawnType = (ItemSpawnType)System.Enum.Parse( typeof( ItemSpawnType ), firstItem );
 
         switch (spawnType) {
             case ItemSpawnType.PAPER_BALL:

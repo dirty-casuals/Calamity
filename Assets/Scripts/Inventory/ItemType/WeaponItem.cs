@@ -5,13 +5,11 @@ public class WeaponItem : Item {
 
     [HideInInspector]
     public GDEWeaponItemData weaponItemData;
-    private int cachedCostOfUse;
 
     private void Start( ) {
         GDEDataManager.Init( "gde_data" );
         gameObject.tag = "Item";
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
-        cachedCostOfUse = weaponItemData.CostOfUse;
         MoveItemToSpawnLocation( );
     }
 

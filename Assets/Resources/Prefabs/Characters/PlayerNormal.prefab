@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d879923f3106fe4986e47e3414b5e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemForFirstSlot: {fileID: 0}
+  firstItem: 
 --- !u!114 &11453140
 MonoBehaviour:
   m_ObjectHideFlags: 1

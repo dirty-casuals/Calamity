@@ -9,20 +9,16 @@ public class DefenseItem : Item {
     [SyncVar]
     public GDEDefenseItemData defenseItemData;
     protected MeshRenderer itemMesh;
-    [SyncVar]
-    private int cachedCostOfUse;
     AudioSource usedAudio;
 
     private void Start( ) {
         GDEDataManager.Init( "gde_data" );
         gameObject.tag = "Item";
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
-        cachedCostOfUse = defenseItemData.CostOfUse;
         usedAudio = GetComponent<AudioSource>( );
         itemMesh = GetComponent<MeshRenderer>( );
         spawnPosition = transform.position;
         spawnParent = transform.parent;
-
         if (isServer) {
             MoveItemToSpawnPoint( );
         }

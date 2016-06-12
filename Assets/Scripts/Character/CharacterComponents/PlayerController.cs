@@ -1,5 +1,4 @@
 ﻿using UnitySampleAssets.CrossPlatformInput;
-using UnityEngine.Networking;
 
 public class PlayerController : Subject {
     private GameHandler gameHandler;
@@ -58,10 +57,14 @@ public class PlayerController : Subject {
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
         
         if (leftMouseButtonActivated) {
+            if (inventory.firstItem.Length <= 0) {
+                return;
+            }
+            inventory.RemoveItemFromInventoryUI( );
             inventory.CmdUseItemInInventory( );
         }
         if (rightMouseButtonActivated) {
-            CmdDisableItem( );
+            inventory.CmdRemoveItemFromInventory( );
         }
         if (PlayerIsMoving( horizontal, vertical )) {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
@@ -74,13 +77,4 @@ public class PlayerController : Subject {
         bool walking = horizontal != 0.0f || vertical != 0.0f;
         return walking;
     }
-
-    [Command]
-    private void CmdDisableItem( ) {
-        //if (firstItem == null) {
-        //    return;
-        //}
-        //inventory.firstItem.GetComponent<Item>( ).CmdDisableItem( );
-    }
-
 }

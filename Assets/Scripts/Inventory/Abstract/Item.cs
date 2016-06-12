@@ -9,7 +9,7 @@ public enum ItemState {
     ITEM_INACTIVE
 }
 
-public class Item : UnityObserver {
+public class Item : Subject {
 
     [SyncVar]
     public bool itemInPlayerHands = false;
@@ -19,12 +19,6 @@ public class Item : UnityObserver {
     public Vector3 spawnPosition;
     public Transform spawnParent;
     public float itemXSpawnPosition;
-
-    public virtual void SpawnItem( ) { }
-
-    public virtual void PickupItem( ) { }
-
-    public virtual void AddItemToPlayerInventory( GameObject player ) { }
 
     public virtual void CmdUseItem( GameObject player ) { }
 
