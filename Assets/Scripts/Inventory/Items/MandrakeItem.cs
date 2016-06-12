@@ -13,24 +13,21 @@ public class MandrakeItem : DefenseItem {
         if (col.gameObject.tag != "Player" || !isServer) {
             return;
         }
-        GameObject player = col.gameObject;
-        RpcMakePlayerInvisible( player );
+        RpcSetPlayerVisibility( col.gameObject, false );
     }
 
     private void OnTriggerExit( Collider col ) {
         if (col.gameObject.tag != "Player" || !isServer) {
             return;
         }
-        GameObject player = col.gameObject;
-        RpcMakePlayerVisible( col.gameObject );
+        RpcSetPlayerVisibility( col.gameObject, true );
     }
 
     private void OnTriggerStay( Collider col ) {
         if (col.gameObject.tag != "Player" || !isServer || mandrakeActive) {
             return;
         }
-        GameObject player = col.gameObject;
-        RpcMakePlayerVisible( col.gameObject );
+        RpcSetPlayerVisibility( col.gameObject, true );
     }
 
     public override void AddItemToPlayer( GameObject player ) {
@@ -58,15 +55,9 @@ public class MandrakeItem : DefenseItem {
     }
 
     [ClientRpc]
-    private void RpcMakePlayerInvisible( GameObject player ) {
+    private void RpcSetPlayerVisibility( GameObject player, bool isVisible ) {
         EntityRig playerRig = player.GetComponentInChildren<EntityRig>( );
-        playerRig.Entity.IsActive = false;
-    }
-
-    [ClientRpc]
-    private void RpcMakePlayerVisible( GameObject player ) {
-        EntityRig playerRig = player.GetComponentInChildren<EntityRig>( );
-        playerRig.Entity.IsActive = true;
+        playerRig.Entity.IsActive = isVisible;
     }
 
     private void PlaceMandrakeInPlayerHands( ) {

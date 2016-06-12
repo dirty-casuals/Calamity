@@ -32,25 +32,7 @@ public class DefenseItem : Item {
         }
     }
 
-    [Command]
-    public override void CmdDisableItem( ) {
-        currentItemState = ItemState.ITEM_INACTIVE;
-        ResetItem( );
-    }
-
     protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
-
-    [Command]
-    protected override void CmdItemHasPerished( ) {
-        if (defenseItemData.numberOfUses < 0) {
-            CmdDisableItem( );
-        }
-    }
-
-    protected virtual void ResetItem( ) {
-        itemMesh.enabled = false;
-        MoveItemToSpawnPoint( );
-    }
 
     private void MoveItemToSpawnPoint( ) {
         transform.position = spawnPosition;
