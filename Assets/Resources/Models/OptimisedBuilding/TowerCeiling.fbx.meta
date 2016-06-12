@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 18fcf28f585e948e0ae839741126726f
-timeCreated: 1465244990
+guid: c1f3ffaf9b7c042d7943205577b9686e
+timeCreated: 1465592951
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Floors
+    4300000: TowerCeiling
   materials:
     importMaterials: 0
     materialName: 0
