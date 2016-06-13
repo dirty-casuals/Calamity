@@ -1,81 +1,116 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections.Generic;
+using GameDataEditor;
 
 public class PlayerInventory : Subject {
 
     public const string ADDED_ITEM_TO_INVENTORY = "ADDED_ITEM_TO_INVENTORY";
-    public const string REMOVED_ITEM_FROM_INVENTORY = "REMOVED_ITEM_FROM_INVENTORY";
-    public const string ITEM_THROWN_BY_PLAYER = "ITEM_THROWN_BY_PLAYER";
+    public const string ITEM_USED_BY_PLAYER = "ITEM_USED_BY_PLAYER";
     [HideInInspector]
     [SyncVar]
-    public GameObject itemForFirstSlot;
+    public string firstItem;
 
-    private void Update( ) {
+    public override void OnStartLocalPlayer( ) {
+        base.OnStartLocalPlayer( );
         if (!isLocalPlayer) {
             return;
         }
-        CmdRemoveUnusableItems( );
+        UIInventoryItem playerInventoryUI = FindObjectOfType<UIInventoryItem>( );
+        AddUnityObservers( playerInventoryUI.gameObject );
+        GDEDataManager.Init( "gde_data" );
     }
 
     private void OnTriggerEnter( Collider col ) {
-        if (col.gameObject.tag != "Respawn") {
+        if (col.gameObject.tag != "Respawn" || !isLocalPlayer) {
             return;
         }
-        CmdCheckPlayerCanHaveItem( col.gameObject );
+        if (CanPlayerPickupItem( col.gameObject )) {
+            string itemType = col.gameObject.GetComponent<ItemSpawner>( ).spawnType.ToString( );
+            AddItemToInventoryUI( itemType );
+            CmdPickupItem( col.gameObject, itemType );
+        }
     }
 
-    [Command]
-    private void CmdCheckPlayerCanHaveItem( GameObject spawner ) {
-        GameObject itemInSpawner = spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
-        if (!itemInSpawner || itemForFirstSlot != null) {
+    public void RemoveItemFromInventoryUI( ) {
+        if (!isLocalPlayer) {
             return;
         }
-        CmdAddItemToInventory( itemInSpawner );
-        spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem = null;
+        List<string> item = new List<string>( ) { firstItem };
+        NotifyExtendedMessage( ITEM_USED_BY_PLAYER, item );
     }
 
     [Command]
-    private void CmdAddItemToInventory( GameObject item ) {
-        Item newItem = item.GetComponent<Item>( );
-        AddUnityObservers( item );
-        NotifySendObject( newItem, ADDED_ITEM_TO_INVENTORY );
-        itemForFirstSlot = item;
-    }
-
-    [Command]
-    private void CmdRemoveUnusableItems( ) {
-        if (!itemForFirstSlot) {
+    public void CmdUseItemInInventory( ) {
+        if (firstItem.Length <= 0) {
             return;
         }
-        switch (itemForFirstSlot.GetComponent<Item>( ).currentItemState) {
-            case ItemState.ITEM_IN_USE:
-            case ItemState.ITEM_IN_PLAYER_INVENTORY:
+        CreateItemFromGameData( );
+        firstItem = "";
+    }
+
+    [Command]
+    public void CmdRemoveItemFromInventory( ) {
+        firstItem = null;
+    }
+
+    private bool CanPlayerPickupItem( GameObject spawner ) {
+        bool itemInSpawner = spawner.GetComponent<ItemSpawner>( ).currentlySpawnedItem;
+        return (itemInSpawner || firstItem.Length < 0);
+    }
+
+    private void AddItemToInventoryUI( string itemType ) {
+        List<string> item = new List<string>( ) { itemType };
+        NotifyExtendedMessage( ADDED_ITEM_TO_INVENTORY, item );
+    }
+
+    [Command]
+    private void CmdPickupItem( GameObject spawner, string itemType ) {
+        firstItem = itemType;
+        RemoveItemFromSpawner( spawner );
+    }
+
+    private void CreateItemFromGameData( ) {
+        ItemSpawnType spawnType = (ItemSpawnType)System.Enum.Parse( typeof( ItemSpawnType ), firstItem );
+
+        switch (spawnType) {
+            case ItemSpawnType.PAPER_BALL:
+                GDEDefenseItemData paperItem = new GDEDefenseItemData( );
+                GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.DefenseItem_Paperball, out paperItem );
+                InitializeNewDefenseItem( paperItem );
                 break;
-            case ItemState.ITEM_THROWN:
-                CmdRemoveThrownItem( );
+            case ItemSpawnType.MANDRAKE:
+                GDEDefenseItemData mandrakeItem = new GDEDefenseItemData( );
+                GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.DefenseItem_ManDrake, out mandrakeItem );
+                InitializeNewDefenseItem( mandrakeItem );
                 break;
-            case ItemState.ITEM_INACTIVE:
-                CmdRemoveUsedItem( );
+            case ItemSpawnType.KNIFE:
+                GDEWeaponItemData knifeItem = new GDEWeaponItemData( );
+                GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.WeaponItem_Knife, out knifeItem );
+                CmdInitializeNewWeaponItem( knifeItem );
                 break;
         }
     }
 
-    [Command]
-    private void CmdRemoveThrownItem( ) {
-        Notify( ITEM_THROWN_BY_PLAYER );
-        CmdRemoveItemFromInventory( );
+    private void InitializeNewDefenseItem( GDEDefenseItemData item ) {
+        GameObject newItem = Instantiate( item.ItemModel );
+        DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
+        itemType.defenseItemData = item;
+        itemType.AddItemToPlayer( gameObject );
+        itemType.CmdUseItem( gameObject );
+        NetworkServer.Spawn( newItem );
     }
 
-    [Command]
-    private void CmdRemoveUsedItem( ) {
-        Notify( REMOVED_ITEM_FROM_INVENTORY );
-        CmdRemoveItemFromInventory( );
+    private void CmdInitializeNewWeaponItem( GDEWeaponItemData item ) {
+        GameObject newItem = Instantiate( item.ItemModel );
+        WeaponItem itemType = newItem.GetComponent<WeaponItem>( );
+        itemType.weaponItemData = item;
+        itemType.AddItemToPlayer( gameObject );
+        itemType.CmdUseItem( gameObject );
+        NetworkServer.Spawn( item.ItemModel );
     }
 
-    [Command]
-    private void CmdRemoveItemFromInventory( ) {
-        RemoveUnityObserver( itemForFirstSlot.gameObject );
-        itemForFirstSlot.GetComponent<Item>( ).itemInPlayerHands = false;
-        itemForFirstSlot = null;
+    private void RemoveItemFromSpawner( GameObject spawner ) {
+        spawner.GetComponent<ItemSpawner>( ).HideItemInSpawnPoint( );
     }
 }

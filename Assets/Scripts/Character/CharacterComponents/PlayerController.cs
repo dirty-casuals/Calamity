@@ -1,5 +1,4 @@
 ﻿using UnitySampleAssets.CrossPlatformInput;
-using UnityEngine.Networking;
 
 public class PlayerController : Subject {
     private GameHandler gameHandler;
@@ -57,17 +56,15 @@ public class PlayerController : Subject {
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
         
-        if ( inventory.itemForFirstSlot != null ) {
-            Item itemInFirstSlot = inventory.itemForFirstSlot.GetComponent<Item>( );
-            if ( itemInFirstSlot && !itemInFirstSlot.itemInPlayerHands ) {
-                PlaceItemInHands( );
-            }
-        }
         if (leftMouseButtonActivated) {
-            UseItem( );
+            if (inventory.firstItem.Length <= 0) {
+                return;
+            }
+            inventory.RemoveItemFromInventoryUI( );
+            inventory.CmdUseItemInInventory( );
         }
         if (rightMouseButtonActivated) {
-            CmdDisableItem( );
+            inventory.CmdRemoveItemFromInventory( );
         }
         if (PlayerIsMoving( horizontal, vertical )) {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
@@ -80,28 +77,4 @@ public class PlayerController : Subject {
         bool walking = horizontal != 0.0f || vertical != 0.0f;
         return walking;
     }
-
-    private void PlaceItemInHands( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
-        inventoryItem.CmdAddItemToPlayer( gameObject );
-    }
-
-    private void UseItem( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
-    }
-
-    [Command]
-    private void CmdDisableItem( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdDisableItem( );
-    }
-
 }

@@ -8,35 +8,19 @@ public class DefenseItem : Item {
     [HideInInspector]
     [SyncVar]
     public GDEDefenseItemData defenseItemData;
-    [SyncVar]
-    private int cachedCostOfUse;
+    protected MeshRenderer itemMesh;
     AudioSource usedAudio;
 
     private void Start( ) {
         GDEDataManager.Init( "gde_data" );
         gameObject.tag = "Item";
         currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
-        cachedCostOfUse = defenseItemData.CostOfUse;
         usedAudio = GetComponent<AudioSource>( );
-    }
-
-    public override void OnNotify( Object sender, EventArguments e ) {
-        switch (e.eventMessage) {
-            case PlayerInventory.ADDED_ITEM_TO_INVENTORY:
-                if (sender != this) {
-                    break;
-                }
-                currentItemState = ItemState.ITEM_IN_PLAYER_INVENTORY;
-                GetComponent<MeshRenderer>( ).enabled = false;
-                break;
-            case PlayerInventory.REMOVED_ITEM_FROM_INVENTORY:
-                currentItemState = ItemState.ITEM_AT_SPAWN_POINT;
-                defenseItemData.CostOfUse = cachedCostOfUse;
-                break;
-            case PlayerInventory.ITEM_THROWN_BY_PLAYER:
-                defenseItemData.CostOfUse = cachedCostOfUse;
-                break;
-
+        itemMesh = GetComponent<MeshRenderer>( );
+        spawnPosition = transform.position;
+        spawnParent = transform.parent;
+        if (isServer) {
+            MoveItemToSpawnPoint( );
         }
     }
 
@@ -48,23 +32,10 @@ public class DefenseItem : Item {
         }
     }
 
-    [Command]
-    public override void CmdDisableItem( ) {
-        currentItemState = ItemState.ITEM_INACTIVE;
-        CmdResetItem( );
-    }
-
     protected virtual IEnumerator HideItemAfterUsePeriod( ) { return null; }
 
-    [Command]
-    protected override void CmdItemHasPerished( ) {
-        if (defenseItemData.numberOfUses < 0) {
-            CmdDisableItem( );
-        }
-    }
-
-    [Command]
-    protected void CmdResetItem( ) {
-        GetComponent<MeshRenderer>( ).enabled = false;
+    private void MoveItemToSpawnPoint( ) {
+        transform.position = spawnPosition;
+        transform.parent = spawnParent;
     }
 }

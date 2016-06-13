@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public enum SpawnpointType {
     PLAYER,
@@ -13,12 +11,6 @@ public abstract class Spawner : MonoBehaviour {
     public bool playable = false;
     public bool somethingInSpawnPoint = false;
     public GameObject characterPrefab;
-
-    private BoxCollider spawnCollider;
-
-    public virtual void Awake( ) {
-        spawnCollider = GetComponent<BoxCollider>( );
-    }
 
     public void OnTriggerEnter( Collider other ) {
         somethingInSpawnPoint = true;
@@ -38,12 +30,10 @@ public abstract class Spawner : MonoBehaviour {
         ToggleCharacterState( false );
     }
 
-    public virtual void UpdateChildrenToSpawnPosition() {
-
-    }
+    public virtual void UpdateChildrenToSpawnPosition() { }
 
     protected GameObject CreateAndGetCharacter( ) {
-        GameObject spawn = GameObject.Instantiate( characterPrefab );
+        GameObject spawn = Instantiate( characterPrefab );
         spawn.transform.parent = transform;
         spawn.transform.position = transform.position;
 

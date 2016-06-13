@@ -8,8 +8,7 @@ public class MultipleSpawner : Spawner {
     public int spawnCount = 1;
     public float spawnRateInSeconds = 1.0f;
 
-    public override void Awake( ) {
-        base.Awake( );
+    private void Awake( ) {
         currentCharactersCreated = new List<GameObject>( );
     }
 
