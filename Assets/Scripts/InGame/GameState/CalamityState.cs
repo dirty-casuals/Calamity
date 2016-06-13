@@ -28,7 +28,7 @@ public class CalamityState : GameState {
     }
 
     private void SetLighting( ) {
-        gameHandler.SetLightsToLow( );
+        Notify( LightsHandler.SET_CALAMITY_LIGHTING );
     }
 
     private void EndCalamityWhenCountdownReached( ) {

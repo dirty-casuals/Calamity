@@ -63,7 +63,7 @@ GameObject:
   - 136: {fileID: 13680592}
   m_Layer: 13
   m_Name: AIPlayerNormal
-  m_TagString: Player
+  m_TagString: PlayerAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1469,7 +1469,7 @@ MonoBehaviour:
       id="_mountPoint" gameobject="2" /><field value="0,0,0" type="UnityEngine.Vector3"
       id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3" id="_angleOffset"
       /><field type="System.Collections.Generic.List" id="_filters" elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter"
-      /><field value="10" type="System.Single" id="_range" /><field value="False"
+      /><field value="30" type="System.Single" id="_range" /><field value="False"
       type="System.Boolean" id="_canDetectSelf" /><field value="140" type="System.Single"
       id="_horizontalAngle" /><field value="180" type="System.Single" id="_verticalAngle"
       /><field value="True" type="System.Boolean" id="_lineOfSight" /><field value="26368"

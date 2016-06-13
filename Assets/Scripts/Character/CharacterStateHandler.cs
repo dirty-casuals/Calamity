@@ -68,10 +68,10 @@ public class CharacterStateHandler : NetworkBehaviour {
                 objectName = "PlayerNormal";
                 break;
             case PlayerType.MONSTER:
-                objectName = "PlayerNormal";
+                objectName = "Toothy";
                 break;
             case PlayerType.AI_MONSTER:
-                objectName = "Toothy";
+                objectName = "AIToothy";
                 break;
             case PlayerType.AI_PLAYER:
                 objectName = "AIPlayerNormal";

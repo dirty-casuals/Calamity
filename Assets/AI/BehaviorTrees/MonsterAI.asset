@@ -33,12 +33,12 @@ MonoBehaviour:
       consistent=&quot;True&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
       aspect=&quot;&amp;quot;DistractItem&amp;quot;&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot;
       succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;mecparam valueexpression=&quot;false&quot;
-      repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot; parametername=&quot;Chase&quot;
-      name=&quot;Walk&quot; debugbreak=&quot;False&quot; damptime=&quot;0&quot; /&gt;&lt;sequencer
-      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;sequencer&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
-      parametervalues=&quot;Ik1vbnN0ZXIgUm91dGUiAG1vdmVUYXJnZXQA&quot; parameters=&quot;V2F5cG9pbnROZXR3b3JrAE1vdmVUYXJnZXRWYXJpYWJsZQB3YXlwb2ludFZhcmlhYmxl&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;mecparam valueexpression=&quot;1&quot; repeatuntil=&quot;&quot;
+      parametertype=&quot;float&quot; parametername=&quot;Speed&quot; name=&quot;Walk&quot;
+      debugbreak=&quot;False&quot; damptime=&quot;0&quot; /&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action
+      repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;Ik1vbnN0ZXIgUm91dGUiAG1vdmVUYXJnZXQA&quot;
+      parameters=&quot;V2F5cG9pbnROZXR3b3JrAE1vdmVUYXJnZXRWYXJpYWJsZQB3YXlwb2ludFZhcmlhYmxl&quot;
       namespace=&quot;&quot; name=&quot;action&quot; debugbreak=&quot;False&quot;
       classname=&quot;ChooseWaypoint&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
@@ -102,8 +102,8 @@ MonoBehaviour:
       repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;frmPlayer&quot;
       movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
       closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;mecparam
-      valueexpression=&quot;true&quot; repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot;
-      parametername=&quot;Chase&quot; name=&quot;Run&quot; debugbreak=&quot;False&quot;
+      valueexpression=&quot;2&quot; repeatuntil=&quot;&quot; parametertype=&quot;float&quot;
+      parametername=&quot;Speed&quot; name=&quot;Run&quot; debugbreak=&quot;False&quot;
       damptime=&quot;0&quot; /&gt;&lt;/parallel&gt;&lt;parallel tiebreaker=&quot;fail&quot;
       succeed=&quot;any&quot; repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;parallel&quot;
       fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Monster
@@ -114,8 +114,8 @@ MonoBehaviour:
       repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;targetPosition&quot;
       movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
       closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;mecparam
-      valueexpression=&quot;true&quot; repeatuntil=&quot;&quot; parametertype=&quot;boolean&quot;
-      parametername=&quot;Chase&quot; name=&quot;Run&quot; debugbreak=&quot;False&quot;
+      valueexpression=&quot;2&quot; repeatuntil=&quot;&quot; parametertype=&quot;float&quot;
+      parametername=&quot;Speed&quot; name=&quot;Run&quot; debugbreak=&quot;False&quot;
       damptime=&quot;0&quot; /&gt;&lt;action repeatuntil=&quot;running&quot; parametervalues=&quot;MS41&quot;
       parameters=&quot;YXZvaWRSYW5nZQ==&quot; namespace=&quot;&quot; name=&quot;Avoidance&quot;
       debugbreak=&quot;False&quot; classname=&quot;AvoidCollision&quot; /&gt;&lt;/parallel&gt;&lt;/selector&gt;&lt;/selector&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"

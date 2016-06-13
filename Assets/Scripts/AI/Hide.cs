@@ -34,15 +34,15 @@ public class Hide : RAINAction {
         if (targetName != lastName && targetName == "Hide") {
             ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 0 );
         } else {
-            ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 2 );
+            ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 1 );
         }
 
         if(player) {
-            ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 3 );
+            ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 2 );
         }
 
         if (monster) {
-            ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 4 );
+            ai.WorkingMemory.SetItem<int>( moveSpeedVariable.VariableName, 3 );
         }
 
         lastName = targetName;

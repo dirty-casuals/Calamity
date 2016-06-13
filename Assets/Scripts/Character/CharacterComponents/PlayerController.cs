@@ -56,25 +56,82 @@ public class PlayerController : Subject {
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
         
-        if (leftMouseButtonActivated) {
+        if (gameObject.tag == "Player" && leftMouseButtonActivated) {
             if (inventory.firstItem.Length <= 0) {
                 return;
             }
             inventory.RemoveItemFromInventoryUI( );
             inventory.CmdUseItemInInventory( );
         }
-        if (rightMouseButtonActivated) {
+        if (gameObject.tag == "Player" && rightMouseButtonActivated) {
             inventory.CmdRemoveItemFromInventory( );
         }
-        if (PlayerIsMoving( horizontal, vertical )) {
+        bool movingHorizontal = false;
+        if (PlayerIsMovingForward( vertical )) {
+            movingHorizontal = true;
             currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
+        } else
+        if (PlayerIsMovingBackward( vertical )) {
+            movingHorizontal = true;
+            currentPlayerState.characterAnimator.SetFloat( "Speed", -1.0f );
         } else {
             currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
         }
+
+        currentPlayerState.characterAnimator.SetFloat( "Direction", 0.0f );
+        if (!movingHorizontal) {
+            if (PlayerIsMovingRight( horizontal )) {
+                currentPlayerState.characterAnimator.SetFloat( "Direction", 1.0f );
+            } else
+            if (PlayerIsMovingLeft( horizontal )) {
+                currentPlayerState.characterAnimator.SetFloat( "Direction", -1.0f );
+            }
+        }
     }
 
-    private bool PlayerIsMoving( float horizontal, float vertical ) {
-        bool walking = horizontal != 0.0f || vertical != 0.0f;
+    private bool PlayerIsMovingForward( float vertical ) {
+        bool walking = vertical > 0.0f;
         return walking;
     }
+
+    private bool PlayerIsMovingBackward( float vertical ) {
+        bool walking = vertical < 0.0f;
+        return walking;
+    }
+
+    private bool PlayerIsMovingLeft( float horizontal ) {
+        bool walking = horizontal < 0.0f;
+        return walking;
+    }
+
+    private bool PlayerIsMovingRight( float horizontal ) {
+        bool walking = horizontal > 0.0f;
+        return walking;
+    }
+
+    [Command]
+    private void CmdPlaceItemInHands( ) {
+        if (!inventory.itemForFirstSlot) {
+            return;
+        }
+        Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
+        inventoryItem.CmdPlaceItemInHand( gameObject );
+    }
+
+    [Command]
+    private void CmdUseItem( ) {
+        if (!inventory.itemForFirstSlot) {
+            return;
+        }
+        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
+    }
+
+    [Command]
+    private void CmdDisableItem( ) {
+        if (!inventory.itemForFirstSlot) {
+            return;
+        }
+        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdDisableItem( );
+    }
+
 }

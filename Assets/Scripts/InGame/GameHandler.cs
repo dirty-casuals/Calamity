@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameDataEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class GameHandler : UnityObserver {
     public Text countdownLabel;
     public Text countdownTime;
     public Text roundCount;
+    public Text nextRoundTextState;
+    public GameObject aliveIcon;
+    public GameObject deadIcon;
     public GameObject roundPanel;
     public GameObject pauseMenu;
     public float startTimeSeconds = 30.0f;
@@ -37,16 +41,10 @@ public class GameHandler : UnityObserver {
     private List<PlayerController> playerControllers = new List<PlayerController>( );
     private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
-    private LightsHandler lightsHandler;
-    private GameObject humanPlayer;
+    private static List<GameObject> stateEventObservers = new List<GameObject>( );
 
     private void Start( ) {
-        lightsHandler = new LightsHandler( gameObject );
-
-        preCalamityState = new GamePreCalamityState( this );
-        calamityState = new CalamityState( this );
-        nextRoundState = new CalamityRoundState( this );
-        gameEndState = new GameEndState( this );
+        AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         SetFirstGameState( );
     }
@@ -55,30 +53,45 @@ public class GameHandler : UnityObserver {
         currentGameState.GameUpdate( );
     }
 
+    public override void InitializeUnityObserver( ) {
+        preCalamityState = new GamePreCalamityState( this );
+        calamityState = new CalamityState( this );
+        nextRoundState = new CalamityRoundState( this );
+        gameEndState = new GameEndState( this );
+    }
+
     public void AddPlayerController( PlayerController controller ) {
         playerControllers.Add( controller );
         alivePlayerControllers.Add( controller );
     }
 
-    public void SetLightsToFull( ) {
-        lightsHandler.SetLightsToFull( );
-    }
-
-    public void SetLightsToLow( ) {
-        lightsHandler.SetLightsToLow( );
-    }
-
     public void RunBlurEffect( ) {
-        
+
         // this might need updating to work multiplayer, I'm not sure
         GameObject camera = GameObject.FindGameObjectWithTag( "MainCamera" );
-        
+
         if (camera != null) {
             BlurOptimized blur = camera.GetComponent<BlurOptimized>( );
-            blur.enabled = true;
-            blur.blurSize = 10.0f;
-            StartCoroutine( DecreaseAndRemoveBlur( blur ) );
+            if (blur != null) {
+                blur.enabled = true;
+                blur.blurSize = 10.0f;
+                StartCoroutine( DecreaseAndRemoveBlur( blur ) );
+            }
         }
+    }
+
+    public static void AddObserversToStateEvents( ) {
+        for (int i = 0; i < stateEventObservers.Count; i += 1) {
+            GameObject observer = stateEventObservers[ i ];
+            preCalamityState.AddUnityObservers( observer );
+            calamityState.AddUnityObservers( observer );
+            nextRoundState.AddUnityObservers( observer );
+            gameEndState.AddUnityObservers( observer );
+        }
+    }
+
+    public static void RegisterForStateEvents( GameObject observer ) {
+        stateEventObservers.Add( observer );
     }
 
     private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {
@@ -129,7 +142,7 @@ public class GameHandler : UnityObserver {
             //if (spawn.playable) {
             //    spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
             //} else {
-                spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
+            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
             //}
             spawn.StartSpawn( );
         }
@@ -137,7 +150,7 @@ public class GameHandler : UnityObserver {
 
     public void StartMonsterSpawners( ) {
         foreach (Spawner spawn in monsterSpawnPoints) {
-            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/Toothy" );
+            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIToothy" );
             spawn.StartSpawn( );
         }
     }
@@ -169,7 +182,7 @@ public class GameHandler : UnityObserver {
         }
     }
 
-    public bool DidAllLose() {
+    public bool DidAllLose( ) {
         int count = alivePlayerControllers.Count;
         return count != 1;
     }
@@ -182,6 +195,14 @@ public class GameHandler : UnityObserver {
     public PlayerController GetWinner( ) {
         // this is just a placeholder really
         return alivePlayerControllers[ 0 ];
+    }
+
+    public int GetNumberAlivePlayersLeft() {
+        return alivePlayerControllers.Count;
+    }
+
+    public int GetNumberDeadPlayers( ) {
+        return playerControllers.Count - alivePlayerControllers.Count;
     }
 
     private void PlayerDied( PlayerController playerController ) {
