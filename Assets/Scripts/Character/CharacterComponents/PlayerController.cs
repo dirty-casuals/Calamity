@@ -108,30 +108,4 @@ public class PlayerController : Subject {
         bool walking = horizontal > 0.0f;
         return walking;
     }
-
-    [Command]
-    private void CmdPlaceItemInHands( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        Item inventoryItem = inventory.itemForFirstSlot.GetComponent<Item>( );
-        inventoryItem.CmdPlaceItemInHand( gameObject );
-    }
-
-    [Command]
-    private void CmdUseItem( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdUseItem( gameObject );
-    }
-
-    [Command]
-    private void CmdDisableItem( ) {
-        if (!inventory.itemForFirstSlot) {
-            return;
-        }
-        inventory.itemForFirstSlot.GetComponent<Item>( ).CmdDisableItem( );
-    }
-
 }
