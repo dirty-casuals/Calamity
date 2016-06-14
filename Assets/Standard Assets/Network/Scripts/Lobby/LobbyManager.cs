@@ -47,7 +47,7 @@ namespace UnityStandardAssets.Network
         void Start()
         {
             s_Singleton = this;
-            _lobbyHooks = GetComponent<UnityStandardAssets.Network.LobbyHook>();
+            _lobbyHooks = GetComponent<LobbyHook>();
             currentPanel = mainMenuPanel;
 
             backButton.gameObject.SetActive(false);
@@ -251,7 +251,7 @@ namespace UnityStandardAssets.Network
         //But OnLobbyClientConnect isn't called on hosting player. So we override the lobbyPlayer creation
         public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
         {
-            GameObject obj = Instantiate(lobbyPlayerPrefab.gameObject) as GameObject;
+            GameObject obj = Instantiate( lobbyPlayerPrefab.gameObject ) as GameObject;
 
             LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>();
             newPlayer.RpcToggleJoinButton(numPlayers + 1 >= minPlayer); ;

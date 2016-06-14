@@ -11,6 +11,7 @@ TagManager:
   - MonsterAI
   - PlayerAI
   - Striplight
+  - LobbyReady
   layers:
   - Default
   - TransparentFX

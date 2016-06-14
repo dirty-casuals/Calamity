@@ -447,8 +447,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1889100784}
-        m_MethodName: LoadRandomLevel
+      - m_Target: {fileID: 1889100783}
+        m_MethodName: LoadMultiplayerLobby
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
