@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace UnityStandardAssets.Network {
     //Player entry in the lobby. Handle selecting color/setting name & getting ready for the game
@@ -18,50 +19,40 @@ namespace UnityStandardAssets.Network {
         public InputField nameInput;
         public Button readyButton;
         public Button waitingPlayerButton;
-        public List<GameObject> eyes = new List<GameObject>();
+        public List<GameObject> eyes = new List<GameObject>( );
 
-        //OnMyName function will be invoked on clients when server change the value of playerName
         [SyncVar( hook = "OnMyName" )]
         public string playerName = "";
         public Color playerColor = Color.white;
 
-        static Color JoinColor = new Color( 255.0f / 255.0f, 0.0f, 101.0f / 255.0f, 1.0f );
-        static Color NotReadyColor = new Color( 34.0f / 255.0f, 44 / 255.0f, 55.0f / 255.0f, 1.0f );
-        static Color ReadyColor = new Color( 0.0f, 204.0f / 255.0f, 204.0f / 255.0f, 1.0f );
-        static Color TransparentColor = new Color( 0, 0, 0, 0 );
+        private static Color JoinColor = new Color( 255.0f / 255.0f, 0.0f, 101.0f / 255.0f, 1.0f );
+        private static Color NotReadyColor = new Color( 34.0f / 255.0f, 44 / 255.0f, 55.0f / 255.0f, 1.0f );
+        private static Color ReadyColor = new Color( 0.0f, 204.0f / 255.0f, 204.0f / 255.0f, 1.0f );
+        private static Color TransparentColor = new Color( 0, 0, 0, 0 );
 
-        static Color OtherPlayerColor = new Color( 250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f );
-        static Color LocalPlayerColor = new Color( 180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f );
-
+        private static Color OtherPlayerColor = new Color( 250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f );
+        private static Color LocalPlayerColor = new Color( 180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f );
 
         public override void OnClientEnterLobby( ) {
             base.OnClientEnterLobby( );
-
             LobbyPlayerList._instance.AddPlayer( this );
             LobbyPlayerList._instance.DisplayDirectServerWarning( isServer && LobbyManager.s_Singleton.matchMaker == null );
+            StartCoroutine( SetupLobby( ) );
+        }
 
-            if (isLocalPlayer || isServer) {
+        private IEnumerator SetupLobby( ) {
+            yield return new WaitForEndOfFrame( );
+            if (isLocalPlayer) {
                 SetupLocalPlayer( );
             } else {
                 SetupOtherPlayer( );
             }
-
             //setup the player data on UI. The value are SyncVar so the player
             //will be created with the right value currently on server
             OnMyName( playerName );
         }
 
-        public override void OnStartAuthority( ) {
-            base.OnStartAuthority( );
-
-            //if we return from a game, color of text can still be the one for "Ready"
-            //readyButton.transform.GetChild(0).GetComponent<Text>().color = Color.white;
-
-            SetupLocalPlayer( );
-        }
-
-        bool changedColor = false;
-        void Update( ) {
+        private void Update( ) {
             if (SceneManager.GetActiveScene( ).name != LobbyManager.s_Singleton.lobbyScene)
                 return;
 
@@ -72,54 +63,29 @@ namespace UnityStandardAssets.Network {
                 if (!readyToBegin && Input.GetButtonDown( "Fire" + localIdx )) {
                     if (readyButton.IsActive( ) && readyButton.IsInteractable( ))
                         ActivateEyes( );
-                        SendReadyToBeginMessage( );
+                    SendReadyToBeginMessage( );
                 }
             }
         }
 
-        void ActivateEyes( ) {
-            if (isServer) {
+        private void ActivateEyes( ) {
+            NetworkInstanceId id = netId;
+            if (id.ToString( ) == "1") {
                 eyes[ 0 ].SetActive( true );
-            } else {
+            }
+            if(id.ToString() == "2") {
                 eyes[ 1 ].SetActive( true );
             }
         }
 
-        void ChangeReadyButtonColor( Color c ) {
-            //ColorBlock b = readyButton.colors;
-            //b.normalColor = c;
-            //b.pressedColor = c;
-            //b.highlightedColor = c;
-            //b.disabledColor = c;
-            //readyButton.colors = b;
-        }
-
-        void SetupOtherPlayer( ) {
-            nameInput.interactable = false;
-
-            //ChangeReadyButtonColor(NotReadyColor);
-            readyButton.interactable = false;
-            readyButton.gameObject.SetActive( false );
-            //readyButton.transform.GetChild( 0 ).GetComponent<Text>( ).text = "...";
-            OnClientReady( false );
-        }
-
-        void SetupLocalPlayer( ) {
+        private void SetupLocalPlayer( ) {
             nameInput.interactable = true;
-
-            //GetComponent<Image>().color = LocalPlayerColor;
-
-            //ChangeReadyButtonColor(JoinColor);
-
             readyButton.transform.GetChild( 0 ).GetComponent<Text>( ).text = "JOIN";
             readyButton.interactable = true;
-
             //have to use child count of player prefab already setup as "this.slot" is not set yet
-            if (playerName == "")
+            if (playerName == "") {
                 CmdNameChanged( "Player" + LobbyPlayerList._instance.playerListContentTransform.childCount );
-
-            //we switch from simple name display to name input
-
+            }
             nameInput.onEndEdit.RemoveAllListeners( );
             nameInput.onEndEdit.AddListener( OnNameChanged );
 
@@ -130,26 +96,27 @@ namespace UnityStandardAssets.Network {
             readyButton.onClick.AddListener( OnReadyClicked );
         }
 
+        private void SetupOtherPlayer( ) {
+            nameInput.interactable = false;
+            readyButton.interactable = false;
+            readyButton.gameObject.SetActive( false );
+            OnClientReady( false );
+        }
+
         public override void OnClientReady( bool readyState ) {
             if (readyState) {
-                ChangeReadyButtonColor( TransparentColor );
-
                 Text textComponent = readyButton.transform.GetChild( 0 ).GetComponent<Text>( );
                 textComponent.text = "READY";
-                //textComponent.color = ReadyColor;
+                ActivateEyes( );
                 readyButton.interactable = false;
             } else {
-                ChangeReadyButtonColor( isLocalPlayer ? JoinColor : NotReadyColor );
-
                 Text textComponent = readyButton.transform.GetChild( 0 ).GetComponent<Text>( );
                 textComponent.text = isLocalPlayer ? "JOIN" : "...";
-                //textComponent.color = Color.white;
                 readyButton.interactable = isLocalPlayer;
             }
         }
 
         ///===== callback from sync var
-
         public void OnMyName( string newName ) {
             playerName = newName;
             nameInput.text = playerName;
@@ -212,7 +179,7 @@ namespace UnityStandardAssets.Network {
 
             if (inUseIdx >= 0) {//if we already add an entry in the colorTabs, we change it
                 _colorInUse[ inUseIdx ] = idx;
-            } else {//else we add it
+            } else {
                 _colorInUse.Add( idx );
             }
 

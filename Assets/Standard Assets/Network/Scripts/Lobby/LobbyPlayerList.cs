@@ -41,7 +41,8 @@ namespace UnityStandardAssets.Network
 
         public void AddPlayer(LobbyPlayer player)
         {
-            player.transform.SetParent(playerListContentTransform, false);
+            player.transform.position = new Vector3( 0, 0, 0 );
+            player.transform.SetParent( playerListContentTransform, false );
         }
     }
 }

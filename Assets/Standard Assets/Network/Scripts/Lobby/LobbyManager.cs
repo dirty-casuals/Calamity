@@ -229,7 +229,7 @@ namespace UnityStandardAssets.Network
             }
         }
 
-        public override void OnMatchCreate(UnityEngine.Networking.Match.CreateMatchResponse matchInfo)
+        public override void OnMatchCreate(CreateMatchResponse matchInfo)
         {
             base.OnMatchCreate(matchInfo);
 
@@ -251,7 +251,7 @@ namespace UnityStandardAssets.Network
         //But OnLobbyClientConnect isn't called on hosting player. So we override the lobbyPlayer creation
         public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
         {
-            GameObject obj = Instantiate( lobbyPlayerPrefab.gameObject ) as GameObject;
+            GameObject obj = Instantiate(lobbyPlayerPrefab.gameObject) as GameObject;
 
             LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>();
             newPlayer.RpcToggleJoinButton(numPlayers + 1 >= minPlayer); ;
