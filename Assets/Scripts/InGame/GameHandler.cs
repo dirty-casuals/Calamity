@@ -68,6 +68,10 @@ public class GameHandler : UnityObserver {
         alivePlayerControllers.Add( controller );
     }
 
+    public void RemovePlayerController( PlayerController controller ) {
+        playerControllers.Remove( controller );
+    }
+
     public void RunCameraEffects( ) {
         for (int i = 0; i < playerControllers.Count; i += 1) {
             playerControllers[ i ].RunCameraEffects( );
