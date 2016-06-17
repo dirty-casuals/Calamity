@@ -45,12 +45,9 @@ public abstract class CharacterState {
     }
 
     public virtual void RevivePlayer( ) {
-        characterAnimator.SetFloat( "Speed", 0.0f );
+        controller.SetAlive( );
+        characterAnimator.SetFloat( "Speed", 1.0f );
         characterAnimator.SetBool( "Die", false );
-        if (character.tag == "Player" || character.tag == "Monster") {
-            controller.gameObject.layer = LayerMask.NameToLayer( "Player" );
-        } else if (character.tag == "PlayerAI" || character.tag == "MonsterAI") {
-            controller.gameObject.layer = LayerMask.NameToLayer( "PlayerAI" );
-        }
+        controller.gameObject.layer = LayerMask.NameToLayer( character.tag );
     }
 }

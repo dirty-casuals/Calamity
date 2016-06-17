@@ -14,7 +14,7 @@ public class GamePreCalamityState : GameState {
         if (gameHandler.IsFirstRound( )) {
             gameHandler.StartPlayerSpawners( );
         } else {
-            gameHandler.ResetAllTheThings( );
+            gameHandler.ResetAllThePlayers( );
         }
         gameHandler.countdownLabel.text = "Time to Calamity";
         endTime = gameHandler.startTimeSeconds;

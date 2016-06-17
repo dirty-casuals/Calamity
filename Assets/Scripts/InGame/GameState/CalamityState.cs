@@ -18,7 +18,7 @@ public class CalamityState : GameState {
         endTime = gameHandler.calamityLengthSeconds;
         gameHandler.countdownLabel.text = "The Calamity";
         SetLighting( );
-        gameHandler.RunBlurEffect( );
+        gameHandler.RunCameraEffects( );
     }
 
     public override void GameUpdate( ) {

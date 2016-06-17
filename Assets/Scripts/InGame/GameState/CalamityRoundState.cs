@@ -19,10 +19,18 @@ public class CalamityRoundState : GameState {
             Notify( GameHandler.SET_END_GAME );
             return;
         }
+        gameHandler.DisableMonsters( );
+
         endTime = gameHandler.roundLengthSeconds;
         gameHandler.countdownLabel.text = "Next Round";
         gameHandler.roundCount.text = gameHandler.currentRound.ToString( );
-        gameHandler.nextRoundTextState.text = "Player";
+
+        PlayerController playerController = gameHandler.GetLocalPlayer( );
+        if (playerController.alive) {
+            gameHandler.nextRoundTextState.text = "Player";
+        } else {
+            gameHandler.nextRoundTextState.text = "Monster";
+        }
 
         int numAlivePlayers = gameHandler.GetNumberAlivePlayersLeft( );
         int numDeadPlayers = gameHandler.GetNumberDeadPlayers( );
@@ -60,7 +68,7 @@ public class CalamityRoundState : GameState {
         if (gameTimer >= endTime) {
             gameHandler.currentRound += 1;
             gameTimer = 0.0f;
-            for( int i = 0; i < icons.Count; i += 1) {
+            for (int i = 0; i < icons.Count; i += 1) {
                 GameObject icon = icons[ i ];
                 GameObject.Destroy( icon );
             }
