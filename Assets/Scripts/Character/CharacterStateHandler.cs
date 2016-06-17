@@ -51,7 +51,11 @@ public class CharacterStateHandler : NetworkBehaviour {
                 //playerCamera.enabled = false;
                 newCamera.enabled = true;
             }
+            GameHandler gameHandler = GameObject.FindObjectOfType<GameHandler>( );
+            gameHandler.RemovePlayerController( playerController );
+            gameHandler.AddPlayerController( newInstance.GetComponent<PlayerController>( ) );
             Destroy( playerController.gameObject );
+
         }
     }
 
