@@ -1810,7 +1810,7 @@ MonoBehaviour:
     type: 2}
   m_GamePlayerPrefab: {fileID: 102998, guid: 9c182b42165bce147a4bf13781a65441, type: 2}
   m_LobbyScene: MultiplayerLobby
-  m_PlayScene: BoomerDev
+  m_PlayScene: 1_school
   lobbySlots: []
   minPlayer: 1
   topPanel: {fileID: 1259870441}
