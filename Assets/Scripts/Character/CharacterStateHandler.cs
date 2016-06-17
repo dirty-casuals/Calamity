@@ -36,14 +36,13 @@ public class CharacterStateHandler : NetworkBehaviour {
         playerType = nextType;
 
         if (lastType != playerType) {
-            Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
-            playerCamera.enabled = false;
-            Destroy( playerController.gameObject );
             GameObject newInstance = GetPrefabInstanceFromType( playerType );
             newInstance.transform.position = gameObject.transform.position;
             newInstance.transform.rotation = gameObject.transform.rotation;
 
             if (isLocalPlayer) {
+                Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
+                playerCamera.enabled = false;
                 //Camera playerCamera = GetComponentInChildren<Camera>( );
                 Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
                 //playerCamera.transform.parent = newInstance.transform;
@@ -52,6 +51,7 @@ public class CharacterStateHandler : NetworkBehaviour {
                 //playerCamera.enabled = false;
                 newCamera.enabled = true;
             }
+            Destroy( playerController.gameObject );
         }
     }
 
