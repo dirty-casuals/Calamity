@@ -47,6 +47,8 @@ public class GameHandler : UnityObserver {
         AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         SetFirstGameState( );
+        numHumanPlayers = Network.connections.Length;
+        Debug.Log( numHumanPlayers );
     }
 
     private void Update( ) {
