@@ -50,7 +50,7 @@ namespace UnityStandardAssets.Network
             _lobbyHooks = GetComponent<LobbyHook>();
             currentPanel = mainMenuPanel;
 
-            backButton.gameObject.SetActive(false);
+            backButton.gameObject.SetActive(true);
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
