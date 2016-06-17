@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
+using UnityStandardAssets.Network;
 
 public class GameHandler : UnityObserver {
     public Text countdownLabel;
@@ -47,7 +48,7 @@ public class GameHandler : UnityObserver {
         AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         SetFirstGameState( );
-        numHumanPlayers = Network.connections.Length;
+        numHumanPlayers = LobbyPlayer.numPlayers;
         Debug.Log( numHumanPlayers );
     }
 
@@ -167,9 +168,7 @@ public class GameHandler : UnityObserver {
         for (int i = 0; i < playerControllers.Count; i += 1) {
             PlayerController playerController = playerControllers[ i ];
 
-            Spawner spawnpoint = playerSpawnPoints[ i ];
-            Vector3 spawnPosition = spawnpoint.GetPosition( );
-            playerController.gameObject.transform.position = spawnPosition;
+            playerController.gameObject.transform.position = playerController.startPosition;
             playerController.Revive( );
         }
     }

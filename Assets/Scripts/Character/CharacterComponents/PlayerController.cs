@@ -9,8 +9,10 @@ public class PlayerController : Subject {
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
     public bool alive = true;
+    public Vector3 startPosition;
 
     private void Start( ) {
+        startPosition = transform.position;
         stateHandler = GetComponent<CharacterStateHandler>( );
         currentPlayerState = stateHandler.currentState;
         inventory = GetComponent<PlayerInventory>( );
