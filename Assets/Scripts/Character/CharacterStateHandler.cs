@@ -22,6 +22,7 @@ public class CharacterStateHandler : NetworkBehaviour {
     private void Awake( ) {
         currentState = GetPlayerStateFromType( playerType );
         nextState = currentState;
+        nextType = playerType;
     }
 
     public void SetNextState( PlayerType type ) {
@@ -29,17 +30,28 @@ public class CharacterStateHandler : NetworkBehaviour {
         nextType = type;
     }
 
-    public void UpdateState() {
+    public void UpdateState( PlayerController playerController ) {
         currentState = nextState;
         PlayerType lastType = playerType;
         playerType = nextType;
 
-        if( lastType != playerType ) {
+        if (lastType != playerType) {
+            Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
+            playerCamera.enabled = false;
+            Destroy( playerController.gameObject );
             GameObject newInstance = GetPrefabInstanceFromType( playerType );
             newInstance.transform.position = gameObject.transform.position;
             newInstance.transform.rotation = gameObject.transform.rotation;
 
-            Destroy( gameObject );
+            if (isLocalPlayer) {
+                //Camera playerCamera = GetComponentInChildren<Camera>( );
+                Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
+                //playerCamera.transform.parent = newInstance.transform;
+                //playerCamera.transform.position = newInstance.transform.localPosition;
+
+                //playerCamera.enabled = false;
+                newCamera.enabled = true;
+            }
         }
     }
 
@@ -56,7 +68,7 @@ public class CharacterStateHandler : NetworkBehaviour {
         }
         currentState.PlayerUpdate( );
     }
-    
+
     private void OnCollisionEnter( Collision collision ) {
         currentState.PlayerCollisionEnter( collision );
     }

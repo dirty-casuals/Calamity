@@ -1,4 +1,7 @@
-﻿using UnitySampleAssets.CrossPlatformInput;
+﻿using System.Collections;
+using UnityEngine;
+using UnitySampleAssets.CrossPlatformInput;
+using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : Subject {
     private GameHandler gameHandler;
@@ -26,12 +29,39 @@ public class PlayerController : Subject {
         }
     }
 
+    public void RunCameraEffects( ) {
+        Camera camera = GetComponentInChildren<Camera>( );
+
+        if (isLocalPlayer && camera != null) {
+            BlurOptimized blur = camera.GetComponent<BlurOptimized>( );
+            if (blur != null) {
+                blur.enabled = true;
+                blur.blurSize = 10.0f;
+                StartCoroutine( DecreaseAndRemoveBlur( blur ) );
+            }
+        }
+    }
+
+    public void Revive( ) {
+        if (isLocalPlayer) {
+            GetComponentInChildren<ScreenOverlay>( ).enabled = false;
+        }
+        gameObject.SetActive( true );
+        stateHandler.currentState.RevivePlayer( );
+    }
+
+    public void Die( ) {
+        if (isLocalPlayer) {
+            GetComponentInChildren<ScreenOverlay>( ).enabled = true;
+        }
+    }
+
     public void SetNextState( PlayerType type ) {
         stateHandler.SetNextState( type );
     }
 
     public void UpdateState( ) {
-        stateHandler.UpdateState( );
+        stateHandler.UpdateState( this );
     }
 
     public bool isMonster( ) {
@@ -41,6 +71,10 @@ public class PlayerController : Subject {
     public void SetDead( ) {
         alive = false;
         NotifySendObject( this, GameHandler.CHARACTER_DIED );
+    }
+
+    public void SetAlive( ) {
+        alive = true;
     }
 
     public bool IsDead( ) {
@@ -55,7 +89,7 @@ public class PlayerController : Subject {
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
         bool rightMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire2" );
-        
+
         if (gameObject.tag == "Player" && leftMouseButtonActivated) {
             if (inventory.firstItem.Length <= 0) {
                 return;
@@ -87,6 +121,14 @@ public class PlayerController : Subject {
                 currentPlayerState.characterAnimator.SetFloat( "Direction", -1.0f );
             }
         }
+    }
+
+    private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {
+        while (blur.blurSize > 0.0f) {
+            yield return new WaitForSeconds( 0.5f );
+            blur.blurSize = blur.blurSize - 1.0f;
+        }
+        blur.enabled = false;
     }
 
     private bool PlayerIsMovingForward( float vertical ) {

@@ -65,18 +65,9 @@ public class GameHandler : UnityObserver {
         alivePlayerControllers.Add( controller );
     }
 
-    public void RunBlurEffect( ) {
-
-        // this might need updating to work multiplayer, I'm not sure
-        GameObject camera = GameObject.FindGameObjectWithTag( "MainCamera" );
-
-        if (camera != null) {
-            BlurOptimized blur = camera.GetComponent<BlurOptimized>( );
-            if (blur != null) {
-                blur.enabled = true;
-                blur.blurSize = 10.0f;
-                StartCoroutine( DecreaseAndRemoveBlur( blur ) );
-            }
+    public void RunCameraEffects( ) {
+        for (int i = 0; i < playerControllers.Count; i += 1) {
+            playerControllers[ i ].RunCameraEffects( );
         }
     }
 
@@ -92,14 +83,6 @@ public class GameHandler : UnityObserver {
 
     public static void RegisterForStateEvents( GameObject observer ) {
         stateEventObservers.Add( observer );
-    }
-
-    private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {
-        while (blur.blurSize > 0.0f) {
-            yield return new WaitForSeconds( 0.5f );
-            blur.blurSize = blur.blurSize - 1.0f;
-        }
-        blur.enabled = false;
     }
 
     public override void OnNotify( UnityEngine.Object sender, EventArguments e ) {
@@ -132,12 +115,24 @@ public class GameHandler : UnityObserver {
         }
     }
 
+    public PlayerController GetLocalPlayer( ) {
+        PlayerController playerController = null;
+        for (int i = 0; i < playerControllers.Count; i += 1) {
+            PlayerController controller = playerControllers[ i ];
+            if (controller.isLocalPlayer) {
+                playerController = controller;
+                break;
+            }
+        }
+        return playerController;
+    }
+
     public void StartPlayerSpawners( ) {
         int humansCreated = 0;
         foreach (Spawner spawn in playerSpawnPoints) {
             if (humansCreated < numHumanPlayers) {
-                spawn.playable = true;
                 humansCreated += 1;
+                continue;
             }
             //if (spawn.playable) {
             //    spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
@@ -159,26 +154,29 @@ public class GameHandler : UnityObserver {
         return currentRound == 1;
     }
 
-    public void ResetAllTheThings( ) {
-        int i;
-        Spawner spawner;
-        for (i = 0; i < monsterSpawnPoints.Count; i += 1) {
-            spawner = monsterSpawnPoints[ i ];
+    public void DisableMonsters( ) {
+        for (int i = 0; i < monsterSpawnPoints.Count; i += 1) {
+            Spawner spawner = monsterSpawnPoints[ i ];
             spawner.DisableCurrentCharacter( );
         }
+    }
 
-        for (i = 0; i < playerSpawnPoints.Count; i += 1) {
-            spawner = playerSpawnPoints[ i ];
+    public void ResetAllThePlayers( ) {
+        for (int i = 0; i < playerControllers.Count; i += 1) {
+            PlayerController playerController = playerControllers[ i ];
 
-            spawner.UpdateChildrenToSpawnPosition( );
-            spawner.ReenableCurrentCharacter( );
+            Spawner spawnpoint = playerSpawnPoints[ i ];
+            Vector3 spawnPosition = spawnpoint.GetPosition( );
+            playerController.gameObject.transform.position = spawnPosition;
+            playerController.Revive( );
         }
     }
 
     public void UpdateCharacterStates( ) {
         for (int i = 0; i < playerControllers.Count; i += 1) {
-            PlayerController controller = playerControllers[ i ];
-            controller.UpdateState( );
+            PlayerController playerController = playerControllers[ i ];
+
+            playerController.UpdateState( );
         }
     }
 
@@ -197,7 +195,7 @@ public class GameHandler : UnityObserver {
         return alivePlayerControllers[ 0 ];
     }
 
-    public int GetNumberAlivePlayersLeft() {
+    public int GetNumberAlivePlayersLeft( ) {
         return alivePlayerControllers.Count;
     }
 

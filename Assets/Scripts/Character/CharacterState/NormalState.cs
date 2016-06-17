@@ -19,10 +19,12 @@ public class NormalState : PlayerState {
     public override void KnockoutPlayer( ) {
         base.KnockoutPlayer( );
         controller.SetNextState( PlayerType.MONSTER );
+        controller.Die( );
         playerRig.Entity.IsActive = false;
     }
 
     public override void RevivePlayer( ) {
+        playerRig.Entity.IsActive = true;
         base.RevivePlayer( );
     }
 }

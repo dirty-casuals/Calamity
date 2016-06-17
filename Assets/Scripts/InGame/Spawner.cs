@@ -30,7 +30,11 @@ public abstract class Spawner : MonoBehaviour {
         ToggleCharacterState( false );
     }
 
-    public virtual void UpdateChildrenToSpawnPosition() { }
+    public virtual void UpdateChildrenToSpawnPosition( ) { }
+
+    public Vector3 GetPosition( ) {
+        return transform.position;
+    }
 
     protected GameObject CreateAndGetCharacter( ) {
         GameObject spawn = Instantiate( characterPrefab );
