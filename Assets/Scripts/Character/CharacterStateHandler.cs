@@ -53,9 +53,8 @@ public class CharacterStateHandler : NetworkBehaviour {
             }
             GameHandler gameHandler = GameObject.FindObjectOfType<GameHandler>( );
             gameHandler.RemovePlayerController( playerController );
+            NetworkServer.Destroy( playerController.gameObject );
             gameHandler.AddPlayerController( newInstance.GetComponent<PlayerController>( ) );
-            Destroy( playerController.gameObject );
-
         }
     }
 

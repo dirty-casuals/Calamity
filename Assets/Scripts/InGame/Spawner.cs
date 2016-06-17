@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public enum SpawnpointType {
     PLAYER,
@@ -40,7 +41,7 @@ public abstract class Spawner : MonoBehaviour {
         GameObject spawn = Instantiate( characterPrefab );
         spawn.transform.parent = transform;
         spawn.transform.position = transform.position;
-
+        NetworkServer.Spawn( spawn );
         return spawn;
     }
 

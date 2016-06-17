@@ -1,10 +1,8 @@
-﻿using GameDataEditor;
-using System;
+﻿using System.Collections.Generic;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityStandardAssets.ImageEffects;
 using UnityStandardAssets.Network;
 
 public class GameHandler : UnityObserver {
@@ -43,16 +41,27 @@ public class GameHandler : UnityObserver {
     private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
     private int numHumanPlayers = 1;
     private static List<GameObject> stateEventObservers = new List<GameObject>( );
+    private bool networkingStart = false;
 
-    private void Start( ) {
+    public void Start( ) {
+        StartCoroutine( StartOnNetworking( ) );
+    }
+
+    private IEnumerator StartOnNetworking( ) {
+        while (!NetworkServer.active) {
+            yield return new WaitForEndOfFrame( );
+        }
         AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         SetFirstGameState( );
         numHumanPlayers = LobbyPlayer.numPlayers;
-        Debug.Log( numHumanPlayers );
+        networkingStart = true;
     }
 
     private void Update( ) {
+        if (!networkingStart) {
+            return;
+        }
         currentGameState.GameUpdate( );
     }
 
@@ -171,17 +180,19 @@ public class GameHandler : UnityObserver {
     public void ResetAllThePlayers( ) {
         for (int i = 0; i < playerControllers.Count; i += 1) {
             PlayerController playerController = playerControllers[ i ];
-
-            playerController.gameObject.transform.position = playerController.startPosition;
-            playerController.Revive( );
+            if (playerController != null) {
+                playerController.gameObject.transform.position = playerController.startPosition;
+                playerController.Revive( );
+            }
         }
     }
 
     public void UpdateCharacterStates( ) {
         for (int i = 0; i < playerControllers.Count; i += 1) {
             PlayerController playerController = playerControllers[ i ];
-
-            playerController.UpdateState( );
+            if (playerController != null) {
+                playerController.UpdateState( );
+            }
         }
     }
 
