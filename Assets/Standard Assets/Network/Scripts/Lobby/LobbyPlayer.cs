@@ -20,6 +20,7 @@ namespace UnityStandardAssets.Network {
         public Button readyButton;
         public Button waitingPlayerButton;
         public List<GameObject> eyes = new List<GameObject>( );
+        public static int numPlayers = 0;
 
         [SyncVar( hook = "OnMyName" )]
         public string playerName = "";
@@ -35,6 +36,7 @@ namespace UnityStandardAssets.Network {
 
         public override void OnClientEnterLobby( ) {
             base.OnClientEnterLobby( );
+            numPlayers = numPlayers + 1;
             LobbyPlayerList._instance.AddPlayer( this );
             LobbyPlayerList._instance.DisplayDirectServerWarning( isServer && LobbyManager.s_Singleton.matchMaker == null );
             StartCoroutine( SetupLobby( ) );
