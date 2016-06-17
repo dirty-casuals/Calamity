@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
 using System.Collections.Generic;
 using GameDataEditor;
 
@@ -16,9 +17,17 @@ public class PlayerInventory : Subject {
         if (!isLocalPlayer) {
             return;
         }
-        UIInventoryItem playerInventoryUI = FindObjectOfType<UIInventoryItem>( );
-        AddUnityObservers( playerInventoryUI.gameObject );
+        StartCoroutine( InitializeInventoryUI() );
         GDEDataManager.Init( "gde_data" );
+    }
+
+    private IEnumerator InitializeInventoryUI( ) {
+        UIInventoryItem playerInventoryUI = null;
+        while (playerInventoryUI == null) {
+            playerInventoryUI = FindObjectOfType<UIInventoryItem>( );
+            yield return new WaitForFixedUpdate( );
+        }
+        AddUnityObservers( playerInventoryUI.gameObject );
     }
 
     private void OnTriggerEnter( Collider col ) {
@@ -51,7 +60,7 @@ public class PlayerInventory : Subject {
 
     [Command]
     public void CmdRemoveItemFromInventory( ) {
-        firstItem = null;
+        firstItem = "";
     }
 
     private bool CanPlayerPickupItem( GameObject spawner ) {
