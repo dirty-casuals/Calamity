@@ -24940,6 +24940,10 @@ Prefab:
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 102998, guid: 9c182b42165bce147a4bf13781a65441, type: 2}
+    - target: {fileID: 135324, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
   m_IsPrefabParent: 0
@@ -51954,7 +51958,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: a2740902ecf99452499bcbb8d3d29c33, type: 3}
       propertyPath: m_PreserveUVs
