@@ -42,19 +42,30 @@ public class GameHandler : UnityObserver {
     private int numHumanPlayers = 1;
     private static List<GameObject> stateEventObservers = new List<GameObject>( );
     private bool networkingStart = false;
+    private bool singlePlayer = false;
 
     public void Start( ) {
-        StartCoroutine( StartOnNetworking( ) );
+        numHumanPlayers = LobbyPlayer.numPlayers;
+        if (numHumanPlayers == 1 || numHumanPlayers == 0) {
+            Resources.FindObjectsOfTypeAll<NetworkManager>()[0].enabled = true;
+            Resources.FindObjectsOfTypeAll<NetworkManager>( )[0].StartHost( );
+            Setup( );
+        } else {
+            StartCoroutine( StartOnNetworking( ) );
+        }
     }
 
     private IEnumerator StartOnNetworking( ) {
         while (!NetworkServer.active) {
             yield return new WaitForEndOfFrame( );
         }
+        Setup( );
+    }
+
+    private void Setup() {
         AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         SetFirstGameState( );
-        numHumanPlayers = LobbyPlayer.numPlayers;
         networkingStart = true;
     }
 
@@ -150,9 +161,12 @@ public class GameHandler : UnityObserver {
                 humansCreated += 1;
                 continue;
             }
-            //if (spawn.playable) {
-            //    spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
-            //} else {
+
+            //if (singlePlayer && spawn.playable) {
+            //    if (spawn.playable) {
+            //        spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
+            //    }
+            //} else if (!spawn.playable) {
             spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
             //}
             spawn.StartSpawn( );
