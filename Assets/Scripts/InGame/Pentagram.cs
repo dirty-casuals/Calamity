@@ -23,7 +23,7 @@ public class Pentagram : UnityObserver {
     }
 
     private void SetPreCalamityLighting( ) {
-        SetPentagramLight( Color.black, Mathf.LinearToGammaSpace( 4.0f ) );
+        SetPentagramLight( Color.white, Mathf.LinearToGammaSpace( 2.0f ) );
     }
 
     private void SetCalamityLighting( ) {
@@ -32,7 +32,7 @@ public class Pentagram : UnityObserver {
 
     private void SetPentagramLight( Color color, float emissionIntensity ) {
         Material[ ] pentagramMaterials = pentagramRenderer.materials;
-        pentagramMaterials[ 0 ].color = Color.red;
+        pentagramMaterials[ 0 ].color = color;
         pentagramMaterials[ 0 ].SetColor( "_EmissionColor", color  * emissionIntensity );
         pentagramRenderer.materials = pentagramMaterials;
         DynamicGI.SetEmissive( pentagramRenderer, color * emissionIntensity );
