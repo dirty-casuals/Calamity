@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Striplight : UnityObserver {
-
-    protected MeshRenderer meshRenderer;
+public abstract class CalamityLight : UnityObserver {
 
     public override void InitializeUnityObserver( ) {
-        meshRenderer = GetComponent<MeshRenderer>( );
         GameHandler.RegisterForStateEvents( this.gameObject );
     }
 
@@ -25,11 +22,4 @@ public abstract class Striplight : UnityObserver {
     protected abstract void SetPreCalamityLighting( );
 
     protected abstract void SetCalamityLighting( );
-
-    protected void SetLight( Color color, float emissionIntensity, Material light ) {
-        Material[ ] materials = meshRenderer.materials;
-        materials[ 1 ] = light;
-        meshRenderer.materials = materials;
-        DynamicGI.SetEmissive( meshRenderer, color * emissionIntensity );
-    }
 }
