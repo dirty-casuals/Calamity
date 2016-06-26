@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000633, guid: f9437c1c736fe384092deb18646cd7dc,
+  m_LightingDataAsset: {fileID: 112000364, guid: f9437c1c736fe384092deb18646cd7dc,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -7490,6 +7490,7 @@ GameObject:
   - 4: {fileID: 277028079}
   - 114: {fileID: 277028081}
   - 65: {fileID: 277028080}
+  - 114: {fileID: 277028082}
   m_Layer: 0
   m_Name: MonsterSpawnPoint
   m_TagString: Untagged
@@ -7540,6 +7541,38 @@ MonoBehaviour:
   characterPrefab: {fileID: 0}
   spawnCount: 2
   spawnRateInSeconds: 3
+--- !u!114 &277028082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 277028078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 172
+    i1: 56
+    i2: 229
+    i3: 48
+    i4: 141
+    i5: 125
+    i6: 172
+    i7: 36
+    i8: 152
+    i9: 179
+    i10: 38
+    i11: 164
+    i12: 172
+    i13: 235
+    i14: 13
+    i15: 131
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &282233294 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: db97e56b434744fad847ca5ce8b6df84, type: 3}
@@ -9880,7 +9913,6 @@ Transform:
   - {fileID: 1888060393}
   - {fileID: 277028079}
   - {fileID: 980298889}
-  - {fileID: 1154897288}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!1 &400242959
@@ -15096,7 +15128,7 @@ Transform:
   - {fileID: 1744531270}
   - {fileID: 1118734293}
   m_Father: {fileID: 1760522257}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &733624509
 Prefab:
   m_ObjectHideFlags: 0
@@ -24727,33 +24759,6 @@ MonoBehaviour:
     i15: 179
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!1 &1154897287
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 194428, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1154897288}
-  m_Layer: 0
-  m_Name: PlayerSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1154897288
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 444522, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1154897287}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.5, y: 0.292, z: -1.6}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_Children: []
-  m_Father: {fileID: 395032186}
-  m_RootOrder: 3
 --- !u!1 &1155505963 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: db97e56b434744fad847ca5ce8b6df84, type: 3}
@@ -30772,22 +30777,6 @@ Prefab:
     - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: inventoryUI
-      value: 
-      objectReference: {fileID: 931395503}
-    - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.6999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 438346, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.6999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 101766, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3f77e7c560c4a54a83c8c7aae8f97d9, type: 2}
@@ -40031,8 +40020,8 @@ Transform:
   m_Children:
   - {fileID: 1185783509}
   - {fileID: 1248718814}
-  - {fileID: 524704074}
   - {fileID: 730813625}
+  - {fileID: 524704074}
   m_Father: {fileID: 1253500913}
   m_RootOrder: 5
 --- !u!1001 &1761924847
