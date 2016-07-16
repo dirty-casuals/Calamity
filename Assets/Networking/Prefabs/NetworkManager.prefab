@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 442600}
   - 114: {fileID: 11479540}
-  - 114: {fileID: 11427764}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -29,21 +28,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11427764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 227461547, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
 --- !u!114 &11479540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,17 +48,20 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 102998, guid: 9c182b42165bce147a4bf13781a65441, type: 2}
+  m_PlayerPrefab: {fileID: 156506, guid: f929a7635cede8e4793d5fefb748f575, type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: 
-  m_OnlineScene: 
+  m_OfflineScene: GameEndMenu
+  m_OnlineScene: 1_school
   m_SpawnPrefabs:
   - {fileID: 180062, guid: 0b425ff9ef77ffc44920583fc4e5d99b, type: 2}
-  - {fileID: 198650, guid: b2bc9a6eead5a214496728ee30195d06, type: 2}
   - {fileID: 178838, guid: 011f4fb7f4ae4b34088f8c29285e0934, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 198912, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
+  - {fileID: 102998, guid: 9c182b42165bce147a4bf13781a65441, type: 2}
+  - {fileID: 114626, guid: 50110a4f27174034884aca576500bf6a, type: 2}
+  - {fileID: 181222, guid: 11c5d52f7f1cf804aa634562c843240b, type: 2}
+  - {fileID: 157570, guid: 89bca6ad9bc79ba4295088a67da1cd00, type: 2}
+  - {fileID: 185410, guid: db78c123ec840324585be4d6589a37e7, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
