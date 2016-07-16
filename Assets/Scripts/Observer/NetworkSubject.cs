@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Networking;
 
-public class Subject : MonoBehaviour, ISubject {
+public class NetworkSubject : NetworkBehaviour, ISubject {
     private readonly List<IObserver> listOfObservers = new List<IObserver>( );
     private List<GameObject> listOfUnityObservers = new List<GameObject>( );
 

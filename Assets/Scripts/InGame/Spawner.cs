@@ -41,6 +41,7 @@ public abstract class Spawner : MonoBehaviour {
         GameObject spawn = Instantiate( characterPrefab );
         spawn.transform.parent = transform;
         spawn.transform.position = transform.position;
+        spawn.transform.localPosition = Vector3.zero;
         NetworkServer.Spawn( spawn );
         return spawn;
     }

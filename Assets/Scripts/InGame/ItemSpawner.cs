@@ -16,18 +16,13 @@ public class ItemSpawner : NetworkBehaviour {
     private float timeToSpawnItem = 0.0f;
     private MeshRenderer itemRenderer;
 
-    private void Start( ) {
-        if (!isServer) {
-            return;
-        }
+    public override void OnStartServer( ) {
         itemRenderer = GetComponent<MeshRenderer>( );
         CmdSpawnItem( );
     }
 
+    [ServerCallback]
     private void Update( ) {
-        if (!isServer) {
-            return;
-        }
         if (currentlySpawnedItem) {
             timeToSpawnItem = 0.0f;
         } else if (timeToSpawnItem >= spawnTimer) {

@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class AsychLevelLoader : MonoBehaviour {
 
     private GameObject loadingUIPanel;
+    [SerializeField]
+    private LobbyManager lobbyManager;
 
     private void Awake( ) {
         loadingUIPanel = GetComponentInChildren<CanvasRenderer>( true ).gameObject;
@@ -12,6 +15,13 @@ public class AsychLevelLoader : MonoBehaviour {
     public void LoadRandomLevel( ) {
         loadingUIPanel.SetActive( true );
         LoadScene( );
+    }
+
+    public void LoadSchoolScene( ) {
+        loadingUIPanel.SetActive( true );
+        lobbyManager.lobbyScene = SceneManager.GetActiveScene( ).name;
+        lobbyManager.StartHost( );
+        lobbyManager.ServerChangeScene( lobbyManager.playScene );
     }
 
     private void LoadScene( ) {

@@ -5,12 +5,9 @@ using System.Collections.Generic;
 
 public class CalamityRoundState : GameState {
 
-    private GameHandler gameHandler;
-    private float endTime;
     private List<GameObject> icons = new List<GameObject>( );
 
-    public CalamityRoundState( GameHandler handler ) {
-        gameHandler = handler;
+    public CalamityRoundState( GameHandler handler ) : base( handler ) {
         AddUnityObservers( handler.gameObject );
     }
 
@@ -22,7 +19,7 @@ public class CalamityRoundState : GameState {
         gameHandler.DisableMonsters( );
 
         endTime = gameHandler.roundLengthSeconds;
-        gameHandler.countdownLabel.text = "Next Round";
+        gameHandler.RpcSetCalamityLabelText( "Next Round" );
         gameHandler.roundCount.text = gameHandler.currentRound.ToString( );
 
         PlayerController playerController = gameHandler.GetLocalPlayer( );
@@ -59,7 +56,7 @@ public class CalamityRoundState : GameState {
             Vector3 position = icon.transform.position;
             position.Set( position.x + (iconWidth * i), position.y, position.z );
             GameObject newIcon = (GameObject)GameObject.Instantiate( icon, position, icon.transform.rotation );
-            newIcon.transform.parent = icon.transform.parent;
+            newIcon.transform.SetParent( icon.transform.parent );
             icons.Add( newIcon );
         }
     }
@@ -76,10 +73,5 @@ public class CalamityRoundState : GameState {
             gameHandler.roundPanel.SetActive( false );
             Notify( GameHandler.SET_PRE_CALAMITY_STATE );
         }
-    }
-
-    private void SetCountdownTime( ) {
-        float timeToCalamity = endTime - gameTimer;
-        gameHandler.countdownTime.text = Mathf.Floor( timeToCalamity ).ToString( );
     }
 }

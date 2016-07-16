@@ -9,7 +9,7 @@ public enum ItemState {
     ITEM_INACTIVE
 }
 
-public class Item : Subject {
+public class Item : NetworkSubject {
 
     [SyncVar]
     public bool itemInPlayerHands = false;

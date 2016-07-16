@@ -5,8 +5,8 @@ public abstract class Striplight : CalamityLight {
 
     protected MeshRenderer meshRenderer;
 
-    public override void InitializeUnityObserver( ) {
-        base.InitializeUnityObserver( );
+    public override void OnStartServer( ) {
+        base.OnStartServer( );
         meshRenderer = GetComponent<MeshRenderer>( );
     }
 

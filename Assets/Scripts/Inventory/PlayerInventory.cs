@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameDataEditor;
 
-public class PlayerInventory : Subject {
+public class PlayerInventory : NetworkSubject {
 
     public const string ADDED_ITEM_TO_INVENTORY = "ADDED_ITEM_TO_INVENTORY";
     public const string ITEM_USED_BY_PLAYER = "ITEM_USED_BY_PLAYER";
@@ -13,10 +13,6 @@ public class PlayerInventory : Subject {
     public string firstItem;
 
     public override void OnStartLocalPlayer( ) {
-        base.OnStartLocalPlayer( );
-        if (!isLocalPlayer) {
-            return;
-        }
         StartCoroutine( InitializeInventoryUI() );
         GDEDataManager.Init( "gde_data" );
     }

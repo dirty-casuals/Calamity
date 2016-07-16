@@ -3,9 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityStandardAssets.Network;
 
-public class GameHandler : UnityObserver {
+public class GameHandler : NetworkObserver {
     public Text countdownLabel;
     public Text countdownTime;
     public Text roundCount;
@@ -30,57 +29,72 @@ public class GameHandler : UnityObserver {
     public const string TOGGLE_GAME_PAUSE = "TOGGLE_GAME_PAUSE";
     public const string CHARACTER_DIED = "CHARACTER_DIED";
     public const string NEW_PLAYER = "NEW_PLAYER";
+    [SyncVar]
+    public bool isReadyForPlayerSpawns = false;
+
     public static GameState currentGameState;
-    private static GamePreCalamityState preCalamityState;
-    private static CalamityState calamityState;
-    private static CalamityRoundState nextRoundState;
-    private static GameEndState gameEndState;
+
     private List<Spawner> playerSpawnPoints;
     private List<Spawner> monsterSpawnPoints;
     private List<PlayerController> playerControllers = new List<PlayerController>( );
     private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
-    private int numHumanPlayers = 1;
-    private static List<GameObject> stateEventObservers = new List<GameObject>( );
-    private bool networkingStart = false;
     private bool singlePlayer = false;
+    private int clientsSpawned = 0;
+    private List<GameObject> playerObjects = new List<GameObject>( );
+    [SyncVar( hook = "onRoundTimeRemainingChange" )]
+    private float roundTimeRemaining = 0.0f;
 
-    public void Start( ) {
-        numHumanPlayers = LobbyPlayer.numPlayers;
-        if (numHumanPlayers == 1 || numHumanPlayers == 0) {
-            Resources.FindObjectsOfTypeAll<NetworkManager>()[0].enabled = true;
-            Resources.FindObjectsOfTypeAll<NetworkManager>( )[0].StartHost( );
-            Setup( );
-        } else {
-            StartCoroutine( StartOnNetworking( ) );
-        }
-    }
+    private static List<GameObject> stateEventObservers = new List<GameObject>( );
 
-    private IEnumerator StartOnNetworking( ) {
-        while (!NetworkServer.active) {
-            yield return new WaitForEndOfFrame( );
-        }
-        Setup( );
-    }
+    private static GamePreCalamityState preCalamityState;
+    private static CalamityState calamityState;
+    private static CalamityRoundState nextRoundState;
+    private static GameEndState gameEndState;
 
-    private void Setup() {
-        AddObserversToStateEvents( );
-        GetGameSpawnPoints( );
-        SetFirstGameState( );
-        networkingStart = true;
-    }
-
-    private void Update( ) {
-        if (!networkingStart) {
-            return;
-        }
-        currentGameState.GameUpdate( );
-    }
-
-    public override void InitializeUnityObserver( ) {
+    [ServerCallback]
+    private void Awake( ) {
         preCalamityState = new GamePreCalamityState( this );
         calamityState = new CalamityState( this );
         nextRoundState = new CalamityRoundState( this );
         gameEndState = new GameEndState( this );
+    }
+
+    public override void OnStartServer( ) {
+        StartCoroutine( Setup( ) );
+    }
+
+    private IEnumerator Setup( ) {
+        AddObserversToStateEvents( );
+        GetGameSpawnPoints( );
+        isReadyForPlayerSpawns = true;
+
+        while (clientsSpawned < NetworkManager.singleton.numPlayers) {
+            yield return new WaitForEndOfFrame( );
+        }
+
+        SetFirstGameState( );
+    }
+
+    [ServerCallback]
+    private void Update( ) {
+        if (clientsSpawned < NetworkManager.singleton.numPlayers) {
+            return;
+        }
+
+        currentGameState.GameUpdate( );
+    }
+    
+    public void RequestPlayerSpawn( NetworkInstanceId netId ) {
+        GameObject newPlayer = CharacterStateHandler.GetPrefabInstanceFromType( PlayerType.PLAYER );
+        GameObject playerPlaceholder = NetworkServer.FindLocalObject( netId );
+        NetworkServer.ReplacePlayerForConnection( playerPlaceholder.GetComponent<NetworkIdentity>( ).connectionToClient, newPlayer, 0 );
+        playerObjects.Add( newPlayer );
+        NetworkServer.Destroy( playerPlaceholder );
+        clientsSpawned = clientsSpawned + 1;
+    }
+
+    public void SetRoundTimeRemaining( float timeRemaining ) {
+        roundTimeRemaining = timeRemaining;
     }
 
     public void AddPlayerController( PlayerController controller ) {
@@ -94,7 +108,10 @@ public class GameHandler : UnityObserver {
 
     public void RunCameraEffects( ) {
         for (int i = 0; i < playerControllers.Count; i += 1) {
-            playerControllers[ i ].RunCameraEffects( );
+            PlayerController playerController = playerControllers[ i ];
+            if (playerController != null && playerController.isLocalPlayer) {
+                playerController.RunCameraEffects( );
+            }
         }
     }
 
@@ -111,6 +128,12 @@ public class GameHandler : UnityObserver {
     public static void RegisterForStateEvents( GameObject observer ) {
         stateEventObservers.Add( observer );
     }
+
+    [ClientRpc]
+    public void RpcSetCalamityLabelText( string text ) {
+        countdownLabel.text = text;
+    }
+
 
     public override void OnNotify( UnityEngine.Object sender, EventArguments e ) {
         switch (e.eventMessage) {
@@ -154,21 +177,20 @@ public class GameHandler : UnityObserver {
         return playerController;
     }
 
-    public void StartPlayerSpawners( ) {
+    public void SpawnAIPlayers( ) {
         int humansCreated = 0;
+        GameObject characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
         foreach (Spawner spawn in playerSpawnPoints) {
-            if (humansCreated < numHumanPlayers) {
-                humansCreated += 1;
+            if (humansCreated < NetworkManager.singleton.numPlayers) {
+                GameObject playerObject = playerObjects[ humansCreated ];
+                playerObject.transform.parent = spawn.transform;
+                playerObject.transform.localPosition = Vector3.zero;
+                playerObject.transform.localRotation = Quaternion.identity;
+                humansCreated = humansCreated + 1;
                 continue;
             }
 
-            //if (singlePlayer && spawn.playable) {
-            //    if (spawn.playable) {
-            //        spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/PlayerNormal" );
-            //    }
-            //} else if (!spawn.playable) {
-            spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
-            //}
+            spawn.characterPrefab = characterPrefab;
             spawn.StartSpawn( );
         }
     }
@@ -204,9 +226,7 @@ public class GameHandler : UnityObserver {
     public void UpdateCharacterStates( ) {
         for (int i = 0; i < playerControllers.Count; i += 1) {
             PlayerController playerController = playerControllers[ i ];
-            if (playerController != null) {
-                playerController.UpdateState( );
-            }
+            playerController.UpdateState( );
         }
     }
 
@@ -242,7 +262,7 @@ public class GameHandler : UnityObserver {
     }
 
     private void GetGameSpawnPoints( ) {
-        gameSpawnPoints = GetComponentsInChildren<Spawner>( );
+        gameSpawnPoints = FindObjectsOfType<Spawner>( );
         monsterSpawnPoints = new List<Spawner>( );
         playerSpawnPoints = new List<Spawner>( );
         for (int i = 0; i < gameSpawnPoints.Length; i += 1) {
@@ -270,6 +290,10 @@ public class GameHandler : UnityObserver {
         } else {
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    private void onRoundTimeRemainingChange( float newTimeRemaining ) {
+        countdownTime.text = Mathf.Floor( newTimeRemaining ).ToString( );
     }
 
 }
