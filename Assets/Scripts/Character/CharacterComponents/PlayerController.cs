@@ -43,13 +43,17 @@ public class PlayerController : NetworkSubject {
     }
 
     public void Revive( ) {
-        GetComponentInChildren<ScreenOverlay>( ).enabled = false;
+        if (isLocalPlayer) {
+            GetComponentInChildren<ScreenOverlay>( ).enabled = false;
+        }
         gameObject.SetActive( true );
         stateHandler.currentState.RevivePlayer( );
     }
 
     public void Die( ) {
-        GetComponentInChildren<ScreenOverlay>( ).enabled = true;
+        if (isLocalPlayer) {
+            GetComponentInChildren<ScreenOverlay>( ).enabled = true;
+        }
     }
 
     public void SetNextState( PlayerType type ) {
@@ -116,7 +120,7 @@ public class PlayerController : NetworkSubject {
         }
     }
 
-    private IEnumerator AssignObserverWhenReady() {
+    private IEnumerator AssignObserverWhenReady( ) {
         gameHandler = FindObjectOfType<GameHandler>( );
         while (gameHandler == null) {
             yield return new WaitForEndOfFrame( );
