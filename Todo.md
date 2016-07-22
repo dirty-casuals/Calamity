@@ -20,3 +20,5 @@ Things left
 + Add the knife and make it work
   - Will need to add the stab animation (in project already) to the animator
   - Will probably need a limp animation for the characters
++ Add in sounds
++ Internet matchmaking
