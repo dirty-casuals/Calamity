@@ -2,21 +2,17 @@
 
 public class GamePreCalamityState : GameState {
 
-    private GameHandler gameHandler;
-    private float endTime;
-
-    public GamePreCalamityState( GameHandler handler ) {
-        gameHandler = handler;
+    public GamePreCalamityState( GameHandler handler ) : base( handler ) {
         AddUnityObservers( handler.gameObject );
     }
 
     public override void InitializeGameState( ) {
         if (gameHandler.IsFirstRound( )) {
-            gameHandler.StartPlayerSpawners( );
+            gameHandler.SpawnAIPlayers( );
         } else {
             gameHandler.ResetAllThePlayers( );
         }
-        gameHandler.countdownLabel.text = "Time to Calamity";
+        gameHandler.RpcSetCalamityLabelText( "Time to Calamity" );
         endTime = gameHandler.startTimeSeconds;
         SetLighting( );
     }
@@ -36,10 +32,5 @@ public class GamePreCalamityState : GameState {
             gameTimer = 0.0f;
             Notify( GameHandler.SET_CALAMITY_STATE );
         }
-    }
-
-    private void SetCountdownTime( ) {
-        float timeToCalamity = endTime - gameTimer;
-        gameHandler.countdownTime.text = Mathf.Floor( timeToCalamity ).ToString( );
     }
 }

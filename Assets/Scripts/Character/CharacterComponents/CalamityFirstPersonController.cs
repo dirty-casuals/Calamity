@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityStandardAssets.CrossPlatformInput;
+using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson {
     [RequireComponent( typeof( CharacterController ) )]
     [RequireComponent( typeof( AudioSource ) )]
-    public class CalamityFirstPersonController : NetworkBehaviour {
+    public class CalamityFirstPersonController : MonoBehaviour {
         [SerializeField]
         private bool m_IsWalking;
         [SerializeField]
@@ -69,15 +69,11 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         }
 
         private void SetupNetworkCamera( ) {
-            if (isLocalPlayer) {
-                m_Camera = Camera.main;
-                m_OriginalCameraPosition = m_Camera.transform.localPosition;
-                m_FovKick.Setup( m_Camera );
-                m_HeadBob.Setup( m_Camera, m_StepInterval );
-                m_MouseLook.Init( transform, m_Camera.transform );
-            } else {
-                GetComponentInChildren<Camera>( ).enabled = false;
-            }
+            m_Camera = Camera.main;
+            m_OriginalCameraPosition = m_Camera.transform.localPosition;
+            m_FovKick.Setup( m_Camera );
+            m_HeadBob.Setup( m_Camera, m_StepInterval );
+            m_MouseLook.Init( transform, m_Camera.transform );
         }
 
         public void UpdateCalamityLookRotation( ) {

@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 public class EmergencyLight : Striplight {
-    
-    protected override void SetPreCalamityLighting( ) {
+
+    [ClientRpc]
+    protected override void RpcSetPreCalamityLighting( ) {
         Material light = LightsHandler.GetLightOffMaterial( );
         SetLight( light.color, 0.0f, light );
     }
 
-    protected override void SetCalamityLighting( ) {
+    [ClientRpc]
+    protected override void RpcSetCalamityLighting( ) {
         Material light = LightsHandler.GetLightOnMaterial( );
         SetLight( light.color, Mathf.LinearToGammaSpace( 3.0f ), light );
     }

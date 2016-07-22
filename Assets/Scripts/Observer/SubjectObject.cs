@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class SubjectObject {
-    private readonly List<Observer> listOfObservers = new List<Observer>( );
+public class SubjectObject : ISubject {
+    private readonly List<IObserver> listOfObservers = new List<IObserver>( );
     private List<GameObject> listOfUnityObservers = new List<GameObject>( );
 
-    public virtual void AddObserver( Observer newObserver ) {
+    public virtual void AddObserver( IObserver newObserver ) {
         if ( listOfObservers.Contains( newObserver ) ) {
             return; 
         }
@@ -20,7 +20,7 @@ public class SubjectObject {
         listOfUnityObservers.Add( newObserver );
     }
 
-    public virtual void RemoveObserver( Observer oldObserver ) {
+    public virtual void RemoveObserver( IObserver oldObserver ) {
         if ( listOfObservers.Contains( oldObserver ) ) {
             listOfObservers.Remove( oldObserver );
         } else {
@@ -75,8 +75,7 @@ public class SubjectObject {
 
     private void NotifyUnityObservers( Object sender, string unityEventName, List<string> extendedMessage ) {
         foreach ( var unityObserver in listOfUnityObservers ) {
-            unityObserver.GetComponent<UnityObserver>( ).OnNotify( sender,
-            new EventArguments( unityEventName, extendedMessage ) );
+            unityObserver.GetComponent<IObserver>( ).OnNotify( sender, new EventArguments( unityEventName, extendedMessage ) );
         }
     }
 }

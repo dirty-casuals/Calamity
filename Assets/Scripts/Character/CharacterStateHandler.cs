@@ -76,7 +76,7 @@ public class CharacterStateHandler : NetworkBehaviour {
         currentState.PlayerCollisionEnter( collision );
     }
 
-    public GameObject GetPrefabInstanceFromType( PlayerType type ) {
+    public static GameObject GetPrefabInstanceFromType( PlayerType type ) {
         string objectName;
         switch (type) {
             case PlayerType.PLAYER:

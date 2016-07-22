@@ -3,7 +3,7 @@ using UnityEngine;
 using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.ImageEffects;
 
-public class PlayerController : Subject {
+public class PlayerController : NetworkSubject {
     private GameHandler gameHandler;
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
@@ -16,9 +16,7 @@ public class PlayerController : Subject {
         stateHandler = GetComponent<CharacterStateHandler>( );
         currentPlayerState = stateHandler.currentState;
         inventory = GetComponent<PlayerInventory>( );
-        gameHandler = FindObjectOfType<GameHandler>( );
-        AddUnityObservers( gameHandler.gameObject );
-        NotifySendObject( this, GameHandler.NEW_PLAYER );
+        StartCoroutine( AssignObserverWhenReady( ) );
     }
 
     public void ControllerPause( ) {
@@ -34,7 +32,7 @@ public class PlayerController : Subject {
     public void RunCameraEffects( ) {
         Camera camera = GetComponentInChildren<Camera>( );
 
-        if (isLocalPlayer && camera != null) {
+        if (camera != null) {
             BlurOptimized blur = camera.GetComponent<BlurOptimized>( );
             if (blur != null) {
                 blur.enabled = true;
@@ -84,9 +82,6 @@ public class PlayerController : Subject {
     }
 
     public void InputHandler( float movementSpeed ) {
-        if (!isLocalPlayer) {
-            return;
-        }
         float horizontal = CrossPlatformInputManager.GetAxisRaw( "Horizontal" );
         float vertical = CrossPlatformInputManager.GetAxisRaw( "Vertical" );
         bool leftMouseButtonActivated = CrossPlatformInputManager.GetButtonDown( "Fire1" );
@@ -123,6 +118,17 @@ public class PlayerController : Subject {
                 currentPlayerState.characterAnimator.SetFloat( "Direction", -1.0f );
             }
         }
+    }
+
+    private IEnumerator AssignObserverWhenReady( ) {
+        gameHandler = FindObjectOfType<GameHandler>( );
+        while (gameHandler == null) {
+            yield return new WaitForEndOfFrame( );
+            gameHandler = FindObjectOfType<GameHandler>( );
+        }
+
+        AddUnityObservers( gameHandler.gameObject );
+        NotifySendObject( this, GameHandler.NEW_PLAYER );
     }
 
     private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {

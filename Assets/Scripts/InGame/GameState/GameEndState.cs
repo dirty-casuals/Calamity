@@ -2,11 +2,8 @@
 using UnityEngine.SceneManagement;
 
 public class GameEndState : GameState {
-
-    private GameHandler gameHandler;
-
-    public GameEndState( GameHandler handler ) {
-        gameHandler = handler;
+    
+    public GameEndState( GameHandler handler ) : base( handler ) {
     }
 
     public override void InitializeGameState( ) {

@@ -732,8 +732,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 744995279}
-        m_MethodName: LoadSchoolLevel
+      - m_Target: {fileID: 947554338}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1501,3 +1501,66 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1877271107}
+--- !u!1001 &2125396738
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11479540, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_SpawnPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 77.401054
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.097282
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.6201096
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442600, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479540, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 178838, guid: 011f4fb7f4ae4b34088f8c29285e0934, type: 2}
+    - target: {fileID: 11479540, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479540, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_OnlineScene
+      value: 1_school
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479540, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+      propertyPath: m_OfflineScene
+      value: GameEndMenu
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11427764, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 773c7488ebc2e894ea74042dcd477911, type: 2}
+  m_IsPrefabParent: 0

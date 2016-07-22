@@ -4,7 +4,13 @@ using System.Collections;
 public class GameState : SubjectObject {
 
     public GameObject playerCharacter;
-    public float gameTimer;
+    protected float gameTimer;
+    protected float endTime;
+    protected GameHandler gameHandler;
+
+    public GameState( GameHandler handler ) {
+        gameHandler = handler;
+    }
 
     public virtual void InitializeGameState( ) { }
 
@@ -12,4 +18,8 @@ public class GameState : SubjectObject {
 
     public virtual void GameUpdate( ) { }
 
+    protected void SetCountdownTime( ) {
+        float timeToCalamity = endTime - gameTimer;
+        gameHandler.SetRoundTimeRemaining( timeToCalamity );
+    }
 }

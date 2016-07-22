@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Networking;
 
-public class Subject : NetworkBehaviour {
-    private readonly List<Observer> listOfObservers = new List<Observer>( );
+public class Subject : MonoBehaviour, ISubject {
+    private readonly List<IObserver> listOfObservers = new List<IObserver>( );
     private List<GameObject> listOfUnityObservers = new List<GameObject>( );
 
-    public virtual void AddObserver( Observer newObserver ) {
+    public virtual void AddObserver( IObserver newObserver ) {
         if ( listOfObservers.Contains( newObserver ) ) {
             return; 
         }
@@ -21,7 +21,7 @@ public class Subject : NetworkBehaviour {
         listOfUnityObservers.Add( newObserver );
     }
 
-    public virtual void RemoveObserver( Observer oldObserver ) {
+    public virtual void RemoveObserver( IObserver oldObserver ) {
         if ( listOfObservers.Contains( oldObserver ) ) {
             listOfObservers.Remove( oldObserver );
         } else {
@@ -76,7 +76,7 @@ public class Subject : NetworkBehaviour {
 
     private void NotifyUnityObservers( Object sender, string unityEventName, List<string> extendedMessage ) {
         foreach ( var unityObserver in listOfUnityObservers ) {
-            unityObserver.GetComponent<UnityObserver>( ).OnNotify( sender,
+            unityObserver.GetComponent<IObserver>( ).OnNotify( sender,
             new EventArguments( unityEventName, extendedMessage ) );
         }
     }
