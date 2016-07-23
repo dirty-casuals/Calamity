@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder
+    4300002: Mug
   materials:
     importMaterials: 1
     materialName: 0
