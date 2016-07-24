@@ -22,3 +22,4 @@ Things left
   - Will probably need a limp animation for the characters
 + Add in sounds
 + Internet matchmaking
++ fix positioning of candle flame in scene

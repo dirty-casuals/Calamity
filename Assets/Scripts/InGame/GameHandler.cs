@@ -64,7 +64,6 @@ public class GameHandler : NetworkObserver {
     }
 
     private IEnumerator Setup( ) {
-        AddObserversToStateEvents( );
         GetGameSpawnPoints( );
         isReadyForPlayerSpawns = true;
 
@@ -115,18 +114,16 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    public static void AddObserversToStateEvents( ) {
-        for (int i = 0; i < stateEventObservers.Count; i += 1) {
-            GameObject observer = stateEventObservers[ i ];
-            preCalamityState.AddUnityObservers( observer );
-            calamityState.AddUnityObservers( observer );
-            nextRoundState.AddUnityObservers( observer );
-            gameEndState.AddUnityObservers( observer );
-        }
+    public static void AddObserverToStateEvents( GameObject observer ) {
+        preCalamityState.AddUnityObservers( observer );
+        calamityState.AddUnityObservers( observer );
+        nextRoundState.AddUnityObservers( observer );
+        gameEndState.AddUnityObservers( observer );
     }
 
     public static void RegisterForStateEvents( GameObject observer ) {
         stateEventObservers.Add( observer );
+        AddObserverToStateEvents( observer );
     }
 
     [ClientRpc]

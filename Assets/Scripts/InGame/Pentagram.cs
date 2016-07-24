@@ -8,7 +8,7 @@ public class Pentagram : NetworkObserver {
 
     public override void OnStartServer( ) {
         pentagramRenderer = GetComponent<MeshRenderer>( );
-        GameHandler.RegisterForStateEvents( this.gameObject );
+        GameHandler.RegisterForStateEvents( gameObject );
     }
 
     [Server]
