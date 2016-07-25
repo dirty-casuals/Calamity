@@ -604,6 +604,7 @@ GameObject:
   - 114: {fileID: 11491076}
   - 114: {fileID: 11462354}
   - 114: {fileID: 11484166}
+  - 114: {fileID: 11421234}
   m_Layer: 14
   m_Name: AIToothy
   m_TagString: MonsterAI
@@ -1356,6 +1357,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerType: 2
+--- !u!114 &11421234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e525654ceb25409a5103e6fe45454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alive: 0
+  startPosition: {x: 0, y: 0, z: 0}
+  isAMonster: 1
 --- !u!114 &11426400
 MonoBehaviour:
   m_ObjectHideFlags: 1

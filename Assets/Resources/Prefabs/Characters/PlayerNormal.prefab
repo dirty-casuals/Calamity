@@ -1490,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   startPosition: {x: 0, y: 0, z: 0}
+  isHuman: 1
 --- !u!114 &11414296
 MonoBehaviour:
   m_ObjectHideFlags: 1

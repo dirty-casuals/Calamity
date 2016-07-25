@@ -16,6 +16,7 @@ public class AiMonsterComponentEnabler : ComponentEnabler {
         {
             typeof( AnimTriggers ),
             typeof( CharacterStateHandler ),
+            typeof( PlayerController )
         };
 
         behavioursToEnable = new Type[ ]
