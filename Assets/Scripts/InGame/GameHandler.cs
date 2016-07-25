@@ -36,12 +36,14 @@ public class GameHandler : NetworkObserver {
 
     private List<Spawner> playerSpawnPoints;
     private List<Spawner> monsterSpawnPoints;
-    private List<PlayerController> playerControllers = new List<PlayerController>( );
-    private List<PlayerController> alivePlayerControllers = new List<PlayerController>( );
+
+    private List<PlayerController> characterPlayerControllers = new List<PlayerController>( );
+    private PlayerController localPlayerController = null;
+
     private bool singlePlayer = false;
     private int clientsSpawned = 0;
     private List<GameObject> playerObjects = new List<GameObject>( );
-    [SyncVar( hook = "onRoundTimeRemainingChange" )]
+    [SyncVar( hook = "OnRoundTimeRemainingChange" )]
     private float roundTimeRemaining = 0.0f;
 
     private static List<GameObject> stateEventObservers = new List<GameObject>( );
@@ -82,7 +84,7 @@ public class GameHandler : NetworkObserver {
 
         currentGameState.GameUpdate( );
     }
-    
+
     public void RequestPlayerSpawn( NetworkInstanceId netId ) {
         GameObject newPlayer = CharacterStateHandler.GetPrefabInstanceFromType( PlayerType.PLAYER );
         GameObject playerPlaceholder = NetworkServer.FindLocalObject( netId );
@@ -97,20 +99,20 @@ public class GameHandler : NetworkObserver {
     }
 
     public void AddPlayerController( PlayerController controller ) {
-        playerControllers.Add( controller );
-        alivePlayerControllers.Add( controller );
+        if (controller.isLocalPlayer) {
+            localPlayerController = controller;
+        }
+
+        characterPlayerControllers.Add( controller );
     }
 
     public void RemovePlayerController( PlayerController controller ) {
-        playerControllers.Remove( controller );
+        characterPlayerControllers.Remove( controller );
     }
 
     public void RunCameraEffects( ) {
-        for (int i = 0; i < playerControllers.Count; i += 1) {
-            PlayerController playerController = playerControllers[ i ];
-            if (playerController != null && playerController.isLocalPlayer) {
-                playerController.RunCameraEffects( );
-            }
+        if (localPlayerController != null) {
+            localPlayerController.RunCameraEffects( );
         }
     }
 
@@ -130,7 +132,6 @@ public class GameHandler : NetworkObserver {
     public void RpcSetCalamityLabelText( string text ) {
         countdownLabel.text = text;
     }
-
 
     public override void OnNotify( UnityEngine.Object sender, EventArguments e ) {
         switch (e.eventMessage) {
@@ -164,8 +165,8 @@ public class GameHandler : NetworkObserver {
 
     public PlayerController GetLocalPlayer( ) {
         PlayerController playerController = null;
-        for (int i = 0; i < playerControllers.Count; i += 1) {
-            PlayerController controller = playerControllers[ i ];
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController controller = characterPlayerControllers[ i ];
             if (controller.isLocalPlayer) {
                 playerController = controller;
                 break;
@@ -210,9 +211,10 @@ public class GameHandler : NetworkObserver {
         }
     }
 
+    [Server]
     public void ResetAllThePlayers( ) {
-        for (int i = 0; i < playerControllers.Count; i += 1) {
-            PlayerController playerController = playerControllers[ i ];
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController playerController = characterPlayerControllers[ i ];
             if (playerController != null) {
                 playerController.gameObject.transform.position = playerController.startPosition;
                 playerController.Revive( );
@@ -220,39 +222,69 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    public void UpdateCharacterStates( ) {
-        for (int i = 0; i < playerControllers.Count; i += 1) {
-            PlayerController playerController = playerControllers[ i ];
-            playerController.UpdateState( );
+    [Server]
+    public void MakeMonstersIfRequired( ) {
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController playerController = characterPlayerControllers[ i ];
+            playerController.MakeMonsterIfRequired( );
+        }
+    }
+
+    public void MakeNormals( ) {
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController playerController = characterPlayerControllers[ i ];
+            playerController.MakeNormal( );
         }
     }
 
     public bool DidAllLose( ) {
-        int count = alivePlayerControllers.Count;
-        return count != 1;
+        return GetNumberAlivePlayersLeft( ) != 1;
     }
 
     public bool DidAllDie( ) {
-        int count = alivePlayerControllers.Count;
-        return count == 0;
+        bool allDied = true;
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController playerController = characterPlayerControllers[ i ];
+            if (playerController.alive) {
+                allDied = false;
+                break;
+            }
+        }
+
+        return allDied;
     }
 
     public PlayerController GetWinner( ) {
         // this is just a placeholder really
-        return alivePlayerControllers[ 0 ];
+        PlayerController winner = null;
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController playerController = characterPlayerControllers[ i ];
+            if (playerController.alive) {
+                winner = playerController;
+                break;
+            }
+        }
+
+        return winner;
     }
 
     public int GetNumberAlivePlayersLeft( ) {
-        return alivePlayerControllers.Count;
+        int count = 0;
+        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
+            PlayerController playerController = characterPlayerControllers[ i ];
+            if (playerController.alive) {
+                count = count + 1;
+            }
+        }
+        return count;
     }
 
     public int GetNumberDeadPlayers( ) {
-        return playerControllers.Count - alivePlayerControllers.Count;
+        return characterPlayerControllers.Count - GetNumberAlivePlayersLeft( );
     }
 
     private void PlayerDied( PlayerController playerController ) {
-        alivePlayerControllers.Remove( playerController );
-        if (alivePlayerControllers.Count == 0) {
+        if (GetNumberAlivePlayersLeft( ) == 0) {
             currentGameState = gameEndState;
             currentGameState.InitializeGameState( );
         }
@@ -289,7 +321,7 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    private void onRoundTimeRemainingChange( float newTimeRemaining ) {
+    private void OnRoundTimeRemainingChange( float newTimeRemaining ) {
         countdownTime.text = Mathf.Floor( newTimeRemaining ).ToString( );
     }
 

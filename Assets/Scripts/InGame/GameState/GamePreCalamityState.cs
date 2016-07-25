@@ -10,6 +10,7 @@ public class GamePreCalamityState : GameState {
         if (gameHandler.IsFirstRound( )) {
             gameHandler.SpawnAIPlayers( );
         } else {
+            gameHandler.MakeNormals( );
             gameHandler.ResetAllThePlayers( );
         }
         gameHandler.RpcSetCalamityLabelText( "Time to Calamity" );

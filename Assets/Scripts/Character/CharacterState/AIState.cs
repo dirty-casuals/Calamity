@@ -18,7 +18,7 @@ public class AIState : CharacterState {
         AIRig ai = character.GetComponentInChildren<AIRig>( );
         ai.AI.IsActive = false;
         character.GetComponentInChildren<EntityRig>( ).Entity.IsActive = false;
-        controller.SetNextState( PlayerType.AI_MONSTER );
+        controller.SetNextStateToMonster( PlayerType.AI_MONSTER );
     }
 
     public override void RevivePlayer( ) {

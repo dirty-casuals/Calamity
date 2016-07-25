@@ -35,7 +35,7 @@ public class PlayerState : CharacterState {
     }
 
     public override void PlayerPhysicsUpdate( ) {
-        if (playerControllerDisabled || controller.IsDead( )) {
+        if ((playerControllerDisabled || controller.IsDead( )) && !controller.isAMonster) {
             return;
         }
         controller.InputHandler( movementSpeed );

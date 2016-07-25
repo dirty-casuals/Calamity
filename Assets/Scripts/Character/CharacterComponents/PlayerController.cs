@@ -1,21 +1,26 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : NetworkSubject {
+    public bool alive = true;
+    public Vector3 startPosition;
+    public bool isAMonster = false;
+
     private GameHandler gameHandler;
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
-    public bool alive = true;
-    public Vector3 startPosition;
 
     private void Start( ) {
         startPosition = transform.position;
         stateHandler = GetComponent<CharacterStateHandler>( );
         currentPlayerState = stateHandler.currentState;
-        inventory = GetComponent<PlayerInventory>( );
+        if (!isAMonster) {
+            inventory = GetComponent<PlayerInventory>( );
+        }
         StartCoroutine( AssignObserverWhenReady( ) );
     }
 
@@ -56,12 +61,19 @@ public class PlayerController : NetworkSubject {
         }
     }
 
-    public void SetNextState( PlayerType type ) {
-        stateHandler.SetNextState( type );
+    public void SetNextStateToMonster( PlayerType type ) {
+        stateHandler.SetNextStateToMonster( type );
     }
 
-    public void UpdateState( ) {
-        stateHandler.UpdateState( this );
+    public void MakeMonsterIfRequired( ) {
+        if(stateHandler == null) {
+            stateHandler = GetComponent<CharacterStateHandler>( );
+        }
+        stateHandler.MakeMonsterIfRequired( this );
+    }
+
+    public void MakeNormal( ) {
+        stateHandler.MakeNormal( this );
     }
 
     public bool isMonster( ) {
@@ -128,7 +140,9 @@ public class PlayerController : NetworkSubject {
         }
 
         AddUnityObservers( gameHandler.gameObject );
-        NotifySendObject( this, GameHandler.NEW_PLAYER );
+        if (!isAMonster) {
+            NotifySendObject( this, GameHandler.NEW_PLAYER );
+        }
     }
 
     private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {

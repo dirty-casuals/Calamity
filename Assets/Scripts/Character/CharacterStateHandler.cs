@@ -11,51 +11,72 @@ public enum PlayerType {
 public class CharacterStateHandler : NetworkBehaviour {
 
     public PlayerType playerType;
+    public PlayerType initialType;
+    public CharacterState initialState;
+    private PlayerType nextType;
     public CharacterState currentState;
     private CharacterState nextState;
-    private PlayerType nextType;
+    private bool hasBecomeMonster = false;
+
+    private void Awake( ) {
+        currentState = GetPlayerStateFromType( playerType );
+        initialState = currentState;
+        nextState = currentState;
+        nextType = playerType;
+        initialType = playerType;
+    }
 
     private void Start( ) {
         currentState.SetupNetworkConfig( isLocalPlayer );
     }
-
-    private void Awake( ) {
-        currentState = GetPlayerStateFromType( playerType );
-        nextState = currentState;
-        nextType = playerType;
-    }
-
-    public void SetNextState( PlayerType type ) {
+    
+    public void SetNextStateToMonster( PlayerType type ) {
         nextState = GetPlayerStateFromType( type );
         nextType = type;
+        hasBecomeMonster = true;
     }
 
-    public void UpdateState( PlayerController playerController ) {
+    public void MakeMonsterIfRequired( PlayerController playerController ) {
         currentState = nextState;
         PlayerType lastType = playerType;
         playerType = nextType;
 
-        if (lastType != playerType) {
-            GameObject newInstance = GetPrefabInstanceFromType( playerType );
-            newInstance.transform.position = gameObject.transform.position;
-            newInstance.transform.rotation = gameObject.transform.rotation;
-
-            if (isLocalPlayer) {
-                Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
-                playerCamera.enabled = false;
-                //Camera playerCamera = GetComponentInChildren<Camera>( );
-                Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
-                //playerCamera.transform.parent = newInstance.transform;
-                //playerCamera.transform.position = newInstance.transform.localPosition;
-
-                //playerCamera.enabled = false;
-                newCamera.enabled = true;
-            }
-            GameHandler gameHandler = GameObject.FindObjectOfType<GameHandler>( );
-            gameHandler.RemovePlayerController( playerController );
-            NetworkServer.Destroy( playerController.gameObject );
-            gameHandler.AddPlayerController( newInstance.GetComponent<PlayerController>( ) );
+        if (hasBecomeMonster) {
+            ReplacePlayerController( playerController );
         }
+    }
+
+    public void MakeNormal( PlayerController playerController ) {
+        if (currentState != initialState) {
+
+            currentState = initialState;
+            playerType = initialType;
+
+            ReplacePlayerController( playerController );
+        }
+    }
+
+    private void ReplacePlayerController( PlayerController playerController ) {
+        GameObject newInstance = GetPrefabInstanceFromType( playerType );
+        newInstance.transform.position = gameObject.transform.position;
+        newInstance.transform.rotation = gameObject.transform.rotation;
+
+        if (isLocalPlayer) {
+            NetworkServer.ReplacePlayerForConnection( connectionToClient, newInstance, 0 );
+            Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
+            playerCamera.enabled = false;
+
+            Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
+            newCamera.enabled = true;
+        }
+        initialState = playerController.GetComponent<CharacterStateHandler>( ).initialState;
+        initialType = playerController.GetComponent<CharacterStateHandler>( ).initialType;
+
+        GameHandler gameHandler = GameObject.FindObjectOfType<GameHandler>( );
+        gameHandler.RemovePlayerController( playerController );
+        NetworkServer.Destroy( playerController.gameObject );
+
+        gameHandler.AddPlayerController( newInstance.GetComponent<PlayerController>( ) );
     }
 
     private void FixedUpdate( ) {
