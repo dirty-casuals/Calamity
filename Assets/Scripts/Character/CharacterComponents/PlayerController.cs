@@ -13,15 +13,10 @@ public class PlayerController : NetworkSubject {
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
+    private bool setupRun = false;
 
     private void Start( ) {
-        startPosition = transform.position;
-        stateHandler = GetComponent<CharacterStateHandler>( );
-        currentPlayerState = stateHandler.currentState;
-        if (!isAMonster) {
-            inventory = GetComponent<PlayerInventory>( );
-        }
-        StartCoroutine( AssignObserverWhenReady( ) );
+        Setup( );
     }
 
     public void ControllerPause( ) {
@@ -48,6 +43,10 @@ public class PlayerController : NetworkSubject {
     }
 
     public void Revive( ) {
+        if(!setupRun) {
+            Setup( );
+        }
+
         if (isLocalPlayer) {
             GetComponentInChildren<ScreenOverlay>( ).enabled = false;
         }
@@ -66,14 +65,22 @@ public class PlayerController : NetworkSubject {
     }
 
     public void MakeMonsterIfRequired( ) {
-        if(stateHandler == null) {
+        if (!setupRun) {
+            Setup( );
+        }
+
+        if (stateHandler == null) {
             stateHandler = GetComponent<CharacterStateHandler>( );
         }
-        stateHandler.MakeMonsterIfRequired( this );
+        stateHandler.MakeMonsterIfRequired( );
     }
 
     public void MakeNormal( ) {
-        stateHandler.MakeNormal( this );
+        if (!setupRun) {
+            Setup( );
+        }
+
+        stateHandler.MakeNormal( );
     }
 
     public bool isMonster( ) {
@@ -132,11 +139,25 @@ public class PlayerController : NetworkSubject {
         }
     }
 
+    private void Setup( ) {
+        stateHandler = GetComponent<CharacterStateHandler>( );
+        currentPlayerState = stateHandler.currentState;
+        if (!isAMonster) {
+            inventory = GetComponent<PlayerInventory>( );
+        }
+        StartCoroutine( AssignObserverWhenReady( ) );
+        setupRun = true;
+    }
+
     private IEnumerator AssignObserverWhenReady( ) {
         gameHandler = FindObjectOfType<GameHandler>( );
         while (gameHandler == null) {
             yield return new WaitForEndOfFrame( );
             gameHandler = FindObjectOfType<GameHandler>( );
+        }
+
+        if( gameHandler.IsFirstRound( ) ) {
+            startPosition = transform.position;
         }
 
         AddUnityObservers( gameHandler.gameObject );

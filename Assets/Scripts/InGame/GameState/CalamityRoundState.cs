@@ -34,6 +34,8 @@ public class CalamityRoundState : GameState {
         gameHandler.StartCoroutine( TotUpPlayers( gameHandler.aliveIcon, numAlivePlayers ) );
         gameHandler.StartCoroutine( TotUpPlayers( gameHandler.deadIcon, numDeadPlayers ) );
 
+        gameHandler.MakeNormals( );
+        gameHandler.ResetAllThePlayers( );
         gameHandler.roundPanel.SetActive( true );
     }
 

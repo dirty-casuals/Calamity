@@ -1378,7 +1378,7 @@ MonoBehaviour:
     i13: 0
     i14: 191
     i15: 106
-  m_ServerOnly: 1
+  m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11426932
 MonoBehaviour:
@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   startPosition: {x: 0, y: 0, z: 0}
+  isAMonster: 0
 --- !u!114 &11470536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1530,6 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerType: 3
+  initialType: 0
 --- !u!114 &11482794
 MonoBehaviour:
   m_ObjectHideFlags: 1

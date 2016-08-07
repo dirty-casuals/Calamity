@@ -13,10 +13,12 @@ public class CharacterStateHandler : NetworkBehaviour {
     public PlayerType playerType;
     public PlayerType initialType;
     public CharacterState initialState;
+    public bool hasBecomeMonster = false;
+
     private PlayerType nextType;
     public CharacterState currentState;
     private CharacterState nextState;
-    private bool hasBecomeMonster = false;
+    private GameHandler gameHandler;
 
     private void Awake( ) {
         currentState = GetPlayerStateFromType( playerType );
@@ -24,59 +26,71 @@ public class CharacterStateHandler : NetworkBehaviour {
         nextState = currentState;
         nextType = playerType;
         initialType = playerType;
+        gameHandler = GameObject.FindObjectOfType<GameHandler>( );
     }
 
     private void Start( ) {
         currentState.SetupNetworkConfig( isLocalPlayer );
     }
-    
+
     public void SetNextStateToMonster( PlayerType type ) {
         nextState = GetPlayerStateFromType( type );
         nextType = type;
         hasBecomeMonster = true;
     }
 
-    public void MakeMonsterIfRequired( PlayerController playerController ) {
+    public void MakeMonsterIfRequired( ) {
         currentState = nextState;
         PlayerType lastType = playerType;
         playerType = nextType;
 
         if (hasBecomeMonster) {
-            ReplacePlayerController( playerController );
+            ReplacePlayerController( );
         }
     }
 
-    public void MakeNormal( PlayerController playerController ) {
+    public void MakeNormal( ) {
         if (currentState != initialState) {
 
             currentState = initialState;
             playerType = initialType;
 
-            ReplacePlayerController( playerController );
+            ReplacePlayerController( );
         }
     }
 
-    private void ReplacePlayerController( PlayerController playerController ) {
+    private void ReplacePlayerController( ) {
+        PlayerController oldPlayerController = GetComponent<PlayerController>( );
         GameObject newInstance = GetPrefabInstanceFromType( playerType );
         newInstance.transform.position = gameObject.transform.position;
         newInstance.transform.rotation = gameObject.transform.rotation;
 
+        CharacterStateHandler newStateHandler = newInstance.GetComponent<CharacterStateHandler>( );
+        newStateHandler.initialState = initialState;
+        newStateHandler.initialType = initialType;
+        newStateHandler.nextState = nextState;
+        newStateHandler.nextType = nextType;
+        newStateHandler.hasBecomeMonster = hasBecomeMonster;
+
+        PlayerController newPlayerController = newInstance.GetComponent<PlayerController>( );
+        newPlayerController.startPosition = oldPlayerController.startPosition;
+
+        gameHandler.ReplacePlayerController( newPlayerController, oldPlayerController );
+
         if (isLocalPlayer) {
             NetworkServer.ReplacePlayerForConnection( connectionToClient, newInstance, 0 );
-            Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
+            Camera playerCamera = oldPlayerController.GetComponentInChildren<Camera>( );
             playerCamera.enabled = false;
 
             Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
             newCamera.enabled = true;
+        } else {
+            NetworkServer.Spawn( newInstance );
         }
-        initialState = playerController.GetComponent<CharacterStateHandler>( ).initialState;
-        initialType = playerController.GetComponent<CharacterStateHandler>( ).initialType;
 
-        GameHandler gameHandler = GameObject.FindObjectOfType<GameHandler>( );
-        gameHandler.RemovePlayerController( playerController );
-        NetworkServer.Destroy( playerController.gameObject );
-
-        gameHandler.AddPlayerController( newInstance.GetComponent<PlayerController>( ) );
+        if (isServer) {
+            NetworkServer.Destroy( oldPlayerController.gameObject );
+        }
     }
 
     private void FixedUpdate( ) {

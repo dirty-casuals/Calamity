@@ -19,7 +19,7 @@ public class AiComponentEnabler : ComponentEnabler {
             typeof( PlayerController ),
             typeof( PlayerInventory ),
             typeof( EntityRig ),
-            typeof( AIRig ),
+            typeof( AIRig )
         };
 
         behavioursToEnable = new Type[ ]

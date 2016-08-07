@@ -110,6 +110,15 @@ public class GameHandler : NetworkObserver {
         characterPlayerControllers.Remove( controller );
     }
 
+    public void ReplacePlayerController( PlayerController newController, PlayerController oldController ) {
+        if (newController.isLocalPlayer) {
+            localPlayerController = newController;
+        }
+
+        int index = characterPlayerControllers.IndexOf( oldController );
+        characterPlayerControllers[ index ] = newController;
+    }
+
     public void RunCameraEffects( ) {
         if (localPlayerController != null) {
             localPlayerController.RunCameraEffects( );
@@ -158,7 +167,9 @@ public class GameHandler : NetworkObserver {
                 PlayerDied( (PlayerController)sender );
                 break;
             case NEW_PLAYER:
-                AddPlayerController( (PlayerController)sender );
+                if (currentRound == 1) {
+                    AddPlayerController( (PlayerController)sender );
+                }
                 break;
         }
     }
@@ -215,10 +226,8 @@ public class GameHandler : NetworkObserver {
     public void ResetAllThePlayers( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
-            if (playerController != null) {
-                playerController.gameObject.transform.position = playerController.startPosition;
-                playerController.Revive( );
-            }
+            playerController.gameObject.transform.position = playerController.startPosition;
+            playerController.Revive( );
         }
     }
 
@@ -230,6 +239,7 @@ public class GameHandler : NetworkObserver {
         }
     }
 
+    [Server]
     public void MakeNormals( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
@@ -284,10 +294,10 @@ public class GameHandler : NetworkObserver {
     }
 
     private void PlayerDied( PlayerController playerController ) {
-        if (GetNumberAlivePlayersLeft( ) == 0) {
-            currentGameState = gameEndState;
-            currentGameState.InitializeGameState( );
-        }
+        //if (GetNumberAlivePlayersLeft( ) == 0) {
+        //    currentGameState = gameEndState;
+        //    currentGameState.InitializeGameState( );
+        //}
     }
 
     private void GetGameSpawnPoints( ) {

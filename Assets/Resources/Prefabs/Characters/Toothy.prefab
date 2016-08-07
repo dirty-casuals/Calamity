@@ -608,10 +608,10 @@ GameObject:
   - 143: {fileID: 14350866}
   - 82: {fileID: 8225916}
   - 114: {fileID: 11470774}
-  - 114: {fileID: 11403952}
   - 114: {fileID: 11478572}
   - 114: {fileID: 11414086}
   - 114: {fileID: 11426608}
+  - 114: {fileID: 11456980}
   m_Layer: 16
   m_Name: Toothy
   m_TagString: Monster
@@ -886,7 +886,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.15, z: 0.79}
+  m_LocalPosition: {x: 0, y: 6.15, z: 0.528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 498968}
@@ -1449,20 +1449,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11403952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28e525654ceb25409a5103e6fe45454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alive: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  isAMonster: 1
 --- !u!114 &11414086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1505,6 +1491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerType: 1
+  initialType: 0
 --- !u!114 &11424526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1626,6 +1613,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headJoint: {fileID: 433482}
   cameraControl: {fileID: 441002}
+--- !u!114 &11456980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e525654ceb25409a5103e6fe45454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alive: 0
+  startPosition: {x: 0, y: 0, z: 0}
+  isAMonster: 1
 --- !u!114 &11470774
 MonoBehaviour:
   m_ObjectHideFlags: 1
