@@ -1,8 +1,8 @@
 Things left
 ===========
 
-+ Alter between rounds scene
-  - Change "Next round you will be a..." to "Next Calamity you will become a..." and move it to the bottom so that the player/monster value also appears below the "Next..." text
++ ~Alter between rounds scene~
+  - ~Change "Next round you will be a..." to "Next Calamity you will become a..." and move it to the bottom so that the player/monster value also appears below the "Next..." text~
 + End of game scene
   - Display lose and why to all if all characters die
   - Display lose and why to all if game reaches end and more than 1 character survive
