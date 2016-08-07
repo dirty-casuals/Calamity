@@ -16,10 +16,14 @@ public class AiMonsterComponentEnabler : ComponentEnabler {
         {
             typeof( AnimTriggers ),
             typeof( CharacterStateHandler ),
+            typeof( PlayerController ),
+            typeof( EntityRig ),
+            typeof( AIRig )
         };
 
         behavioursToEnable = new Type[ ]
         {
+            typeof( Animator )
         };
 
         collidersToEnable = new Type[ ]

@@ -11,50 +11,85 @@ public enum PlayerType {
 public class CharacterStateHandler : NetworkBehaviour {
 
     public PlayerType playerType;
+    public PlayerType initialType;
+    public CharacterState initialState;
+    public bool hasBecomeMonster = false;
+
+    private PlayerType nextType;
     public CharacterState currentState;
     private CharacterState nextState;
-    private PlayerType nextType;
+    private GameHandler gameHandler;
+
+    private void Awake( ) {
+        currentState = GetPlayerStateFromType( playerType );
+        initialState = currentState;
+        nextState = currentState;
+        nextType = playerType;
+        initialType = playerType;
+        gameHandler = GameObject.FindObjectOfType<GameHandler>( );
+    }
 
     private void Start( ) {
         currentState.SetupNetworkConfig( isLocalPlayer );
     }
 
-    private void Awake( ) {
-        currentState = GetPlayerStateFromType( playerType );
-        nextState = currentState;
-        nextType = playerType;
-    }
-
-    public void SetNextState( PlayerType type ) {
+    public void SetNextStateToMonster( PlayerType type ) {
         nextState = GetPlayerStateFromType( type );
         nextType = type;
+        hasBecomeMonster = true;
     }
 
-    public void UpdateState( PlayerController playerController ) {
+    public void MakeMonsterIfRequired( ) {
         currentState = nextState;
         PlayerType lastType = playerType;
         playerType = nextType;
 
-        if (lastType != playerType) {
-            GameObject newInstance = GetPrefabInstanceFromType( playerType );
-            newInstance.transform.position = gameObject.transform.position;
-            newInstance.transform.rotation = gameObject.transform.rotation;
+        if (hasBecomeMonster) {
+            ReplacePlayerController( );
+        }
+    }
 
-            if (isLocalPlayer) {
-                Camera playerCamera = playerController.GetComponentInChildren<Camera>( );
-                playerCamera.enabled = false;
-                //Camera playerCamera = GetComponentInChildren<Camera>( );
-                Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
-                //playerCamera.transform.parent = newInstance.transform;
-                //playerCamera.transform.position = newInstance.transform.localPosition;
+    public void MakeNormal( ) {
+        if (currentState != initialState) {
 
-                //playerCamera.enabled = false;
-                newCamera.enabled = true;
-            }
-            GameHandler gameHandler = GameObject.FindObjectOfType<GameHandler>( );
-            gameHandler.RemovePlayerController( playerController );
-            NetworkServer.Destroy( playerController.gameObject );
-            gameHandler.AddPlayerController( newInstance.GetComponent<PlayerController>( ) );
+            currentState = initialState;
+            playerType = initialType;
+
+            ReplacePlayerController( );
+        }
+    }
+
+    private void ReplacePlayerController( ) {
+        PlayerController oldPlayerController = GetComponent<PlayerController>( );
+        GameObject newInstance = GetPrefabInstanceFromType( playerType );
+        newInstance.transform.position = gameObject.transform.position;
+        newInstance.transform.rotation = gameObject.transform.rotation;
+
+        CharacterStateHandler newStateHandler = newInstance.GetComponent<CharacterStateHandler>( );
+        newStateHandler.initialState = initialState;
+        newStateHandler.initialType = initialType;
+        newStateHandler.nextState = nextState;
+        newStateHandler.nextType = nextType;
+        newStateHandler.hasBecomeMonster = hasBecomeMonster;
+
+        PlayerController newPlayerController = newInstance.GetComponent<PlayerController>( );
+        newPlayerController.startPosition = oldPlayerController.startPosition;
+
+        gameHandler.ReplacePlayerController( newPlayerController, oldPlayerController );
+
+        if (isLocalPlayer) {
+            NetworkServer.ReplacePlayerForConnection( connectionToClient, newInstance, 0 );
+            Camera playerCamera = oldPlayerController.GetComponentInChildren<Camera>( );
+            playerCamera.enabled = false;
+
+            Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
+            newCamera.enabled = true;
+        } else {
+            NetworkServer.Spawn( newInstance );
+        }
+
+        if (isServer) {
+            NetworkServer.Destroy( oldPlayerController.gameObject );
         }
     }
 

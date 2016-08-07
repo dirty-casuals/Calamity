@@ -23,7 +23,7 @@ public class CalamityRoundState : GameState {
         gameHandler.roundCount.text = gameHandler.currentRound.ToString( );
 
         PlayerController playerController = gameHandler.GetLocalPlayer( );
-        if (playerController.alive) {
+        if (playerController.alive && !playerController.isAMonster) {
             gameHandler.nextRoundTextState.text = "Player";
         } else {
             gameHandler.nextRoundTextState.text = "Monster";
@@ -34,6 +34,8 @@ public class CalamityRoundState : GameState {
         gameHandler.StartCoroutine( TotUpPlayers( gameHandler.aliveIcon, numAlivePlayers ) );
         gameHandler.StartCoroutine( TotUpPlayers( gameHandler.deadIcon, numDeadPlayers ) );
 
+        gameHandler.MakeNormals( );
+        gameHandler.ResetAllThePlayers( );
         gameHandler.roundPanel.SetActive( true );
     }
 

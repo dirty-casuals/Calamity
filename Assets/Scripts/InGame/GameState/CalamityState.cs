@@ -9,7 +9,7 @@ public class CalamityState : GameState {
 
     public override void InitializeGameState( ) {
         if (!gameHandler.IsFirstRound( )) {
-            gameHandler.UpdateCharacterStates( );
+            gameHandler.MakeMonstersIfRequired( );
         }
         gameHandler.StartMonsterSpawners( );
         endTime = gameHandler.calamityLengthSeconds;
