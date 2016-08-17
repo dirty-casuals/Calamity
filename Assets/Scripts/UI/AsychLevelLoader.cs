@@ -18,6 +18,9 @@ public class AsychLevelLoader : MonoBehaviour {
     }
 
     public void LoadSchoolScene( ) {
+        MusicManager musicManager = FindObjectOfType<MusicManager>( );
+        Destroy( musicManager.gameObject );
+
         loadingUIPanel.SetActive( true );
         lobbyManager.lobbyScene = SceneManager.GetActiveScene( ).name;
         lobbyManager.StartHost( );

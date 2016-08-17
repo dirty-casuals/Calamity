@@ -490,7 +490,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 773811875}
+  - 114: {fileID: 773811876}
   - 82: {fileID: 773811874}
+  - 114: {fileID: 773811877}
   m_Layer: 0
   m_Name: MMAudio
   m_TagString: Untagged
@@ -560,7 +562,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -584,6 +586,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &773811876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 773811873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4a89eda9a54004b9c8ea81bc1b62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &773811877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 773811873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43f642bb38731d4ab5a67a82c2f839b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &820250972
 GameObject:
   m_ObjectHideFlags: 0
