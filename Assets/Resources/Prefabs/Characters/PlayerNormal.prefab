@@ -1240,7 +1240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.616, z: 0.3}
+  m_LocalPosition: {x: 0, y: 1.616, z: 0.016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 494696}
@@ -1352,14 +1352,14 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102998}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!82 &8221596
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1445,7 +1445,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: c2a9cd442fd53e94d9d0f05c68138541, type: 3}
   m_Controller: {fileID: 9100000, guid: 5b8f241cd9242a84d8949a1027fb5315, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1490,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   startPosition: {x: 0, y: 0, z: 0}
+  isAMonster: 0
 --- !u!114 &11414296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1718,6 +1719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerType: 0
+  initialType: 0
+  hasBecomeMonster: 0
 --- !u!114 &11473076
 MonoBehaviour:
   m_ObjectHideFlags: 1

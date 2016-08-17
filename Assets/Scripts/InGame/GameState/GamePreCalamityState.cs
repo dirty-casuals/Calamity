@@ -9,9 +9,8 @@ public class GamePreCalamityState : GameState {
     public override void InitializeGameState( ) {
         if (gameHandler.IsFirstRound( )) {
             gameHandler.SpawnAIPlayers( );
-        } else {
-            gameHandler.ResetAllThePlayers( );
         }
+
         gameHandler.RpcSetCalamityLabelText( "Time to Calamity" );
         endTime = gameHandler.startTimeSeconds;
         SetLighting( );

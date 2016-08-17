@@ -12,12 +12,10 @@ public abstract class ComponentEnabler : NetworkBehaviour {
     protected Type[ ] behavioursToEnable;
 
     protected Type[ ] collidersToEnable;
-
-    private void Awake() {
-        SetupTypeLists( );
-    }
-    
+   
     protected void SetupComponents( ) {
+        SetupTypeLists( );
+
         for (int i = 0; i < monoBehavioursToEnable.Length; i += 1) {
             Type componentType = monoBehavioursToEnable[ i ];
             MonoBehaviour monoBehaviour = GetComponentInChildren( componentType, true ) as MonoBehaviour;

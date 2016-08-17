@@ -1,22 +1,22 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : NetworkSubject {
+    public bool alive = true;
+    public Vector3 startPosition;
+    public bool isAMonster = false;
+
     private GameHandler gameHandler;
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
-    public bool alive = true;
-    public Vector3 startPosition;
+    private bool setupRun = false;
 
     private void Start( ) {
-        startPosition = transform.position;
-        stateHandler = GetComponent<CharacterStateHandler>( );
-        currentPlayerState = stateHandler.currentState;
-        inventory = GetComponent<PlayerInventory>( );
-        StartCoroutine( AssignObserverWhenReady( ) );
+        Setup( );
     }
 
     public void ControllerPause( ) {
@@ -43,6 +43,10 @@ public class PlayerController : NetworkSubject {
     }
 
     public void Revive( ) {
+        if(!setupRun) {
+            Setup( );
+        }
+
         if (isLocalPlayer) {
             GetComponentInChildren<ScreenOverlay>( ).enabled = false;
         }
@@ -56,12 +60,27 @@ public class PlayerController : NetworkSubject {
         }
     }
 
-    public void SetNextState( PlayerType type ) {
-        stateHandler.SetNextState( type );
+    public void SetNextStateToMonster( PlayerType type ) {
+        stateHandler.SetNextStateToMonster( type );
     }
 
-    public void UpdateState( ) {
-        stateHandler.UpdateState( this );
+    public void MakeMonsterIfRequired( ) {
+        if (!setupRun) {
+            Setup( );
+        }
+
+        if (stateHandler == null) {
+            stateHandler = GetComponent<CharacterStateHandler>( );
+        }
+        stateHandler.MakeMonsterIfRequired( );
+    }
+
+    public void MakeNormal( ) {
+        if (!setupRun) {
+            Setup( );
+        }
+
+        stateHandler.MakeNormal( );
     }
 
     public bool isMonster( ) {
@@ -120,6 +139,16 @@ public class PlayerController : NetworkSubject {
         }
     }
 
+    private void Setup( ) {
+        stateHandler = GetComponent<CharacterStateHandler>( );
+        currentPlayerState = stateHandler.currentState;
+        if (!isAMonster) {
+            inventory = GetComponent<PlayerInventory>( );
+        }
+        StartCoroutine( AssignObserverWhenReady( ) );
+        setupRun = true;
+    }
+
     private IEnumerator AssignObserverWhenReady( ) {
         gameHandler = FindObjectOfType<GameHandler>( );
         while (gameHandler == null) {
@@ -127,8 +156,14 @@ public class PlayerController : NetworkSubject {
             gameHandler = FindObjectOfType<GameHandler>( );
         }
 
+        if( gameHandler.IsFirstRound( ) ) {
+            startPosition = transform.position;
+        }
+
         AddUnityObservers( gameHandler.gameObject );
-        NotifySendObject( this, GameHandler.NEW_PLAYER );
+        if (!isAMonster) {
+            NotifySendObject( this, GameHandler.NEW_PLAYER );
+        }
     }
 
     private IEnumerator DecreaseAndRemoveBlur( BlurOptimized blur ) {

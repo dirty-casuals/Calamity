@@ -18,7 +18,7 @@ public class NormalState : PlayerState {
 
     public override void KnockoutPlayer( ) {
         base.KnockoutPlayer( );
-        controller.SetNextState( PlayerType.MONSTER );
+        controller.SetNextStateToMonster( PlayerType.MONSTER );
         controller.Die( );
         playerRig.Entity.IsActive = false;
     }

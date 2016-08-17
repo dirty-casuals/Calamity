@@ -12,6 +12,8 @@ TagManager:
   - PlayerAI
   - Striplight
   - LobbyReady
+  - NetworkObserver
+  - GameHandler
   layers:
   - Default
   - TransparentFX
