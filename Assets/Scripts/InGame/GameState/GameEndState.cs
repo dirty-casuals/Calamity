@@ -2,21 +2,27 @@
 using UnityEngine.SceneManagement;
 
 public class GameEndState : GameState {
-    
+
     public GameEndState( GameHandler handler ) : base( handler ) {
     }
 
     public override void InitializeGameState( ) {
+        GameResult gameResult = gameHandler.GetGameResultObject( );
+
         if (gameHandler.DidAllLose( )) {
-            //set something to show all lost on the game end scene?
             if (gameHandler.DidAllDie( )) {
-                //set it to show that everyone died
+                gameResult.SetEndResultAllDied( );
             } else {
-                //set it to show that too many survived
+                int numSurvivors = gameHandler.GetNumberAlivePlayersLeft( );
+                gameResult.SetEndResultManySurvivors( numSurvivors );
             }
         } else {
-            //set something to show the winner on the game end scene?
-            gameHandler.GetWinner( );
+            PlayerController winnerPlayerController = gameHandler.GetWinner( );
+            if( winnerPlayerController.isLocalPlayer ) {
+                gameResult.SetLocalPlayerWon( );
+            } else {
+                gameResult.SetOtherPlayerWon( );
+            }
         }
         SceneManager.LoadScene( "GameEndMenu" );
     }

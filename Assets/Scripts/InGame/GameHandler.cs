@@ -45,6 +45,7 @@ public class GameHandler : NetworkObserver {
     private List<GameObject> playerObjects = new List<GameObject>( );
     [SyncVar( hook = "OnRoundTimeRemainingChange" )]
     private float roundTimeRemaining = 0.0f;
+    private GameResult gameResultObject = null;
 
     private static List<GameObject> stateEventObservers = new List<GameObject>( );
 
@@ -265,7 +266,6 @@ public class GameHandler : NetworkObserver {
     }
 
     public PlayerController GetWinner( ) {
-        // this is just a placeholder really
         PlayerController winner = null;
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
@@ -291,6 +291,14 @@ public class GameHandler : NetworkObserver {
 
     public int GetNumberDeadPlayers( ) {
         return characterPlayerControllers.Count - GetNumberAlivePlayersLeft( );
+    }
+
+    public GameResult GetGameResultObject() {
+        if( gameResultObject == null) {
+            gameResultObject = FindObjectOfType<GameResult>( );
+        }
+
+        return gameResultObject;
     }
 
     private void PlayerDied( PlayerController playerController ) {

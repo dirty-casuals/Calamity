@@ -52,8 +52,9 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         if (isLocalPlayer && (obj == null || !obj.isFocused)) {
             int localIdx = playerControllerId + 1;
             if (!readyToBegin && Input.GetButtonDown( "Fire" + localIdx )) {
-                if (readyButton.IsActive( ) && readyButton.IsInteractable( ))
+                if (readyButton.IsActive( ) && readyButton.IsInteractable( )) {
                     ActivateEyes( );
+                }
                 SendReadyToBeginMessage( );
             }
         }

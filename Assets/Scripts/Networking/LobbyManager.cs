@@ -25,16 +25,16 @@ public class LobbyManager : NetworkLobbyManager {
     protected static float _matchStartCountdown = 5.0f;
     protected bool _disconnectServer = false;
     protected ulong _currentMatchID;
-    protected LobbyHook _lobbyHooks;
+    protected LobbyHook lobbyHooks;
 
-    void Awake( ) {
+    private void Awake( ) {
         if (FindObjectsOfType<LobbyManager>( ).Length > 1)
             Destroy( gameObject );
     }
 
-    void Start( ) {
+    private void Start( ) {
         s_Singleton = this;
-        _lobbyHooks = GetComponent<LobbyHook>( );
+        lobbyHooks = GetComponent<LobbyHook>( );
         currentPanel = mainMenuPanel;
 
         backButton.gameObject.SetActive( true );
@@ -214,8 +214,9 @@ public class LobbyManager : NetworkLobbyManager {
     }
 
     public override bool OnLobbyServerSceneLoadedForPlayer( GameObject lobbyPlayer, GameObject gamePlayer ) {
-        if (_lobbyHooks)
-            _lobbyHooks.OnLobbyServerSceneLoadedForPlayer( this, lobbyPlayer, gamePlayer );
+        if (lobbyHooks) {
+            lobbyHooks.OnLobbyServerSceneLoadedForPlayer( this, lobbyPlayer, gamePlayer );
+        }
 
         return true;
     }
