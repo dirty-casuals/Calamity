@@ -50,4 +50,15 @@ public abstract class CharacterState {
         characterAnimator.SetBool( "Die", false );
         controller.gameObject.layer = LayerMask.NameToLayer( character.tag );
     }
+
+    protected void KnockoutPlayer( GameObject collision ) {
+        if (collision.CompareTag( "Player" )) {
+            CharacterState state = collision.GetComponent<CharacterStateHandler>( ).currentState;
+            state.KnockoutPlayer( );
+        }
+        if (collision.CompareTag( "PlayerAI" )) {
+            CharacterState state = collision.GetComponentInParent<CharacterStateHandler>( ).currentState;
+            state.KnockoutPlayer( );
+        }
+    }
 }

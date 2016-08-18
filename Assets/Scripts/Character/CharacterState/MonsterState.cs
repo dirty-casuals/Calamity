@@ -7,7 +7,11 @@ public class MonsterState : PlayerState {
     private bool playerControllerDisabled;
 
     public MonsterState( GameObject playerBody ) : base( playerBody ) {
-        movementSpeed = 7.0f;
+        movementSpeed = 6.0f;
         character.tag = "Monster";
+    }
+
+    public override void PlayerCollisionEnter( Collision collider ) {
+        KnockoutPlayer( collider.gameObject );
     }
 }
