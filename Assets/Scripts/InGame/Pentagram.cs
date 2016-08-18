@@ -6,8 +6,11 @@ public class Pentagram : NetworkObserver {
 
     private Renderer pentagramRenderer;
 
-    public override void OnStartServer( ) {
+    private void Start( ) {
         pentagramRenderer = GetComponent<MeshRenderer>( );
+    }
+
+    public override void OnStartServer( ) {
         GameHandler.RegisterForStateEvents( gameObject );
     }
 
@@ -37,7 +40,7 @@ public class Pentagram : NetworkObserver {
     private void SetPentagramLight( Color color, float emissionIntensity ) {
         Material[ ] pentagramMaterials = pentagramRenderer.materials;
         pentagramMaterials[ 0 ].color = color;
-        pentagramMaterials[ 0 ].SetColor( "_EmissionColor", color  * emissionIntensity );
+        pentagramMaterials[ 0 ].SetColor( "_EmissionColor", color * emissionIntensity );
         pentagramRenderer.materials = pentagramMaterials;
         DynamicGI.SetEmissive( pentagramRenderer, color * emissionIntensity );
     }

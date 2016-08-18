@@ -7,8 +7,7 @@ public class CandleLight : CalamityLight {
     protected ParticleSystem candleParticleSystem;
     protected Light candleLight;
 
-    public override void OnStartServer( ) {
-        base.OnStartServer( );
+    private void Start( ) {
         candleParticleSystem = GetComponentInChildren<ParticleSystem>( );
         candleLight = GetComponentInChildren<Light>( );
     }

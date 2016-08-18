@@ -197,6 +197,7 @@ public class GameHandler : NetworkObserver {
                 playerObject.transform.localPosition = Vector3.zero;
                 playerObject.transform.localRotation = Quaternion.identity;
                 humansCreated = humansCreated + 1;
+                RpcSetPlayerStartPosition( spawn.transform.position );
                 continue;
             }
 
@@ -293,8 +294,8 @@ public class GameHandler : NetworkObserver {
         return characterPlayerControllers.Count - GetNumberAlivePlayersLeft( );
     }
 
-    public GameResult GetGameResultObject() {
-        if( gameResultObject == null) {
+    public GameResult GetGameResultObject( ) {
+        if (gameResultObject == null) {
             gameResultObject = FindObjectOfType<GameResult>( );
         }
 
@@ -302,10 +303,10 @@ public class GameHandler : NetworkObserver {
     }
 
     private void PlayerDied( PlayerController playerController ) {
-        //if (GetNumberAlivePlayersLeft( ) == 0) {
-        //    currentGameState = gameEndState;
-        //    currentGameState.InitializeGameState( );
-        //}
+        if (GetNumberAlivePlayersLeft( ) == 0) {
+            currentGameState = gameEndState;
+            currentGameState.InitializeGameState( );
+        }
     }
 
     private void GetGameSpawnPoints( ) {
@@ -343,4 +344,8 @@ public class GameHandler : NetworkObserver {
         countdownTime.text = Mathf.Floor( newTimeRemaining ).ToString( );
     }
 
+    [ClientRpc]
+    private void RpcSetPlayerStartPosition( Vector3 position ) {
+        localPlayerController.transform.position = position;
+    }
 }
