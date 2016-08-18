@@ -16,7 +16,7 @@ Things left
 + ~~Fix dead characters starting in the dead pose on round start~~
   - ~~Probably just reset their anim state on end of round state start rather than pre calamity state start~~
 + Add white flash before blur on calamity event
-+ Ensure that character toothy can kill characters
++ ~~Ensure that character toothy can kill characters~~
 + Add toothy swipe animation to animator
   - It's already in the animations in the project
 + Add the knife and make it work
