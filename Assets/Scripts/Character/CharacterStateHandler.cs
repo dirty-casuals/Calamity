@@ -59,6 +59,53 @@ public class CharacterStateHandler : NetworkBehaviour {
         }
     }
 
+    public static GameObject GetPrefabInstanceFromType( PlayerType type ) {
+        string objectName;
+        switch (type) {
+            case PlayerType.PLAYER:
+                objectName = "PlayerNormal";
+                break;
+            case PlayerType.MONSTER:
+                objectName = "Toothy";
+                break;
+            case PlayerType.AI_MONSTER:
+                objectName = "AIToothy";
+                break;
+            case PlayerType.AI_PLAYER:
+                objectName = "AIPlayerNormal";
+                break;
+            default:
+                objectName = "AIPlayerNormal";
+                break;
+        }
+
+        string localPath = "Prefabs/Characters/" + objectName;
+        Object localInstance = Resources.Load<GameObject>( localPath );
+        GameObject instance = Instantiate( localInstance ) as GameObject;
+
+        return instance;
+    }
+
+    public CharacterState GetPlayerStateFromType( PlayerType type ) {
+        CharacterState state = null;
+        switch (type) {
+            case PlayerType.PLAYER:
+                state = new NormalState( gameObject );
+                break;
+            case PlayerType.MONSTER:
+                state = new MonsterState( gameObject );
+                break;
+            case PlayerType.AI_MONSTER:
+                state = new AIMonsterState( gameObject );
+                break;
+            case PlayerType.AI_PLAYER:
+                state = new AIState( gameObject );
+                break;
+        }
+
+        return state;
+    }
+
     private void ReplacePlayerController( ) {
         PlayerController oldPlayerController = GetComponent<PlayerController>( );
         GameObject newInstance = GetPrefabInstanceFromType( playerType );
@@ -107,54 +154,13 @@ public class CharacterStateHandler : NetworkBehaviour {
         currentState.PlayerUpdate( );
     }
 
+    [ServerCallback]
     private void OnCollisionEnter( Collision collision ) {
         currentState.PlayerCollisionEnter( collision );
     }
 
-    public static GameObject GetPrefabInstanceFromType( PlayerType type ) {
-        string objectName;
-        switch (type) {
-            case PlayerType.PLAYER:
-                objectName = "PlayerNormal";
-                break;
-            case PlayerType.MONSTER:
-                objectName = "Toothy";
-                break;
-            case PlayerType.AI_MONSTER:
-                objectName = "AIToothy";
-                break;
-            case PlayerType.AI_PLAYER:
-                objectName = "AIPlayerNormal";
-                break;
-            default:
-                objectName = "AIPlayerNormal";
-                break;
-        }
+    [ClientRpc]
+    private void RpcCollisionEnter() {
 
-        string localPath = "Prefabs/Characters/" + objectName;
-        Object localInstance = Resources.Load<GameObject>( localPath );
-        GameObject instance = Instantiate( localInstance ) as GameObject;
-
-        return instance;
-    }
-
-    public CharacterState GetPlayerStateFromType( PlayerType type ) {
-        CharacterState state = null;
-        switch (type) {
-            case PlayerType.PLAYER:
-                state = new NormalState( gameObject );
-                break;
-            case PlayerType.MONSTER:
-                state = new MonsterState( gameObject );
-                break;
-            case PlayerType.AI_MONSTER:
-                state = new AIMonsterState( gameObject );
-                break;
-            case PlayerType.AI_PLAYER:
-                state = new AIState( gameObject );
-                break;
-        }
-
-        return state;
     }
 }

@@ -5,6 +5,7 @@ using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : NetworkSubject {
+    [SyncVar( hook = "OnAliveChange" )]
     public bool alive = true;
     public Vector3 startPosition;
     public bool isAMonster = false;
@@ -14,8 +15,14 @@ public class PlayerController : NetworkSubject {
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
     private bool setupRun = false;
+    private Animator characterAnimator;
+    private ScreenOverlay screenOverlay;
 
-    private void Start( ) {
+    public override void OnStartLocalPlayer( ) {
+        Setup( );
+    }
+
+    public override void OnStartServer( ) {
         Setup( );
     }
 
@@ -24,7 +31,7 @@ public class PlayerController : NetworkSubject {
 
         if (pauseMenuToggle) {
             currentPlayerState.ToggleControllerInput( );
-            currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
+            characterAnimator.SetFloat( "Speed", 0.0f );
             Notify( GameHandler.TOGGLE_GAME_PAUSE );
         }
     }
@@ -42,22 +49,14 @@ public class PlayerController : NetworkSubject {
         }
     }
 
+    [Server]
     public void Revive( ) {
-        if(!setupRun) {
+        if (!setupRun) {
             Setup( );
         }
 
-        if (isLocalPlayer) {
-            GetComponentInChildren<ScreenOverlay>( ).enabled = false;
-        }
         gameObject.SetActive( true );
         stateHandler.currentState.RevivePlayer( );
-    }
-
-    public void Die( ) {
-        if (isLocalPlayer) {
-            GetComponentInChildren<ScreenOverlay>( ).enabled = true;
-        }
     }
 
     public void SetNextStateToMonster( PlayerType type ) {
@@ -87,11 +86,34 @@ public class PlayerController : NetworkSubject {
         return stateHandler.playerType == PlayerType.MONSTER || stateHandler.playerType == PlayerType.AI_MONSTER;
     }
 
+    [Server]
     public void SetDead( ) {
         alive = false;
         NotifySendObject( this, GameHandler.CHARACTER_DIED );
     }
 
+    private void OnAliveChange( bool isAlive ) {
+        if (isAMonster || !isLocalPlayer) {
+            return;
+        }
+
+        alive = isAlive;
+        if (isAlive) {
+            characterAnimator.SetFloat( "Speed", 1.0f );
+            characterAnimator.SetBool( "Die", false );
+            if (screenOverlay != null) {
+                screenOverlay.enabled = false;
+            }
+        } else {
+            characterAnimator.SetFloat( "Speed", 0.0f );
+            characterAnimator.SetBool( "Die", true );
+            if (screenOverlay != null) {
+                screenOverlay.enabled = true;
+            }
+        }
+    }
+
+    [Server]
     public void SetAlive( ) {
         alive = true;
     }
@@ -119,33 +141,35 @@ public class PlayerController : NetworkSubject {
         bool movingHorizontal = false;
         if (PlayerIsMovingForward( vertical )) {
             movingHorizontal = true;
-            currentPlayerState.characterAnimator.SetFloat( "Speed", 1.0f );
+            characterAnimator.SetFloat( "Speed", 1.0f );
         } else
         if (PlayerIsMovingBackward( vertical )) {
             movingHorizontal = true;
-            currentPlayerState.characterAnimator.SetFloat( "Speed", -1.0f );
+            characterAnimator.SetFloat( "Speed", -1.0f );
         } else {
-            currentPlayerState.characterAnimator.SetFloat( "Speed", 0.0f );
+            characterAnimator.SetFloat( "Speed", 0.0f );
         }
 
-        currentPlayerState.characterAnimator.SetFloat( "Direction", 0.0f );
+        characterAnimator.SetFloat( "Direction", 0.0f );
         if (!movingHorizontal) {
             if (PlayerIsMovingRight( horizontal )) {
-                currentPlayerState.characterAnimator.SetFloat( "Direction", 1.0f );
+                characterAnimator.SetFloat( "Direction", 1.0f );
             } else
             if (PlayerIsMovingLeft( horizontal )) {
-                currentPlayerState.characterAnimator.SetFloat( "Direction", -1.0f );
+                characterAnimator.SetFloat( "Direction", -1.0f );
             }
         }
     }
 
     private void Setup( ) {
+        characterAnimator = GetComponent<Animator>( );
         stateHandler = GetComponent<CharacterStateHandler>( );
         currentPlayerState = stateHandler.currentState;
         if (!isAMonster) {
             inventory = GetComponent<PlayerInventory>( );
         }
         StartCoroutine( AssignObserverWhenReady( ) );
+        screenOverlay = GetComponentInChildren<ScreenOverlay>( );
         setupRun = true;
     }
 
@@ -156,7 +180,7 @@ public class PlayerController : NetworkSubject {
             gameHandler = FindObjectOfType<GameHandler>( );
         }
 
-        if( gameHandler.IsFirstRound( ) ) {
+        if (gameHandler.IsFirstRound( )) {
             startPosition = transform.position;
         }
 

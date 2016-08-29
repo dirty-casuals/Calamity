@@ -4,11 +4,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 using System;
 
 public class NormalState : PlayerState {
-    
-    private CalamityFirstPersonController firstPersonController;
-    private SkinnedMeshRenderer playerMesh;
+
     private EntityRig playerRig;
-    private bool playerControllerDisabled;
 
     public NormalState( GameObject playerBody ) : base( playerBody ) {
         playerMesh = character.GetComponentInChildren<SkinnedMeshRenderer>( );
@@ -19,7 +16,6 @@ public class NormalState : PlayerState {
     public override void KnockoutPlayer( ) {
         base.KnockoutPlayer( );
         controller.SetNextStateToMonster( PlayerType.MONSTER );
-        controller.Die( );
         playerRig.Entity.IsActive = false;
     }
 

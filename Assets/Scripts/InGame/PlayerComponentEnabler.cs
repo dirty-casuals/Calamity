@@ -12,6 +12,13 @@ public class PlayerComponentEnabler : ComponentEnabler {
         characterType = "Player";
         SetupComponents( );
     }
+    
+    public override void OnStartServer( ) {
+        characterType = "Player";
+        EnableBehaviour( typeof( PlayerController ) );
+        EnableBehaviour( typeof( CharacterStateHandler ) );
+        EnableBehaviour( typeof( EntityRig ) );
+    }
 
     protected override void SetupTypeLists( ) {
         monoBehavioursToEnable = new Type[ ]

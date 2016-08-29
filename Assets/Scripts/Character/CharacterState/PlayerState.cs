@@ -6,13 +6,12 @@ using RAIN.Entities;
 public class PlayerState : CharacterState {
 
     public float movementSpeed = 5.0f;
-    private CalamityFirstPersonController firstPersonController;
-    private SkinnedMeshRenderer playerMesh;
+    protected SkinnedMeshRenderer playerMesh;
+    protected CalamityFirstPersonController firstPersonController;
     private bool playerControllerDisabled;
 
     public PlayerState( GameObject playerBody ) : base( playerBody ) {
         character = playerBody;
-        characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
         firstPersonController = character.GetComponent<CalamityFirstPersonController>( );
         playerMesh = character.GetComponentInChildren<SkinnedMeshRenderer>( );

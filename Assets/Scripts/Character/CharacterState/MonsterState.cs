@@ -2,15 +2,13 @@
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class MonsterState : PlayerState {
-    
-    private CalamityFirstPersonController firstPersonController;
-    private bool playerControllerDisabled;
 
     public MonsterState( GameObject playerBody ) : base( playerBody ) {
         movementSpeed = 6.0f;
         character.tag = "Monster";
     }
 
+    // [Server]
     public override void PlayerCollisionEnter( Collision collider ) {
         KnockoutPlayer( collider.gameObject );
     }

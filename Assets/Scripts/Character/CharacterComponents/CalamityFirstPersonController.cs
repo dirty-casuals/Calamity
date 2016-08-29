@@ -238,7 +238,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             if (body == null || body.isKinematic) {
                 return;
             }
-            body.AddForceAtPosition( m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse );
+            //body.AddForceAtPosition( m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse );
         }
     }
 }

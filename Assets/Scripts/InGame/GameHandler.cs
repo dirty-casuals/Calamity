@@ -11,7 +11,6 @@ public class GameHandler : NetworkObserver {
     public Text nextRoundTextState;
     public GameObject aliveIcon;
     public GameObject deadIcon;
-    public GameObject roundPanel;
     public GameObject pauseMenu;
     public float startTimeSeconds = 30.0f;
     public float calamityLengthSeconds = 120.0f;
@@ -31,8 +30,10 @@ public class GameHandler : NetworkObserver {
     public const string NEW_PLAYER = "NEW_PLAYER";
     [SyncVar]
     public bool isReadyForPlayerSpawns = false;
-
     public static GameState currentGameState;
+
+    [SerializeField]
+    private GameObject roundPanel;
 
     private List<Spawner> playerSpawnPoints;
     private List<Spawner> monsterSpawnPoints;
@@ -53,6 +54,8 @@ public class GameHandler : NetworkObserver {
     private static CalamityState calamityState;
     private static CalamityRoundState nextRoundState;
     private static GameEndState gameEndState;
+
+    private List<GameObject> endOfRoundIcons = new List<GameObject>( );
 
     [ServerCallback]
     private void Awake( ) {
@@ -120,7 +123,23 @@ public class GameHandler : NetworkObserver {
         characterPlayerControllers[ index ] = newController;
     }
 
-    public void RunCameraEffects( ) {
+    [ClientRpc]
+    public void RpcTotUpPlayers( int numAlive, int numDead ) {
+        StartCoroutine( TotUpPlayers( aliveIcon, numAlive ) );
+        StartCoroutine( TotUpPlayers( aliveIcon, numDead ) );
+    }
+
+    [ClientRpc]
+    public void RpcDestroyEndOfRoundIcons() {
+        for (int i = 0; i < endOfRoundIcons.Count; i += 1) {
+            GameObject icon = endOfRoundIcons[ i ];
+            GameObject.Destroy( icon );
+        }
+        endOfRoundIcons.Clear( );
+    }
+
+    [ClientRpc]
+    public void RpcRunCameraEffects( ) {
         if (localPlayerController != null) {
             localPlayerController.RunCameraEffects( );
         }
@@ -224,6 +243,11 @@ public class GameHandler : NetworkObserver {
         }
     }
 
+    [ClientRpc]
+    public void RpcSetShowEndOfRoundScreen( bool enabled ) {
+        roundPanel.SetActive( enabled );
+    }
+
     [Server]
     public void ResetAllThePlayers( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
@@ -302,6 +326,24 @@ public class GameHandler : NetworkObserver {
         return gameResultObject;
     }
 
+    private IEnumerator TotUpPlayers( GameObject icon, int num ) {
+        int i = 0;
+        if (num > 0) {
+            icon.SetActive( true );
+            i += 1;
+        }
+
+        float iconWidth = icon.GetComponent<RawImage>( ).rectTransform.rect.width;
+        for (; i < num; i += 1) {
+            yield return new WaitForSeconds( 0.25f );
+            Vector3 position = icon.transform.position;
+            position.Set( position.x + (iconWidth * i), position.y, position.z );
+            GameObject newIcon = (GameObject)GameObject.Instantiate( icon, position, icon.transform.rotation );
+            newIcon.transform.SetParent( icon.transform.parent );
+            endOfRoundIcons.Add( newIcon );
+        }
+    }
+
     private void PlayerDied( PlayerController playerController ) {
         if (GetNumberAlivePlayersLeft( ) == 0) {
             currentGameState = gameEndState;
@@ -346,6 +388,14 @@ public class GameHandler : NetworkObserver {
 
     [ClientRpc]
     private void RpcSetPlayerStartPosition( Vector3 position ) {
+        StartCoroutine( OnLocalPlayerReady( position ) );
+    }
+
+    private IEnumerator OnLocalPlayerReady( Vector3 position ) {
+        while (localPlayerController == null) {
+            yield return new WaitForEndOfFrame( );
+        }
+
         localPlayerController.transform.position = position;
     }
 }

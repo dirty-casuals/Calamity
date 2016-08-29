@@ -8,7 +8,6 @@ public class AIState : CharacterState {
     
     public AIState( GameObject playerBody ) : base( playerBody ) {
         character = playerBody;
-        characterAnimator = character.GetComponent<Animator>( );
         characterRigidbody = character.GetComponent<Rigidbody>( );
         //character.tag = "AI";
     }

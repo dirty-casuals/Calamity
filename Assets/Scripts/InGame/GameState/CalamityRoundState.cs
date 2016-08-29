@@ -2,10 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 public class CalamityRoundState : GameState {
-
-    private List<GameObject> icons = new List<GameObject>( );
 
     public CalamityRoundState( GameHandler handler ) : base( handler ) {
         AddUnityObservers( handler.gameObject );
@@ -31,12 +30,11 @@ public class CalamityRoundState : GameState {
 
         int numAlivePlayers = gameHandler.GetNumberAlivePlayersLeft( );
         int numDeadPlayers = gameHandler.GetNumberDeadPlayers( );
-        gameHandler.StartCoroutine( TotUpPlayers( gameHandler.aliveIcon, numAlivePlayers ) );
-        gameHandler.StartCoroutine( TotUpPlayers( gameHandler.deadIcon, numDeadPlayers ) );
+        gameHandler.RpcTotUpPlayers( numAlivePlayers, numDeadPlayers );
 
         gameHandler.MakeNormals( );
         gameHandler.ResetAllThePlayers( );
-        gameHandler.roundPanel.SetActive( true );
+        gameHandler.RpcSetShowEndOfRoundScreen( true );
     }
 
     public override void GameUpdate( ) {
@@ -45,34 +43,12 @@ public class CalamityRoundState : GameState {
         gameTimer += Time.deltaTime;
     }
 
-    private IEnumerator TotUpPlayers( GameObject icon, int num ) {
-        int i = 0;
-        if (num > 0) {
-            icon.SetActive( true );
-            i += 1;
-        }
-
-        float iconWidth = icon.GetComponent<RawImage>( ).rectTransform.rect.width;
-        for (; i < num; i += 1) {
-            yield return new WaitForSeconds( 0.25f );
-            Vector3 position = icon.transform.position;
-            position.Set( position.x + (iconWidth * i), position.y, position.z );
-            GameObject newIcon = (GameObject)GameObject.Instantiate( icon, position, icon.transform.rotation );
-            newIcon.transform.SetParent( icon.transform.parent );
-            icons.Add( newIcon );
-        }
-    }
-
     private void StartNewRound( ) {
         if (gameTimer >= endTime) {
             gameHandler.currentRound += 1;
             gameTimer = 0.0f;
-            for (int i = 0; i < icons.Count; i += 1) {
-                GameObject icon = icons[ i ];
-                GameObject.Destroy( icon );
-            }
-            icons.Clear( );
-            gameHandler.roundPanel.SetActive( false );
+            gameHandler.RpcDestroyEndOfRoundIcons( );
+            gameHandler.RpcSetShowEndOfRoundScreen( false );
             Notify( GameHandler.SET_PRE_CALAMITY_STATE );
         }
     }

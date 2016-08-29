@@ -4,7 +4,6 @@ using System.Collections;
 public abstract class CharacterState {
 
     public GameObject character;
-    public Animator characterAnimator;
     public Rigidbody characterRigidbody;
 
     protected PlayerController controller;
@@ -25,6 +24,7 @@ public abstract class CharacterState {
 
     }
 
+    // [Server]
     public virtual void PlayerCollisionEnter( Collision collision ) {
 
     }
@@ -33,10 +33,9 @@ public abstract class CharacterState {
 
     }
 
+    // [Server]
     public virtual void KnockoutPlayer( ) {
         controller.SetDead( );
-        characterAnimator.SetFloat( "Speed", 0.0f );
-        characterAnimator.SetBool( "Die", true );
         controller.gameObject.layer = LayerMask.NameToLayer( "Dead" );
     }
 
@@ -46,11 +45,10 @@ public abstract class CharacterState {
 
     public virtual void RevivePlayer( ) {
         controller.SetAlive( );
-        characterAnimator.SetFloat( "Speed", 1.0f );
-        characterAnimator.SetBool( "Die", false );
         controller.gameObject.layer = LayerMask.NameToLayer( character.tag );
     }
 
+    // [Server]
     protected void KnockoutPlayer( GameObject collision ) {
         if (collision.CompareTag( "Player" )) {
             CharacterState state = collision.GetComponent<CharacterStateHandler>( ).currentState;

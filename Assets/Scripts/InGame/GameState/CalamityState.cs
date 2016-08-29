@@ -15,7 +15,7 @@ public class CalamityState : GameState {
         endTime = gameHandler.calamityLengthSeconds;
         gameHandler.RpcSetCalamityLabelText( "The Calamity" );
         SetLighting( );
-        gameHandler.RunCameraEffects( );
+        gameHandler.RpcRunCameraEffects( );
     }
 
     public override void GameUpdate( ) {

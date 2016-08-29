@@ -8,36 +8,35 @@ public abstract class ComponentEnabler : NetworkBehaviour {
     protected string characterType;
 
     protected Type[ ] monoBehavioursToEnable;
-
     protected Type[ ] behavioursToEnable;
-
     protected Type[ ] collidersToEnable;
-   
+
+    protected void EnableBehaviour( Type componentType ) {
+        Behaviour behaviour = GetComponentInChildren( componentType, true ) as Behaviour;
+
+        if (behaviour == null) {
+            Debug.Log( componentType.ToString( ) + " not present on player" );
+        } else {
+            behaviour.enabled = true;
+        }
+    }
+
+
+    protected void EnableBehaviours( Type[ ] componentTypes ) {
+        for (int i = 0; i < componentTypes.Length; i += 1) {
+            Type componentType = componentTypes[ i ];
+            EnableBehaviour( componentType );
+        }
+    }
+
+
     protected void SetupComponents( ) {
         SetupTypeLists( );
 
-        for (int i = 0; i < monoBehavioursToEnable.Length; i += 1) {
-            Type componentType = monoBehavioursToEnable[ i ];
-            MonoBehaviour monoBehaviour = GetComponentInChildren( componentType, true ) as MonoBehaviour;
+        EnableBehaviours( monoBehavioursToEnable );
+        EnableBehaviours( behavioursToEnable );
 
-            if (monoBehaviour == null) {
-                Debug.Log( componentType.ToString( ) + " not present on player" );
-            } else {
-                monoBehaviour.enabled = true;
-            }
-        }
-
-        for (int i = 0; i < behavioursToEnable.Length; i += 1) {
-            Type componentType = behavioursToEnable[ i ];
-            Behaviour behaviour = GetComponentInChildren( componentType, true ) as Behaviour;
-
-            if (behaviour == null) {
-                Debug.Log( componentType.ToString( ) + " not present on " + characterType );
-            } else {
-                behaviour.enabled = true;
-            }
-        }
-
+        // Can't make a fully generic method for enabling things as Component lacks enable field
         for (int i = 0; i < collidersToEnable.Length; i += 1) {
             Type componentType = collidersToEnable[ i ];
             Collider behaviour = GetComponentInChildren( componentType, true ) as Collider;
