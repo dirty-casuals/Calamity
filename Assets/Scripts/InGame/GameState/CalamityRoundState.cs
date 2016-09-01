@@ -32,7 +32,6 @@ public class CalamityRoundState : GameState {
         int numDeadPlayers = gameHandler.GetNumberDeadPlayers( );
         gameHandler.RpcTotUpPlayers( numAlivePlayers, numDeadPlayers );
 
-        gameHandler.MakeNormals( );
         gameHandler.ResetAllThePlayers( );
         gameHandler.RpcSetShowEndOfRoundScreen( true );
     }

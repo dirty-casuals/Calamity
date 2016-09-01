@@ -8,6 +8,7 @@ public class PlayerController : NetworkSubject {
     [SyncVar( hook = "OnAliveChange" )]
     public bool alive = true;
     public Vector3 startPosition;
+    public Quaternion startRotation;
     public bool isAMonster = false;
 
     private GameHandler gameHandler;
@@ -20,6 +21,9 @@ public class PlayerController : NetworkSubject {
 
     public override void OnStartLocalPlayer( ) {
         Setup( );
+
+        Camera playerCamera = GetComponentInChildren<Camera>( );
+        playerCamera.enabled = true;
     }
 
     public override void OnStartServer( ) {
@@ -49,12 +53,17 @@ public class PlayerController : NetworkSubject {
         }
     }
 
+    public void ResetPosition( ) {
+        if (CompareTag( "PlayerAI" )) {
+            transform.position = startPosition;
+            transform.rotation = startRotation;
+        } else {
+            RpcResetPosition( );
+        }
+    }
+
     [Server]
     public void Revive( ) {
-        if (!setupRun) {
-            Setup( );
-        }
-
         gameObject.SetActive( true );
         stateHandler.currentState.RevivePlayer( );
     }
@@ -63,11 +72,8 @@ public class PlayerController : NetworkSubject {
         stateHandler.SetNextStateToMonster( type );
     }
 
+    [Server]
     public void MakeMonsterIfRequired( ) {
-        if (!setupRun) {
-            Setup( );
-        }
-
         if (stateHandler == null) {
             stateHandler = GetComponent<CharacterStateHandler>( );
         }
@@ -75,15 +81,21 @@ public class PlayerController : NetworkSubject {
     }
 
     public void MakeNormal( ) {
-        if (!setupRun) {
-            Setup( );
-        }
-
         stateHandler.MakeNormal( );
     }
 
     public bool isMonster( ) {
         return stateHandler.playerType == PlayerType.MONSTER || stateHandler.playerType == PlayerType.AI_MONSTER;
+    }
+
+    [ClientRpc]
+    public void RpcSetStartPosition( Vector3 position, Quaternion rotation ) {
+        if (isLocalPlayer) {
+            transform.position = position;
+            transform.rotation = rotation;
+            startPosition = position;
+            startRotation = rotation;
+        }
     }
 
     [Server]
@@ -161,6 +173,14 @@ public class PlayerController : NetworkSubject {
         }
     }
 
+    [ClientRpc]
+    private void RpcResetPosition( ) {
+        if (isLocalPlayer) {
+            transform.position = startPosition;
+            transform.rotation = startRotation;
+        }
+    }
+
     private void Setup( ) {
         characterAnimator = GetComponent<Animator>( );
         stateHandler = GetComponent<CharacterStateHandler>( );
@@ -169,7 +189,9 @@ public class PlayerController : NetworkSubject {
             inventory = GetComponent<PlayerInventory>( );
         }
         StartCoroutine( AssignObserverWhenReady( ) );
-        screenOverlay = GetComponentInChildren<ScreenOverlay>( );
+        if (isLocalPlayer) {
+            screenOverlay = GetComponentInChildren<ScreenOverlay>( );
+        }
         setupRun = true;
     }
 
@@ -180,13 +202,19 @@ public class PlayerController : NetworkSubject {
             gameHandler = FindObjectOfType<GameHandler>( );
         }
 
-        if (gameHandler.IsFirstRound( )) {
+        if (gameHandler.IsFirstRound( ) && CompareTag( "PlayerAI" )) {
             startPosition = transform.position;
+            startRotation = transform.rotation;
         }
 
         AddUnityObservers( gameHandler.gameObject );
         if (!isAMonster) {
-            NotifySendObject( this, GameHandler.NEW_PLAYER );
+            if (!isLocalPlayer && isServer) {
+                NotifySendObject( this, GameHandler.NEW_PLAYER );
+            } else
+            if (isLocalPlayer) {
+                NotifySendObject( this, GameHandler.LOCAL_PLAYER );
+            }
         }
     }
 

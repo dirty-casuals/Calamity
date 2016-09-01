@@ -39,6 +39,7 @@ public class CharacterStateHandler : NetworkBehaviour {
         hasBecomeMonster = true;
     }
 
+    [Server]
     public void MakeMonsterIfRequired( ) {
         currentState = nextState;
         PlayerType lastType = playerType;
@@ -49,6 +50,7 @@ public class CharacterStateHandler : NetworkBehaviour {
         }
     }
 
+    [Server]
     public void MakeNormal( ) {
         if (currentState != initialState) {
 
@@ -106,10 +108,11 @@ public class CharacterStateHandler : NetworkBehaviour {
         return state;
     }
 
+    [Server]
     private void ReplacePlayerController( ) {
         PlayerController oldPlayerController = GetComponent<PlayerController>( );
         GameObject newInstance = GetPrefabInstanceFromType( playerType );
-        newInstance.transform.position = gameObject.transform.position;
+        newInstance.transform.position = new Vector3( gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z );
         newInstance.transform.rotation = gameObject.transform.rotation;
 
         CharacterStateHandler newStateHandler = newInstance.GetComponent<CharacterStateHandler>( );
@@ -121,22 +124,15 @@ public class CharacterStateHandler : NetworkBehaviour {
 
         PlayerController newPlayerController = newInstance.GetComponent<PlayerController>( );
         newPlayerController.startPosition = oldPlayerController.startPosition;
+        newPlayerController.startRotation = oldPlayerController.startRotation;
 
         gameHandler.ReplacePlayerController( newPlayerController, oldPlayerController );
 
-        if (isLocalPlayer) {
+        NetworkServer.Destroy( oldPlayerController.gameObject );
+        if (CompareTag( "Player" ) || CompareTag( "Monster" )) {
             NetworkServer.ReplacePlayerForConnection( connectionToClient, newInstance, 0 );
-            Camera playerCamera = oldPlayerController.GetComponentInChildren<Camera>( );
-            playerCamera.enabled = false;
-
-            Camera newCamera = newInstance.GetComponentInChildren<Camera>( );
-            newCamera.enabled = true;
         } else {
             NetworkServer.Spawn( newInstance );
-        }
-
-        if (isServer) {
-            NetworkServer.Destroy( oldPlayerController.gameObject );
         }
     }
 
@@ -160,7 +156,7 @@ public class CharacterStateHandler : NetworkBehaviour {
     }
 
     [ClientRpc]
-    private void RpcCollisionEnter() {
+    private void RpcCollisionEnter( ) {
 
     }
 }

@@ -28,6 +28,7 @@ public class GameHandler : NetworkObserver {
     public const string TOGGLE_GAME_PAUSE = "TOGGLE_GAME_PAUSE";
     public const string CHARACTER_DIED = "CHARACTER_DIED";
     public const string NEW_PLAYER = "NEW_PLAYER";
+    public const string LOCAL_PLAYER = "LOCAL_PLAYER";
     [SyncVar]
     public bool isReadyForPlayerSpawns = false;
     public static GameState currentGameState;
@@ -102,11 +103,11 @@ public class GameHandler : NetworkObserver {
         roundTimeRemaining = timeRemaining;
     }
 
-    public void AddPlayerController( PlayerController controller ) {
-        if (controller.isLocalPlayer) {
-            localPlayerController = controller;
-        }
+    public void SetLocalPlayerController( PlayerController controller ) {
+        localPlayerController = controller;
+    }
 
+    public void AddPlayerController( PlayerController controller ) {
         characterPlayerControllers.Add( controller );
     }
 
@@ -126,7 +127,7 @@ public class GameHandler : NetworkObserver {
     [ClientRpc]
     public void RpcTotUpPlayers( int numAlive, int numDead ) {
         StartCoroutine( TotUpPlayers( aliveIcon, numAlive ) );
-        StartCoroutine( TotUpPlayers( aliveIcon, numDead ) );
+        StartCoroutine( TotUpPlayers( deadIcon, numDead ) );
     }
 
     [ClientRpc]
@@ -191,6 +192,9 @@ public class GameHandler : NetworkObserver {
                     AddPlayerController( (PlayerController)sender );
                 }
                 break;
+            case LOCAL_PLAYER:
+                SetLocalPlayerController( (PlayerController)sender );
+                break;
         }
     }
 
@@ -216,7 +220,7 @@ public class GameHandler : NetworkObserver {
                 playerObject.transform.localPosition = Vector3.zero;
                 playerObject.transform.localRotation = Quaternion.identity;
                 humansCreated = humansCreated + 1;
-                RpcSetPlayerStartPosition( spawn.transform.position );
+                playerObject.GetComponent<PlayerController>().RpcSetStartPosition( spawn.transform.position, spawn.transform.rotation );
                 continue;
             }
 
@@ -252,7 +256,7 @@ public class GameHandler : NetworkObserver {
     public void ResetAllThePlayers( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
-            playerController.gameObject.transform.position = playerController.startPosition;
+            playerController.ResetPosition( );
             playerController.Revive( );
         }
     }
@@ -386,16 +390,18 @@ public class GameHandler : NetworkObserver {
         countdownTime.text = Mathf.Floor( newTimeRemaining ).ToString( );
     }
 
-    [ClientRpc]
-    private void RpcSetPlayerStartPosition( Vector3 position ) {
-        StartCoroutine( OnLocalPlayerReady( position ) );
-    }
+    //[ClientRpc]
+    //private void RpcSetPlayerStartPosition( Vector3 position, Quaternion rotation ) {
+    //    StartCoroutine( OnLocalPlayerReady( position, rotation ) );
+    //}
 
-    private IEnumerator OnLocalPlayerReady( Vector3 position ) {
-        while (localPlayerController == null) {
-            yield return new WaitForEndOfFrame( );
-        }
+    //private IEnumerator OnLocalPlayerReady( Vector3 position, Quaternion rotation ) {
+    //    while (localPlayerController == null) {
+    //        yield return new WaitForEndOfFrame( );
+    //    }
 
-        localPlayerController.transform.position = position;
-    }
+    //    localPlayerController.transform.position = position;
+    //    localPlayerController.transform.rotation = rotation;
+    //    localPlayerController.SetStartPosition( position, rotation );
+    //}
 }
