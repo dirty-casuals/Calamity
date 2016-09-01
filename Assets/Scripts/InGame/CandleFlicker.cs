@@ -7,7 +7,7 @@ public class CandleFlicker : MonoBehaviour {
     private float maxFlickerIntensity = 0.5f;
     private float minRange = 1.0f;
     private float maxRange = 3.0f;
-    private float flickerSpeed = 0.5f;
+    private float flickerSpeed = 0.04f;
     private float flickerIntensity = 0.0f;
     private float range = 0.0f;
     private bool waiting = false;

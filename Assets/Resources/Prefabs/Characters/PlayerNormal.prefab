@@ -68,6 +68,7 @@ GameObject:
   - 114: {fileID: 11473344}
   - 114: {fileID: 11409496}
   - 114: {fileID: 11473076}
+  - 81: {fileID: 8147358}
   m_Layer: 10
   m_Name: PlayerNormal
   m_TagString: Player
@@ -1360,6 +1361,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!81 &8147358
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102998}
+  m_Enabled: 0
 --- !u!82 &8221596
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1490,6 +1498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   startPosition: {x: 0, y: 0, z: 0}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
   isAMonster: 0
 --- !u!114 &11414296
 MonoBehaviour:

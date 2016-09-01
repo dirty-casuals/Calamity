@@ -21801,11 +21801,11 @@ Prefab:
       objectReference: {fileID: 46419771}
     - target: {fileID: 11434228, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
       propertyPath: startTimeSeconds
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11434228, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}
       propertyPath: calamityLengthSeconds
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b62ea950a1c1a94292bddbaf0d3139b, type: 2}

@@ -21,7 +21,8 @@ public class PlayerMonsterComponentEnabler : ComponentEnabler {
             typeof( CalamityFirstPersonController ),
             typeof( BloomOptimized ),
             typeof( CalamityFirstPersonCamera ),
-            typeof( EntityRig )
+            typeof( EntityRig ),
+            typeof( AudioListener )
         };
 
         behavioursToEnable = new Type[ ]

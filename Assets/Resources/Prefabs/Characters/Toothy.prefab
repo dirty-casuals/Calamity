@@ -612,6 +612,7 @@ GameObject:
   - 114: {fileID: 11414086}
   - 114: {fileID: 11426608}
   - 114: {fileID: 11456980}
+  - 81: {fileID: 8113744}
   m_Layer: 16
   m_Name: Toothy
   m_TagString: Monster
@@ -1358,6 +1359,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!81 &8113744
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185754}
+  m_Enabled: 0
 --- !u!82 &8225916
 AudioSource:
   m_ObjectHideFlags: 1
