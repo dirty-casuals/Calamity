@@ -62,7 +62,6 @@ GameObject:
   - 114: {fileID: 11470352}
   - 114: {fileID: 11427436}
   - 114: {fileID: 11479454}
-  - 114: {fileID: 11404802}
   m_Layer: 0
   m_Name: candle
   m_TagString: Untagged
@@ -188,38 +187,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11404802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 71
-    i1: 153
-    i2: 1
-    i3: 116
-    i4: 187
-    i5: 110
-    i6: 107
-    i7: 132
-    i8: 8
-    i9: 63
-    i10: 184
-    i11: 155
-    i12: 230
-    i13: 55
-    i14: 137
-    i15: 179
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11410862
 MonoBehaviour:
   m_ObjectHideFlags: 1
