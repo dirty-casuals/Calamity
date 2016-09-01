@@ -1333,7 +1333,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966271
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1627,6 +1627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 0
   startPosition: {x: 0, y: 0, z: 0}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
   isAMonster: 1
 --- !u!114 &11470774
 MonoBehaviour:
