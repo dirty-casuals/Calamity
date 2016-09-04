@@ -116,7 +116,7 @@ public class CharacterStateHandler : NetworkBehaviour {
     private void ReplacePlayerController( ) {
         PlayerController oldPlayerController = GetComponent<PlayerController>( );
         GameObject newInstance = GetPrefabInstanceFromType( playerType );
-        newInstance.transform.position = new Vector3( gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z );
+        newInstance.transform.position = gameObject.transform.position;
         newInstance.transform.rotation = gameObject.transform.rotation;
 
         CharacterStateHandler newStateHandler = newInstance.GetComponent<CharacterStateHandler>( );

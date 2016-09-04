@@ -602,7 +602,6 @@ GameObject:
   - 114: {fileID: 11416766}
   - 114: {fileID: 11420338}
   - 54: {fileID: 5459570}
-  - 136: {fileID: 13643492}
   - 114: {fileID: 11426906}
   - 95: {fileID: 9559182}
   - 143: {fileID: 14350866}
@@ -1757,19 +1756,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 10
   m_InterpolateMovement: 1
---- !u!136 &13643492
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185754}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 6.3
-  m_Direction: 1
-  m_Center: {x: 0, y: 3.36, z: 0}
 --- !u!137 &13745882
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1851,13 +1837,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 7.03
+  m_Radius: 1.22
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 3.54, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
