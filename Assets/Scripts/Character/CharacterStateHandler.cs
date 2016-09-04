@@ -46,6 +46,10 @@ public class CharacterStateHandler : NetworkBehaviour {
         playerType = nextType;
 
         if (hasBecomeMonster) {
+            PlayerInventory playeInventory = GetComponent<PlayerInventory>( );
+            if (playeInventory != null) {
+                playeInventory.RemoveItemFromInventoryUI( );
+            }
             ReplacePlayerController( );
         }
     }
