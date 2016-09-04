@@ -10,10 +10,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
 
     public Button readyButton;
     public Button waitingPlayerButton;
-    public List<GameObject> eyes = new List<GameObject>( );
     public static int numPlayers = 0;
-
-    public Color playerColor = Color.white;
 
     public override void OnClientEnterLobby( ) {
         base.OnClientEnterLobby( );
@@ -33,8 +30,9 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     }
 
     private void Update( ) {
-        if (SceneManager.GetActiveScene( ).name != LobbyManager.s_Singleton.lobbyScene)
+        if (SceneManager.GetActiveScene( ).name != LobbyManager.s_Singleton.lobbyScene) {
             return;
+        }
 
         InputField obj = (EventSystem.current.currentSelectedGameObject != null) ? EventSystem.current.currentSelectedGameObject.GetComponent<InputField>( ) : null;
 
@@ -50,13 +48,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     }
 
     private void ActivateEyes( ) {
-        NetworkInstanceId id = netId;
-        if (id.ToString( ) == "1") {
-            eyes[ 0 ].SetActive( true );
-        }
-        if (id.ToString( ) == "2") {
-            eyes[ 1 ].SetActive( true );
-        }
+        LobbyManager.s_Singleton.ActivateEyes( );
     }
 
     private void SetupLocalPlayer( ) {
@@ -77,7 +69,10 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         if (readyState) {
             Text textComponent = readyButton.transform.GetChild( 0 ).GetComponent<Text>( );
             textComponent.text = "READY";
-            ActivateEyes( );
+            // Activate already called on server player
+            if (!isLocalPlayer) {
+                ActivateEyes( );
+            }
             readyButton.interactable = false;
         } else {
             Text textComponent = readyButton.transform.GetChild( 0 ).GetComponent<Text>( );

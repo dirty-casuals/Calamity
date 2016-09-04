@@ -27,6 +27,10 @@ public class LobbyManager : NetworkLobbyManager {
     protected ulong _currentMatchID;
     protected LobbyHook lobbyHooks;
 
+    [SerializeField]
+    private GameObject[ ] eyes;
+    private int clientsConnected = 0;
+
     private void Awake( ) {
         if (FindObjectsOfType<LobbyManager>( ).Length > 1)
             Destroy( gameObject );
@@ -185,10 +189,16 @@ public class LobbyManager : NetworkLobbyManager {
         }
     }
 
+    public void ActivateEyes( ) {
+        eyes[ clientsConnected ].SetActive( true );
+        clientsConnected = clientsConnected + 1;
+    }
+
     public override GameObject OnLobbyServerCreateLobbyPlayer( NetworkConnection conn, short playerControllerId ) {
         GameObject obj = Instantiate( lobbyPlayerPrefab.gameObject ) as GameObject;
 
         LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>( );
+
         newPlayer.RpcToggleJoinButton( numPlayers + 1 >= minPlayers ); ;
 
         for (int i = 0; i < numPlayers; ++i) {
