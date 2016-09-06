@@ -10,6 +10,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
 
     public Button readyButton;
     public Button waitingPlayerButton;
+    public Button startButton;
     public static int numPlayers = 0;
 
     public override void OnClientEnterLobby( ) {
@@ -30,21 +31,21 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     }
 
     private void Update( ) {
-        if (SceneManager.GetActiveScene( ).name != LobbyManager.s_Singleton.lobbyScene) {
-            return;
-        }
+        //if (SceneManager.GetActiveScene( ).name != LobbyManager.s_Singleton.lobbyScene) {
+        //    return;
+        //}
 
-        InputField obj = (EventSystem.current.currentSelectedGameObject != null) ? EventSystem.current.currentSelectedGameObject.GetComponent<InputField>( ) : null;
+        //InputField obj = (EventSystem.current.currentSelectedGameObject != null) ? EventSystem.current.currentSelectedGameObject.GetComponent<InputField>( ) : null;
 
-        if (isLocalPlayer && (obj == null || !obj.isFocused)) {
-            int localIdx = playerControllerId + 1;
-            if (!readyToBegin && Input.GetButtonDown( "Fire" + localIdx )) {
-                if (readyButton.IsActive( ) && readyButton.IsInteractable( )) {
-                    ActivateEyes( );
-                }
-                SendReadyToBeginMessage( );
-            }
-        }
+        //if (isLocalPlayer && (obj == null || !obj.isFocused)) {
+        //    int localIdx = playerControllerId + 1;
+        //    if (!readyToBegin && Input.GetButtonDown( "Fire" + localIdx )) {
+        //        if (readyButton.IsActive( ) && readyButton.IsInteractable( )) {
+        //            ActivateEyes( );
+        //        }
+        //        SendReadyToBeginMessage( );
+        //    }
+        //}
     }
 
     private void ActivateEyes( ) {
@@ -56,12 +57,17 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         readyButton.interactable = true;
 
         readyButton.onClick.RemoveAllListeners( );
-        readyButton.onClick.AddListener( OnReadyClicked );
+        readyButton.onClick.AddListener( delegate { OnReadyClicked( ); } );
+
+        startButton.onClick.RemoveAllListeners( );
+        startButton.onClick.AddListener( LobbyManager.s_Singleton.OnStartClicked );
     }
 
     private void SetupOtherPlayer( ) {
         readyButton.interactable = false;
         readyButton.gameObject.SetActive( false );
+        startButton.interactable = false;
+        startButton.gameObject.SetActive( false );
         OnClientReady( false );
     }
 
@@ -82,12 +88,18 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     }
 
     public void OnReadyClicked( ) {
+        ActivateEyes( );
         SendReadyToBeginMessage( );
     }
 
     public void RpcToggleJoinButton( bool enabled ) {
         readyButton.gameObject.SetActive( enabled );
         waitingPlayerButton.gameObject.SetActive( !enabled );
+    }
+
+    public void ToggleStartButton( bool enabled ) {
+        startButton.gameObject.SetActive( enabled );
+        startButton.interactable = enabled;
     }
 
     [ClientRpc]

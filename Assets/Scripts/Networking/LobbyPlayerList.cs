@@ -19,18 +19,6 @@ public class LobbyPlayerList : MonoBehaviour {
             warningDirectPlayServer.SetActive( enabled );
     }
 
-    void Update( ) {
-        //this dirty the layout to force it to recompute evryframe (a sync problem between client/server
-        //sometime to child being assigned before layout was enabled/init, leading to broken layouting)
-        VerticalLayoutGroup layout = playerListContentTransform.GetComponent<VerticalLayoutGroup>( );
-        if (layout)
-            layout.childAlignment = Time.frameCount % 2 == 0 ? TextAnchor.UpperCenter : TextAnchor.UpperLeft;
-
-        if (Input.GetButtonDown( "Fire2" ) && NetworkServer.localConnections.Count > 0 && NetworkServer.localConnections[ 0 ].playerControllers.Count < 2) {
-            LobbyManager.s_Singleton.TryToAddPlayer( );
-        }
-    }
-
     public void AddPlayer( LobbyPlayer player ) {
         player.transform.position = new Vector3( 0, 0, 0 );
         player.transform.SetParent( playerListContentTransform, false );

@@ -16,6 +16,7 @@ public class LobbyManager : NetworkLobbyManager {
     public Button backButton;
     public Text statusInfo;
     public Text hostInfo;
+    public GameObject background;
     public bool isMatchmaking = false;
 
     public delegate void BackButtonDelegate( );
@@ -75,6 +76,7 @@ public class LobbyManager : NetworkLobbyManager {
 
             topPanel.ToggleVisibility( true );
             topPanel.isInGame = false;
+            background.SetActive( true );
         } else {
             ChangeTo( null );
 
@@ -83,6 +85,7 @@ public class LobbyManager : NetworkLobbyManager {
             backDelegate = StopGameClbk;
             topPanel.isInGame = true;
             topPanel.ToggleVisibility( false );
+            background.SetActive( false );
         }
     }
 
@@ -199,13 +202,15 @@ public class LobbyManager : NetworkLobbyManager {
 
         LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>( );
 
-        newPlayer.RpcToggleJoinButton( numPlayers + 1 >= minPlayers ); ;
+        newPlayer.RpcToggleJoinButton( numPlayers + 1 >= minPlayers );
+        newPlayer.ToggleStartButton( numPlayers + 1 >= minPlayers );
 
-        for (int i = 0; i < numPlayers; ++i) {
+        for (int i = 0; i < numPlayers; i += 1) {
             LobbyPlayer p = lobbySlots[ i ] as LobbyPlayer;
 
             if (p != null) {
                 p.RpcToggleJoinButton( numPlayers + 1 >= minPlayers );
+                p.ToggleStartButton( numPlayers + 1 >= minPlayers );
             }
         }
 
@@ -218,6 +223,7 @@ public class LobbyManager : NetworkLobbyManager {
 
             if (p != null) {
                 p.RpcToggleJoinButton( numPlayers >= minPlayers );
+                p.ToggleStartButton( numPlayers >= minPlayers );
             }
         }
 
@@ -231,8 +237,11 @@ public class LobbyManager : NetworkLobbyManager {
         return true;
     }
 
-    public override void OnLobbyServerPlayersReady( ) {
+    public void OnStartClicked( ) {
         StartCoroutine( ServerCountdownCoroutine( ) );
+    }
+
+    public override void OnLobbyServerPlayersReady( ) {
     }
 
     public IEnumerator ServerCountdownCoroutine( ) {
