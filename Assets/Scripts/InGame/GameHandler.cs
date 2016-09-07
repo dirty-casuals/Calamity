@@ -35,9 +35,12 @@ public class GameHandler : NetworkObserver {
 
     [SerializeField]
     private GameObject roundPanel;
+    [SerializeField]
+    private int numMonsters = 2;
 
     private List<Spawner> playerSpawnPoints;
     private List<Spawner> monsterSpawnPoints;
+    private List<Spawner> selectedMonsterSpawnPoints = null;
 
     private List<PlayerController> characterPlayerControllers = new List<PlayerController>( );
     private PlayerController localPlayerController = null;
@@ -131,7 +134,7 @@ public class GameHandler : NetworkObserver {
     }
 
     [ClientRpc]
-    public void RpcDestroyEndOfRoundIcons() {
+    public void RpcDestroyEndOfRoundIcons( ) {
         for (int i = 0; i < endOfRoundIcons.Count; i += 1) {
             GameObject icon = endOfRoundIcons[ i ];
             GameObject.Destroy( icon );
@@ -220,7 +223,7 @@ public class GameHandler : NetworkObserver {
                 playerObject.transform.localPosition = Vector3.zero;
                 playerObject.transform.localRotation = Quaternion.identity;
                 humansCreated = humansCreated + 1;
-                playerObject.GetComponent<PlayerController>().RpcSetStartPosition( spawn.transform.position, spawn.transform.rotation );
+                playerObject.GetComponent<PlayerController>( ).RpcSetStartPosition( spawn.transform.position, spawn.transform.rotation );
                 continue;
             }
 
@@ -230,7 +233,18 @@ public class GameHandler : NetworkObserver {
     }
 
     public void StartMonsterSpawners( ) {
-        foreach (Spawner spawn in monsterSpawnPoints) {
+        if (selectedMonsterSpawnPoints == null) {
+            selectedMonsterSpawnPoints = new List<Spawner>( );
+            for (int i = 0; i < numMonsters; i += 1) {
+                int numSpawnpoints = monsterSpawnPoints.Count;
+                int index = (int)Mathf.Floor( Random.value * numSpawnpoints ) + 1;
+                Spawner spawner = monsterSpawnPoints[ index ];
+                monsterSpawnPoints.RemoveAt( index );
+                selectedMonsterSpawnPoints.Add( spawner );
+            }
+        }
+
+        foreach (Spawner spawn in selectedMonsterSpawnPoints) {
             spawn.characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIToothy" );
             spawn.StartSpawn( );
         }
