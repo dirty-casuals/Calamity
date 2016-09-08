@@ -344,6 +344,27 @@ public class GameHandler : NetworkObserver {
         return gameResultObject;
     }
 
+    [ClientRpc]
+    public void RpcSetGameResult( ) {
+        GameResult gameResult = GetGameResultObject( );
+
+        if (DidAllLose( )) {
+            if (DidAllDie( )) {
+                gameResult.SetEndResultAllDied( );
+            } else {
+                int numSurvivors = GetNumberAlivePlayersLeft( );
+                gameResult.SetEndResultManySurvivors( numSurvivors );
+            }
+        } else {
+            PlayerController winnerPlayerController = GetWinner( );
+            if (winnerPlayerController.isLocalPlayer) {
+                gameResult.SetLocalPlayerWon( );
+            } else {
+                gameResult.SetOtherPlayerWon( );
+            }
+        }
+    }
+
     private IEnumerator TotUpPlayers( GameObject icon, int num ) {
         int i = 0;
         if (num > 0) {
