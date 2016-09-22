@@ -237,7 +237,7 @@ public class GameHandler : NetworkObserver {
             selectedMonsterSpawnPoints = new List<Spawner>( );
             for (int i = 0; i < numMonsters; i += 1) {
                 int numSpawnpoints = monsterSpawnPoints.Count;
-                int index = (int)Mathf.Floor( Random.value * numSpawnpoints ) + 1;
+                int index = (int)Mathf.Floor( Random.value * numSpawnpoints );
                 Spawner spawner = monsterSpawnPoints[ index ];
                 monsterSpawnPoints.RemoveAt( index );
                 selectedMonsterSpawnPoints.Add( spawner );
@@ -345,23 +345,25 @@ public class GameHandler : NetworkObserver {
     }
 
     [ClientRpc]
-    public void RpcSetGameResult( ) {
+    public void RpcSetGameResult( EndOfGameResult endResult, int numSurvivors ) {
         GameResult gameResult = GetGameResultObject( );
 
-        if (DidAllLose( )) {
-            if (DidAllDie( )) {
+        switch (endResult) {
+            case EndOfGameResult.ALL_DIED:
                 gameResult.SetEndResultAllDied( );
-            } else {
-                int numSurvivors = GetNumberAlivePlayersLeft( );
+                break;
+
+            case EndOfGameResult.MANY_SURVIVORS:
                 gameResult.SetEndResultManySurvivors( numSurvivors );
-            }
-        } else {
-            PlayerController winnerPlayerController = GetWinner( );
-            if (winnerPlayerController.isLocalPlayer) {
+                break;
+
+            case EndOfGameResult.LOCAL_PLAYER_WON:
                 gameResult.SetLocalPlayerWon( );
-            } else {
+                break;
+
+            case EndOfGameResult.OTHER_PLAYER_WON:
                 gameResult.SetOtherPlayerWon( );
-            }
+                break;
         }
     }
 
