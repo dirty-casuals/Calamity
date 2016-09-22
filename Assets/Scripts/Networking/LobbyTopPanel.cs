@@ -16,9 +16,9 @@ public class LobbyTopPanel : MonoBehaviour {
         if (!isInGame)
             return;
 
-        if (Input.GetKeyDown( KeyCode.Escape )) {
-            ToggleVisibility( !isDisplayed );
-        }
+        //if (Input.GetKeyDown( KeyCode.Escape )) {
+        //    ToggleVisibility( !isDisplayed );
+        //}
 
     }
 

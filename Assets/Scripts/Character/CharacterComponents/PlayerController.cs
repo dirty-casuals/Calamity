@@ -31,7 +31,7 @@ public class PlayerController : NetworkSubject {
     }
 
     public void ControllerPause( ) {
-        bool pauseMenuToggle = CrossPlatformInputManager.GetButtonDown( "Pause" );
+        bool pauseMenuToggle = Input.GetKeyDown( KeyCode.Escape );
 
         if (pauseMenuToggle) {
             currentPlayerState.ToggleControllerInput( );

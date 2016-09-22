@@ -34,6 +34,7 @@ public class PlayerState : CharacterState {
     }
 
     public override void PlayerPhysicsUpdate( ) {
+        controller.ControllerPause( );
         if ((playerControllerDisabled || controller.IsDead( )) && !controller.isAMonster) {
             return;
         }
