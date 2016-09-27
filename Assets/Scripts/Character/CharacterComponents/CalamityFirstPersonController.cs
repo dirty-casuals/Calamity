@@ -100,6 +100,12 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         }
 
         public void FixedUpdateCalamityController( ) {
+            float volume = 1.0f;
+            if (AudioControl.Muted( )) {
+                volume = 0.0f;
+            }
+            m_AudioSource.volume = 1.0f * volume;
+
             float speed;
             GetInput( out speed );
             // always move along the camera forward as it is the direction that it being aimed at
