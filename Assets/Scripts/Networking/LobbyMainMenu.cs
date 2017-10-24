@@ -51,6 +51,10 @@ public class LobbyMainMenu : MonoBehaviour {
             (uint)lobbyManager.maxPlayers,
             true,
             "",
+            "",
+            "",
+            0,
+            0,
             lobbyManager.OnMatchCreate );
 
         lobbyManager.backDelegate = lobbyManager.StopHost;

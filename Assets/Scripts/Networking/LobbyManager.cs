@@ -129,7 +129,7 @@ public class LobbyManager : NetworkLobbyManager {
 
     public void StopHostClbk( ) {
         if (isMatchmaking) {
-            this.matchMaker.DestroyMatch( (NetworkID)_currentMatchID, OnMatchDestroyed );
+            this.matchMaker.DestroyMatch( (NetworkID)_currentMatchID, 0, OnMatchDestroyed );
             _disconnectServer = true;
         } else {
             StopHost( );
@@ -179,13 +179,13 @@ public class LobbyManager : NetworkLobbyManager {
         }
     }
 
-    public override void OnMatchCreate( CreateMatchResponse matchInfo ) {
-        base.OnMatchCreate( matchInfo );
+    public override void OnMatchCreate( bool success, string extendedInfo, MatchInfo matchInfo ) {
+        base.OnMatchCreate( success, extendedInfo, matchInfo );
 
         _currentMatchID = (System.UInt64)matchInfo.networkId;
     }
 
-    public void OnMatchDestroyed( BasicResponse resp ) {
+    public void OnMatchDestroyed( bool success, string extendedInfo ) {
         if (_disconnectServer) {
             StopMatchMaker( );
             StopHost( );

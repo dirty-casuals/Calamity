@@ -10,7 +10,7 @@ public class LobbyServerEntry : MonoBehaviour {
     public Text slotInfo;
     public Button joinButton;
 
-    public void Populate( MatchDesc match, LobbyManager lobbyManager, Color c ) {
+    public void Populate( MatchInfoSnapshot match, LobbyManager lobbyManager, Color c ) {
         serverInfoText.text = match.name;
 
         slotInfo.text = match.currentSize.ToString( ) + "/" + match.maxSize.ToString( ); ;
@@ -25,7 +25,7 @@ public class LobbyServerEntry : MonoBehaviour {
 
     void JoinMatch( NetworkID networkID, LobbyManager lobbyManager ) {
         lobbyManager.DisplayIsConnecting( );
-        lobbyManager.matchMaker.JoinMatch( networkID, "", lobbyManager.OnMatchJoined );
+        lobbyManager.matchMaker.JoinMatch( networkID, "", "", "", 0, 0, lobbyManager.OnMatchJoined );
         lobbyManager.backDelegate = lobbyManager.StopClientClbk;
         lobbyManager.isMatchmaking = true;
     }

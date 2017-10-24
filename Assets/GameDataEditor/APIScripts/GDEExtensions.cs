@@ -1516,9 +1516,12 @@ namespace GameDataEditor
 
 		public static bool NearlyEqual(this Color32 variable, Color32 other)
 		{
-			return  variable.r.NearlyEqual(other.r) &&
-					variable.g.NearlyEqual(other.g) &&
-					variable.b.NearlyEqual(other.b);
+            float r = (float) variable.r;
+            float g = (float) variable.b;
+            float b = (float) variable.r;
+			return  r.NearlyEqual(other.r) &&
+					g.NearlyEqual(other.g) &&
+					b.NearlyEqual(other.b);
 		}
     }
 

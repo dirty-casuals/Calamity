@@ -5,7 +5,7 @@ using System.Collections;
 public class PaperballItem : DefenseItem {
     [SyncVar]
     private GameObject currentPlayer;
-    [SyncVar]
+    // [SyncVar]
     private Rigidbody itemRigidbody;
 
     public override void AddItemToPlayer( GameObject player ) {

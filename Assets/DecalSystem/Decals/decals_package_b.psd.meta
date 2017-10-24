@@ -1,15 +1,34 @@
 fileFormatVersion: 2
 guid: 23c5619a3ba9a7f4381fe9b64caab0d6
 TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 2
+  fileIDToRecycleName:
+    21300000: decals_package_b_0
+    21300002: decals_package_b_1
+    21300004: decals_package_b_2
+    21300006: decals_package_b_3
+    21300008: decals_package_b_4
+    21300010: decals_package_b_5
+    21300012: decals_package_b_6
+    21300014: decals_package_b_7
+    21300016: decals_package_b_8
+    21300018: decals_package_b_9
+    21300020: decals_package_b_10
+    21300022: decals_package_b_11
+    21300024: decals_package_b_12
+    21300026: decals_package_b_13
+    21300028: decals_package_b_14
+    21300030: decals_package_b_15
+  externalObjects: {}
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -19,23 +38,22 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 1
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -43,12 +61,29 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: decals_package_b_0
+    - serializedVersion: 2
+      name: decals_package_b_0
       rect:
         serializedVersion: 2
         x: 0
@@ -59,7 +94,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_1
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_1
       rect:
         serializedVersion: 2
         x: 263
@@ -70,7 +108,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_2
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_2
       rect:
         serializedVersion: 2
         x: 517
@@ -81,7 +122,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_3
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_3
       rect:
         serializedVersion: 2
         x: 768
@@ -92,7 +136,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_4
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_4
       rect:
         serializedVersion: 2
         x: 0
@@ -103,7 +150,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_5
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_5
       rect:
         serializedVersion: 2
         x: 256
@@ -114,7 +164,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_6
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_6
       rect:
         serializedVersion: 2
         x: 512
@@ -125,7 +178,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_7
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_7
       rect:
         serializedVersion: 2
         x: 768
@@ -136,7 +192,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_8
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_8
       rect:
         serializedVersion: 2
         x: 0
@@ -147,7 +206,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_9
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_9
       rect:
         serializedVersion: 2
         x: 256
@@ -158,7 +220,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_10
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_10
       rect:
         serializedVersion: 2
         x: 523
@@ -169,7 +234,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_11
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_11
       rect:
         serializedVersion: 2
         x: 768
@@ -180,7 +248,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_12
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_12
       rect:
         serializedVersion: 2
         x: 0
@@ -191,7 +262,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_13
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_13
       rect:
         serializedVersion: 2
         x: 256
@@ -202,7 +276,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_14
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_14
       rect:
         serializedVersion: 2
         x: 512
@@ -213,7 +290,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: decals_package_b_15
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: decals_package_b_15
       rect:
         serializedVersion: 2
         x: 768
@@ -224,7 +304,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
+      tessellationDetail: -1
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

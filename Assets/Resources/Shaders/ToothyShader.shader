@@ -1,4 +1,6 @@
-﻿Shader "Toothy Shader" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Toothy Shader" {
 
 	Properties{
 		_MainTex("Texture For Diffuse Material Color", 2D) = "white" {}
@@ -39,7 +41,7 @@
 
 	vertexOutput vert(vertexInput input) {
 		vertexOutput vOut;
-		vOut.pos = mul(UNITY_MATRIX_MVP, input.pos);
+		vOut.pos = UnityObjectToClipPos(input.pos);
 		vOut.tex = input.texcoord;
 		return vOut;
 	}

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LobbyServerList : MonoBehaviour {
     public LobbyManager lobbyManager;
@@ -29,8 +30,8 @@ public class LobbyServerList : MonoBehaviour {
         RequestPage( 0 );
     }
 
-    public void OnGUIMatchList( ListMatchResponse response ) {
-        if (response.matches.Count == 0) {
+    public void OnGUIMatchList( bool success, string extendedInfo, List<MatchInfoSnapshot> response ) {
+        if (response.Count == 0) {
             if (currentPage == 0) {
                 noServerFound.SetActive( true );
             }
@@ -44,10 +45,10 @@ public class LobbyServerList : MonoBehaviour {
         foreach (Transform t in serverListRect)
             Destroy( t.gameObject );
 
-        for (int i = 0; i < response.matches.Count; ++i) {
+        for (int i = 0; i < response.Count; ++i) {
             GameObject o = Instantiate( serverEntryPrefab ) as GameObject;
 
-            o.GetComponent<LobbyServerEntry>( ).Populate( response.matches[ i ], lobbyManager, (i % 2 == 0) ? OddServerColor : EvenServerColor );
+            o.GetComponent<LobbyServerEntry>( ).Populate( response[ i ], lobbyManager, (i % 2 == 0) ? OddServerColor : EvenServerColor );
 
             o.transform.SetParent( serverListRect, false );
         }
@@ -66,6 +67,6 @@ public class LobbyServerList : MonoBehaviour {
     public void RequestPage( int page ) {
         previousPage = currentPage;
         currentPage = page;
-        lobbyManager.matchMaker.ListMatches( page, 6, "", OnGUIMatchList );
+        lobbyManager.matchMaker.ListMatches( page, 6, "", true, 0, 0, OnGUIMatchList );
     }
 }

@@ -44,13 +44,13 @@ function LateUpdate () {
 
 function Start () {
 	if(!root)
- 	root = transform.FindChild("Root");
+ 	root = transform.Find("Root");
  	if(!projector)
- 	projector = transform.FindChild("Blob Shadow Projector");
+ 	projector = transform.Find("Blob Shadow Projector");
  	if(!_model)
- 	_model = transform.FindChild("MicroMale").gameObject;
+ 	_model = transform.Find("MicroMale").gameObject;
  	if(!_headBone)
- 	_headBone = transform.FindChild("Head");
+ 	_headBone = transform.Find("Head");
 	boneRig = gameObject.GetComponentsInChildren (Rigidbody); 
 	disableRagdoll();
 	//Blinking
@@ -140,7 +140,7 @@ function Decapitate (explode:boolean, delay:float, force:Vector3) {
 				if(force.magnitude > 0)
 				h.GetComponent.<Rigidbody>().AddForce(force*Random.value);
 				h.GetComponent.<Rigidbody>().AddTorque(Vector3(Random.Range(-10, 10),Random.Range(-10, 10),Random.Range(-10, 10)));
-				h.transform.FindChild("Head PS").GetComponent.<ParticleSystem>().startColor = this._bloodColor;
+				h.transform.Find("Head PS").GetComponent.<ParticleSystem>().startColor = this._bloodColor;
 				EnableCollisions(gameObject.GetComponent.<Collider>(), h.GetComponent.<Collider>());
 			}else{
 				var e:GameObject = Instantiate(_explodeHeadPS.gameObject, _headBone.position, transform.rotation);

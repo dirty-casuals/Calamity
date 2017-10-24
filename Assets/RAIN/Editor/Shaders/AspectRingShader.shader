@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "RAIN/AspectRingShader"
 {
     SubShader
@@ -26,7 +28,7 @@ Shader "RAIN/AspectRingShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex);
+				tOut.position = UnityObjectToClipPos(v.vertex);
 				
 				return tOut;
 			}
@@ -61,7 +63,7 @@ Shader "RAIN/AspectRingShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex);
+				tOut.position = UnityObjectToClipPos(v.vertex);
 				
 				return tOut;
 			}

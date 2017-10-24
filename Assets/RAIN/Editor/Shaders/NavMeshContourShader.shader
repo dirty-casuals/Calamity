@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "RAIN/NavMeshContourShader"
 {
     SubShader
@@ -25,7 +27,7 @@ Shader "RAIN/NavMeshContourShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex + float4(0, _height, 0, 0));
+				tOut.position = UnityObjectToClipPos(v.vertex + float4(0, _height, 0, 0));
 				tOut.texcoord = v.texcoord;
 				
 				return tOut;

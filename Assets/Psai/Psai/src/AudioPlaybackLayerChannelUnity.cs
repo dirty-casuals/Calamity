@@ -159,7 +159,7 @@ namespace psai.net
 
         public AudioPlaybackLayerChannelUnity()
         {
-            AudioSource source = PlatformLayerUnity.PsaiGameObject.transform.FindChild(PlatformLayerUnity.NAME_OF_CHANNELS_CHILDNODE).gameObject.AddComponent<AudioSource>();
+            AudioSource source = PlatformLayerUnity.PsaiGameObject.transform.Find(PlatformLayerUnity.NAME_OF_CHANNELS_CHILDNODE).gameObject.AddComponent<AudioSource>();
             source.loop = false;
             source.ignoreListenerVolume = true;
             _audioSource = source;
