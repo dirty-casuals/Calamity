@@ -11,7 +11,7 @@ public class GamePreCalamityState : GameState {
             gameHandler.SpawnAIPlayers( );
         }
 
-        gameHandler.RpcSetCalamityLabelText( "Time to Calamity" );
+        gameHandler.SetCalamityLabelText( "Time to Calamity" );
         endTime = gameHandler.startTimeSeconds;
         SetLighting( );
     }

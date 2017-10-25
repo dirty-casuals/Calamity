@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
 public enum PlayerType {
     PLAYER,
@@ -8,7 +7,7 @@ public enum PlayerType {
     AI_PLAYER
 }
 
-public class CharacterStateHandler : NetworkBehaviour {
+public class CharacterStateHandler : MonoBehaviour {
 
     public PlayerType playerType;
     public PlayerType initialType;
@@ -29,17 +28,12 @@ public class CharacterStateHandler : NetworkBehaviour {
         gameHandler = GameObject.FindObjectOfType<GameHandler>( );
     }
 
-    private void Start( ) {
-        currentState.SetupNetworkConfig( isLocalPlayer );
-    }
-
     public void SetNextStateToMonster( PlayerType type ) {
         nextState = GetPlayerStateFromType( type );
         nextType = type;
         hasBecomeMonster = true;
     }
 
-    [Server]
     public void MakeMonsterIfRequired( ) {
         currentState = nextState;
         PlayerType lastType = playerType;
@@ -54,7 +48,6 @@ public class CharacterStateHandler : NetworkBehaviour {
         }
     }
 
-    [Server]
     public void MakeNormal( ) {
         if (currentState != initialState) {
 
@@ -112,7 +105,6 @@ public class CharacterStateHandler : NetworkBehaviour {
         return state;
     }
 
-    [Server]
     private void ReplacePlayerController( ) {
         PlayerController oldPlayerController = GetComponent<PlayerController>( );
         GameObject newInstance = GetPrefabInstanceFromType( playerType );
@@ -132,35 +124,19 @@ public class CharacterStateHandler : NetworkBehaviour {
 
         gameHandler.ReplacePlayerController( newPlayerController, oldPlayerController );
 
-        NetworkServer.Destroy( oldPlayerController.gameObject );
-        if (CompareTag( "Player" ) || CompareTag( "Monster" )) {
-            NetworkServer.ReplacePlayerForConnection( connectionToClient, newInstance, 0 );
-        } else {
-            NetworkServer.Spawn( newInstance );
-        }
+        Destroy( oldPlayerController.gameObject );
+        Instantiate( newInstance );
     }
 
     private void FixedUpdate( ) {
-        if (!isLocalPlayer) {
-            return;
-        }
         currentState.PlayerPhysicsUpdate( );
     }
 
     private void Update( ) {
-        if (!isLocalPlayer) {
-            return;
-        }
         currentState.PlayerUpdate( );
     }
 
-    [ServerCallback]
     private void OnCollisionEnter( Collision collision ) {
         currentState.PlayerCollisionEnter( collision );
-    }
-
-    [ClientRpc]
-    private void RpcCollisionEnter( ) {
-
     }
 }

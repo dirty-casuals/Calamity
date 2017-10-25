@@ -18,10 +18,6 @@ public class PlayerState : CharacterState {
         controller = playerBody.GetComponent<PlayerController>( );
     }
 
-    public override void CheckPaused( ) {
-        controller.ControllerPause( );
-    }
-
     public override void PlayerUpdate( ) {
         if (playerControllerDisabled) {
             return;
@@ -44,11 +40,5 @@ public class PlayerState : CharacterState {
 
     public override void ToggleControllerInput( ) {
         playerControllerDisabled = !playerControllerDisabled;
-    }
-
-    public override void SetupNetworkConfig( bool isLocalPlayer ) {
-        if (isLocalPlayer) {
-            playerMesh.gameObject.layer = LayerMask.NameToLayer( "Player" );
-        }
     }
 }

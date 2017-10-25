@@ -6,6 +6,10 @@ public class UIInventoryItem : UnityObserver {
     public GameObject knife;
     private GameObject activeItemUIElement;
 
+    public void Awake( ) {
+        SetupObserver( );
+    }
+
     public override void OnNotify( Object sender, EventArguments e ) {
         switch (e.eventMessage) {
             case PlayerInventory.ADDED_ITEM_TO_INVENTORY:

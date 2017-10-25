@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
 public enum ItemSpawnType {
     PAPER_BALL,
@@ -7,26 +6,27 @@ public enum ItemSpawnType {
     MANDRAKE
 }
 
-public class ItemSpawner : NetworkBehaviour {
+public class ItemSpawner : MonoBehaviour {
     public ItemSpawnType spawnType;
     public float spawnTimer = 15.0f;
     [HideInInspector]
-    [SyncVar]
     public bool currentlySpawnedItem;
     private float timeToSpawnItem = 0.0f;
     private MeshRenderer itemRenderer;
 
-    public override void OnStartServer( ) {
+    public void Awake( ) {
         itemRenderer = GetComponent<MeshRenderer>( );
-        CmdSpawnItem( );
     }
 
-    [ServerCallback]
+    public void Start( ) {
+        SpawnItem( );
+    }
+
     private void Update( ) {
         if (currentlySpawnedItem) {
             timeToSpawnItem = 0.0f;
         } else if (timeToSpawnItem >= spawnTimer) {
-            CmdSpawnItem( );
+            SpawnItem( );
             timeToSpawnItem = 0.0f;
         } else {
             timeToSpawnItem += Time.deltaTime;
@@ -38,8 +38,7 @@ public class ItemSpawner : NetworkBehaviour {
         currentlySpawnedItem = false;
     }
 
-    [Command]
-    private void CmdSpawnItem( ) {
+    private void SpawnItem( ) {
         if (currentlySpawnedItem) {
             return;
         }

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -65,10 +64,10 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             m_NextStep = m_StepCycle / 2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>( );
-            SetupNetworkCamera( );
+            SetupCamera( );
         }
 
-        private void SetupNetworkCamera( ) {
+        private void SetupCamera( ) {
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup( m_Camera );
@@ -138,7 +137,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             ProgressStepCycle( speed );
             UpdateCameraPosition( speed );
 
-            m_MouseLook.UpdateCursorLock( );
+            // m_MouseLook.UpdateCursorLock( );
         }
 
         private void PlayLandingSound( ) {

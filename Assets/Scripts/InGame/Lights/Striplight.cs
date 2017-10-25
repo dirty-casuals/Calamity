@@ -5,7 +5,8 @@ public abstract class Striplight : CalamityLight {
 
     protected MeshRenderer meshRenderer;
 
-    private void Start( ) {
+    public void Start( ) {
+        base.Start();
         meshRenderer = GetComponent<MeshRenderer>( );
     }
 

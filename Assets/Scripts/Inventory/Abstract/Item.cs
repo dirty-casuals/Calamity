@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
 public enum ItemState {
     ITEM_AT_SPAWN_POINT,
@@ -9,23 +8,21 @@ public enum ItemState {
     ITEM_INACTIVE
 }
 
-public class Item : NetworkSubject {
+public class Item : Subject {
 
-    [SyncVar]
     public bool itemInPlayerHands = false;
     [HideInInspector]
-    [SyncVar]
     public ItemState currentItemState;
     public Vector3 spawnPosition;
     public Transform spawnParent;
     public float itemXSpawnPosition;
 
-    public virtual void CmdUseItem( GameObject player ) { }
+    public virtual void UseItem( GameObject player ) { }
 
     public virtual void AddItemToPlayer( GameObject player ) { }
 
-    public virtual void CmdDisableItem( ) { }
+    public virtual void DisableItem( ) { }
 
-    protected virtual void CmdItemHasPerished( ) { }
+    protected virtual void ItemHasPerished( ) { }
 
 }

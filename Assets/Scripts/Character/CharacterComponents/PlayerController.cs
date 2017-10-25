@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnitySampleAssets.CrossPlatformInput;
 using UnityStandardAssets.ImageEffects;
 
-public class PlayerController : NetworkSubject {
-    [SyncVar( hook = "OnAliveChange" )]
+public class PlayerController : Subject {
     public bool alive = true;
     public Vector3 startPosition;
     public Quaternion startRotation;
@@ -15,18 +13,10 @@ public class PlayerController : NetworkSubject {
     private CharacterState currentPlayerState;
     private PlayerInventory inventory;
     private CharacterStateHandler stateHandler;
-    private bool setupRun = false;
     private Animator characterAnimator;
     private ScreenOverlay screenOverlay;
 
-    public override void OnStartLocalPlayer( ) {
-        Setup( );
-
-        Camera playerCamera = GetComponentInChildren<Camera>( );
-        playerCamera.enabled = true;
-    }
-
-    public override void OnStartServer( ) {
+    public void Awake( ) {
         Setup( );
     }
 
@@ -54,15 +44,10 @@ public class PlayerController : NetworkSubject {
     }
 
     public void ResetPosition( ) {
-        if (CompareTag( "PlayerAI" )) {
-            transform.position = startPosition;
-            transform.rotation = startRotation;
-        } else {
-            RpcResetPosition( );
-        }
+        transform.position = startPosition;
+        transform.rotation = startRotation;
     }
 
-    [Server]
     public void Revive( ) {
         gameObject.SetActive( true );
         stateHandler.currentState.RevivePlayer( );
@@ -72,7 +57,6 @@ public class PlayerController : NetworkSubject {
         stateHandler.SetNextStateToMonster( type );
     }
 
-    [Server]
     public void MakeMonsterIfRequired( ) {
         if (stateHandler == null) {
             stateHandler = GetComponent<CharacterStateHandler>( );
@@ -88,24 +72,20 @@ public class PlayerController : NetworkSubject {
         return stateHandler.playerType == PlayerType.MONSTER || stateHandler.playerType == PlayerType.AI_MONSTER;
     }
 
-    [ClientRpc]
-    public void RpcSetStartPosition( Vector3 position, Quaternion rotation ) {
-        if (isLocalPlayer) {
-            transform.position = position;
-            transform.rotation = rotation;
-            startPosition = position;
-            startRotation = rotation;
-        }
+    public void SetStartPosition( Vector3 position, Quaternion rotation ) {
+        transform.position = position;
+        transform.rotation = rotation;
+        startPosition = position;
+        startRotation = rotation;
     }
 
-    [Server]
     public void SetDead( ) {
         alive = false;
         NotifySendObject( this, GameHandler.CHARACTER_DIED );
     }
 
     private void OnAliveChange( bool isAlive ) {
-        if (isAMonster || !isLocalPlayer) {
+        if (isAMonster) {
             return;
         }
 
@@ -125,7 +105,6 @@ public class PlayerController : NetworkSubject {
         }
     }
 
-    [Server]
     public void SetAlive( ) {
         alive = true;
     }
@@ -145,10 +124,10 @@ public class PlayerController : NetworkSubject {
                 return;
             }
             inventory.RemoveItemFromInventoryUI( );
-            inventory.CmdUseItemInInventory( );
+            inventory.UseItemInInventory( );
         }
         if (gameObject.tag == "Player" && rightMouseButtonActivated) {
-            inventory.CmdRemoveItemFromInventory( );
+            inventory.RemoveItemFromInventory( );
         }
         bool movingHorizontal = false;
         if (PlayerIsMovingForward( vertical )) {
@@ -173,14 +152,6 @@ public class PlayerController : NetworkSubject {
         }
     }
 
-    [ClientRpc]
-    private void RpcResetPosition( ) {
-        if (isLocalPlayer) {
-            transform.position = startPosition;
-            transform.rotation = startRotation;
-        }
-    }
-
     private void Setup( ) {
         characterAnimator = GetComponent<Animator>( );
         stateHandler = GetComponent<CharacterStateHandler>( );
@@ -189,10 +160,7 @@ public class PlayerController : NetworkSubject {
             inventory = GetComponent<PlayerInventory>( );
         }
         StartCoroutine( AssignObserverWhenReady( ) );
-        if (isLocalPlayer) {
-            screenOverlay = GetComponentInChildren<ScreenOverlay>( );
-        }
-        setupRun = true;
+        screenOverlay = GetComponentInChildren<ScreenOverlay>( );
     }
 
     private IEnumerator AssignObserverWhenReady( ) {
@@ -209,12 +177,7 @@ public class PlayerController : NetworkSubject {
 
         AddUnityObservers( gameHandler.gameObject );
         if (!isAMonster) {
-            if (!isLocalPlayer && isServer) {
-                NotifySendObject( this, GameHandler.NEW_PLAYER );
-            } else
-            if (isLocalPlayer) {
-                NotifySendObject( this, GameHandler.LOCAL_PLAYER );
-            }
+            NotifySendObject( this, GameHandler.LOCAL_PLAYER );
         }
     }
 

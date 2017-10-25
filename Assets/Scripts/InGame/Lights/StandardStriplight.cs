@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
 public class StandardStriplight : Striplight {
 
-    [ClientRpc]
-    protected override void RpcSetPreCalamityLighting( ) {
+    protected override void SetPreCalamityLighting( ) {
         Material light = LightsHandler.GetLightOnMaterial( );
         SetLight( light.color, Mathf.LinearToGammaSpace( 3.0f ), light );
     }
 
-    [ClientRpc]
-    protected override void RpcSetCalamityLighting( ) {
+    protected override void SetCalamityLighting( ) {
         Material light = LightsHandler.GetLightStandardMaterial( );
         SetLight( light.color, Mathf.LinearToGammaSpace( 0.4f ), light );
     }

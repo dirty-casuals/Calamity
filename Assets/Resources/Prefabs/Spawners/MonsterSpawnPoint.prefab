@@ -5,12 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 494808}
-  - 114: {fileID: 11446150}
-  - 65: {fileID: 6525954}
-  - 114: {fileID: 11460852}
+  - component: {fileID: 494808}
+  - component: {fileID: 11446150}
+  - component: {fileID: 6525954}
   m_Layer: 0
   m_Name: MonsterSpawnPoint
   m_TagString: Untagged
@@ -30,6 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6525954
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -59,38 +59,6 @@ MonoBehaviour:
   characterPrefab: {fileID: 0}
   spawnCount: 2
   spawnRateInSeconds: 3
---- !u!114 &11460852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 137
-    i1: 188
-    i2: 166
-    i3: 173
-    i4: 155
-    i5: 199
-    i6: 155
-    i7: 164
-    i8: 41
-    i9: 80
-    i10: 136
-    i11: 166
-    i12: 125
-    i13: 161
-    i14: 205
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

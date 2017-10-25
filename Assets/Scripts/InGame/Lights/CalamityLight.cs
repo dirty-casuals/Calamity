@@ -1,28 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
-public abstract class CalamityLight : NetworkObserver {
+public abstract class CalamityLight : UnityObserver {
 
-    public override void OnStartServer( ) {
+    public void Start( ) {
+        SetupObserver( );
         GameHandler.RegisterForStateEvents( this.gameObject );
     }
 
     public override void OnNotify( UnityEngine.Object sender, EventArguments e ) {
         switch (e.eventMessage) {
             case LightsHandler.SET_PRE_CALAMITY_LIGHTING:
-                RpcSetPreCalamityLighting( );
+                SetPreCalamityLighting( );
                 break;
 
             case LightsHandler.SET_CALAMITY_LIGHTING:
-                RpcSetCalamityLighting( );
+                SetCalamityLighting( );
                 break;
         }
     }
 
-    [ClientRpc]
-    protected abstract void RpcSetPreCalamityLighting( );
+    protected abstract void SetPreCalamityLighting( );
 
-    [ClientRpc]
-    protected abstract void RpcSetCalamityLighting( );
+    protected abstract void SetCalamityLighting( );
 }

@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 public class AsychLevelLoader : MonoBehaviour {
 
     private GameObject loadingUIPanel;
-    [SerializeField]
-    private LobbyManager lobbyManager;
 
     private void Awake( ) {
         loadingUIPanel = GetComponentInChildren<CanvasRenderer>( true ).gameObject;
@@ -19,12 +17,10 @@ public class AsychLevelLoader : MonoBehaviour {
 
     public void LoadSchoolScene( ) {
         MusicManager musicManager = FindObjectOfType<MusicManager>( );
-        Destroy( musicManager.gameObject );
-
-        loadingUIPanel.SetActive( true );
-        lobbyManager.lobbyScene = SceneManager.GetActiveScene( ).name;
-        lobbyManager.StartHost( );
-        lobbyManager.ServerChangeScene( lobbyManager.playScene );
+        if (musicManager != null) {
+            Destroy( musicManager.gameObject );
+        }
+        LoadScene();
     }
 
     private void LoadScene( ) {

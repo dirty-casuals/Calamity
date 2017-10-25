@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 
 public class PaperballItem : DefenseItem {
-    [SyncVar]
+
     private GameObject currentPlayer;
-    // [SyncVar]
     private Rigidbody itemRigidbody;
 
     public override void AddItemToPlayer( GameObject player ) {
@@ -13,8 +11,7 @@ public class PaperballItem : DefenseItem {
         itemRigidbody = GetComponent<Rigidbody>( );
     }
 
-    [Command]
-    public override void CmdUseItem( GameObject player ) {
+    public override void UseItem( GameObject player ) {
         LaunchPaperBall( );
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         StartCoroutine( HideItemAfterUsePeriod( ) );
@@ -22,7 +19,7 @@ public class PaperballItem : DefenseItem {
 
     protected override IEnumerator HideItemAfterUsePeriod( ) {
         yield return new WaitForSeconds( defenseItemData.itemDuration );
-        NetworkServer.Destroy( gameObject );
+        Destroy( gameObject );
     }
 
     private void LaunchPaperBall( ) {

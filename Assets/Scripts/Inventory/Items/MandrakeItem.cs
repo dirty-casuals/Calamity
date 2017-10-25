@@ -1,33 +1,31 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 using RAIN.Entities;
 
 public class MandrakeItem : DefenseItem {
 
-    [SyncVar]
     private GameObject currentPlayer;
     private bool mandrakeActive;
 
     private void OnTriggerEnter( Collider col ) {
-        if (col.gameObject.tag != "Player" || !isServer) {
+        if (col.gameObject.tag != "Player") {
             return;
         }
-        RpcSetPlayerVisibility( col.gameObject, false );
+        SetPlayerVisibility( col.gameObject, false );
     }
 
     private void OnTriggerExit( Collider col ) {
-        if (col.gameObject.tag != "Player" || !isServer) {
+        if (col.gameObject.tag != "Player") {
             return;
         }
-        RpcSetPlayerVisibility( col.gameObject, true );
+        SetPlayerVisibility( col.gameObject, true );
     }
 
     private void OnTriggerStay( Collider col ) {
-        if (col.gameObject.tag != "Player" || !isServer || mandrakeActive) {
+        if (col.gameObject.tag != "Player" || mandrakeActive) {
             return;
         }
-        RpcSetPlayerVisibility( col.gameObject, true );
+        SetPlayerVisibility( col.gameObject, true );
     }
 
     public override void AddItemToPlayer( GameObject player ) {
@@ -35,8 +33,7 @@ public class MandrakeItem : DefenseItem {
         currentPlayer = player;
     }
 
-    [Command]
-    public override void CmdUseItem( GameObject player ) {
+    public override void UseItem( GameObject player ) {
         PlaceMandrakeInPlayerHands( );
         defenseItemData.numberOfUses -= defenseItemData.CostOfUse;
         StartCoroutine( HideItemAfterUsePeriod( ) );
@@ -51,11 +48,10 @@ public class MandrakeItem : DefenseItem {
         yield return new WaitForSeconds( 0.2f );
         mandrakeActive = true;
         yield return new WaitForSeconds( 0.2f );
-        NetworkServer.Destroy( gameObject );
+        Destroy( gameObject );
     }
 
-    [ClientRpc]
-    private void RpcSetPlayerVisibility( GameObject player, bool isVisible ) {
+    private void SetPlayerVisibility( GameObject player, bool isVisible ) {
         EntityRig playerRig = player.GetComponentInChildren<EntityRig>( );
         playerRig.Entity.IsActive = isVisible;
     }

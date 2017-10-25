@@ -15,11 +15,11 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene( "GameLevelSelect" );
     }
 
-    public void LoadMultiplayerLobby( ) {
-        SceneManager.LoadScene( "MultiplayerLobby" );
-    }
-
     public void LoadDevScene( ) {
         SceneManager.LoadScene("MainDevScene");
+    }
+
+    public static void LoadGameEnd( ) {
+        SceneManager.LoadScene("GameEndMenu");
     }
 }

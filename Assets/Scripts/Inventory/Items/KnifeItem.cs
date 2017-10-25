@@ -8,7 +8,7 @@ public class KnifeItem : WeaponItem {
         itemInPlayerHands = true;
     }
 
-    public override void CmdUseItem( GameObject player ) {
+    public override void UseItem( GameObject player ) {
         currentItemState = ItemState.ITEM_IN_USE;
         GetComponent<Animation>( ).Play( );
 

@@ -12,10 +12,6 @@ public abstract class CharacterState {
         controller = body.GetComponent<PlayerController>( );
     }
 
-    public virtual void CheckPaused( ) {
-        controller.ControllerPause( );
-    }
-
     public virtual void PlayerPhysicsUpdate( ) {
 
     }
@@ -24,7 +20,6 @@ public abstract class CharacterState {
 
     }
 
-    // [Server]
     public virtual void PlayerCollisionEnter( Collision collision ) {
 
     }
@@ -33,14 +28,9 @@ public abstract class CharacterState {
 
     }
 
-    // [Server]
     public virtual void KnockoutPlayer( ) {
         controller.SetDead( );
         controller.gameObject.layer = LayerMask.NameToLayer( "Dead" );
-    }
-
-    public virtual void SetupNetworkConfig( bool isLocalPlayer ) {
-
     }
 
     public virtual void RevivePlayer( ) {
@@ -48,7 +38,6 @@ public abstract class CharacterState {
         controller.gameObject.layer = LayerMask.NameToLayer( character.tag );
     }
 
-    // [Server]
     protected void KnockoutPlayer( GameObject collision ) {
         if (collision.CompareTag( "Player" )) {
             CharacterState state = collision.GetComponent<CharacterStateHandler>( ).currentState;

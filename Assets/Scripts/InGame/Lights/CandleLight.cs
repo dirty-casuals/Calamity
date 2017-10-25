@@ -1,27 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
 public class CandleLight : CalamityLight {
 
     protected ParticleSystem candleParticleSystem;
     protected Light candleLight;
 
-    private void Start( ) {
+    public void Start( ) {
+        base.Start();
         candleParticleSystem = GetComponentInChildren<ParticleSystem>( );
         candleLight = GetComponentInChildren<Light>( );
     }
 
-    [ClientRpc]
-    protected override void RpcSetPreCalamityLighting( ) {
+    protected override void SetPreCalamityLighting( ) {
         candleParticleSystem.Stop( );
         if (candleLight != null) {
             candleLight.enabled = false;
         }
     }
 
-    [ClientRpc]
-    protected override void RpcSetCalamityLighting( ) {
+    protected override void SetCalamityLighting( ) {
         candleParticleSystem.Play( );
         if (candleLight != null) {
             candleLight.enabled = true;

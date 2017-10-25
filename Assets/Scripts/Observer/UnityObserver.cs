@@ -2,8 +2,8 @@
 using UnityEngine.Networking;
 
 public class UnityObserver : MonoBehaviour, IObserver {
-    //Don't Override Awake
-    protected void Awake( ) {
+
+    protected void SetupObserver( ) {
         gameObject.tag = "UnityObserver";
         InitializeUnityObserver( );
     }

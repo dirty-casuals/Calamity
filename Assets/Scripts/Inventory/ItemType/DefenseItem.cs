@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using GameDataEditor;
 using System.Collections;
-using UnityEngine.Networking;
 
 public class DefenseItem : Item {
 
     [HideInInspector]
-    [SyncVar]
     public GDEDefenseItemData defenseItemData;
     protected MeshRenderer itemMesh;
     AudioSource usedAudio;
@@ -19,9 +17,7 @@ public class DefenseItem : Item {
         itemMesh = GetComponent<MeshRenderer>( );
         spawnPosition = transform.position;
         spawnParent = transform.parent;
-        if (isServer) {
-            MoveItemToSpawnPoint( );
-        }
+        MoveItemToSpawnPoint( );
     }
 
     public void OnCollisionEnter( Collision other ) {

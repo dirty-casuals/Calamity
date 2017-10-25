@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public enum EndOfGameResult {
@@ -17,20 +16,20 @@ public class GameEndState : GameState {
     public override void InitializeGameState( ) {
         if (gameHandler.DidAllLose( )) {
             if (gameHandler.DidAllDie( )) {
-                gameHandler.RpcSetGameResult( EndOfGameResult.ALL_DIED, 0 );
+                gameHandler.SetGameResult( EndOfGameResult.ALL_DIED, 0 );
             } else {
                 int numSurvivors = gameHandler.GetNumberAlivePlayersLeft( );
-                gameHandler.RpcSetGameResult( EndOfGameResult.MANY_SURVIVORS, numSurvivors );
+                gameHandler.SetGameResult( EndOfGameResult.MANY_SURVIVORS, numSurvivors );
             }
         } else {
             PlayerController winnerPlayerController = gameHandler.GetWinner( );
-            if (winnerPlayerController.isLocalPlayer) {
-                gameHandler.RpcSetGameResult( EndOfGameResult.LOCAL_PLAYER_WON, 1 );
+            if (winnerPlayerController.alive) {
+                gameHandler.SetGameResult( EndOfGameResult.LOCAL_PLAYER_WON, 1 );
             } else {
-                gameHandler.RpcSetGameResult( EndOfGameResult.OTHER_PLAYER_WON, 1 );
+                gameHandler.SetGameResult( EndOfGameResult.OTHER_PLAYER_WON, 1 );
             }
         }
-        NetworkManager.singleton.ServerChangeScene( "GameEndMenu" );
+        SceneLoader.LoadGameEnd( );
     }
 
 }

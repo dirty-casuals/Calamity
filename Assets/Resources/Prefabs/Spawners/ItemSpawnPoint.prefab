@@ -5,12 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 477046}
-  - 114: {fileID: 11414574}
-  - 65: {fileID: 6548766}
-  - 114: {fileID: 11407962}
+  - component: {fileID: 477046}
+  - component: {fileID: 11414574}
+  - component: {fileID: 6548766}
   m_Layer: 0
   m_Name: ItemSpawnPoint
   m_TagString: Respawn
@@ -30,6 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6548766
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -42,38 +42,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11407962
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 62
-    i1: 190
-    i2: 77
-    i3: 128
-    i4: 206
-    i5: 47
-    i6: 52
-    i7: 196
-    i8: 40
-    i9: 156
-    i10: 246
-    i11: 174
-    i12: 115
-    i13: 207
-    i14: 215
-    i15: 45
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11414574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnType: 0
   spawnTimer: 15
-  currentlySpawnedItem: {fileID: 0}
+  currentlySpawnedItem: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

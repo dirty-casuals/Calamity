@@ -13,9 +13,9 @@ public class CalamityState : GameState {
         }
         gameHandler.StartMonsterSpawners( );
         endTime = gameHandler.calamityLengthSeconds;
-        gameHandler.RpcSetCalamityLabelText( "The Calamity" );
+        gameHandler.SetCalamityLabelText( "The Calamity" );
         SetLighting( );
-        gameHandler.RpcRunCameraEffects( );
+        gameHandler.RunCameraEffects( );
     }
 
     public override void GameUpdate( ) {

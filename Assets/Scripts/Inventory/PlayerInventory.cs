@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using GameDataEditor;
 
-public class PlayerInventory : NetworkSubject {
+public class PlayerInventory : Subject {
 
     public const string ADDED_ITEM_TO_INVENTORY = "ADDED_ITEM_TO_INVENTORY";
     public const string ITEM_USED_BY_PLAYER = "ITEM_USED_BY_PLAYER";
     [HideInInspector]
-    [SyncVar]
     public string firstItem;
 
-    public override void OnStartLocalPlayer( ) {
+    public void Start( ) {
         StartCoroutine( InitializeInventoryUI() );
         GDEDataManager.Init( "gde_data" );
     }
@@ -27,26 +25,22 @@ public class PlayerInventory : NetworkSubject {
     }
 
     private void OnTriggerEnter( Collider col ) {
-        if (col.gameObject.tag != "Respawn" || !isLocalPlayer) {
+        if (col.gameObject.tag != "Respawn") {
             return;
         }
         if (CanPlayerPickupItem( col.gameObject )) {
             string itemType = col.gameObject.GetComponent<ItemSpawner>( ).spawnType.ToString( );
             AddItemToInventoryUI( itemType );
-            CmdPickupItem( col.gameObject, itemType );
+            PickupItem( col.gameObject, itemType );
         }
     }
 
     public void RemoveItemFromInventoryUI( ) {
-        if (!isLocalPlayer) {
-            return;
-        }
         List<string> item = new List<string>( ) { firstItem };
         NotifyExtendedMessage( ITEM_USED_BY_PLAYER, item );
     }
 
-    [Command]
-    public void CmdUseItemInInventory( ) {
+    public void UseItemInInventory( ) {
         if (firstItem.Length <= 0) {
             return;
         }
@@ -54,8 +48,7 @@ public class PlayerInventory : NetworkSubject {
         firstItem = "";
     }
 
-    [Command]
-    public void CmdRemoveItemFromInventory( ) {
+    public void RemoveItemFromInventory( ) {
         firstItem = "";
     }
 
@@ -69,8 +62,7 @@ public class PlayerInventory : NetworkSubject {
         NotifyExtendedMessage( ADDED_ITEM_TO_INVENTORY, item );
     }
 
-    [Command]
-    private void CmdPickupItem( GameObject spawner, string itemType ) {
+    private void PickupItem( GameObject spawner, string itemType ) {
         firstItem = itemType;
         RemoveItemFromSpawner( spawner );
     }
@@ -92,7 +84,7 @@ public class PlayerInventory : NetworkSubject {
             case ItemSpawnType.KNIFE:
                 GDEWeaponItemData knifeItem = new GDEWeaponItemData( );
                 GDEDataManager.DataDictionary.TryGetCustom( GDEItemKeys.WeaponItem_Knife, out knifeItem );
-                CmdInitializeNewWeaponItem( knifeItem );
+                InitializeNewWeaponItem( knifeItem );
                 break;
         }
     }
@@ -102,17 +94,17 @@ public class PlayerInventory : NetworkSubject {
         DefenseItem itemType = newItem.GetComponent<DefenseItem>( );
         itemType.defenseItemData = item;
         itemType.AddItemToPlayer( gameObject );
-        itemType.CmdUseItem( gameObject );
-        NetworkServer.Spawn( newItem );
+        itemType.UseItem( gameObject );
+        Instantiate( newItem );
     }
 
-    private void CmdInitializeNewWeaponItem( GDEWeaponItemData item ) {
+    private void InitializeNewWeaponItem( GDEWeaponItemData item ) {
         GameObject newItem = Instantiate( item.ItemModel );
         WeaponItem itemType = newItem.GetComponent<WeaponItem>( );
         itemType.weaponItemData = item;
         itemType.AddItemToPlayer( gameObject );
-        itemType.CmdUseItem( gameObject );
-        NetworkServer.Spawn( item.ItemModel );
+        itemType.UseItem( gameObject );
+        Instantiate( item.ItemModel );
     }
 
     private void RemoveItemFromSpawner( GameObject spawner ) {

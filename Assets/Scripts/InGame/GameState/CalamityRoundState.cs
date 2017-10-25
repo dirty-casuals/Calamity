@@ -18,10 +18,10 @@ public class CalamityRoundState : GameState {
         gameHandler.DisableMonsters( );
 
         endTime = gameHandler.roundLengthSeconds;
-        gameHandler.RpcSetCalamityLabelText( "Next Round" );
+        gameHandler.SetCalamityLabelText( "Next Round" );
         gameHandler.roundCount.text = gameHandler.currentRound.ToString( );
 
-        PlayerController playerController = gameHandler.GetLocalPlayer( );
+        PlayerController playerController = GameObject.FindObjectOfType<PlayerController>( );
         if (playerController.alive && !playerController.isAMonster) {
             gameHandler.nextRoundTextState.text = "Player";
         } else {
@@ -30,10 +30,10 @@ public class CalamityRoundState : GameState {
 
         int numAlivePlayers = gameHandler.GetNumberAlivePlayersLeft( );
         int numDeadPlayers = gameHandler.GetNumberDeadPlayers( );
-        gameHandler.RpcTotUpPlayers( numAlivePlayers, numDeadPlayers );
+        gameHandler.TotUpPlayers( numAlivePlayers, numDeadPlayers );
 
         gameHandler.ResetAllThePlayers( );
-        gameHandler.RpcSetShowEndOfRoundScreen( true );
+        gameHandler.SetShowEndOfRoundScreen( true );
     }
 
     public override void GameUpdate( ) {
@@ -46,8 +46,8 @@ public class CalamityRoundState : GameState {
         if (gameTimer >= endTime) {
             gameHandler.currentRound += 1;
             gameTimer = 0.0f;
-            gameHandler.RpcDestroyEndOfRoundIcons( );
-            gameHandler.RpcSetShowEndOfRoundScreen( false );
+            gameHandler.DestroyEndOfRoundIcons( );
+            gameHandler.SetShowEndOfRoundScreen( false );
             Notify( GameHandler.SET_PRE_CALAMITY_STATE );
         }
     }

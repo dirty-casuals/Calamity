@@ -30,14 +30,14 @@ public class WeaponItem : Item {
     //    }
     //}
 
-    public override void CmdDisableItem( ) {
+    public override void DisableItem( ) {
         currentItemState = ItemState.ITEM_INACTIVE;
         ResetItem( );
     }
 
-    protected override void CmdItemHasPerished( ) {
+    protected override void ItemHasPerished( ) {
         if (weaponItemData.numberOfUses < 0) {
-            CmdDisableItem( );
+            DisableItem( );
         }
     }
 

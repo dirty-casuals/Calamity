@@ -8,7 +8,6 @@ public class MonsterState : PlayerState {
         character.tag = "Monster";
     }
 
-    // [Server]
     public override void PlayerCollisionEnter( Collision collider ) {
         KnockoutPlayer( collider.gameObject );
     }

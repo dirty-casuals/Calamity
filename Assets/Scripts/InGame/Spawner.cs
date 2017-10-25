@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
 public enum SpawnpointType {
     PLAYER,
@@ -42,7 +41,7 @@ public abstract class Spawner : MonoBehaviour {
         spawn.transform.parent = transform;
         spawn.transform.position = transform.position;
         spawn.transform.localPosition = Vector3.zero;
-        NetworkServer.Spawn( spawn );
+        Instantiate( spawn );
         return spawn;
     }
 

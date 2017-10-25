@@ -1,10 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class GameHandler : NetworkObserver {
+public class GameHandler : UnityObserver {
+    public const string SET_PRE_CALAMITY_STATE = "SET_PRE_CALAMITY_STATE";
+    public const string SET_CALAMITY_STATE = "SET_NEW_CALAMITY_STATE";
+    public const string SET_CALAMITY_END_ROUND = "SET_CALAMITY_END_ROUND";
+    public const string SET_END_GAME = "SET_END_GAME ";
+    public const string TOGGLE_GAME_PAUSE = "TOGGLE_GAME_PAUSE";
+    public const string CHARACTER_DIED = "CHARACTER_DIED";
+    public const string NEW_PLAYER = "NEW_PLAYER";
+    public const string LOCAL_PLAYER = "LOCAL_PLAYER";
+
     public Text countdownLabel;
     public Text countdownTime;
     public Text roundCount;
@@ -21,16 +29,6 @@ public class GameHandler : NetworkObserver {
     public float currentRound = 1.0f;
     [HideInInspector]
     public Spawner[ ] gameSpawnPoints;
-    public const string SET_PRE_CALAMITY_STATE = "SET_PRE_CALAMITY_STATE";
-    public const string SET_CALAMITY_STATE = "SET_NEW_CALAMITY_STATE";
-    public const string SET_CALAMITY_END_ROUND = "SET_CALAMITY_END_ROUND";
-    public const string SET_END_GAME = "SET_END_GAME ";
-    public const string TOGGLE_GAME_PAUSE = "TOGGLE_GAME_PAUSE";
-    public const string CHARACTER_DIED = "CHARACTER_DIED";
-    public const string NEW_PLAYER = "NEW_PLAYER";
-    public const string LOCAL_PLAYER = "LOCAL_PLAYER";
-    [SyncVar]
-    public bool isReadyForPlayerSpawns = false;
     public static GameState currentGameState;
 
     [SerializeField]
@@ -45,10 +43,7 @@ public class GameHandler : NetworkObserver {
     private List<PlayerController> characterPlayerControllers = new List<PlayerController>( );
     private PlayerController localPlayerController = null;
 
-    private bool singlePlayer = false;
-    private int clientsSpawned = 0;
     private List<GameObject> playerObjects = new List<GameObject>( );
-    [SyncVar( hook = "OnRoundTimeRemainingChange" )]
     private float roundTimeRemaining = 0.0f;
     private GameResult gameResultObject = null;
 
@@ -61,49 +56,27 @@ public class GameHandler : NetworkObserver {
 
     private List<GameObject> endOfRoundIcons = new List<GameObject>( );
 
-    [ServerCallback]
-    private void Awake( ) {
+    public void Awake( ) {
+        SetupObserver( );
         preCalamityState = new GamePreCalamityState( this );
         calamityState = new CalamityState( this );
         nextRoundState = new CalamityRoundState( this );
         gameEndState = new GameEndState( this );
+        Setup( );
     }
 
-    public override void OnStartServer( ) {
-        StartCoroutine( Setup( ) );
-    }
-
-    private IEnumerator Setup( ) {
-        GetGameSpawnPoints( );
-        isReadyForPlayerSpawns = true;
-
-        while (clientsSpawned < NetworkManager.singleton.numPlayers) {
-            yield return new WaitForEndOfFrame( );
-        }
-
+    private void Setup( ) {
+        SetGameSpawnPoints( );
         SetFirstGameState( );
     }
 
-    [ServerCallback]
     private void Update( ) {
-        if (clientsSpawned < NetworkManager.singleton.numPlayers) {
-            return;
-        }
-
         currentGameState.GameUpdate( );
-    }
-
-    public void RequestPlayerSpawn( NetworkInstanceId netId ) {
-        GameObject newPlayer = CharacterStateHandler.GetPrefabInstanceFromType( PlayerType.PLAYER );
-        GameObject playerPlaceholder = NetworkServer.FindLocalObject( netId );
-        NetworkServer.ReplacePlayerForConnection( playerPlaceholder.GetComponent<NetworkIdentity>( ).connectionToClient, newPlayer, 0 );
-        playerObjects.Add( newPlayer );
-        NetworkServer.Destroy( playerPlaceholder );
-        clientsSpawned = clientsSpawned + 1;
     }
 
     public void SetRoundTimeRemaining( float timeRemaining ) {
         roundTimeRemaining = timeRemaining;
+        OnRoundTimeRemainingChange( roundTimeRemaining );
     }
 
     public void SetLocalPlayerController( PlayerController controller ) {
@@ -119,22 +92,18 @@ public class GameHandler : NetworkObserver {
     }
 
     public void ReplacePlayerController( PlayerController newController, PlayerController oldController ) {
-        if (newController.isLocalPlayer) {
-            localPlayerController = newController;
-        }
+        localPlayerController = newController;
 
         int index = characterPlayerControllers.IndexOf( oldController );
         characterPlayerControllers[ index ] = newController;
     }
 
-    [ClientRpc]
-    public void RpcTotUpPlayers( int numAlive, int numDead ) {
+    public void TotUpPlayers( int numAlive, int numDead ) {
         StartCoroutine( TotUpPlayers( aliveIcon, numAlive ) );
         StartCoroutine( TotUpPlayers( deadIcon, numDead ) );
     }
 
-    [ClientRpc]
-    public void RpcDestroyEndOfRoundIcons( ) {
+    public void DestroyEndOfRoundIcons( ) {
         for (int i = 0; i < endOfRoundIcons.Count; i += 1) {
             GameObject icon = endOfRoundIcons[ i ];
             GameObject.Destroy( icon );
@@ -142,27 +111,19 @@ public class GameHandler : NetworkObserver {
         endOfRoundIcons.Clear( );
     }
 
-    [ClientRpc]
-    public void RpcRunCameraEffects( ) {
-        if (localPlayerController != null) {
-            localPlayerController.RunCameraEffects( );
-        }
+    public void RunCameraEffects( ) {
+        localPlayerController.RunCameraEffects( );
     }
 
-    public static void AddObserverToStateEvents( GameObject observer ) {
+    public static void RegisterForStateEvents( GameObject observer ) {
+        stateEventObservers.Add( observer );
         preCalamityState.AddUnityObservers( observer );
         calamityState.AddUnityObservers( observer );
         nextRoundState.AddUnityObservers( observer );
         gameEndState.AddUnityObservers( observer );
     }
 
-    public static void RegisterForStateEvents( GameObject observer ) {
-        stateEventObservers.Add( observer );
-        AddObserverToStateEvents( observer );
-    }
-
-    [ClientRpc]
-    public void RpcSetCalamityLabelText( string text ) {
+    public void SetCalamityLabelText( string text ) {
         countdownLabel.text = text;
     }
 
@@ -201,34 +162,13 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    public PlayerController GetLocalPlayer( ) {
-        PlayerController playerController = null;
-        for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
-            PlayerController controller = characterPlayerControllers[ i ];
-            if (controller.isLocalPlayer) {
-                playerController = controller;
-                break;
-            }
-        }
-        return playerController;
-    }
-
     public void SpawnAIPlayers( ) {
-        int humansCreated = 0;
         GameObject characterPrefab = (GameObject)Resources.Load( "Prefabs/Characters/AIPlayerNormal" );
         foreach (Spawner spawn in playerSpawnPoints) {
-            if (humansCreated < NetworkManager.singleton.numPlayers) {
-                GameObject playerObject = playerObjects[ humansCreated ];
-                playerObject.transform.parent = spawn.transform;
-                playerObject.transform.localPosition = Vector3.zero;
-                playerObject.transform.localRotation = Quaternion.identity;
-                humansCreated = humansCreated + 1;
-                playerObject.GetComponent<PlayerController>( ).RpcSetStartPosition( spawn.transform.position, spawn.transform.rotation );
-                continue;
+            if(!spawn.somethingInSpawnPoint) {
+                spawn.characterPrefab = characterPrefab;
+                spawn.StartSpawn( );
             }
-
-            spawn.characterPrefab = characterPrefab;
-            spawn.StartSpawn( );
         }
     }
 
@@ -261,12 +201,10 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    [ClientRpc]
-    public void RpcSetShowEndOfRoundScreen( bool enabled ) {
+    public void SetShowEndOfRoundScreen( bool enabled ) {
         roundPanel.SetActive( enabled );
     }
 
-    [Server]
     public void ResetAllThePlayers( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
@@ -275,7 +213,6 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    [Server]
     public void MakeMonstersIfRequired( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
@@ -283,7 +220,6 @@ public class GameHandler : NetworkObserver {
         }
     }
 
-    [Server]
     public void MakeNormals( ) {
         for (int i = 0; i < characterPlayerControllers.Count; i += 1) {
             PlayerController playerController = characterPlayerControllers[ i ];
@@ -344,8 +280,7 @@ public class GameHandler : NetworkObserver {
         return gameResultObject;
     }
 
-    [ClientRpc]
-    public void RpcSetGameResult( EndOfGameResult endResult, int numSurvivors ) {
+    public void SetGameResult( EndOfGameResult endResult, int numSurvivors ) {
         GameResult gameResult = GetGameResultObject( );
 
         switch (endResult) {
@@ -387,12 +322,12 @@ public class GameHandler : NetworkObserver {
 
     private void PlayerDied( PlayerController playerController ) {
         if (GetNumberAlivePlayersLeft( ) == 0) {
-            currentGameState = gameEndState;
-            currentGameState.InitializeGameState( );
+            // currentGameState = gameEndState;
+            // currentGameState.InitializeGameState( );
         }
     }
 
-    private void GetGameSpawnPoints( ) {
+    private void SetGameSpawnPoints( ) {
         gameSpawnPoints = FindObjectsOfType<Spawner>( );
         monsterSpawnPoints = new List<Spawner>( );
         playerSpawnPoints = new List<Spawner>( );
@@ -426,19 +361,4 @@ public class GameHandler : NetworkObserver {
     private void OnRoundTimeRemainingChange( float newTimeRemaining ) {
         countdownTime.text = Mathf.Floor( newTimeRemaining ).ToString( );
     }
-
-    //[ClientRpc]
-    //private void RpcSetPlayerStartPosition( Vector3 position, Quaternion rotation ) {
-    //    StartCoroutine( OnLocalPlayerReady( position, rotation ) );
-    //}
-
-    //private IEnumerator OnLocalPlayerReady( Vector3 position, Quaternion rotation ) {
-    //    while (localPlayerController == null) {
-    //        yield return new WaitForEndOfFrame( );
-    //    }
-
-    //    localPlayerController.transform.position = position;
-    //    localPlayerController.transform.rotation = rotation;
-    //    localPlayerController.SetStartPosition( position, rotation );
-    //}
 }

@@ -1,39 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
-public class Pentagram : NetworkObserver {
+public class Pentagram : UnityObserver {
 
     private Renderer pentagramRenderer;
 
-    private void Start( ) {
+    public void Start( ) {
+        SetupObserver( );
         pentagramRenderer = GetComponent<MeshRenderer>( );
-    }
-
-    public override void OnStartServer( ) {
         GameHandler.RegisterForStateEvents( gameObject );
     }
 
-    [Server]
     public override void OnNotify( UnityEngine.Object sender, EventArguments e ) {
         switch (e.eventMessage) {
             case LightsHandler.SET_PRE_CALAMITY_LIGHTING:
-                RpcSetPreCalamityLighting( );
+                SetPreCalamityLighting( );
                 break;
 
             case LightsHandler.SET_CALAMITY_LIGHTING:
-                RpcSetCalamityLighting( );
+                SetCalamityLighting( );
                 break;
         }
     }
 
-    [ClientRpc]
-    private void RpcSetPreCalamityLighting( ) {
+    private void SetPreCalamityLighting( ) {
         SetPentagramLight( Color.white, Mathf.LinearToGammaSpace( 2.0f ) );
     }
 
-    [ClientRpc]
-    private void RpcSetCalamityLighting( ) {
+    private void SetCalamityLighting( ) {
         SetPentagramLight( Color.red, Mathf.LinearToGammaSpace( 4.0f ) );
     }
 

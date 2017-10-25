@@ -5,14 +5,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 489916}
-  - 33: {fileID: 3381270}
-  - 23: {fileID: 2317170}
-  - 114: {fileID: 11408106}
-  - 65: {fileID: 6588882}
-  - 114: {fileID: 11468466}
+  - component: {fileID: 489916}
+  - component: {fileID: 3381270}
+  - component: {fileID: 2317170}
+  - component: {fileID: 11408106}
+  - component: {fileID: 6588882}
   m_Layer: 0
   m_Name: PaperBallSpawn
   m_TagString: Respawn
@@ -32,6 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2317170
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -41,22 +41,30 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: f5b8583c88131cd47ba453f9fac3d900, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3381270
 MeshFilter:
@@ -91,38 +99,6 @@ MonoBehaviour:
   spawnType: 0
   spawnTimer: 1
   currentlySpawnedItem: 0
---- !u!114 &11468466
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 219
-    i1: 120
-    i2: 193
-    i3: 35
-    i4: 236
-    i5: 132
-    i6: 3
-    i7: 36
-    i8: 88
-    i9: 91
-    i10: 228
-    i11: 214
-    i12: 88
-    i13: 154
-    i14: 55
-    i15: 231
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

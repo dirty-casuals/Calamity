@@ -5,14 +5,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 467358}
-  - 33: {fileID: 3309938}
-  - 23: {fileID: 2382126}
-  - 114: {fileID: 11485550}
-  - 65: {fileID: 6526630}
-  - 114: {fileID: 11407478}
+  - component: {fileID: 467358}
+  - component: {fileID: 3309938}
+  - component: {fileID: 2382126}
+  - component: {fileID: 11485550}
+  - component: {fileID: 6526630}
   m_Layer: 0
   m_Name: MandrakeSpawn
   m_TagString: Respawn
@@ -32,6 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2382126
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -41,22 +41,30 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ee886ac599c6b45a3b2383074be3505c, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3309938
 MeshFilter:
@@ -77,38 +85,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11407478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 17
-    i1: 197
-    i2: 213
-    i3: 47
-    i4: 127
-    i5: 28
-    i6: 248
-    i7: 4
-    i8: 170
-    i9: 99
-    i10: 69
-    i11: 98
-    i12: 200
-    i13: 67
-    i14: 36
-    i15: 11
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11485550
 MonoBehaviour:
   m_ObjectHideFlags: 1
