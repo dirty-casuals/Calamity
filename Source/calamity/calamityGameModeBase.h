@@ -7,14 +7,13 @@
 #include "calamityGameModeBase.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class CALAMITY_API AcalamityGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
-	
-	
-	
+
+public:
+	AcalamityGameModeBase();
 };
