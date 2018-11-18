@@ -3,17 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-#include "CalamitySchoolGirlCharacter.generated.h"
+#include "CalamitySchoolGirlCharacter.h"
+#include "CalamitySchoolGirlAI.generated.h"
 
+/**
+ *
+ */
 UCLASS()
-class CALAMITY_API ACalamitySchoolGirlCharacter : public ACharacter
+class CALAMITY_API ACalamitySchoolGirlAI : public ACalamitySchoolGirlCharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	ACalamitySchoolGirlCharacter();
+	ACalamitySchoolGirlAI();
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,5 +25,9 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+
+
 
 };

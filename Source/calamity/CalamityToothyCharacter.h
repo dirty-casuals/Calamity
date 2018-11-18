@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "CalamitySchoolGirlCharacter.generated.h"
+#include "CalamityToothyCharacter.generated.h"
 
 UCLASS()
-class CALAMITY_API ACalamitySchoolGirlCharacter : public ACharacter
+class CALAMITY_API ACalamityToothyCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	ACalamitySchoolGirlCharacter();
+	ACalamityToothyCharacter();
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,5 +22,6 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 
 };

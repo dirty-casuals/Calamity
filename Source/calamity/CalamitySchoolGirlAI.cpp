@@ -1,25 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "CalamitySchoolGirlCharacter.h"
+#include "CalamitySchoolGirlAI.h"
 
-
-// Sets default values
-ACalamitySchoolGirlCharacter::ACalamitySchoolGirlCharacter()
+ACalamitySchoolGirlAI::ACalamitySchoolGirlAI()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 }
 
 // Called when the game starts or when spawned
-void ACalamitySchoolGirlCharacter::BeginPlay()
+void ACalamitySchoolGirlAI::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
 // Called every frame
-void ACalamitySchoolGirlCharacter::Tick(float DeltaTime)
+void ACalamitySchoolGirlAI::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
-
