@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#pragma once
+#include "CalamityWayPoint.h"
 
-#include "CoreMinimal.h"
-#include "Net/UnrealNetwork.h"
+
+
+

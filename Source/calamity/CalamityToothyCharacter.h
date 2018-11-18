@@ -4,9 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "BehaviorTree/BehaviorTree.h"
 #include "CalamityToothyCharacter.generated.h"
 
-UCLASS()
+UCLASS(ABSTRACT)
 class CALAMITY_API ACalamityToothyCharacter : public ACharacter
 {
 	GENERATED_BODY()
@@ -23,5 +24,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-
+	UPROPERTY(EditDefaultsOnly, Category = "AI")
+		class UBehaviorTree* BehaviorTree;
 };

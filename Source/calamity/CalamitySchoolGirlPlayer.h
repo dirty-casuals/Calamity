@@ -14,7 +14,6 @@ class CALAMITY_API ACalamitySchoolGirlPlayer : public ACalamitySchoolGirlCharact
 {
 	GENERATED_BODY()
 
-		/** First person camera */
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* FirstPersonCameraComponent;
 

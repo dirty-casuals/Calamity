@@ -2,6 +2,9 @@
 
 #include "CalamityToothyCharacter.h"
 
+#include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BehaviorTreeComponent.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 // Sets default values
 ACalamityToothyCharacter::ACalamityToothyCharacter()
